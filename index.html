@@ -48,4 +48,518 @@
       font-weight:700; letter-spacing:.2px;
     }
     .brand small{color:var(--muted); font-weight:500}
-    .menu{display:flex;
+    .menu{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:flex-end}
+    .menu a{
+      padding:8px 10px; border-radius:12px;
+      color:var(--text);
+      font-size:14px;
+      border:1px solid transparent;
+    }
+    .menu a:hover{
+      border-color: rgba(77,166,255,.35);
+      background: rgba(77,166,255,.08);
+      text-decoration:none;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px; border-radius:14px;
+      border:1px solid rgba(77,166,255,.35);
+      background: linear-gradient(135deg, rgba(77,166,255,.18), rgba(124,58,237,.14));
+      color:var(--text);
+      font-weight:600;
+      box-shadow: 0 10px 18px rgba(0,0,0,.18);
+    }
+    .btn:hover{filter:brightness(1.05); text-decoration:none}
+    /* Hero */
+    .hero{padding:56px 0 20px}
+    .hero-card{
+      background: linear-gradient(180deg, rgba(17,24,39,.72), rgba(15,23,42,.58));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius: calc(var(--radius) + 6px);
+      padding: 34px 24px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(700px 250px at 10% 10%, rgba(77,166,255,.25), transparent 60%),
+                  radial-gradient(700px 260px at 90% 10%, rgba(124,58,237,.22), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-grid{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:18px;
+      position:relative;
+    }
+    .kicker{color:var(--muted); font-weight:600; letter-spacing:.3px}
+    h1{margin:8px 0 10px; font-size:40px; line-height:1.1}
+    .subtitle{margin:0; color:var(--muted); font-size:16px}
+    .badges{margin-top:16px; display:flex; flex-wrap:wrap; gap:10px}
+    .badge{
+      font-size:13px; color:var(--text);
+      padding:8px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.04);
+    }
+    .hero-side{
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      padding:16px;
+      align-self:stretch;
+    }
+    .hero-side h3{margin:0 0 8px; font-size:14px; color:var(--muted); font-weight:700; letter-spacing:.3px}
+    .hero-side p{margin:0 0 10px; font-size:14px; color:var(--text)}
+    .hero-side .mini{
+      font-size:13px; color:var(--muted); margin:0;
+    }
+
+    /* Sections */
+    section{padding:26px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      margin:0 0 14px;
+    }
+    .section-title h2{
+      margin:0; font-size:22px;
+      padding-bottom:8px;
+      border-bottom:1px solid var(--line);
+      flex:1;
+    }
+    .hint{color:var(--muted); font-size:13px}
+    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .card{
+      background: rgba(17,24,39,.55);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.20);
+    }
+    .card h3{margin:0 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    ul{margin:10px 0 0 18px; color:var(--muted)}
+    li{margin:6px 0}
+    /* People */
+    .person{
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .avatar{
+      width:56px; height:56px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(77,166,255,.35), rgba(124,58,237,.35));
+      border:1px solid rgba(255,255,255,.10);
+      flex:0 0 auto;
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(255,255,255,.9);
+      font-weight:800;
+    }
+    .person b{display:block}
+    .person small{display:block; color:var(--muted); margin-top:3px}
+    .tags{margin-top:10px; display:flex; flex-wrap:wrap; gap:8px}
+    .tag{
+      font-size:12px; color:var(--text);
+      padding:6px 8px; border-radius:999px;
+      border:1px solid rgba(77,166,255,.25);
+      background: rgba(77,166,255,.08);
+    }
+    /* Photos */
+    .photos{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .photo{
+      border-radius: var(--radius);
+      border:1px dashed rgba(255,255,255,.18);
+      background: rgba(255,255,255,.03);
+      padding:16px;
+      min-height:110px;
+      display:flex; align-items:center; justify-content:center;
+      color:var(--muted);
+      text-align:center;
+    }
+    /* Publications */
+    .pub{padding:10px 0; border-bottom:1px solid rgba(255,255,255,.06)}
+    .pub:last-child{border-bottom:none}
+    .pub-title{font-weight:700; color:var(--text)}
+    .pub-meta{color:var(--muted); font-size:13px; margin-top:4px}
+    /* Footer */
+    footer{
+      margin-top:24px;
+      padding:22px 0;
+      background: rgba(17,24,39,.55);
+      border-top:1px solid rgba(255,255,255,.06);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footer-grid{
+      display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns: 1fr}
+      .grid-3{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns: 1fr}
+      .photos{grid-template-columns: 1fr 1fr}
+      h1{font-size:34px}
+      .menu{gap:6px}
+      .menu a{padding:7px 8px}
+    }
+    @media (max-width: 520px){
+      .photos{grid-template-columns: 1fr}
+      .brand{max-width: 160px}
+      .btn{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <div>Zheng Wenhao Lab</div>
+          <small>Ultrafast THz • On-chip Platforms • Quantum Materials</small>
+        </div>
+        <div class="menu">
+          <a href="#home">Home</a>
+          <a href="#research">Research</a>
+          <a href="#people">People</a>
+          <a href="#photos">Photos</a>
+          <a href="#publications">Publications</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+          <a class="btn" href="#join">Join Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div id="home" class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">Chinese Academy of Sciences • AIR (GBA Branch)</div>
+            <h1>Ultrafast Terahertz Spectroscopy & Quantum Materials</h1>
+            <p class="subtitle">
+              We develop <b>on-chip terahertz spectroscopy platforms</b> and apply broadband THz/ultrafast techniques
+              to probe correlated electrons, superconductivity, and quantum transport in low-dimensional materials.
+            </p>
+            <div class="badges">
+              <span class="badge">On-chip THz-TDS / Pump–Probe</span>
+              <span class="badge">Optical conductivity & complex conductivity</span>
+              <span class="badge">2D materials • moiré • superconductivity</span>
+              <span class="badge">Cryogenic & high-field compatible</span>
+            </div>
+          </div>
+          <div class="hero-side">
+            <h3>Quick Links</h3>
+            <p><b>PI:</b> Dr. Wenhao Zheng</p>
+            <p class="mini">
+              <a href="#" title="Replace with your Scholar link">Google Scholar</a> ·
+              <a href="#" title="Replace with your ORCID link">ORCID</a> ·
+              <a href="#" title="Replace with your GitHub link">GitHub</a>
+            </p>
+            <p class="mini" style="margin-top:10px;">
+              <b>Location:</b> Guangzhou, China<br/>
+              <b>Email:</b> <a href="mailto:your_email@domain.com">your_email@domain.com</a>
+            </p>
+            <div class="tags">
+              <span class="tag">0.1–20 THz</span>
+              <span class="tag">On-chip integration</span>
+              <span class="tag">Quantum transport</span>
+              <span class="tag">Strong correlations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Research -->
+  <section id="research">
+    <div class="container">
+      <div class="section-title">
+        <h2>Research</h2>
+        <div class="hint">（把下面每个方向的描述换成你自己的 3–5 句话就很强了）</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>1) On-chip Terahertz Spectroscopy Platforms</h3>
+          <p>
+            Broadband on-chip THz generation/detection, impedance-aware device coupling, calibration & de-embedding,
+            and engineering-friendly measurement workflows for quantum devices.
+          </p>
+          <ul>
+            <li>Waveguide / antenna coupling and device-compatible geometries</li>
+            <li>System response calibration, deconvolution, and reproducible pipelines</li>
+            <li>Compatible with cryogenic & magnet environments</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>2) Correlated Electrodynamics & Superconductivity</h3>
+          <p>
+            THz conductivity as a direct probe of low-energy excitations, superfluid density, scattering,
+            and gap dynamics in unconventional superconductors and correlated 2D systems.
+          </p>
+          <ul>
+            <li>Complex conductivity σ(ω) = σ₁ + iσ₂</li>
+            <li>Superfluid spectral weight, pairing symmetry fingerprints</li>
+            <li>Nonequilibrium dynamics and recovery pathways</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:14px;">
+        <div class="card">
+          <h3>3) Ultrafast Carrier & Heat Transport Dynamics</h3>
+          <p>
+            Multi-timescale dynamics from femtoseconds to nanoseconds: hot carriers, lattice heating,
+            and heat dissipation shaping transient transport.
+          </p>
+          <ul>
+            <li>THz/optical pump–probe, time-resolved conductivity</li>
+            <li>Photo-thermal coupling and transport regulation</li>
+            <li>Materials: MXenes, TMDs, vdW heterostructures</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>4) Quantum Transport in Low-Dimensional Devices</h3>
+          <p>
+            Gate-tunable transport, contact engineering, and device physics. THz spectroscopy complements DC transport
+            by accessing intrinsic electrodynamics at meV energies.
+          </p>
+          <ul>
+            <li>2D devices, moiré superlattices, interface engineering</li>
+            <li>High-field / low-temperature measurement strategies</li>
+            <li>Bridging THz and DC transport observables</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- People -->
+  <section id="people">
+    <div class="container">
+      <div class="section-title">
+        <h2>People</h2>
+        <div class="hint">（先把 PI + 现有学生写上；后面再慢慢加照片/主页链接）</div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="person">
+            <div class="avatar">WZ</div>
+            <div>
+              <b>Dr. Wenhao Zheng</b>
+              <small>Principal Investigator</small>
+              <small>
+                <a href="#" title="Add your CV link">CV</a> ·
+                <a href="#" title="Add your Scholar link">Scholar</a> ·
+                <a href="#" title="Add your ORCID link">ORCID</a>
+              </small>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">THz spectroscopy</span>
+            <span class="tag">On-chip platforms</span>
+            <span class="tag">Quantum materials</span>
+          </div>
+        </div>
+
+        <!-- Template: Student/Postdoc Card -->
+        <div class="card">
+          <div class="person">
+            <div class="avatar">S1</div>
+            <div>
+              <b>Student / Postdoc Name</b>
+              <small>Role (PhD / MSc / Postdoc)</small>
+              <small>Keywords: THz, devices, optics…</small>
+            </div>
+          </div>
+          <p style="margin-top:10px;">(Put a short bio: 1–2 lines.)</p>
+        </div>
+
+        <div class="card">
+          <div class="person">
+            <div class="avatar">S2</div>
+            <div>
+              <b>Student / Postdoc Name</b>
+              <small>Role (PhD / MSc / Postdoc)</small>
+              <small>Keywords: fabrication, transport…</small>
+            </div>
+          </div>
+          <p style="margin-top:10px;">(Put a short bio: 1–2 lines.)</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <h3>Alumni</h3>
+        <p>（后面可以加：Name — Next position）</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photos -->
+  <section id="photos">
+    <div class="container">
+      <div class="section-title">
+        <h2>Photos</h2>
+        <div class="hint">（你可以先放 3–6 张：光学平台、THz setup、低温系统、合照）</div>
+      </div>
+
+      <div class="photos">
+        <div class="photo">Photo Placeholder 1<br/>Lab / Setup</div>
+        <div class="photo">Photo Placeholder 2<br/>On-chip Platform</div>
+        <div class="photo">Photo Placeholder 3<br/>Team Photo</div>
+        <div class="photo">Photo Placeholder 4</div>
+        <div class="photo">Photo Placeholder 5</div>
+        <div class="photo">Photo Placeholder 6</div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <h3>How to add photos (easy)</h3>
+        <p>
+          Upload images to your repo (e.g., folder <code>assets/</code>), then replace placeholders with:
+          <code>&lt;img src="assets/your_photo.jpg" style="width:100%;border-radius:16px" /&gt;</code>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section id="publications">
+    <div class="container">
+      <div class="section-title">
+        <h2>Publications</h2>
+        <div class="hint">（先放 “Selected” 5–10 篇就够；后面再做完整列表）</div>
+      </div>
+
+      <div class="card">
+        <div class="pub">
+          <div class="pub-title">[Year] Paper title (replace this)</div>
+          <div class="pub-meta">Authors… · Journal · <a href="#" title="Add DOI link">DOI</a></div>
+        </div>
+        <div class="pub">
+          <div class="pub-title">[Year] Paper title (replace this)</div>
+          <div class="pub-meta">Authors… · Journal · <a href="#">DOI</a></div>
+        </div>
+        <div class="pub">
+          <div class="pub-title">[Year] Paper title (replace this)</div>
+          <div class="pub-meta">Authors… · Journal · <a href="#">DOI</a></div>
+        </div>
+        <div class="pub">
+          <div class="pub-title">[Year] Paper title (replace this)</div>
+          <div class="pub-meta">Authors… · Journal · <a href="#">DOI</a></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <h3>Tip</h3>
+        <p>
+          如果你给我你的 Google Scholar 主页链接，我可以帮你把论文列表自动整理成统一格式（含 DOI/链接），直接粘贴即可。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section id="news">
+    <div class="container">
+      <div class="section-title">
+        <h2>News</h2>
+        <div class="hint">（这里写 3–6 条动态：论文接收、设备到位、招人）</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>[2026-xx] Paper accepted</h3>
+          <p>Short description…</p>
+        </div>
+        <div class="card">
+          <h3>[2026-xx] New setup online</h3>
+          <p>Short description…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <div class="hint">（把下面信息改成真实的）</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Address</h3>
+          <p>
+            Aerospace Information Research Institute (AIR), CAS<br/>
+            GBA Branch, Guangzhou, China
+          </p>
+        </div>
+        <div class="card">
+          <h3>Email</h3>
+          <p>
+            <a href="mailto:your_email@domain.com">your_email@domain.com</a><br/>
+            (You can also add WeChat/phone if you want.)
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join Us -->
+  <section id="join">
+    <div class="container">
+      <div class="section-title">
+        <h2>Join Us</h2>
+        <div class="hint">（这页写得好，招生效率直接提升）</div>
+      </div>
+
+      <div class="card">
+        <h3>Open positions</h3>
+        <ul>
+          <li>PhD students (THz spectroscopy / on-chip platform / quantum materials)</li>
+          <li>Postdocs (ultrafast optics, device physics, correlated systems)</li>
+          <li>MSc/RA (setup building, automation, data processing)</li>
+        </ul>
+        <p style="margin-top:10px;">
+          Please email <a href="mailto:your_email@domain.com">your_email@domain.com</a> with:
+          CV + transcript + brief research interests.
+        </p>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <h3>What we value</h3>
+        <p>
+          Hands-on experimental skills, rigorous physics thinking, clean data habits, and good communication.
+          If you like building platforms and solving hard measurement problems, you’ll fit in.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>© 2026 Zheng Wenhao Lab</div>
+        <div>
+          <a href="#home">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
