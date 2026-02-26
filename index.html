@@ -1,85 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zheng Wenhao Lab</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zheng Wenhao Lab</title>
+  <meta name="description" content="Zheng Wenhao Lab — Ultrafast terahertz spectroscopy, on-chip THz platforms, and quantum materials." />
+  <style>
+    :root{
+      --bg:#0a0f1c;
+      --panel:#0f172a;
+      --panel2:#111827;
+      --text:#e8eeff;
+      --muted:#b6c2ea;
+      --line:rgba(255,255,255,.10);
+      --accent:#4da6ff;
+      --accent2:#7c3aed;
+      --radius:18px;
+      --shadow: 0 18px 40px rgba(0,0,0,.38);
+      --max: 1080px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 420px at 15% 0%, rgba(124,58,237,.22), transparent 60%),
+        radial-gradient(900px 460px at 85% 10%, rgba(77,166,255,.22), transparent 60%),
+        var(--bg);
+      line-height:1.6;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
-<style>
-body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    background:#0a0f1c;
-    color:#e6ecff;
-}
+    /* Top nav */
+    .nav{
+      position:sticky; top:0; z-index:100;
+      background: rgba(10,15,28,.62);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:12px 0;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .brand small{color:var(--muted); font-weight:600; letter-spacing:.2px}
+    .menu{display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:flex-end}
+    .menu a{
+      padding:8px 10px;
+      border-radius:12px;
+      color:var(--text);
+      font-weight:600;
+      font-size:14px;
+      border:1px solid transparent;
+    }
+    .menu a:hover{
+      background: rgba(77,166,255,.08);
+      border-color: rgba(77,166,255,.25);
+      text-decoration:none;
+    }
+    .cta{
+      padding:8px 12px !important;
+      border:1px solid rgba(77,166,255,.35) !important;
+      background: linear-gradient(135deg, rgba(77,166,255,.18), rgba(124,58,237,.14));
+    }
 
-.nav{
-    background:#111827;
-    padding:15px 0;
-    text-align:center;
-}
+    /* Hero */
+    .hero{padding:56px 0 18px}
+    .hero-card{
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(180deg, rgba(17,24,39,.72), rgba(15,23,42,.58));
+      border:1px solid rgba(255,255,255,.07);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 220px at 12% 18%, rgba(77,166,255,.20), transparent 60%),
+        radial-gradient(740px 260px at 86% 10%, rgba(124,58,237,.18), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-grid{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      padding:28px;
+    }
+    h1{margin:6px 0 10px;font-size:44px;line-height:1.08}
+    .subtitle{margin:0;color:var(--muted);font-size:16px}
+    .mission{
+      margin-top:14px;
+      color:var(--text);
+      font-size:16px;
+      opacity:.95;
+    }
+    .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:700;
+      font-size:14px;
+    }
+    .btn:hover{filter:brightness(1.06); text-decoration:none}
+    .btn.primary{
+      border-color: rgba(77,166,255,.38);
+      background: linear-gradient(135deg, rgba(77,166,255,.20), rgba(124,58,237,.16));
+    }
 
-.nav a{
-    color:#e6ecff;
-    margin:0 15px;
-    text-decoration:none;
-    font-weight:500;
-}
+    .side{
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      padding:16px;
+      height:fit-content;
+    }
+    .side h3{margin:0 0 10px;font-size:13px;color:var(--muted);letter-spacing:.3px}
+    .kv{margin:0;color:var(--muted);font-size:13px}
+    .kv b{color:var(--text)}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .pill{
+      font-size:12px;
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid rgba(77,166,255,.25);
+      background: rgba(77,166,255,.08);
+      color:var(--text);
+    }
 
-.nav a:hover{
-    color:#4da6ff;
-}
+    /* Highlights */
+    .highlights{padding:18px 0 34px}
+    .section-title{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
+      margin:0 0 12px;
+    }
+    .section-title h2{margin:0;font-size:18px;color:var(--text)}
+    .section-title .hint{color:var(--muted);font-size:13px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{
+      background: rgba(17,24,39,.52);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .card h3{margin:0 0 8px;font-size:15px}
+    .card p{margin:0;color:var(--muted);font-size:13px}
 
-.hero{
-    text-align:center;
-    padding:120px 20px;
-}
+    footer{
+      padding:22px 0;
+      border-top:1px solid rgba(255,255,255,.06);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
 
-h1{
-    font-size:42px;
-    margin-bottom:10px;
-}
-
-.subtitle{
-    font-size:18px;
-    color:#b8c2e6;
-}
-
-.footer{
-    text-align:center;
-    padding:40px 20px;
-    color:#b8c2e6;
-    font-size:14px;
-}
-</style>
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      h1{font-size:36px}
+    }
+    @media (max-width: 520px){
+      .brand small{display:none}
+    }
+  </style>
 </head>
 
 <body>
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <div>Zheng Wenhao Lab</div>
+          <small>Ultrafast THz • On-chip Platforms • Quantum Materials</small>
+        </div>
+        <div class="menu">
+          <a href="index.html">Home</a>
+          <a href="research.html">Research</a>
+          <a href="people.html">People</a>
+          <a href="publications.html">Publications</a>
+          <a href="news.html">News</a>
+          <a href="join.html">Join</a>
+          <a href="contact.html" class="cta">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="nav">
-<a href="index.html">Home</a>
-<a href="research.html">Research</a>
-<a href="people.html">People</a>
-<a href="publications.html">Publications</a>
-<a href="news.html">News</a>
-<a href="join.html">Join</a>
-<a href="contact.html">Contact</a>
-</div>
+  <div class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="subtitle" style="font-weight:700; letter-spacing:.2px;">
+              Chinese Academy of Sciences · Aerospace Information Research Institute (GBA Branch), Guangzhou
+            </div>
+            <h1>Ultrafast Terahertz Spectroscopy<br/>& Quantum Materials</h1>
 
-<div class="hero">
-<h1>Zheng Wenhao Lab</h1>
-<p class="subtitle">
-Ultrafast Terahertz Spectroscopy & Quantum Materials
-</p>
-<p class="subtitle" style="margin-top:30px;">
-Chinese Academy of Sciences <br>
-Aerospace Information Research Institute (GBA Branch), Guangzhou
-</p>
-</div>
+            <div class="mission">
+              We build <b>stable, quantitative</b> terahertz spectroscopy tools—especially <b>on-chip integrated THz platforms</b>—
+              to reveal low-energy electrodynamics, correlations, and nonequilibrium transport in low-dimensional quantum materials.
+            </div>
 
-<div class="footer">
-© <script>document.write(new Date().getFullYear())</script> Zheng Wenhao Lab
-</div>
+            <div class="btn-row">
+              <a class="btn primary" href="research.html">Explore Research</a>
+              <a class="btn" href="people.html">Meet the Team</a>
+              <a class="btn" href="join.html">Open Positions</a>
+            </div>
+          </div>
 
+          <div class="side">
+            <h3>Quick Info</h3>
+            <p class="kv"><b>Institute:</b> 中国科学院 空天信息创新研究院（大湾区研究院）</p>
+            <p class="kv"><b>Location:</b> 广州黄埔</p>
+            <p class="kv"><b>Email:</b> <a href="mailto:THz_zheng@163.com">THz_zheng@163.com</a></p>
+            <div class="pill-row">
+              <span class="pill">Complex σ(ω)</span>
+              <span class="pill">THz-TDS</span>
+              <span class="pill">Pump–Probe</span>
+              <span class="pill">Cryogenic</span>
+              <span class="pill">2D devices</span>
+              <span class="pill">Superconductivity</span>
+            </div>
+            <div style="margin-top:12px;color:var(--muted);font-size:12px;">
+              (You can add Google Scholar / ORCID links here later.)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlights">
+        <div class="section-title">
+          <h2>Highlights</h2>
+          <div class="hint">Home page shows only a snapshot—details are in each tab.</div>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <h3>On-chip THz Platforms</h3>
+            <p>Integrated sources/detectors and calibrated measurement pipelines for device-level THz spectroscopy.</p>
+          </div>
+          <div class="card">
+            <h3>Correlated Electrodynamics</h3>
+            <p>THz complex conductivity fingerprints low-energy excitations, scattering, and superconducting response.</p>
+          </div>
+          <div class="card">
+            <h3>Ultrafast Transport Dynamics</h3>
+            <p>From femtoseconds to nanoseconds: coupling between carriers, lattice heating, and heat dissipation.</p>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="foot">
+          <div>© <span id="y"></span> Zheng Wenhao Lab</div>
+          <div><a href="contact.html">Contact</a></div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
