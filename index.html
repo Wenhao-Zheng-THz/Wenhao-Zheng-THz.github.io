@@ -1,47 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Zheng Wenhao Lab</title>
-<style>
-body {margin:0;font-family:Arial;background:#0a0f1c;color:#e0e6ff;}
-header {padding:60px;text-align:center;background:#1f2937;}
-section {padding:40px;max-width:900px;margin:auto;}
-h2 {border-bottom:1px solid #4da6ff;padding-bottom:8px;}
-footer {text-align:center;padding:20px;background:#111827;}
-a {color:#4da6ff;}
-</style>
-</head>
-<body>
-
-<header>
-<h1>Zheng Wenhao Lab</h1>
-<p>Ultrafast Terahertz Spectroscopy & Quantum Materials</p>
-</header>
-
-<section>
-<h2>About</h2>
-<p>We focus on ultrafast terahertz spectroscopy and quantum transport in low-dimensional materials.</p>
-</section>
-
-<section>
-<h2>Research</h2>
-<ul>
-<li>On-chip Terahertz Spectroscopy</li>
-<li>Strongly Correlated 2D Systems</li>
-<li>Ultrafast Carrier Dynamics</li>
-<li>Quantum Transport & Superconductivity</li>
-</ul>
-</section>
-
-<section>
-<h2>Join Us</h2>
-<p>Recruiting PhD students and postdocs.</p>
-</section>
-
-<footer>
-© 2026 Zheng Wenhao Lab
-</footer>
-
-</body>
-</html>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zheng Wenhao Lab | Ultrafast THz & Quantum Materials</title>
+  <meta name="description" content="Zheng Wenhao Lab — Ultrafast terahertz spectroscopy, on-chip THz platforms, and quantum transport in low-dimensional materials." />
+  <style>
+    :root{
+      --bg:#0a0f1c;
+      --panel:#0f172a;
+      --panel2:#111827;
+      --text:#e6ecff;
+      --muted:#b8c2e6;
+      --line:rgba(77,166,255,.35);
+      --accent:#4da6ff;
+      --accent2:#7c3aed;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius:16px;
+      --max: 1080px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(124,58,237,.25), transparent 55%),
+                  radial-gradient(900px 500px at 80% 10%, rgba(77,166,255,.25), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+    /* Top nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(10,15,28,.65);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:12px 0;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .brand small{color:var(--muted); font-weight:500}
+    .menu{display:flex;
