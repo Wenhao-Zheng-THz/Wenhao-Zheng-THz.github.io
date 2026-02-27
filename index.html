@@ -4,31 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <!-- =========================
-       网站标题（浏览器标签页）
-  ========================== -->
+  <!-- 网站标题（浏览器标签页） -->
   <title>Terahertz Electrodynamics Lab @ CAS AIR</title>
 
-  <!-- =========================
-       SEO / 简介（可自行修改）
-  ========================== -->
   <meta name="description"
         content="Terahertz Electrodynamics Lab @ CAS AIR — Ultrafast THz spectroscopy, on-chip THz platforms, and quantum materials." />
 
   <style>
-    /* =========================
-       全局主题颜色（想换风格优先改这里）
-    ========================= */
     :root{
-      --bg:#0a0f1c;            /* 页面主背景 */
-      --text:#e8eeff;          /* 主文字 */
-      --muted:#b6c2ea;         /* 次文字 */
-      --accent:#4da6ff;        /* 主高亮色 */
-      --accent2:#7c3aed;       /* 紫色氛围 */
-      --radius:18px;           /* 圆角 */
+      --bg:#0a0f1c;
+      --text:#e8eeff;
+      --muted:#b6c2ea;
+      --accent:#4da6ff;
+      --accent2:#7c3aed;
+      --radius:18px;
       --shadow: 0 18px 40px rgba(0,0,0,.38);
       --max:1080px;
-      --line: rgba(255,255,255,.10);
     }
 
     *{ box-sizing:border-box; }
@@ -40,11 +31,6 @@
       color:var(--text);
       line-height:1.6;
       min-height:100vh;
-
-      /* =========================
-         背景氛围光（下面回到纯底色，避免底部露出彩色块）
-         想更“冷”，降低 purple 的透明度
-      ========================= */
       background:
         radial-gradient(900px 420px at 15% 0%, rgba(124,58,237,.18), transparent 60%),
         radial-gradient(900px 460px at 85% 10%, rgba(77,166,255,.16), transparent 60%),
@@ -53,10 +39,8 @@
 
     a{ color:var(--accent); text-decoration:none; }
     a:hover{ text-decoration:underline; }
-
     .container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
 
-    /* 让 footer 贴底（内容少也不会露底色带） */
     .page{
       min-height:100vh;
       display:flex;
@@ -64,9 +48,7 @@
     }
     .main{ flex:1; }
 
-    /* =========================
-       顶部导航栏
-    ========================= */
+    /* ========== Nav ========== */
     .nav{
       position:sticky;
       top:0;
@@ -75,7 +57,6 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
-
     .nav-inner{
       display:flex;
       justify-content:space-between;
@@ -83,15 +64,11 @@
       gap:14px;
       padding:12px 0;
     }
-
-    /* 左上角：站点名字（只留这一行） */
     .brand{
       font-weight:900;
       letter-spacing:.2px;
-      white-space:nowrap; /* 尽量保持一行 */
+      white-space:nowrap;
     }
-
-    /* 右上角菜单 */
     .menu{
       display:flex;
       flex-wrap:wrap;
@@ -99,7 +76,6 @@
       align-items:center;
       justify-content:flex-end;
     }
-
     .menu a{
       padding:8px 10px;
       border-radius:12px;
@@ -108,26 +84,19 @@
       font-size:14px;
       border:1px solid transparent;
     }
-
     .menu a:hover{
       background: rgba(77,166,255,.08);
       border-color: rgba(77,166,255,.25);
       text-decoration:none;
     }
-
-    /* Contact 按钮高亮 */
     .cta{
       padding:8px 12px !important;
       border:1px solid rgba(77,166,255,.35) !important;
       background: linear-gradient(135deg, rgba(77,166,255,.20), rgba(124,58,237,.15));
     }
 
-    /* =========================
-       首页 Hero 区域
-    ========================= */
-    .hero{
-      padding:56px 0 18px;
-    }
+    /* ========== Hero ========== */
+    .hero{ padding:56px 0 18px; }
 
     .hero-card{
       border-radius: calc(var(--radius) + 6px);
@@ -137,8 +106,6 @@
       overflow:hidden;
       position:relative;
     }
-
-    /* hero 内部氛围光 */
     .hero-card:before{
       content:"";
       position:absolute;
@@ -157,34 +124,24 @@
       text-align:center;
     }
 
-    /* =========================
-       主标题：绝对不换行 + 不省略
-       做法：单行 + JS 自动 scale 到合适宽度
-    ========================= */
+    /* ✅ 标题：永远一行，不省略；字号由 JS 自动调节到“刚好塞得下” */
     .hero-title{
       margin:0 0 14px;
       font-weight:900;
       letter-spacing:.2px;
       line-height:1.1;
+      white-space:nowrap;
+      display:block;
 
-      white-space: nowrap;   /* 永远不换行 */
-      display:inline-block;
-      transform-origin:center;
-
-      /* 初始字号（大屏有气场，小屏靠 JS 缩放） */
-      font-size: clamp(22px, 4vw, 44px);
+      /* 给一个初始字号，实际会被 JS 覆盖 */
+      font-size:44px;
     }
 
-    /* =========================
-       Mission 描述：两端对齐 + 分段更好读
-    ========================= */
     .mission{
       margin:0 auto;
       max-width: 980px;
       font-size:15px;
       opacity:.95;
-
-      /* 两端对齐（英文更像论文排版） */
       text-align: justify;
       text-justify: inter-word;
       hyphens: auto;
@@ -193,9 +150,6 @@
     .mission p{ margin: 0 0 14px; }
     .mission p:last-child{ margin-bottom: 0; }
 
-    /* =========================
-       按钮区
-    ========================= */
     .btn-row{
       display:flex;
       flex-wrap:wrap;
@@ -221,11 +175,7 @@
       background: linear-gradient(135deg, rgba(77,166,255,.20), rgba(124,58,237,.16));
     }
 
-    /* =========================
-       首页 News 摘要（联动 news.html）
-       这里设置为：1列 * N行
-       + 自动滚动容器（如果很多条）
-    ========================= */
+    /* ========== News snippet styles ========== */
     .news{ padding:24px 0 34px; }
     .section-title{
       display:flex;
@@ -239,11 +189,10 @@
 
     .cards{
       display:grid;
-      grid-template-columns:1fr; /* 关键：永远一列 */
+      grid-template-columns:1fr; /* ✅ 一列 */
       gap:12px;
     }
 
-    /* 如果 news 很多，给一个可滚动区域（视觉更稳） */
     .news-list{
       max-height: 420px;
       overflow:auto;
@@ -271,9 +220,7 @@
     .card h3{ margin:0 0 8px; font-size:15px; line-height:1.25; }
     .card p{ margin:0; color:var(--muted); font-size:13px; }
 
-    /* =========================
-       页脚
-    ========================= */
+    /* ========== Footer ========== */
     footer{
       padding:22px 0;
       border-top:1px solid rgba(255,255,255,.06);
@@ -288,7 +235,6 @@
       justify-content:space-between;
     }
 
-    /* 小屏：菜单会换行；brand 太长时允许折行（但 hero title 仍强制一行） */
     @media (max-width: 980px){
       .brand{ white-space:normal; }
     }
@@ -297,15 +243,10 @@
 
 <body>
   <div class="page">
-    <!-- =========================
-         顶栏导航
-         改这里可新增页面/改菜单名字
-    ========================= -->
     <div class="nav">
       <div class="container">
         <div class="nav-inner">
           <div class="brand">Terahertz Electrodynamics Lab @ CAS AIR</div>
-
           <div class="menu">
             <a href="index.html">Home</a>
             <a href="research.html">Research</a>
@@ -319,9 +260,6 @@
       </div>
     </div>
 
-    <!-- =========================
-         首页主体
-    ========================= -->
     <div class="main">
       <div class="hero">
         <div class="container">
@@ -329,10 +267,10 @@
           <div class="hero-card">
             <div class="hero-grid">
 
-              <!-- 主标题：永远一行 + JS 自动缩放 -->
-              <h1 class="hero-title">Terahertz Electrodynamics of Quantum Materials group</h1>
+              <h1 class="hero-title" id="heroTitle">
+                Terahertz Electrodynamics of Quantum Materials group
+              </h1>
 
-              <!-- Mission：分两段 + 两端对齐 -->
               <div class="mission">
                 <p>
                   We build ultrafast THz spectroscopy — especially on-chip integrated THz platforms —
@@ -349,7 +287,6 @@
                 </p>
               </div>
 
-              <!-- 行动按钮 -->
               <div class="btn-row">
                 <a class="btn primary" href="research.html">Explore Research</a>
                 <a class="btn" href="people.html">Meet the Team</a>
@@ -359,20 +296,15 @@
             </div>
           </div>
 
-          <!-- News 联动：从 news-snippet.html 加载（只维护一份内容） -->
           <div id="news-placeholder"></div>
 
         </div>
       </div>
     </div>
 
-    <!-- =========================
-         页脚
-    ========================= -->
     <footer>
       <div class="container">
         <div class="foot">
-          <!-- 你要求：只显示 “© 2026” -->
           <div>© <span id="y"></span></div>
           <div><a href="contact.html">Contact</a></div>
         </div>
@@ -381,39 +313,42 @@
   </div>
 
   <script>
-    /* =========================
-       自动年份
-    ========================= */
+    // 年份
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    /* =========================
-       主标题：强制适配宽度（永远一行、不省略）
-       原理：测量标题实际宽度，如果超过容器，就等比缩放
-    ========================= */
-    function fitHeroTitle(){
-      const el = document.querySelector(".hero-title");
-      if(!el) return;
+    /**
+     * ✅ 标题强制一行且不裁切：自动计算字号
+     * 思路：
+     * - 先给一个最大字号（如 44px）
+     * - 如果标题宽度 > 容器宽度，就逐步减小字号直到塞下
+     * - 给一个最小字号（如 18px）防止小到看不见
+     */
+    function fitTitleFontSize(){
+      const title = document.getElementById("heroTitle");
+      if(!title) return;
 
-      // 先还原到 1，避免 resize 时越缩越小
-      el.style.transform = "scale(1)";
+      const maxPx = 44;
+      const minPx = 18;
 
-      // 留一点边距，避免贴边
-      const parentWidth = el.parentElement.clientWidth - 16;
-      const textWidth = el.scrollWidth;
+      // 容器宽度（留一点 padding）
+      const container = title.parentElement;
+      const available = container.clientWidth - 8;
 
-      if(textWidth > parentWidth){
-        const scale = parentWidth / textWidth;
-        el.style.transform = `scale(${scale})`;
+      // 从最大字号开始试
+      let size = maxPx;
+      title.style.fontSize = size + "px";
+
+      // 如果超出，就递减
+      while (title.scrollWidth > available && size > minPx){
+        size -= 1;
+        title.style.fontSize = size + "px";
       }
     }
 
-    window.addEventListener("load", fitHeroTitle);
-    window.addEventListener("resize", fitHeroTitle);
+    window.addEventListener("load", fitTitleFontSize);
+    window.addEventListener("resize", fitTitleFontSize);
 
-    /* =========================
-       首页 News：自动加载 + 只显示前10条
-       你只需要维护 news-snippet.html 一份内容
-    ========================= */
+    // News：加载 snippet，只保留前 10 条，强制 1列，并给滚动容器
     fetch("news-snippet.html")
       .then(r => r.text())
       .then(html => {
@@ -422,11 +357,9 @@
 
         // 只保留前 10 条 .card
         const cards = holder.querySelectorAll(".card");
-        cards.forEach((c, idx) => {
-          if (idx >= 10) c.remove();
-        });
+        cards.forEach((c, idx) => { if (idx >= 10) c.remove(); });
 
-        // 把 .cards 包进可滚动容器（如果很多条更稳）
+        // 把 .cards 包进可滚动容器
         const cardsWrap = holder.querySelector(".cards");
         if (cardsWrap && !cardsWrap.parentElement.classList.contains("news-list")) {
           const scroller = document.createElement("div");
@@ -437,9 +370,7 @@
       })
       .catch(() => {
         document.getElementById("news-placeholder").innerHTML =
-          '<div class="news">' +
-            '<div class="section-title"><h2>News</h2><div class="hint">Unable to load news-snippet.html</div></div>' +
-          '</div>';
+          '<div class="news"><div class="section-title"><h2>News</h2><div class="hint">Unable to load news-snippet.html</div></div></div>';
       });
   </script>
 </body>
