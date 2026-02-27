@@ -3,258 +3,266 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- =========================
+       网站标题（浏览器标签页）
+       改这里 = 页面 title
+  ========================== -->
   <title>Terahertz Electrodynamics of Quantum Materials Lab</title>
-  <meta name="description" content="Terahertz Electrodynamics of Quantum Materials Lab — Ultrafast THz spectroscopy, on-chip THz platforms, and quantum materials." />
-  <style>
-    :root{
-      --bg:#0a0f1c;
-      --panel:#0f172a;
-      --panel2:#111827;
-      --text:#e8eeff;
-      --muted:#b6c2ea;
-      --line:rgba(255,255,255,.10);
-      --accent:#4da6ff;
-      --accent2:#7c3aed;
-      --radius:18px;
-      --shadow: 0 18px 40px rgba(0,0,0,.38);
-      --max: 1080px;
-    }
-    *{box-sizing:border-box}
-    html, body { height:100%; }
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
-      color:var(--text);
-      /* 背景：上面有氛围光，下面回到纯底色，避免底部“露出彩色块” */
-      background:
-        radial-gradient(900px 420px at 15% 0%, rgba(124,58,237,.20), transparent 60%),
-        radial-gradient(900px 460px at 85% 10%, rgba(77,166,255,.18), transparent 60%),
-        linear-gradient(var(--bg), var(--bg));
-      line-height:1.6;
-      min-height:100vh;
-    }
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
-    /* 让 footer 贴底（内容少也不露底色带） */
-    .page{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-    }
-    .main{flex:1}
+  <!-- =========================
+       Google / SEO 简介
+       可改为：
+       Ultrafast THz / On-chip / Quantum materials etc
+  ========================== -->
+  <meta name="description"
+        content="Ultrafast spectroscopy, on-chip THz platforms, and quantum materials." />
 
-    /* Top nav */
-    .nav{
-      position:sticky; top:0; z-index:100;
-      background: rgba(10,15,28,.62);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px; padding:12px 0;
-    }
-    .brand{
-      display:flex; flex-direction:column; gap:2px;
-      font-weight:800; letter-spacing:.2px;
-      min-width: 260px;
-    }
-    .brand small{color:var(--muted); font-weight:600; letter-spacing:.2px}
-    .menu{display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:flex-end}
-    .menu a{
-      padding:8px 10px;
-      border-radius:12px;
-      color:var(--text);
-      font-weight:600;
-      font-size:14px;
-      border:1px solid transparent;
-    }
-    .menu a:hover{
-      background: rgba(77,166,255,.08);
-      border-color: rgba(77,166,255,.25);
-      text-decoration:none;
-    }
-    .cta{
-      padding:8px 12px !important;
-      border:1px solid rgba(77,166,255,.35) !important;
-      background: linear-gradient(135deg, rgba(77,166,255,.18), rgba(124,58,237,.14));
-    }
+<style>
 
-    /* Hero */
-    .hero{padding:56px 0 18px}
-    .hero-card{
-      border-radius: calc(var(--radius) + 6px);
-      background: linear-gradient(180deg, rgba(17,24,39,.72), rgba(15,23,42,.58));
-      border:1px solid rgba(255,255,255,.07);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .hero-card:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(700px 220px at 12% 18%, rgba(77,166,255,.16), transparent 60%),
-        radial-gradient(740px 260px at 86% 10%, rgba(124,58,237,.14), transparent 60%);
-      pointer-events:none;
-    }
-    .hero-grid{
-      position:relative;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:18px;
-      padding:34px 28px;
-      max-width: 860px;
-      margin: 0 auto;
-      text-align:center;
-    }
-    h1{margin:10px 0 10px;font-size:44px;line-height:1.08}
-    .subtitle{margin:0;color:var(--muted);font-size:15px;font-weight:700;letter-spacing:.2px}
-    .tagline{margin:10px 0 0;color:var(--muted);font-size:15px;font-weight:650}
-    .mission{
-      margin:16px auto 0;
-      color:var(--text);
-      font-size:15px;
-      opacity:.95;
-      max-width: 820px;
-    }
-    .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;justify-content:center}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color:var(--text);
-      font-weight:700;
-      font-size:14px;
-    }
-    .btn:hover{filter:brightness(1.06); text-decoration:none}
-    .btn.primary{
-      border-color: rgba(77,166,255,.38);
-      background: linear-gradient(135deg, rgba(77,166,255,.20), rgba(124,58,237,.16));
-    }
+/* =========================
+   全局主题颜色
+   想换风格只需要改这里
+========================= */
+:root{
+  --bg:#0a0f1c;            /* 页面主背景 */
+  --text:#e8eeff;          /* 主文字 */
+  --muted:#b6c2ea;         /* 次文字 */
+  --accent:#4da6ff;        /* 主高亮色 */
+  --accent2:#7c3aed;       /* 紫色氛围 */
+  --radius:18px;           /* 圆角 */
+}
 
-    /* News (shared styles used by snippet) */
-    .news{padding:22px 0 34px}
-    .section-title{
-      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
-      margin:0 0 12px;
-    }
-    .section-title h2{margin:0;font-size:18px;color:var(--text)}
-    .section-title .hint{color:var(--muted);font-size:13px}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .card{
-      background: rgba(17,24,39,.52);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius: var(--radius);
-      padding:16px;
-    }
-    .card h3{margin:0 0 8px;font-size:15px}
-    .card p{margin:0;color:var(--muted);font-size:13px}
-    .meta{display:inline-block;margin-bottom:8px;color:rgba(182,194,234,.85);font-size:12px}
+/* 页面基础设置 */
+html, body { height:100%; }
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  color:var(--text);
 
-    footer{
-      padding:22px 0;
-      border-top:1px solid rgba(255,255,255,.06);
-      color:var(--muted);
-      font-size:13px;
-    }
-    .foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+  /* =========================
+     背景氛围光
+     想变“冷一点”就减弱 purple
+  ========================== */
+  background:
+    radial-gradient(900px 420px at 15% 0%, rgba(124,58,237,.20), transparent 60%),
+    radial-gradient(900px 460px at 85% 10%, rgba(77,166,255,.18), transparent 60%),
+    linear-gradient(var(--bg), var(--bg));
+}
 
-    @media (max-width: 980px){
-      .cards{grid-template-columns:1fr}
-      h1{font-size:38px}
-      .brand{min-width:auto}
-    }
-    @media (max-width: 520px){
-      .brand small{display:none}
-      h1{font-size:32px}
-    }
-  </style>
+.container{max-width:1080px;margin:auto;padding:0 20px}
+
+
+/* =========================
+   顶部导航栏
+========================= */
+.nav{
+  position:sticky;
+  top:0;
+  background: rgba(10,15,28,.65);
+  backdrop-filter: blur(10px);
+}
+
+/* 左上角：组名 */
+.brand{
+  font-weight:800;
+}
+
+/* 右上角菜单 */
+.menu a{
+  padding:8px 10px;
+  border-radius:12px;
+  color:var(--text);
+  font-weight:600;
+}
+
+/* Contact 按钮高亮 */
+.cta{
+  border:1px solid rgba(77,166,255,.35);
+  background: linear-gradient(135deg, rgba(77,166,255,.20), rgba(124,58,237,.15));
+}
+
+/* =========================
+   首页 Hero 区域
+========================= */
+.hero{
+  padding:60px 0 20px;
+}
+
+.hero-card{
+  background: linear-gradient(180deg, rgba(17,24,39,.7), rgba(15,23,42,.6));
+  border-radius:24px;
+  padding:40px;
+  text-align:center;
+}
+
+/* 机构信息（第一行） */
+.subtitle{
+  color:var(--muted);
+  font-size:15px;
+}
+
+/* =========================
+   这里是核心一句话
+   可以改成你想要的：
+   e.g.
+   THz-driven quantum dynamics
+========================= */
+.tagline{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+/* =========================
+   Mission 描述
+   建议 1~2 行即可
+========================= */
+.mission{
+  margin-top:18px;
+  max-width:800px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* =========================
+   按钮区
+========================= */
+.btn{
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.15);
+}
+
+.btn.primary{
+  border-color: rgba(77,166,255,.4);
+}
+
+/* =========================
+   News 区域
+   首页只显示摘要
+========================= */
+.news{
+  padding:30px 0;
+}
+
+/* 卡片布局 */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+/* News 小卡片 */
+.card{
+  background: rgba(17,24,39,.5);
+  border-radius:18px;
+  padding:16px;
+}
+
+/* 手机自动变单列 */
+@media (max-width:900px){
+  .cards{grid-template-columns:1fr;}
+}
+
+</style>
 </head>
 
+
 <body>
-  <div class="page">
-    <div class="nav">
-      <div class="container">
-        <div class="nav-inner">
-          <div class="brand">
-            <div>Terahertz Electrodynamics of Quantum Materials Lab</div>
-            <small>Ultrafast THz • On-chip Platforms • Quantum Materials</small>
-          </div>
-          <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="research.html">Research</a>
-            <a href="people.html">People</a>
-            <a href="publications.html">Publications</a>
-            <a href="news.html">News</a>
-            <a href="join.html">Join</a>
-            <a href="contact.html" class="cta">Contact</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="main">
-      <div class="hero">
-        <div class="container">
-          <div class="hero-card">
-            <div class="hero-grid">
-              <div class="subtitle">
-                Chinese Academy of Sciences · Aerospace Information Research Institute (GBA Branch), Guangzhou
-              </div>
+<!-- =========================
+     顶栏导航
+     改这里可新增页面
+========================= -->
+<div class="nav">
+<div class="container" style="display:flex;justify-content:space-between;align-items:center;padding:12px 0">
 
-              <div class="tagline">
-                Stable · Quantitative · On-chip integrated THz platforms
-              </div>
+<div class="brand">
+Terahertz Electrodynamics of Quantum Materials Lab
+<br>
+<small>Ultrafast THz • On-chip Platforms • Quantum Materials</small>
+</div>
 
-              <div class="mission">
-                We build stable, quantitative terahertz spectroscopy tools—especially <b>on-chip integrated THz platforms</b>—
-                to reveal low-energy electrodynamics, correlations, and nonequilibrium transport in low-dimensional quantum materials.
-              </div>
+<div class="menu">
+<a href="index.html">Home</a>
+<a href="research.html">Research</a>
+<a href="people.html">People</a>
+<a href="publications.html">Publications</a>
+<a href="news.html">News</a>
+<a href="join.html">Join</a>
+<a href="contact.html" class="cta">Contact</a>
+</div>
 
-              <div class="btn-row">
-                <a class="btn primary" href="research.html">Explore Research</a>
-                <a class="btn" href="people.html">Meet the Team</a>
-                <a class="btn" href="join.html">Open Positions</a>
-              </div>
-            </div>
-          </div>
+</div>
+</div>
 
-          <!-- News 联动：从 news-snippet.html 加载（只维护一份内容） -->
-          <div id="news-placeholder"></div>
 
-        </div>
-      </div>
-    </div>
+<!-- =========================
+     首页主体
+========================= -->
+<div class="hero">
+<div class="container">
 
-    <footer>
-      <div class="container">
-        <div class="foot">
-          <div>© <span id="y"></span> Wenhao Zheng Lab</div>
-          <div><a href="contact.html">Contact</a></div>
-        </div>
-      </div>
-    </footer>
-  </div>
+<div class="hero-card">
 
-  <script>
-    // year
-    document.getElementById("y").textContent = new Date().getFullYear();
+<!-- 机构 -->
+<div class="subtitle">
+Chinese Academy of Sciences · Aerospace Information Research Institute (GBA Branch), Guangzhou
+</div>
 
-    // news snippet
-    fetch("news-snippet.html")
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById("news-placeholder").innerHTML = html;
-      })
-      .catch(() => {
-        document.getElementById("news-placeholder").innerHTML =
-          '<div class="news"><div class="section-title"><h2>News</h2><div class="hint">Unable to load news-snippet.html</div></div></div>';
-      });
-  </script>
+<!-- 一句话定位 -->
+<div class="tagline">
+Stable · Quantitative · On-chip integrated THz platforms
+</div>
+
+<!-- 研究使命 -->
+<div class="mission">
+We build stable, quantitative terahertz spectroscopy tools—especially <b>on-chip integrated THz platforms</b>—
+to reveal low-energy electrodynamics, correlations, and nonequilibrium transport in low-dimensional quantum materials.
+</div>
+
+<!-- 行动按钮 -->
+<div style="margin-top:20px">
+<a class="btn primary" href="research.html">Explore Research</a>
+<a class="btn" href="people.html">Meet the Team</a>
+<a class="btn" href="join.html">Open Positions</a>
+</div>
+
+</div>
+
+
+<!-- =========================
+     News 自动加载
+     改内容去 news-snippet.html
+========================= -->
+<div id="news-placeholder"></div>
+
+</div>
+</div>
+
+
+<!-- =========================
+     页脚
+========================= -->
+<footer style="padding:20px;text-align:center;color:var(--muted)">
+© <span id="y"></span> Wenhao Zheng Lab
+</footer>
+
+
+<script>
+
+/* 自动年份 */
+document.getElementById("y").textContent = new Date().getFullYear();
+
+/* 自动加载 News 摘要 */
+fetch("news-snippet.html")
+.then(r => r.text())
+.then(html => {
+  document.getElementById("news-placeholder").innerHTML = html;
+});
+
+</script>
+
 </body>
 </html>
