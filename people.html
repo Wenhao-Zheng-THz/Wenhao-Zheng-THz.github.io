@@ -7,14 +7,10 @@
   <meta name="description" content="People — Terahertz Electrodynamics Lab @ CAS AIR" />
 
   <style>
-    /* =========================================================
-       THEME (keep consistent across all pages)
-       你首页图1的“深色 + 氛围光 + 胶囊导航”风格在这里统一定义
-    ========================================================= */
     :root{
-      --bg:#0a0f1c;                 /* page background */
-      --panel:rgba(17,24,39,.55);   /* card background */
-      --panel2:rgba(15,23,42,.62);  /* larger panel background */
+      --bg:#0a0f1c;
+      --panel:rgba(17,24,39,.55);
+      --panel2:rgba(15,23,42,.62);
       --text:#e8eeff;
       --muted:#b6c2ea;
       --line:rgba(255,255,255,.10);
@@ -33,8 +29,6 @@
       color:var(--text);
       line-height:1.6;
       min-height:100vh;
-
-      /* 背景氛围光：和首页一致，底部不“露彩色块” */
       background:
         radial-gradient(900px 420px at 15% 0%, rgba(124,58,237,.20), transparent 60%),
         radial-gradient(900px 460px at 85% 10%, rgba(77,166,255,.18), transparent 60%),
@@ -43,10 +37,8 @@
 
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
-
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
-    /* 让 footer 贴底（页面内容少也不会露底色） */
     .page{
       min-height:100vh;
       display:flex;
@@ -54,9 +46,9 @@
     }
     .main{flex:1}
 
-    /* =========================================================
-       TOP NAV (same as home)
-    ========================================================= */
+    /* =========================
+       TOP NAV (一致风格)
+    ========================= */
     .nav{
       position:sticky; top:0; z-index:100;
       background: rgba(10,15,28,.62);
@@ -70,9 +62,9 @@
     .brand{
       display:flex; flex-direction:column; gap:2px;
       font-weight:900; letter-spacing:.2px;
-      white-space:nowrap;            /* 尽量不换行 */
+      white-space:nowrap;
       overflow:hidden;
-      text-overflow:clip;            /* 不显示省略号（但小屏仍可能会挤） */
+      text-overflow:clip;
       min-width: 280px;
     }
     .brand small{
@@ -107,9 +99,9 @@
       background: linear-gradient(135deg, rgba(77,166,255,.18), rgba(124,58,237,.14));
     }
 
-    /* =========================================================
+    /* =========================
        PAGE HEADER
-    ========================================================= */
+    ========================= */
     .header{
       padding:34px 0 14px;
     }
@@ -125,9 +117,9 @@
       font-weight:650;
     }
 
-    /* =========================================================
+    /* =========================
        PANELS / CARDS
-    ========================================================= */
+    ========================= */
     .panel{
       background: var(--panel2);
       border:1px solid rgba(255,255,255,.07);
@@ -138,7 +130,7 @@
 
     .grid{
       display:grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr; /* 一列 */
       gap:14px;
     }
 
@@ -184,12 +176,10 @@
       color:rgba(232,238,255,.92);
     }
 
-    /* =========================================================
-       PI PROFILE (like your Fig-3 style)
-    ========================================================= */
-    .profile{
-      padding:18px;
-    }
+    /* =========================
+       PI PROFILE（中文）
+    ========================= */
+    .profile{ padding:18px; }
     .profile-top{
       display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;
     }
@@ -208,11 +198,13 @@
       font-weight:950;
       letter-spacing:.2px;
     }
+
     .profile-block{
       margin-top:14px;
       padding-top:12px;
       border-top:1px solid rgba(255,255,255,.08);
     }
+
     .sec-title{
       margin:0 0 10px;
       font-size:16px;
@@ -228,6 +220,7 @@
       border-radius:999px;
       background: rgba(77,166,255,.65);
     }
+
     .list{
       margin:10px 0 0;
       padding-left:18px;
@@ -236,9 +229,6 @@
     .list li{
       margin:8px 0;
       color: rgba(232,238,255,.92);
-    }
-    .muted{
-      color:var(--muted);
     }
 
     .mini-card{
@@ -260,9 +250,9 @@
       word-break:break-word;
     }
 
-    /* =========================================================
+    /* =========================
        FOOTER
-    ========================================================= */
+    ========================= */
     footer{
       padding:22px 0;
       border-top:1px solid rgba(255,255,255,.06);
@@ -274,9 +264,6 @@
       align-items:center; justify-content:space-between
     }
 
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
     @media (max-width: 780px){
       .brand small{display:none}
       .header h1{font-size:30px}
@@ -287,15 +274,12 @@
 <body>
   <div class="page">
 
-    <!-- =========================
-         NAV (keep same on every page)
-    ========================= -->
+    <!-- NAV -->
     <div class="nav">
       <div class="container">
         <div class="nav-inner">
           <div class="brand">
             <div>Terahertz Electrodynamics Lab @ CAS AIR</div>
-            <!-- 如果你不想显示副标题：把下面这一行删掉即可 -->
             <small>Ultrafast THz • On-chip Platforms • Quantum Materials</small>
           </div>
 
@@ -315,87 +299,70 @@
     <div class="main">
       <div class="container">
 
-        <!-- =========================
-             PAGE TITLE
-        ========================= -->
+        <!-- PAGE TITLE -->
         <div class="header">
           <h1>People</h1>
           <div class="sub">Aerospace Information Research Institute, Chinese Academy of Sciences (GBA Branch), Guangzhou</div>
         </div>
 
-        <!-- =========================
-             PI PROFILE (完善你的个人信息：图3那种)
-             你只需要在对应位置替换内容即可
-        ========================= -->
+        <!-- PI PROFILE -->
         <div class="panel profile">
           <div class="profile-top">
 
-            <!-- LEFT: short bio + sections -->
+            <!-- LEFT -->
             <div class="profile-left">
               <p class="big-name">郑文浩</p>
-              <p class="role">PI</p>
+              <p class="role">研究员，博士生导师</p>
+              <p class="meta">邮箱：<a href="mailto:zhengwenhao@aircas.ac.cn">zhengwenhao@aircas.ac.cn</a></p>
 
-
-              <!-- ====== sections like Fig-3 ====== -->
               <div class="profile-block">
-                <h3 class="sec-title">Research Interests</h3>
+                <h3 class="sec-title">研究方向</h3>
                 <ul class="list">
-                  <li>Ultrafast terahertz spectroscopy & electrodynamics in quantum materials</li>
-                  <li>On-chip integrated THz spectroscopy platforms (sources / detectors / calibration)</li>
-                  <li>Low-dimensional (2D) materials, correlations, and nonequilibrium charge carrier dynamics</li>
-                  <li>Low-temperature quantum transport </li>
+                  <li>超快太赫兹光谱与量子材料电动力学</li>
+                  <li>片上集成太赫兹光谱平台（源 / 探测 / 标定）</li>
+                  <li>低维（二维）材料关联电子态与非平衡载流子动力学</li>
+                  <li>低温量子输运</li>
                 </ul>
               </div>
 
               <div class="profile-block">
-                <h3 class="sec-title">Education</h3>
+                <h3 class="sec-title">教育/科研背景</h3>
                 <ul class="list">
-                  <!-- TODO: 把下面三行替换成你的真实教育背景 -->
-                  <li><b>Ph.D.</b>, [University / Institute], [Field], [Year–Year]</li>
-                  <li><b>M.S.</b>, [University], [Field], [Year–Year]</li>
-                  <li><b>B.S.</b>, [University], [Field], [Year–Year]</li>
-                </ul>
-                <p class="muted" style="margin:10px 0 0;">
-                  Tip: 你可以按“年份—学位/职位—单位—方向”这种格式写，会更像你图3那种排版。
-                </p>
-              </div>
-
-              <div class="profile-block">
-                <h3 class="sec-title">Research Experience</h3>
-                <ul class="list">
-                  <!-- TODO: 替换为你的真实经历 -->
-                  <li>[Year–Year] Postdoctoral Researcher, [Institute], [Topic]</li>
-                  <li>[Year–Year] Research Scholar / Visiting, [Institute], [Topic]</li>
-                  <li>[Year–Year] [Position], [Institute], [Topic]</li>
+                  <li>2026–至今 研究员，中国科学院空天信息创新研究院（大湾区研究院）</li>
+                  <li>2024–2025 博士后，美国麻省理工学院</li>
+                  <li>2023–2024 博士后，德国马普高分子研究所</li>
+                  <li>2018–2023 博士，德国马普高分子研究所</li>
                 </ul>
               </div>
 
+    
+
               <div class="profile-block">
-                <h3 class="sec-title">Honors & Awards</h3>
+                <h3 class="sec-title">荣誉奖励</h3>
                 <ul class="list">
-                  <!-- TODO: 替换为你的真实奖项 -->
-                  <li>[国家优秀自费留学生奖学金], [2022]</li>
-                  <li>[Kalkhof-Rose Polymer Science Award], [2022]</li>
+                  <li>国家优秀自费留学生奖学金（2022）</li>
+                  <li>Kalkhof-Rose Polymer Science Award（2022）</li>
                 </ul>
               </div>
             </div>
 
-            <!-- RIGHT: quick contact -->
+            <!-- RIGHT -->
             <div class="profile-right">
               <div class="mini-card">
-                <div class="k">Institute</div>
+                <div class="k">单位</div>
                 <p class="v">中国科学院 空天信息创新研究院（大湾区研究院）</p>
 
-                <div class="k">Location</div>
+                <div class="k">地点</div>
                 <p class="v">广州黄埔</p>
 
-                <div class="k">Email</div>
-                <p class="v"><a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a></p>
+                <div class="k">邮箱</div>
+                <p class="v"><a href="mailto:zhengwenhao@aircas.ac.cn">zhengwenhao@aircas.ac.cn</a></p>
 
-                <div class="k">Links</div>
+                <div class="k">链接</div>
                 <p class="v">
-                  <!-- TODO: 你以后把链接补上即可 -->
-                  <span class="muted">Google Scholar</span> · <span class="muted">ORCID</span> · <span class="muted">GitHub</span>
+                  <span style="color:var(--muted)">Google Scholar</span> ·
+                  <span style="color:var(--muted)">ORCID</span> ·
+                  <span style="color:var(--muted)">GitHub</span>
                 </p>
               </div>
             </div>
@@ -403,27 +370,24 @@
           </div>
         </div>
 
-        <!-- =========================
-             TEAM MEMBERS (1 column layout)
-        ========================= -->
+        <!-- TEAM MEMBERS -->
         <div style="height:18px"></div>
 
         <div class="panel">
           <h2 style="margin:0 0 12px; font-size:18px;">Team Members</h2>
 
           <div class="grid">
+
             <!-- Member 1 -->
             <div class="card">
               <div class="row">
                 <div class="avatar">ZL</div>
                 <div>
-                  <p class="name">Zihui Lu / 陆子辉</p>
-                  <p class="role">PhD Student</p>
-                  <p class="meta">Keywords: <span class="muted">(待补)</span></p>
+                  <p class="name"> 陆子辉</p>
+                  <p class="role">博士研究生</p>
+                  <p class="meta">Keywords: <span style="color:var(--muted)">(待补)</span></p>
                   <div class="tags">
-                    <span class="tag">THz</span>
-                    <span class="tag">Devices</span>
-                    <span class="tag">Transport</span>
+                    <span class="tag">超快太赫兹光谱</span>
                   </div>
                 </div>
               </div>
@@ -434,13 +398,11 @@
               <div class="row">
                 <div class="avatar">ZH</div>
                 <div>
-                  <p class="name">Zehuai Huang / 黄泽怀</p>
-                  <p class="role">Engineer</p>
-                  <p class="meta">Keywords: <span class="muted">(待补)</span></p>
+                  <p class="name">黄泽怀</p>
+                  <p class="role">工程师</p>
+                  <p class="meta">Keywords: <span style="color:var(--muted)">(待补)</span></p>
                   <div class="tags">
-                    <span class="tag">Platform</span>
-                    <span class="tag">Electronics</span>
-                    <span class="tag">Automation</span>
+                    <span class="tag">超快太赫兹光谱</span>
                   </div>
                 </div>
               </div>
@@ -451,36 +413,16 @@
               <div class="row">
                 <div class="avatar">WS</div>
                 <div>
-                  <p class="name">Wenjun Shuai / 帅文君</p>
-                  <p class="role">Engineer</p>
-                  <p class="meta">Keywords: <span class="muted">(待补)</span></p>
+                  <p class="name">帅文君</p>
+                  <p class="role">工程师</p>
+                  <p class="meta">Keywords: <span style="color:var(--muted)">(待补)</span></p>
                   <div class="tags">
-                    <span class="tag">Optics</span>
-                    <span class="tag">Mechanics</span>
-                    <span class="tag">Workflow</span>
+                    <span class="tag">超快太赫兹光谱</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Member 4 (optional placeholder) -->
-            <div class="card">
-              <div class="row">
-                <div class="avatar">+1</div>
-                <div>
-                  <p class="name">New Member</p>
-                  <p class="role">Position</p>
-                  <p class="meta">Keywords: <span class="muted">(optional)</span></p>
-                  <div class="tags">
-                    <span class="tag">Topic A</span>
-                    <span class="tag">Topic B</span>
-                  </div>
-                </div>
-              </div>
-              <p class="muted" style="margin:12px 0 0; font-size:12px;">
-                Tip: 以后你有成员照片时，把 avatar 改成 img 即可（我也能帮你一键换成真实头像布局）。
-              </p>
-            </div>
           </div>
         </div>
 
@@ -499,7 +441,6 @@
   </div>
 
   <script>
-    // 自动年份
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
