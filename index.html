@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Terahertz Electrodynamics of Quantum Materials Lab </title>
-  <meta name="description" content="Ultrafast terahertz spectroscopy, on-chip THz platforms, and quantum materials." />
+  <title>Terahertz Electrodynamics of Quantum Materials Lab</title>
+  <meta name="description" content="Ultrafast spectroscopy, on-chip platforms, and quantum materials." />
   <style>
     :root{
       --bg:#0a0f1c;
@@ -48,6 +48,7 @@
     .brand{
       display:flex; flex-direction:column; gap:2px;
       font-weight:800; letter-spacing:.2px;
+      min-width: 260px;
     }
     .brand small{color:var(--muted); font-weight:600; letter-spacing:.2px}
     .menu{display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:flex-end}
@@ -91,19 +92,24 @@
     .hero-grid{
       position:relative;
       display:grid;
-      grid-template-columns: 1.25fr .75fr;
+      grid-template-columns: 1fr;
       gap:18px;
-      padding:28px;
+      padding:34px 28px;
+      max-width: 860px;
+      margin: 0 auto;
+      text-align:center;
     }
-    h1{margin:6px 0 10px;font-size:44px;line-height:1.08}
-    .subtitle{margin:0;color:var(--muted);font-size:16px}
+    h1{margin:10px 0 10px;font-size:48px;line-height:1.06}
+    .subtitle{margin:0;color:var(--muted);font-size:16px;font-weight:700;letter-spacing:.2px}
+    .tagline{margin:10px 0 0;color:var(--muted);font-size:16px}
     .mission{
-      margin-top:14px;
+      margin:16px auto 0;
       color:var(--text);
       font-size:16px;
       opacity:.95;
+      max-width: 820px;
     }
-    .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;justify-content:center}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;
       padding:10px 12px;
@@ -120,28 +126,8 @@
       background: linear-gradient(135deg, rgba(77,166,255,.20), rgba(124,58,237,.16));
     }
 
-    .side{
-      background: rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius: var(--radius);
-      padding:16px;
-      height:fit-content;
-    }
-    .side h3{margin:0 0 10px;font-size:13px;color:var(--muted);letter-spacing:.3px}
-    .kv{margin:0;color:var(--muted);font-size:13px}
-    .kv b{color:var(--text)}
-    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .pill{
-      font-size:12px;
-      padding:6px 8px;
-      border-radius:999px;
-      border:1px solid rgba(77,166,255,.25);
-      background: rgba(77,166,255,.08);
-      color:var(--text);
-    }
-
-    /* Highlights */
-    .highlights{padding:18px 0 34px}
+    /* News section */
+    .news{padding:22px 0 34px}
     .section-title{
       display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
       margin:0 0 12px;
@@ -157,6 +143,7 @@
     }
     .card h3{margin:0 0 8px;font-size:15px}
     .card p{margin:0;color:var(--muted);font-size:13px}
+    .meta{display:inline-block;margin-bottom:8px;color:rgba(182,194,234,.85);font-size:12px}
 
     footer{
       padding:22px 0;
@@ -166,13 +153,14 @@
     }
     .foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
 
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns:1fr}
+    @media (max-width: 980px){
       .cards{grid-template-columns:1fr}
-      h1{font-size:36px}
+      h1{font-size:40px}
+      .brand{min-width:auto}
     }
     @media (max-width: 520px){
       .brand small{display:none}
+      h1{font-size:34px}
     }
   </style>
 </head>
@@ -183,7 +171,6 @@
       <div class="nav-inner">
         <div class="brand">
           <div>Terahertz Electrodynamics of Quantum Materials Lab</div>
-          <small>Ultrafast THz • On-chip Platforms • Quantum Materials</small>
         </div>
         <div class="menu">
           <a href="index.html">Home</a>
@@ -202,62 +189,50 @@
     <div class="container">
       <div class="hero-card">
         <div class="hero-grid">
-          <div>
-            <div class="subtitle" style="font-weight:700; letter-spacing:.2px;">
-              Chinese Academy of Sciences · Aerospace Information Research Institute (GBA Branch), Guangzhou
-            </div>
-            <h1>Ultrafast Terahertz Spectroscopy<br/>& Quantum Materials</h1>
-
-            <div class="mission">
-              We build <b>stable, quantitative</b> terahertz spectroscopy tools—especially <b>on-chip integrated THz platforms</b>—
-              to reveal low-energy electrodynamics, correlations, and nonequilibrium transport in low-dimensional quantum materials.
-            </div>
-
-            <div class="btn-row">
-              <a class="btn primary" href="research.html">Explore Research</a>
-              <a class="btn" href="people.html">Meet the Team</a>
-              <a class="btn" href="join.html">Open Positions</a>
-            </div>
+          <div class="subtitle">
+            Chinese Academy of Sciences · Aerospace Information Research Institute (GBA Branch), Guangzhou
           </div>
 
-          <div class="side">
-            <h3>Quick Info</h3>
-            <p class="kv"><b>Institute:</b> 中国科学院 空天信息创新研究院（大湾区研究院）</p>
-            <p class="kv"><b>Location:</b> 广州黄埔</p>
-            <p class="kv"><b>Email:</b> <a href="mailto:THz_zheng@163.com">THz_zheng@163.com</a></p>
-            <div class="pill-row">
-              <span class="pill">Complex σ(ω)</span>
-              <span class="pill">THz-TDS</span>
-              <span class="pill">Pump–Probe</span>
-              <span class="pill">Cryogenic</span>
-              <span class="pill">2D devices</span>
-              <span class="pill">Superconductivity</span>
-            </div>
-            <div style="margin-top:12px;color:var(--muted);font-size:12px;">
-              (You can add Google Scholar / ORCID links here later.)
-            </div>
+          <div class="tagline">
+            Stable · Quantitative · On-chip integrated THz platforms
+          </div>
+
+          <div class="mission">
+            We build stable, quantitative terahertz spectroscopy tools—especially <b>on-chip integrated THz platforms</b>—
+            to reveal low-energy electrodynamics, correlations, and nonequilibrium transport in low-dimensional quantum materials.
+          </div>
+
+          <div class="btn-row">
+            <a class="btn primary" href="research.html">Explore Research</a>
+            <a class="btn" href="people.html">Meet the Team</a>
+            <a class="btn" href="join.html">Open Positions</a>
           </div>
         </div>
       </div>
 
-      <div class="highlights">
+      <div class="news">
         <div class="section-title">
-          <h2>Highlights</h2>
-          <div class="hint">Home page shows only a snapshot—details are in each tab.</div>
+          <h2>News</h2>
+          <div class="hint">Latest updates from the group.</div>
         </div>
 
         <div class="cards">
           <div class="card">
-            <h3>On-chip THz Platforms</h3>
-            <p>Integrated sources/detectors and calibrated measurement pipelines for device-level THz spectroscopy.</p>
+            <span class="meta">2026</span>
+            <h3>Group established in Guangzhou</h3>
+            <p>Terahertz Electrodynamics of Quantum Materials Lab is established at the Aerospace Information Research Institute (GBA Branch), Chinese Academy of Sciences.</p>
           </div>
+
           <div class="card">
-            <h3>Correlated Electrodynamics</h3>
-            <p>THz complex conductivity fingerprints low-energy excitations, scattering, and superconducting response.</p>
+            <span class="meta">Platform</span>
+            <h3>On-chip THz spectroscopy platform</h3>
+            <p>We are developing integrated terahertz sources/detectors and calibrated measurement pipelines for device-level THz spectroscopy.</p>
           </div>
+
           <div class="card">
-            <h3>Ultrafast Transport Dynamics</h3>
-            <p>From femtoseconds to nanoseconds: coupling between carriers, lattice heating, and heat dissipation.</p>
+            <span class="meta">Recruiting</span>
+            <h3>Open positions</h3>
+            <p>We are recruiting PhD students and postdocs in ultrafast THz spectroscopy, on-chip platforms, and quantum materials.</p>
           </div>
         </div>
       </div>
