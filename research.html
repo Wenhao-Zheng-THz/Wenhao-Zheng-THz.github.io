@@ -1,47 +1,352 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Research | Zheng Wenhao Lab</title>
-<link rel="stylesheet" href="style.css">
-<style>
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;background:#0a0f1c;color:#e6ecff;}
-.nav{background:#111827;padding:15px;text-align:center;}
-.nav a{color:#e6ecff;margin:0 15px;text-decoration:none;}
-.nav a:hover{color:#4da6ff;}
-.content{max-width:900px;margin:80px auto;padding:0 20px;}
-h2{border-bottom:1px solid #4da6ff;padding-bottom:10px;}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Research | Terahertz Electrodynamics Lab @ CAS AIR</title>
+  <meta name="description" content="Research — Terahertz Electrodynamics Lab @ CAS AIR" />
+
+  <style>
+    /* =========================================================
+       THEME (keep consistent across all pages)
+    ========================================================= */
+    :root{
+      --bg:#0a0f1c;
+      --panel:rgba(17,24,39,.55);
+      --panel2:rgba(15,23,42,.62);
+      --text:#e8eeff;
+      --muted:#b6c2ea;
+      --line:rgba(255,255,255,.10);
+      --accent:#4da6ff;
+      --accent2:#7c3aed;
+      --radius:18px;
+      --shadow: 0 18px 40px rgba(0,0,0,.38);
+      --max: 1080px;
+    }
+
+    *{box-sizing:border-box}
+    html, body{height:100%}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
+      color:var(--text);
+      line-height:1.65;
+      min-height:100vh;
+      background:
+        radial-gradient(900px 420px at 15% 0%, rgba(124,58,237,.20), transparent 60%),
+        radial-gradient(900px 460px at 85% 10%, rgba(77,166,255,.18), transparent 60%),
+        linear-gradient(var(--bg), var(--bg));
+    }
+
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    .page{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    .main{flex:1}
+
+    /* =========================================================
+       TOP NAV (same as home/people)
+    ========================================================= */
+    .nav{
+      position:sticky; top:0; z-index:100;
+      background: rgba(10,15,28,.62);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:12px 0;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+      font-weight:900; letter-spacing:.2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:clip;
+      min-width: 280px;
+    }
+    .brand small{
+      color:var(--muted);
+      font-weight:650;
+      letter-spacing:.2px
+    }
+    .menu{
+      display:flex; flex-wrap:wrap;
+      gap:8px; align-items:center; justify-content:flex-end
+    }
+    .menu a{
+      padding:8px 10px;
+      border-radius:12px;
+      color:var(--text);
+      font-weight:650;
+      font-size:14px;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+    .menu a:hover{
+      background: rgba(77,166,255,.08);
+      border-color: rgba(77,166,255,.25);
+    }
+    .menu a.active{
+      background: rgba(77,166,255,.12);
+      border-color: rgba(77,166,255,.32);
+    }
+    .cta{
+      padding:8px 12px !important;
+      border:1px solid rgba(77,166,255,.35) !important;
+      background: linear-gradient(135deg, rgba(77,166,255,.18), rgba(124,58,237,.14));
+    }
+
+    /* =========================================================
+       PAGE HEADER
+    ========================================================= */
+    .header{
+      padding:34px 0 14px;
+    }
+    .header h1{
+      margin:0;
+      font-size:34px;
+      letter-spacing:.2px;
+    }
+    .header .sub{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:650;
+      max-width: 900px;
+    }
+
+    /* =========================================================
+       PANELS / CARDS
+    ========================================================= */
+    .panel{
+      background: var(--panel2);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:14px;
+    }
+
+    .card{
+      background: var(--panel);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+
+    .card h2{
+      margin:0 0 8px;
+      font-size:16px;
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+
+    .card p{
+      margin:0;
+      color: rgba(232,238,255,.92);
+      font-size:13.5px;
+    }
+
+    .bullets{
+      margin:12px 0 0;
+      padding-left:18px;
+      color: rgba(232,238,255,.92);
+      font-size:13.5px;
+    }
+    .bullets li{margin:8px 0;color: rgba(232,238,255,.92);}
+    .muted{color:var(--muted)}
+
+    .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .tag{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color:rgba(232,238,255,.92);
+    }
+
+    /* Optional: callout */
+    .callout{
+      margin-top:14px;
+      padding:14px;
+      border-radius: var(--radius);
+      border:1px solid rgba(77,166,255,.20);
+      background: linear-gradient(135deg, rgba(77,166,255,.10), rgba(124,58,237,.08));
+      color: rgba(232,238,255,.92);
+      font-size:13.5px;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer{
+      padding:22px 0;
+      border-top:1px solid rgba(255,255,255,.06);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .foot{
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center; justify-content:space-between
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr;}
+    }
+    @media (max-width: 780px){
+      .brand small{display:none}
+      .header h1{font-size:30px}
+    }
+  </style>
 </head>
 
 <body>
+  <div class="page">
 
-<div class="nav">
-<a href="index.html">Home</a>
-<a href="research.html">Research</a>
-<a href="people.html">People</a>
-<a href="publications.html">Publications</a>
-<a href="news.html">News</a>
-<a href="join.html">Join</a>
-<a href="contact.html">Contact</a>
-</div>
+    <!-- NAV -->
+    <div class="nav">
+      <div class="container">
+        <div class="nav-inner">
+          <div class="brand">
+            <div>Terahertz Electrodynamics Lab @ CAS AIR</div>
+            <small>Ultrafast THz • On-chip Platforms • Quantum Materials</small>
+          </div>
 
-<div class="content">
-<h2>Research</h2>
+          <div class="menu">
+            <a href="index.html">Home</a>
+            <a class="active" href="research.html">Research</a>
+            <a href="people.html">People</a>
+            <a href="publications.html">Publications</a>
+            <a href="news.html">News</a>
+            <a href="join.html">Join</a>
+            <a class="cta" href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<h3>On-chip Terahertz Spectroscopy</h3>
-<p>Development of integrated THz platforms compatible with quantum devices.</p>
+    <div class="main">
+      <div class="container">
 
-<h3>Correlated Electrodynamics & Superconductivity</h3>
-<p>THz complex conductivity probing low-energy excitations and pairing dynamics.</p>
+        <!-- HEADER -->
+        <div class="header">
+          <h1>Research</h1>
+          <div class="sub">
+            Our research focuses on ultrafast terahertz (THz) spectroscopy—especially on-chip integrated THz platforms—
+            to reveal low-energy electrodynamics, correlations, and nonequilibrium transport in low-dimensional quantum materials.
+          </div>
+        </div>
 
-<h3>Ultrafast Carrier & Heat Transport</h3>
-<p>Multi-timescale transport dynamics in low-dimensional materials.</p>
+        <!-- MAIN PANEL -->
+        <div class="panel">
+          <div class="grid">
 
-<h3>Quantum Transport in 2D Devices</h3>
-<p>Gate-tunable transport and intrinsic electrodynamics in quantum materials.</p>
+            <!-- 1 -->
+            <div class="card">
+              <h2>On-chip Terahertz Spectroscopy</h2>
+              <p class="muted">Integrated THz sources/detectors and calibrated pipelines for device-level spectroscopy.</p>
+              <ul class="bullets">
+                <li>On-chip THz emitters/detectors and compact spectrometer architectures</li>
+                <li>System response calibration & quantitative extraction (E(t), σ(ω), ε(ω))</li>
+                <li>Compatibility with cryogenic and magneto-transport environments</li>
+              </ul>
+              <div class="tagrow">
+                <span class="tag">On-chip THz</span>
+                <span class="tag">THz-TDS</span>
+                <span class="tag">Calibration</span>
+              </div>
+            </div>
 
-</div>
+            <!-- 2 -->
+            <div class="card">
+              <h2>Correlated Electrodynamics & Superconductivity</h2>
+              <p class="muted">THz complex conductivity fingerprints of low-energy excitations and collective dynamics.</p>
+              <ul class="bullets">
+                <li>Complex conductivity σ(ω) across phase transitions and correlated regimes</li>
+                <li>Low-energy modes, scattering, and spectral weight transfer</li>
+                <li>Field/temperature tuning with cryogenic THz spectroscopy</li>
+              </ul>
+              <div class="tagrow">
+                <span class="tag">Complex σ(ω)</span>
+                <span class="tag">Superconductivity</span>
+                <span class="tag">Correlations</span>
+              </div>
+            </div>
 
+            <!-- 3 -->
+            <div class="card">
+              <h2>Ultrafast Carrier & Heat Transport</h2>
+              <p class="muted">Multi-timescale dynamics from femtoseconds to nanoseconds in low-dimensional materials.</p>
+              <ul class="bullets">
+                <li>Carrier relaxation, hot-carrier transport, and transient conductivity</li>
+                <li>Lattice heating & thermal dissipation pathways</li>
+                <li>Coupling between photophysics and electrical transport</li>
+              </ul>
+              <div class="tagrow">
+                <span class="tag">Ultrafast</span>
+                <span class="tag">Transport</span>
+                <span class="tag">Thermal</span>
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="card">
+              <h2>Quantum Transport in 2D Devices</h2>
+              <p class="muted">Gate-tunable transport and intrinsic electrodynamics in quantum materials and heterostructures.</p>
+              <ul class="bullets">
+                <li>Low-temperature quantum transport (gating, magneto-transport, Hall)</li>
+                <li>2D materials and vdW heterostructures: devices and characterization</li>
+                <li>Connecting DC transport with THz electrodynamics</li>
+              </ul>
+              <div class="tagrow">
+                <span class="tag">2D Devices</span>
+                <span class="tag">Cryogenic</span>
+                <span class="tag">Quantum Transport</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- OPTIONAL CALLOUT -->
+          <div class="callout">
+            <b>Looking for collaborations?</b>
+            If you are interested in ultrafast THz spectroscopy, on-chip platforms, or quantum materials/devices,
+            feel free to reach out via <a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
+          </div>
+        </div>
+
+        <div style="height:26px"></div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div>© <span id="y"></span></div>
+          <div><a href="contact.html">Contact</a></div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
