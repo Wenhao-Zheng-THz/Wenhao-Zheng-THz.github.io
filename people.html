@@ -1,189 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>People | Terahertz Electrodynamics of Quantum Materials Lab</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>People | Terahertz Electrodynamics Lab @ CAS AIR</title>
+  <meta name="description" content="People — Terahertz Electrodynamics Lab @ CAS AIR" />
 
-<style>
+  <style>
+    /* =========================================================
+       THEME (keep consistent across all pages)
+       你首页图1的“深色 + 氛围光 + 胶囊导航”风格在这里统一定义
+    ========================================================= */
+    :root{
+      --bg:#0a0f1c;                 /* page background */
+      --panel:rgba(17,24,39,.55);   /* card background */
+      --panel2:rgba(15,23,42,.62);  /* larger panel background */
+      --text:#e8eeff;
+      --muted:#b6c2ea;
+      --line:rgba(255,255,255,.10);
+      --accent:#4da6ff;
+      --accent2:#7c3aed;
+      --radius:18px;
+      --shadow: 0 18px 40px rgba(0,0,0,.38);
+      --max: 1080px;
+    }
 
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:#050c1a;
-  color:#e8ecf3;
-}
+    *{box-sizing:border-box}
+    html, body{height:100%}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
+      color:var(--text);
+      line-height:1.6;
+      min-height:100vh;
 
-.navbar{
-  background:#0b1326;
-  padding:18px 60px;
-  display:flex;
-  justify-content:flex-end;
-  gap:40px;
-  font-size:18px;
-}
+      /* 背景氛围光：和首页一致，底部不“露彩色块” */
+      background:
+        radial-gradient(900px 420px at 15% 0%, rgba(124,58,237,.20), transparent 60%),
+        radial-gradient(900px 460px at 85% 10%, rgba(77,166,255,.18), transparent 60%),
+        linear-gradient(var(--bg), var(--bg));
+    }
 
-.navbar a{
-  color:#cbd5e1;
-  text-decoration:none;
-}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
 
-.navbar a:hover{
-  color:white;
-}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
-.container{
-  max-width:900px;
-  margin:auto;
-  padding:80px 40px;
-}
+    /* 让 footer 贴底（页面内容少也不会露底色） */
+    .page{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    .main{flex:1}
 
-h1{
-  font-size:48px;
-  margin-bottom:20px;
-}
+    /* =========================================================
+       TOP NAV (same as home)
+    ========================================================= */
+    .nav{
+      position:sticky; top:0; z-index:100;
+      background: rgba(10,15,28,.62);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:12px 0;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+      font-weight:900; letter-spacing:.2px;
+      white-space:nowrap;            /* 尽量不换行 */
+      overflow:hidden;
+      text-overflow:clip;            /* 不显示省略号（但小屏仍可能会挤） */
+      min-width: 280px;
+    }
+    .brand small{
+      color:var(--muted);
+      font-weight:650;
+      letter-spacing:.2px
+    }
+    .menu{
+      display:flex; flex-wrap:wrap;
+      gap:8px; align-items:center; justify-content:flex-end
+    }
+    .menu a{
+      padding:8px 10px;
+      border-radius:12px;
+      color:var(--text);
+      font-weight:650;
+      font-size:14px;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+    .menu a:hover{
+      background: rgba(77,166,255,.08);
+      border-color: rgba(77,166,255,.25);
+    }
+    .menu a.active{
+      background: rgba(77,166,255,.12);
+      border-color: rgba(77,166,255,.32);
+    }
+    .cta{
+      padding:8px 12px !important;
+      border:1px solid rgba(77,166,255,.35) !important;
+      background: linear-gradient(135deg, rgba(77,166,255,.18), rgba(124,58,237,.14));
+    }
 
-.subtitle{
-  color:#9fb0cc;
-  margin-bottom:40px;
-}
+    /* =========================================================
+       PAGE HEADER
+    ========================================================= */
+    .header{
+      padding:34px 0 14px;
+    }
+    .header h1{
+      margin:0;
+      font-size:34px;
+      letter-spacing:.2px;
+    }
+    .header .sub{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:650;
+    }
 
-.cards{
-  display:flex;
-  flex-direction:column;
-  gap:30px;
-}
+    /* =========================================================
+       PANELS / CARDS
+    ========================================================= */
+    .panel{
+      background: var(--panel2);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
 
-.card{
-  background:#0b1326;
-  border-radius:18px;
-  padding:25px 30px;
-  display:flex;
-  gap:20px;
-  align-items:center;
-}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
 
-.avatar{
-  width:70px;
-  height:70px;
-  border-radius:16px;
-  background:linear-gradient(135deg,#5b7cff,#8a5cff);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  font-weight:bold;
-}
+    .card{
+      background: var(--panel);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      padding:16px;
+    }
 
-.info h2{
-  margin:0;
-  font-size:22px;
-}
+    .row{
+      display:flex; gap:14px; align-items:flex-start;
+    }
 
-.role{
-  color:#9fb0cc;
-  margin-top:5px;
-}
+    .avatar{
+      width:58px; height:58px; border-radius:16px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900;
+      background: linear-gradient(135deg, rgba(77,166,255,.20), rgba(124,58,237,.18));
+      border:1px solid rgba(255,255,255,.10);
+      flex:0 0 auto;
+    }
 
-.tags{
-  margin-top:10px;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
+    .name{
+      font-weight:900; font-size:18px; margin:0;
+    }
+    .role{
+      margin:2px 0 8px; color:var(--muted); font-weight:650; font-size:13px;
+    }
+    .meta{
+      color:var(--muted);
+      font-size:13px;
+      margin:0;
+    }
 
-.tag{
-  border:1px solid #375a9e;
-  padding:5px 12px;
-  border-radius:20px;
-  font-size:13px;
-  color:#a9c4ff;
-}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color:rgba(232,238,255,.92);
+    }
 
-</style>
+    /* =========================================================
+       PI PROFILE (like your Fig-3 style)
+    ========================================================= */
+    .profile{
+      padding:18px;
+    }
+    .profile-top{
+      display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;
+    }
+    .profile-left{
+      flex: 1 1 520px;
+      min-width: 280px;
+    }
+    .profile-right{
+      flex: 0 0 260px;
+      min-width: 240px;
+    }
+
+    .big-name{
+      margin:0;
+      font-size:22px;
+      font-weight:950;
+      letter-spacing:.2px;
+    }
+    .profile-block{
+      margin-top:14px;
+      padding-top:12px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .sec-title{
+      margin:0 0 10px;
+      font-size:16px;
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+    .sec-title::after{
+      content:"";
+      display:block;
+      width:120px;
+      height:4px;
+      margin-top:10px;
+      border-radius:999px;
+      background: rgba(77,166,255,.65);
+    }
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:rgba(232,238,255,.92);
+    }
+    .list li{
+      margin:8px 0;
+      color: rgba(232,238,255,.92);
+    }
+    .muted{
+      color:var(--muted);
+    }
+
+    .mini-card{
+      background: rgba(10,15,28,.35);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding:14px;
+    }
+    .mini-card .k{
+      color:rgba(182,194,234,.95);
+      font-size:12px;
+      font-weight:750;
+      margin:10px 0 2px;
+    }
+    .mini-card .v{
+      font-size:13px;
+      color:rgba(232,238,255,.95);
+      margin:0;
+      word-break:break-word;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer{
+      padding:22px 0;
+      border-top:1px solid rgba(255,255,255,.06);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .foot{
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center; justify-content:space-between
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 780px){
+      .brand small{display:none}
+      .header h1{font-size:30px}
+    }
+  </style>
 </head>
 
 <body>
+  <div class="page">
 
-<div class="navbar">
-  <a href="index.html">Home</a>
-  <a href="research.html">Research</a>
-  <a href="people.html">People</a>
-  <a href="publications.html">Publications</a>
-  <a href="news.html">News</a>
-  <a href="join.html">Join</a>
-  <a href="contact.html">Contact</a>
-</div>
+    <!-- =========================
+         NAV (keep same on every page)
+    ========================= -->
+    <div class="nav">
+      <div class="container">
+        <div class="nav-inner">
+          <div class="brand">
+            <div>Terahertz Electrodynamics Lab @ CAS AIR</div>
+            <!-- 如果你不想显示副标题：把下面这一行删掉即可 -->
+            <small>Ultrafast THz • On-chip Platforms • Quantum Materials</small>
+          </div>
 
-<div class="container">
+          <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="research.html">Research</a>
+            <a class="active" href="people.html">People</a>
+            <a href="publications.html">Publications</a>
+            <a href="news.html">News</a>
+            <a href="join.html">Join</a>
+            <a class="cta" href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<h1>People</h1>
+    <div class="main">
+      <div class="container">
 
-<div class="subtitle">
-中国科学院 空天信息创新研究院（大湾区研究院） ｜ 广州黄埔
-</div>
+        <!-- =========================
+             PAGE TITLE
+        ========================= -->
+        <div class="header">
+          <h1>People</h1>
+          <div class="sub">Aerospace Information Research Institute, Chinese Academy of Sciences (GBA Branch), Guangzhou</div>
+        </div>
 
-<div class="cards">
+        <!-- =========================
+             PI PROFILE (完善你的个人信息：图3那种)
+             你只需要在对应位置替换内容即可
+        ========================= -->
+        <div class="panel profile">
+          <div class="profile-top">
 
-<!-- PI -->
-<div class="card">
-<div class="avatar">WZ</div>
-<div class="info">
-<h2>郑文浩</h2>
-<div class="role">Principal Investigator</div>
-<div>Email: THz_zheng@163.com</div>
-<div class="tags">
-<span class="tag">THz spectroscopy</span>
-<span class="tag">On-chip platforms</span>
-<span class="tag">Quantum materials</span>
-</div>
-</div>
-</div>
+            <!-- LEFT: short bio + sections -->
+            <div class="profile-left">
+              <p class="big-name">Wenhao Zheng / 郑文浩</p>
+              <p class="role">Principal Investigator</p>
 
-<!-- Zihui -->
-<div class="card">
-<div class="avatar">ZL</div>
-<div class="info">
-<h2>陆子辉</h2>
-<div class="role">PhD Student</div>
-<div class="tags">
-<span class="tag">THz</span>
-<span class="tag">Devices</span>
-<span class="tag">Transport</span>
-</div>
-</div>
-</div>
+              <p class="meta">
+                We build ultrafast THz spectroscopy — especially <b>on-chip integrated THz platforms</b> —
+                to reveal low-energy electrodynamics, correlations, and nonequilibrium transport in low-dimensional quantum materials.
+              </p>
 
-<!-- Zehuai -->
-<div class="card">
-<div class="avatar">ZH</div>
-<div class="info">
-<h2>黄泽怀</h2>
-<div class="role">Engineer</div>
-<div class="tags">
-<span class="tag">Platform</span>
-<span class="tag">Electronics</span>
-<span class="tag">Automation</span>
-</div>
-</div>
-</div>
+              <p class="meta" style="margin-top:10px; text-align:justify;">
+                Our lab is based at the Aerospace Information Research Institute, Chinese Academy of Sciences (GBA branch), Guangzhou.
+                We welcome inquiries from candidates interested in pursuing opportunities as Bachelor’s students, Master’s students, PhD students,
+                Postdoctoral researchers, Engineers, and Assistant Professors.
+                If you are motivated to explore ultrafast spectroscopy, low-dimensional (2D) materials, and low-temperature quantum transport,
+                please feel free to contact me at: <a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
+              </p>
 
-<!-- Wenjun -->
-<div class="card">
-<div class="avatar">WS</div>
-<div class="info">
-<h2>帅文君</h2>
-<div class="role">Engineer</div>
-<div class="tags">
-<span class="tag">Optics</span>
-<span class="tag">Mechanics</span>
-<span class="tag">Workflow</span>
-</div>
-</div>
-</div>
+              <div class="tags">
+                <span class="tag">Ultrafast THz</span>
+                <span class="tag">On-chip THz</span>
+                <span class="tag">Complex σ(ω)</span>
+                <span class="tag">2D Quantum Materials</span>
+                <span class="tag">Cryogenic Transport</span>
+              </div>
 
-</div>
+              <!-- ====== sections like Fig-3 ====== -->
+              <div class="profile-block">
+                <h3 class="sec-title">Research Interests</h3>
+                <ul class="list">
+                  <li>Ultrafast terahertz spectroscopy & electrodynamics in quantum materials</li>
+                  <li>On-chip integrated THz spectroscopy platforms (sources / detectors / calibration)</li>
+                  <li>Low-dimensional (2D) materials, correlations, and nonequilibrium transport</li>
+                  <li>Low-temperature quantum transport and superconductivity-related dynamics</li>
+                </ul>
+              </div>
 
-</div>
+              <div class="profile-block">
+                <h3 class="sec-title">Education</h3>
+                <ul class="list">
+                  <!-- TODO: 把下面三行替换成你的真实教育背景 -->
+                  <li><b>Ph.D.</b>, [University / Institute], [Field], [Year–Year]</li>
+                  <li><b>M.S.</b>, [University], [Field], [Year–Year]</li>
+                  <li><b>B.S.</b>, [University], [Field], [Year–Year]</li>
+                </ul>
+                <p class="muted" style="margin:10px 0 0;">
+                  Tip: 你可以按“年份—学位/职位—单位—方向”这种格式写，会更像你图3那种排版。
+                </p>
+              </div>
 
+              <div class="profile-block">
+                <h3 class="sec-title">Research Experience</h3>
+                <ul class="list">
+                  <!-- TODO: 替换为你的真实经历 -->
+                  <li>[Year–Year] Postdoctoral Researcher, [Institute], [Topic]</li>
+                  <li>[Year–Year] Research Scholar / Visiting, [Institute], [Topic]</li>
+                  <li>[Year–Year] [Position], [Institute], [Topic]</li>
+                </ul>
+              </div>
+
+              <div class="profile-block">
+                <h3 class="sec-title">Honors & Awards</h3>
+                <ul class="list">
+                  <!-- TODO: 替换为你的真实奖项 -->
+                  <li>[Award name], [Year]</li>
+                  <li>[Award name], [Year]</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- RIGHT: quick contact -->
+            <div class="profile-right">
+              <div class="mini-card">
+                <div class="k">Institute</div>
+                <p class="v">中国科学院 空天信息创新研究院（大湾区研究院）</p>
+
+                <div class="k">Location</div>
+                <p class="v">广州黄埔</p>
+
+                <div class="k">Email</div>
+                <p class="v"><a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a></p>
+
+                <div class="k">Links</div>
+                <p class="v">
+                  <!-- TODO: 你以后把链接补上即可 -->
+                  <span class="muted">Google Scholar</span> · <span class="muted">ORCID</span> · <span class="muted">GitHub</span>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- =========================
+             TEAM MEMBERS (1 column layout)
+        ========================= -->
+        <div style="height:18px"></div>
+
+        <div class="panel">
+          <h2 style="margin:0 0 12px; font-size:18px;">Team Members</h2>
+
+          <div class="grid">
+            <!-- Member 1 -->
+            <div class="card">
+              <div class="row">
+                <div class="avatar">ZL</div>
+                <div>
+                  <p class="name">Zihui Lu / 陆子辉</p>
+                  <p class="role">PhD Student</p>
+                  <p class="meta">Keywords: <span class="muted">(待补)</span></p>
+                  <div class="tags">
+                    <span class="tag">THz</span>
+                    <span class="tag">Devices</span>
+                    <span class="tag">Transport</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="card">
+              <div class="row">
+                <div class="avatar">ZH</div>
+                <div>
+                  <p class="name">Zehuai Huang / 黄泽怀</p>
+                  <p class="role">Engineer</p>
+                  <p class="meta">Keywords: <span class="muted">(待补)</span></p>
+                  <div class="tags">
+                    <span class="tag">Platform</span>
+                    <span class="tag">Electronics</span>
+                    <span class="tag">Automation</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="card">
+              <div class="row">
+                <div class="avatar">WS</div>
+                <div>
+                  <p class="name">Wenjun Shuai / 帅文君</p>
+                  <p class="role">Engineer</p>
+                  <p class="meta">Keywords: <span class="muted">(待补)</span></p>
+                  <div class="tags">
+                    <span class="tag">Optics</span>
+                    <span class="tag">Mechanics</span>
+                    <span class="tag">Workflow</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Member 4 (optional placeholder) -->
+            <div class="card">
+              <div class="row">
+                <div class="avatar">+1</div>
+                <div>
+                  <p class="name">New Member</p>
+                  <p class="role">Position</p>
+                  <p class="meta">Keywords: <span class="muted">(optional)</span></p>
+                  <div class="tags">
+                    <span class="tag">Topic A</span>
+                    <span class="tag">Topic B</span>
+                  </div>
+                </div>
+              </div>
+              <p class="muted" style="margin:12px 0 0; font-size:12px;">
+                Tip: 以后你有成员照片时，把 avatar 改成 img 即可（我也能帮你一键换成真实头像布局）。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:26px"></div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div>© <span id="y"></span></div>
+          <div><a href="contact.html">Contact</a></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // 自动年份
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
