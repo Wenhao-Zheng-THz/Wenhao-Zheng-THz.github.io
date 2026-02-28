@@ -7,7 +7,11 @@
   <meta name="description" content="People — THz Electrodynamics Lab @ CAS AIR" />
 
   <!-- =========================================================
-    People Page (Light Theme) — v3 (HUGE photos, portrait cards)
+    People Page (Light Theme) — v3.1
+    - Keep full PI info (research / education / awards)
+    - Bigger text
+    - Use original images (no transform scaling), crop only via object-fit
+    - Per-person crop tuning via CSS classes
     Photos folder: assets/people/
   ========================================================== -->
 
@@ -24,6 +28,15 @@
       --accentSoft: rgba(47,92,255,.10);
       --radius:22px;
       --max:1080px;
+
+      /* ===== Typography scale (bigger) ===== */
+      --fz-h1: 44px;
+      --fz-sub: 18px;
+      --fz-body: 18px;
+      --fz-li: 18px;
+      --fz-card-title: 22px;
+      --fz-card-role: 16px;
+      --fz-meta: 17px;
     }
 
     *{ box-sizing:border-box; }
@@ -36,7 +49,8 @@
         radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.08), transparent 60%),
         radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
         linear-gradient(var(--bg), var(--bg));
-      line-height:1.65;
+      line-height:1.75;
+      font-size: var(--fz-body);
     }
 
     a{ color:var(--accent); text-decoration:none; }
@@ -61,17 +75,18 @@
       font-weight:600;
       letter-spacing:.1px;
       white-space:nowrap;
+      font-size:16px;
     }
     .menu{
       display:flex; flex-wrap:wrap;
       gap:10px; align-items:center; justify-content:flex-end;
     }
     .menu a{
-      padding:8px 10px;
+      padding:9px 12px;
       border-radius:999px;
       color:var(--text);
       font-weight:600;
-      font-size:14px;
+      font-size:15px;
       border:1px solid transparent;
       text-decoration:none;
     }
@@ -84,7 +99,7 @@
       border-color: rgba(47,92,255,.22);
     }
     .cta{
-      padding:8px 14px !important;
+      padding:9px 16px !important;
       border:1px solid rgba(47,92,255,.25) !important;
       background: linear-gradient(180deg, rgba(47,92,255,.12), rgba(109,40,217,.08));
     }
@@ -92,17 +107,18 @@
     /* =========================
        PAGE HEADER
     ========================== */
-    .header{ padding:26px 0 10px; }
+    .header{ padding:30px 0 12px; }
     .header h1{
       margin:0;
-      font-size:34px;
-      letter-spacing:-.2px;
+      font-size: var(--fz-h1);
+      letter-spacing:-.4px;
+      line-height:1.05;
     }
     .header .sub{
-      margin:10px 0 0;
+      margin:14px 0 0;
       color:var(--muted);
-      font-size:14px;
-      max-width:900px;
+      font-size: var(--fz-sub);
+      max-width:980px;
     }
 
     /* =========================
@@ -113,87 +129,99 @@
       border: 1px solid rgba(17,24,39,.08);
       border-radius: calc(var(--radius) + 10px);
       box-shadow: var(--shadow);
-      padding:26px;
+      padding:28px;
     }
 
     .section-title{
-      margin:0 0 14px;
-      font-size:20px;
+      margin:0 0 16px;
+      font-size:22px;
       letter-spacing:.1px;
     }
 
     /* =========================
-       PI LAYOUT (still bigger)
+       PI LAYOUT (keep full info)
     ========================== */
     .profile{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:24px;
+      grid-template-columns: 1.15fr .85fr;
+      gap:26px;
       align-items:start;
     }
 
     .pi-name{
-      font-size:24px;
-      font-weight:850;
-      margin:0 0 4px;
+      font-size:30px;
+      font-weight:900;
+      margin:0 0 6px;
+      letter-spacing:.2px;
     }
     .pi-role{
       color:var(--muted);
-      font-size:13px;
-      margin-bottom:14px;
-      font-weight:650;
+      font-size:17px;
+      margin-bottom:16px;
+      font-weight:700;
     }
 
     .block{
-      margin-top:14px;
-      padding-top:12px;
+      margin-top:18px;
+      padding-top:14px;
       border-top:1px solid rgba(17,24,39,.08);
     }
     .block h3{
-      margin:0 0 10px;
-      font-size:14px;
-      font-weight:850;
+      margin:0 0 12px;
+      font-size:18px;
+      font-weight:900;
       letter-spacing:.1px;
     }
-    .block ul{ margin:0; padding-left:18px; }
-    .block li{ margin:8px 0; }
+    .block ul{ margin:0; padding-left:20px; }
+    .block li{
+      margin:10px 0;
+      font-size: var(--fz-li);
+    }
     .block li span{ color:var(--muted); }
 
     .pi-side{ display:flex; flex-direction:column; gap:14px; align-items:flex-start; }
+
+    /* ✅ “不放大缩小”：不做 transform；只规定展示框尺寸 + 裁切 */
     .pi-photo{
       width:100%;
-      max-width: 360px;
-      height: 320px;
-      border-radius: 34px;
-      object-fit:cover;
+      max-width: 340px;   /* 稍微小一点（你要求的） */
+      height: 300px;
+      border-radius: 30px;
+      object-fit: cover;  /* 只裁切不拉伸 */
+      object-position: 50% 32%; /* 默认黄金分割偏上 */
       border:1px solid rgba(17,24,39,.10);
       box-shadow:0 14px 34px rgba(15,23,42,.14);
       background:#fff;
+      display:block;
     }
+
+    /* 你可按人微调（只改这里的百分比即可） */
+    .crop-wenhao{ object-position: 50% 30%; }
 
     .mini-card{
       width:100%;
       background: rgba(255,255,255,.78);
       border:1px solid rgba(17,24,39,.08);
       border-radius: var(--radius);
-      padding:16px;
+      padding:18px;
       box-shadow: var(--shadow2);
     }
     .k{
       color:var(--muted);
-      font-size:12px;
-      font-weight:800;
-      margin:10px 0 3px;
+      font-size:14px;
+      font-weight:900;
+      margin:12px 0 4px;
     }
     .v{
       margin:0;
-      font-size:13px;
+      font-size:17px;
       color:var(--text);
       word-break:break-word;
+      line-height:1.55;
     }
 
     /* =========================
-       TEAM (HUGE portrait cards)
+       TEAM (portrait cards)
     ========================== */
     .team-grid{
       display:grid;
@@ -202,21 +230,28 @@
     }
 
     .person-card{
-      background: rgba(255,255,255,.90);
+      background: rgba(255,255,255,.92);
       border: 1px solid rgba(17,24,39,.08);
       border-radius: calc(var(--radius) + 10px);
       overflow:hidden;
       box-shadow: var(--shadow2);
     }
 
-    /* 重点：照片占据主视觉 */
+    /* ✅ 图片“更小一点”但仍然主视觉：从 360 降到 300 */
     .person-photo{
       width:100%;
-      height: 360px;           /* 桌面：超大 */
-      object-fit: cover;        /* 不变形，裁切 */
+      height: 300px;
+      object-fit: cover;
+      object-position: 50% 32%;  /* 默认黄金分割偏上 */
       display:block;
       background:#fff;
     }
+
+    /* ✅ 每个人的裁切微调（你只改百分比） */
+    .crop-wenjun{ object-position: 50% 28%; }
+    .crop-zehuai{ object-position: 50% 26%; }
+    .crop-zihui { object-position: 50% 30%; }
+    .crop-zhuoyi{ object-position: 50% 28%; }
 
     .person-body{
       padding:18px 18px 16px;
@@ -232,7 +267,7 @@
 
     .person-name{
       margin:0;
-      font-size:20px;
+      font-size: var(--fz-card-title);
       font-weight:900;
       letter-spacing:.1px;
       line-height:1.15;
@@ -241,31 +276,31 @@
     .person-role{
       margin:0;
       color:var(--muted);
-      font-size:13px;
-      font-weight:800;
+      font-size: var(--fz-card-role);
+      font-weight:900;
       white-space:nowrap;
     }
 
     .person-meta{
-      margin:10px 0 0;
+      margin:12px 0 0;
       color:var(--muted);
-      font-size:14px;
-      line-height:1.65;
+      font-size: var(--fz-meta);
+      line-height:1.7;
     }
     .person-meta b{ color: rgba(17,24,39,.85); }
 
     .pill-row{
-      display:flex; flex-wrap:wrap; gap:8px;
-      margin-top:12px;
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:14px;
     }
     .pill{
-      font-size:12px;
-      padding:6px 10px;
+      font-size:14px;
+      padding:7px 12px;
       border-radius:999px;
       border:1px solid rgba(47,92,255,.18);
       background: var(--accentSoft);
       color:rgba(17,24,39,.90);
-      font-weight:800;
+      font-weight:900;
       white-space:nowrap;
     }
 
@@ -273,10 +308,10 @@
        FOOTER
     ========================== */
     footer{
-      margin-top:24px;
+      margin-top:26px;
       padding:18px 0 30px;
       color:var(--muted);
-      font-size:13px;
+      font-size:15px;
       border-top: 1px solid var(--line);
     }
 
@@ -287,13 +322,22 @@
       .profile{ grid-template-columns: 1fr; }
       .pi-photo{ max-width: 100%; height: 300px; }
       .team-grid{ grid-template-columns: 1fr; }
-      .person-photo{ height: 320px; }
+      .person-photo{ height: 280px; }
     }
 
     @media (max-width: 560px){
-      .header h1{ font-size:30px; }
-      .person-photo{ height: 260px; }  /* 手机也要大 */
-      .person-body{ padding:16px; }
+      :root{
+        --fz-h1: 36px;
+        --fz-sub: 16px;
+        --fz-body: 17px;
+        --fz-li: 17px;
+        --fz-card-title: 20px;
+        --fz-card-role: 15px;
+        --fz-meta: 16px;
+      }
+      .menu a{ font-size:14px; padding:8px 10px; }
+      .person-photo{ height: 240px; }
+      .panel{ padding:22px; }
     }
   </style>
 </head>
@@ -366,7 +410,8 @@
         </div>
 
         <div class="pi-side">
-          <img class="pi-photo" src="assets/people/Wenhao.jpg" alt="Wenhao Zheng" />
+          <img class="pi-photo crop-wenhao" src="assets/people/Wenhao.jpg" alt="Wenhao Zheng" />
+
           <div class="mini-card">
             <div class="k">单位</div>
             <p class="v">中国科学院 空天信息创新研究院（大湾区研究院）</p>
@@ -399,7 +444,7 @@
 
         <!-- 帅文君 -->
         <div class="person-card">
-          <img class="person-photo" src="assets/people/Wenjun.jpg" alt="Wenjun Shuai" />
+          <img class="person-photo crop-wenjun" src="assets/people/Wenjun.jpg" alt="Wenjun Shuai" />
           <div class="person-body">
             <div class="person-top">
               <h3 class="person-name">帅文君</h3>
@@ -415,7 +460,7 @@
 
         <!-- 黄泽怀 -->
         <div class="person-card">
-          <img class="person-photo" src="assets/people/Zehuai.jpg" alt="Zehuai Huang" />
+          <img class="person-photo crop-zehuai" src="assets/people/Zehuai.jpg" alt="Zehuai Huang" />
           <div class="person-body">
             <div class="person-top">
               <h3 class="person-name">黄泽怀</h3>
@@ -431,7 +476,7 @@
 
         <!-- 陆子辉 -->
         <div class="person-card">
-          <img class="person-photo" src="assets/people/Zihui.jpg" alt="Zihui Lu" />
+          <img class="person-photo crop-zihui" src="assets/people/Zihui.jpg" alt="Zihui Lu" />
           <div class="person-body">
             <div class="person-top">
               <h3 class="person-name">陆子辉</h3>
@@ -447,14 +492,14 @@
 
         <!-- 汪卓毅 -->
         <div class="person-card">
-          <img class="person-photo" src="assets/people/Zhuoyi.jpg" alt="Zhuoyi Wang" />
+          <img class="person-photo crop-zhuoyi" src="assets/people/Zhuoyi.jpg" alt="Zhuoyi Wang" />
           <div class="person-body">
             <div class="person-top">
               <h3 class="person-name">汪卓毅</h3>
               <p class="person-role">联培博士研究生（吉林大学）</p>
             </div>
             <div class="person-meta"><b>毕业院校：</b>本科 · 吉林大学</div>
-            <div class="person-meta" style="margin-top:6px;">
+            <div class="person-meta" style="margin-top:8px;">
               <b>合作：</b>吉林大学刘朝阳教授 / 荷兰乌德勒支大学 Prof. Hai I. Wang 课题组
             </div>
             <div class="pill-row">
