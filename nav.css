@@ -1,0 +1,76 @@
+:root{
+  --text:#111827;
+  --line:rgba(17,24,39,.10);
+  --accent:#2f5cff;
+}
+
+/* NAV */
+.nav{
+  position:sticky; top:0; z-index:1000;
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav .container{
+  max-width: var(--max, 1080px); /* 用页面自己的 --max */
+  margin:0 auto;
+  padding:0 var(--pad, 24px);    /* 用页面自己的 --pad */
+}
+
+.nav-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:18px 0;               /* 统一高度 */
+}
+
+.brand{
+  font-weight:850;
+  font-size:20px;
+  letter-spacing:.2px;
+  white-space:nowrap;
+}
+
+.menu{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.menu a{
+  padding:10px 14px;
+  border-radius:999px;
+  color:var(--text);
+  font-weight:720;
+  font-size:15px;
+  border:1px solid transparent;
+  transition: background .15s ease, border-color .15s ease, transform .15s ease;
+  text-decoration:none;
+}
+
+.menu a:hover{
+  background: rgba(47,92,255,.08);
+  border-color: rgba(47,92,255,.25);
+  transform: translateY(-1px);
+}
+
+.menu a.active{
+  background: rgba(47,92,255,.10);
+  border-color: rgba(47,92,255,.30);
+}
+
+.menu a.cta{
+  padding:10px 18px;
+  border:1px solid rgba(47,92,255,.35);
+  background: linear-gradient(180deg, rgba(47,92,255,.18), rgba(109,40,217,.10));
+}
+
+/* 小屏 */
+@media (max-width: 560px){
+  .brand{ font-size:18px; }
+  .menu a{ font-size:13px; padding:7px 9px; }
+}
