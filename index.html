@@ -9,16 +9,22 @@
 <style>
   :root{
     --bg:#ffffff;
-    --text:#0f172a;     /* slate-900 */
-    --muted:#475569;    /* slate-600 */
-    --muted2:#64748b;   /* slate-500 */
-    --accent:#2563eb;   /* blue-600 */
-    --accent2:#1d4ed8;  /* blue-700 */
-    --panel:#f8fafc;    /* slate-50 */
-    --line:#e2e8f0;     /* slate-200 */
-    --shadow:0 14px 40px rgba(2,6,23,.08);
-    --shadow2:0 10px 22px rgba(2,6,23,.06);
-    --radius:16px;
+
+    --text:#0b1220;      /* deep slate */
+    --muted:#475569;     /* slate-600 */
+    --muted2:#64748b;    /* slate-500 */
+
+    --accent:#2563eb;    /* blue-600 */
+    --accent2:#1d4ed8;   /* blue-700 */
+
+    --panel:#ffffff;
+    --panel2:#f8fafc;    /* slate-50 */
+    --line:#e2e8f0;      /* slate-200 */
+
+    --shadow: 0 18px 50px rgba(2,6,23,.08);
+    --shadow2:0 10px 24px rgba(2,6,23,.06);
+
+    --radius:18px;
     --max:1120px;
   }
 
@@ -51,9 +57,9 @@
     position:sticky;
     top:0;
     z-index:100;
-    background:#ffffffcc;
-    backdrop-filter: blur(10px);
-    border-bottom:1px solid var(--line);
+    background: rgba(255,255,255,.78);
+    backdrop-filter: blur(12px);
+    border-bottom:1px solid rgba(226,232,240,.75);
   }
   .nav-inner{
     display:flex;
@@ -63,9 +69,10 @@
     padding:14px 0;
   }
   .brand{
-    font-weight:800;
+    font-weight:850;
     letter-spacing:.2px;
     white-space:nowrap;
+    color:var(--text);
   }
   .menu{
     display:flex;
@@ -76,9 +83,9 @@
   }
   .menu a{
     color:var(--text);
-    font-weight:600;
+    font-weight:650;
     font-size:14px;
-    padding:8px 10px;
+    padding:8px 11px;
     border-radius:999px;
     border:1px solid transparent;
   }
@@ -89,46 +96,52 @@
   }
   .menu .cta{
     padding:8px 12px;
-    border:1px solid rgba(37,99,235,.22);
-    background:linear-gradient(180deg, rgba(37,99,235,.12), rgba(37,99,235,.06));
+    border:1px solid rgba(37,99,235,.20);
+    background:
+      linear-gradient(180deg, rgba(37,99,235,.10), rgba(37,99,235,.05));
+    box-shadow: 0 8px 18px rgba(37,99,235,.08);
   }
 
   /* =========================
      HERO
   ========================= */
   .hero{
-    padding:42px 0 18px;
+    padding:44px 0 18px;
   }
+
   .hero-card{
-    background:linear-gradient(180deg, #ffffff, #ffffff);
-    border:1px solid var(--line);
-    border-radius:calc(var(--radius) + 6px);
-    box-shadow:var(--shadow);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,.65));
+    border:1px solid rgba(226,232,240,.95);
+    border-radius: calc(var(--radius) + 10px);
+    box-shadow: var(--shadow);
     overflow:hidden;
   }
+
   .hero-grid{
     display:grid;
-    grid-template-columns: 1.25fr .75fr; /* left text / right image */
-    gap:22px;
-    padding:28px 26px;
+    grid-template-columns: 1.25fr .75fr;
+    gap:24px;
+    padding:30px 28px;
     align-items:start;
   }
+
   h1{
-    margin:0 0 10px;
-    font-size:42px;
-    line-height:1.08;
-    letter-spacing:-.5px;
-  }
-  .lede{
     margin:0 0 14px;
+    font-size:44px;
+    line-height:1.06;
+    letter-spacing:-.7px;
+  }
+
+  .lede{
+    max-width: 62ch;       /* 关键：控制行宽更好读 */
     color:var(--muted);
     font-size:16px;
     text-align:justify;
   }
   .lede p{ margin:0 0 12px; }
-
   .lede .small{
-    margin-top:6px;
+    margin-top:4px;
     color:var(--muted2);
     font-size:15px;
   }
@@ -137,7 +150,7 @@
     display:flex;
     flex-wrap:wrap;
     gap:10px;
-    margin-top:16px;
+    margin-top:18px;
   }
   .btn{
     display:inline-flex;
@@ -145,37 +158,48 @@
     justify-content:center;
     padding:10px 14px;
     border-radius:12px;
-    border:1px solid var(--line);
+    border:1px solid rgba(226,232,240,.95);
     color:var(--text);
-    font-weight:700;
+    font-weight:750;
     font-size:14px;
     background:#fff;
-    box-shadow:var(--shadow2);
+    box-shadow: var(--shadow2);
   }
   .btn:hover{
     text-decoration:none;
-    border-color:rgba(37,99,235,.30);
+    border-color:rgba(37,99,235,.28);
     color:var(--accent2);
+    transform: translateY(-1px);
   }
+  .btn:active{ transform: translateY(0px); }
+
   .btn.primary{
-    background:linear-gradient(180deg, rgba(37,99,235,.95), rgba(29,78,216,.95));
+    background:
+      linear-gradient(180deg, rgba(37,99,235,1), rgba(29,78,216,1));
     color:#fff;
     border-color:transparent;
+    box-shadow: 0 14px 34px rgba(37,99,235,.22);
   }
   .btn.primary:hover{ filter:brightness(1.02); color:#fff; }
 
-  /* right image */
+  /* Hero right figure */
+  .hero-right{ display:flex; flex-direction:column; gap:10px; }
+
   .hero-figure{
-    border-radius:16px;
-    border:1px solid var(--line);
-    background: var(--panel);
+    border-radius:18px;
+    border:1px solid rgba(226,232,240,.95);
+    background:
+      radial-gradient(600px 240px at 20% 20%, rgba(37,99,235,.06), transparent 55%),
+      radial-gradient(520px 260px at 85% 30%, rgba(99,102,241,.05), transparent 55%),
+      linear-gradient(180deg, #ffffff, #f8fafc);
     overflow:hidden;
-    min-height:260px;
+    min-height:270px;
     display:flex;
     align-items:center;
     justify-content:center;
     color:var(--muted2);
-    font-weight:700;
+    font-weight:800;
+    box-shadow: var(--shadow2);
   }
   .hero-figure img{
     width:100%;
@@ -183,25 +207,25 @@
     object-fit:cover;
     display:block;
   }
+
   .figure-cap{
-    margin-top:10px;
     color:var(--muted2);
     font-size:12.5px;
-    line-height:1.5;
+    line-height:1.55;
   }
 
   /* =========================
-     SECTION: NEWS
+     NEWS
   ========================= */
   .section{
-    padding:22px 0 34px;
+    padding:22px 0 40px;
   }
   .section-title{
     display:flex;
     align-items:flex-end;
     justify-content:space-between;
-    gap:12px;
-    margin: 0 0 10px;
+    gap:14px;
+    margin: 0 0 12px;
   }
   .section-title h2{
     margin:0;
@@ -213,55 +237,78 @@
     font-size:13px;
   }
 
-  /* 1列*多行（你要的） */
   .news-list{
     display:flex;
     flex-direction:column;
     gap:12px;
   }
   .news-item{
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:16px;
+    background: var(--panel);
+    border:1px solid rgba(226,232,240,.95);
+    border-radius:18px;
     padding:14px 16px;
-    box-shadow:var(--shadow2);
+    box-shadow: var(--shadow2);
   }
+
   .news-top{
     display:flex;
     gap:10px;
-    align-items:baseline;
+    align-items:center;
     justify-content:space-between;
     flex-wrap:wrap;
+    margin-bottom:6px;
   }
+
+  .news-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
+  .pill{
+    font-size:12px;
+    font-weight:800;
+    color:rgba(37,99,235,.95);
+    background:rgba(37,99,235,.08);
+    border:1px solid rgba(37,99,235,.16);
+    padding:4px 10px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+
+  .news-title{
+    margin:0;
+    font-size:15px;
+    font-weight:950;
+    line-height:1.25;
+  }
+
   .news-date{
     color:var(--muted2);
     font-size:12px;
     white-space:nowrap;
   }
-  .news-title{
-    margin:0;
-    font-size:15px;
-    font-weight:900;
-    line-height:1.25;
-  }
+
   .news-text{
-    margin:8px 0 0;
+    margin:6px 0 0;
     color:var(--muted);
     font-size:13.5px;
   }
+
   .news-link{
     margin-top:8px;
     font-size:13px;
-    font-weight:800;
+    font-weight:850;
   }
 
   /* =========================
      FOOTER
   ========================= */
   footer{
-    margin-top:38px;
+    margin-top:36px;
     padding:22px 0;
-    border-top:1px solid var(--line);
+    border-top:1px solid rgba(226,232,240,.9);
     color:var(--muted2);
     font-size:13px;
   }
@@ -272,7 +319,8 @@
   @media (max-width: 980px){
     .hero-grid{ grid-template-columns:1fr; }
     .hero-figure{ min-height:220px; }
-    h1{ font-size:36px; }
+    h1{ font-size:38px; }
+    .lede{ max-width:none; }
   }
   @media (max-width: 520px){
     .container{ padding:0 16px; }
@@ -336,7 +384,7 @@
         </div>
 
         <!-- RIGHT -->
-        <div>
+        <div class="hero-right">
           <div class="hero-figure">
             <!-- ✅ 有图片就用这一行（建议 1200×700 左右） -->
             <!-- <img src="assets/hero.jpg" alt="Lab hero image" /> -->
@@ -344,6 +392,7 @@
             <!-- ✅ 没图片暂时显示占位 -->
             <div>Hero image placeholder</div>
           </div>
+
           <div class="figure-cap">
             Tip: Put your setup / chip / spectrum figure here (e.g., <code>assets/hero.jpg</code>). This block will instantly improve the layout.
           </div>
@@ -374,23 +423,21 @@
 </footer>
 
 <script>
-  // year
   document.getElementById("y").textContent = new Date().getFullYear();
 
-  // parse YYYY-MM-DD
   function parseDateYMD(ymd){
     const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd || "");
     if(!m) return new Date(0);
     return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
   }
 
-  // render news: show top 10, 1-column list
   async function renderNews(){
     const box = document.getElementById("news-list");
     try{
       const res = await fetch("news.json", { cache:"no-store" });
       if(!res.ok) throw new Error("news.json not found");
       let items = await res.json();
+
       items = (items || []).slice()
         .sort((a,b) => parseDateYMD(b.date) - parseDateYMD(a.date))
         .slice(0, 10);
@@ -406,13 +453,20 @@
         const text = it.text || "";
         const link = (it.link || "").trim();
 
+        // 可选：category -> 左侧小标签（没有就不显示）
+        const cat = (it.category || "").trim();
+        const pillHtml = cat ? `<span class="pill">${cat}</span>` : "";
+
         const titleHtml = link ? `<a href="${link}">${title}</a>` : `${title}`;
-        const linkHtml = link ? `<div class="news-link"><a href="${link}">Read more →</a></div>` : "";
+        const linkHtml  = link ? `<div class="news-link"><a href="${link}">Read more →</a></div>` : "";
 
         return `
           <div class="news-item">
             <div class="news-top">
-              <div class="news-title">${titleHtml}</div>
+              <div class="news-left">
+                ${pillHtml}
+                <div class="news-title">${titleHtml}</div>
+              </div>
               <div class="news-date">${date}</div>
             </div>
             ${text ? `<div class="news-text">${text}</div>` : ""}
