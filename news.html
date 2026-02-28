@@ -3,301 +3,219 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>News | Terahertz Electrodynamics Lab @ CAS AIR</title>
-  <meta name="description" content="News and updates from Terahertz Electrodynamics Lab @ CAS AIR." />
+  <title>News | THz Electrodynamics Lab @ CAS-Air</title>
+  <meta name="description" content="News — THz Electrodynamics Lab @ CAS-Air" />
+
+  <!-- ✅ Site-wide unified nav -->
+  <link rel="stylesheet" href="nav.css" />
 
   <style>
     :root{
-      --bg:#0a0f1c;
-      --panel: rgba(17,24,39,.50);
-      --panel2: rgba(15,23,42,.62);
-      --text:#e8eeff;
-      --muted:#b6c2ea;
-      --accent:#4da6ff;
-      --accent2:#7c3aed;
-      --line:rgba(255,255,255,.10);
+      --bg:#ffffff;
+      --bg2:#f6f8fc;
 
-      --radius:18px;
-      --max:1080px;
+      --text:#111827;
+      --muted:#55627a;
+      --line:rgba(17,24,39,.10);
 
-      --shadow: 0 18px 40px rgba(0,0,0,.38);
-      --shadow2: 0 10px 22px rgba(0,0,0,.18);
-      --shadow3: 0 22px 60px rgba(0,0,0,.32);
+      --shadow: 0 16px 40px rgba(15,23,42,.10);
+      --shadow2: 0 10px 22px rgba(15,23,42,.08);
+      --shadow3: 0 22px 60px rgba(15,23,42,.12);
+
+      --accent:#2f5cff;
+      --accent2:#6d28d9;
+
+      --radius:20px;
+      --max: clamp(1080px, 92vw, 1360px);
+      --pad:24px;
     }
 
     *{ box-sizing:border-box; }
-    html, body { height:100%; }
-
+    html,body{ height:100%; }
     body{
       margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,
+        "Noto Sans","PingFang SC","Microsoft Yahei",sans-serif;
       color:var(--text);
+      line-height:1.7;
+      overflow-x:hidden;
       background:
-        radial-gradient(900px 420px at 15% 0%, rgba(124,58,237,.20), transparent 60%),
-        radial-gradient(900px 460px at 85% 10%, rgba(77,166,255,.18), transparent 60%),
+        radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.08), transparent 60%),
+        radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
         linear-gradient(var(--bg), var(--bg));
-      min-height:100vh;
-      line-height:1.65;
     }
 
     a{ color:var(--accent); text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
-    .container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-
-    /* ================= NAV ================= */
-    .nav{
-      position:sticky; top:0; z-index:1000;
-      background: rgba(10,15,28,.65);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav-inner{
-      display:flex; justify-content:space-between; align-items:center;
-      gap:14px; padding:12px 0;
-    }
-    .brand{ font-weight:800; letter-spacing:.2px; }
-    .menu{ display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; }
-    .menu a{
-      padding:8px 10px;
-      border-radius:12px;
-      color:var(--text);
-      font-weight:600;
-      font-size:14px;
-      border:1px solid transparent;
-      text-decoration:none;
-    }
-    .menu a:hover{
-      background: rgba(77,166,255,.08);
-      border-color: rgba(77,166,255,.25);
-      text-decoration:none;
-    }
-    .menu a.active{
-      background: rgba(77,166,255,.12);
-      border-color: rgba(77,166,255,.32);
-    }
-    .cta{
-      padding:8px 12px !important;
-      border:1px solid rgba(77,166,255,.35) !important;
-      background: linear-gradient(135deg, rgba(77,166,255,.20), rgba(124,58,237,.15));
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 var(--pad);
     }
 
-    /* ================= CONTENT ================= */
-    main{ padding:46px 0 10px; }
-
-    .title-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:12px;
-      margin-bottom:12px;
-    }
-    h1{
+    /* =========================
+       HEADER
+    ========================== */
+    .header{ padding:38px 0 16px; }
+    .header h1{
       margin:0;
-      font-size:30px;
-      letter-spacing:.2px;
+      font-size:52px;
+      letter-spacing:-.8px;
+      line-height:1.05;
+    }
+    .header .sub{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:16.5px;
+      max-width:980px;
     }
 
-    /* subtle callout (same layout language as other pages) */
+    /* =========================
+       HERO
+    ========================== */
     .hero{
-      margin: 12px 0 16px;
-      background: linear-gradient(135deg, rgba(77,166,255,.12), rgba(124,58,237,.10));
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(135deg, rgba(47,92,255,.08), rgba(109,40,217,.06));
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: 26px;
+      padding:18px;
+      margin: 10px 0 22px;
       box-shadow: var(--shadow2);
-      padding: 14px 16px;
     }
     .hero .kicker{
       font-weight:900;
-      margin:0 0 6px;
-      letter-spacing:.2px;
+      margin-bottom:6px;
+      letter-spacing:-.2px;
     }
     .hero .desc{
-      margin:0;
-      color: rgba(182,194,234,.92);
-      font-size:14px;
-      line-height:1.7;
-    }
-    .hint{
       color:var(--muted);
-      font-size:13px;
-      white-space:nowrap;
-      opacity:.95;
-    }
-    code{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 12.5px;
-      padding: 2px 6px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color: rgba(232,238,255,.92);
+      font-size:15.8px;
+      max-width:980px;
     }
 
-    /* ================= NEWS LIST ================= */
-    .news-list{
+    /* =========================
+       PANEL / CARD
+    ========================== */
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(246,248,252,.92));
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: calc(var(--radius) + 10px);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .coming{
       display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-
-    .news-item{
-      background: var(--panel);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:18px;
-      padding:14px 16px;
+      gap:14px;
+      align-items:flex-start;
+      padding:18px 18px;
+      border-radius: 18px;
+      border:1px solid rgba(17,24,39,.08);
+      background: rgba(255,255,255,.86);
       box-shadow: var(--shadow2);
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-    }
-    .news-item:hover{
-      transform: translateY(-1px);
-      box-shadow: var(--shadow3);
-      border-color: rgba(77,166,255,.22);
     }
 
-    .news-top{
-      display:flex;
-      gap:12px;
-      align-items:baseline;
-      justify-content:space-between;
-      flex-wrap:wrap;
+    .dot{
+      width:12px; height:12px;
+      border-radius:999px;
+      margin-top:7px;
+      flex:0 0 auto;
+      background: linear-gradient(135deg, rgba(47,92,255,.75), rgba(109,40,217,.55));
+      box-shadow: 0 12px 22px rgba(47,92,255,.14);
     }
 
-    .news-date{
-      color: rgba(182,194,234,.85);
-      font-size:12px;
-      white-space:nowrap;
+    .coming h2{
+      margin:0 0 6px;
+      font-size:18px;
+      font-weight:950;
+      letter-spacing:-.2px;
     }
 
-    .news-title{
+    .coming p{
       margin:0;
-      font-size:16px;
-      font-weight:850;
-      line-height:1.25;
-      letter-spacing:.1px;
+      color:var(--muted);
+      font-size:15.8px;
+      line-height:1.75;
     }
 
-    .news-text{
-      margin:8px 0 0;
+    /* =========================
+       FOOTER
+    ========================== */
+    footer{
+      margin-top:26px;
+      padding:18px 0 34px;
       color: var(--muted);
       font-size:14px;
-      line-height:1.7;
+      border-top: 1px solid var(--line);
     }
-
-    .news-link{
-      margin-top:10px;
-      font-size:13px;
-      font-weight:800;
-    }
-    .news-link a{
-      display:inline-flex;
+    .foot{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
       align-items:center;
-      gap:6px;
-      padding:6px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(77,166,255,.28);
-      background: rgba(77,166,255,.08);
-      text-decoration:none;
-    }
-    .news-link a:hover{
-      background: rgba(77,166,255,.12);
-      border-color: rgba(77,166,255,.36);
+      justify-content:space-between;
     }
 
-    /* ================= PLACEHOLDER STATE ================= */
-    .soon{
-      background: linear-gradient(135deg, rgba(17,24,39,.52), rgba(15,23,42,.62));
-      border:1px solid rgba(255,255,255,.08);
-    }
-    .soon .news-title{ font-size:17px; }
-    .soon .news-text{ font-size:14.2px; }
-
-    /* ================= FOOTER ================= */
-    footer{
-      margin-top:34px;
-      padding:20px 0;
-      text-align:center;
-      color:var(--muted);
-      border-top:1px solid rgba(255,255,255,.06);
-      font-size:13px;
-    }
-
-    /* ================= RESPONSIVE ================= */
-    @media (max-width: 760px){
-      main{ padding-top:40px; }
-      h1{ font-size:28px; }
-      .hint{ display:none; }
-      .news-title{ font-size:15.5px; }
-      .news-text{ font-size:13.6px; }
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 780px){
+      :root{ --pad:18px; }
+      .header h1{ font-size:42px; }
+      .panel{ padding:18px; }
+      .coming{ padding:16px; }
     }
   </style>
 </head>
 
-<body>
+<body data-page="news">
+  <!-- ✅ unified nav injection placeholder -->
+  <div id="site-nav"></div>
 
-  <div class="nav">
-    <div class="container">
-      <div class="nav-inner">
-        <div class="brand">Terahertz Electrodynamics Lab @ CAS AIR</div>
-        <div class="menu">
-          <a href="index.html">Home</a>
-          <a href="research.html">Research</a>
-          <a href="people.html">People</a>
-          <a href="publications.html">Publications</a>
-          <a class="active" href="news.html">News</a>
-          <a href="join.html">Join</a>
-          <a href="contact.html" class="cta">Contact</a>
+  <div class="container">
+
+    <div class="header">
+      <h1>News</h1>
+      <div class="sub">
+        Updates from the lab — publications, milestones, talks, and opportunities.
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="kicker">More updates coming soon.</div>
+      <div class="desc">
+        We’re setting up the lab and building the platform — we’ll start posting regular updates here once things settle.
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="coming">
+        <div class="dot"></div>
+        <div>
+          <h2>In the meantime…</h2>
+          <p>
+            If you’d like to connect (collaboration, joining the lab, or just a quick chat), feel free to reach out at
+            <a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
+          </p>
         </div>
       </div>
     </div>
+
+    <div style="height:26px"></div>
   </div>
 
-  <main>
-    <div class="container">
-      <div class="title-row">
-        <h1>News</h1>
-        <div class="hint">Updates will appear here soon</div>
-      </div>
-
-      <div class="hero">
-        <div class="kicker">More is coming soon.</div>
-        <p class="desc">
-          I’m still setting up the site and the lab workflow. Once things settle down, I’ll start posting updates here.
-        </p>
-      </div>
-
-      <!-- Placeholder item (no news.json for now) -->
-      <div class="news-list">
-        <div class="news-item soon">
-          <div class="news-top">
-            <div class="news-title">Site updates in progress</div>
-            <div class="news-date">—</div>
-          </div>
-          <div class="news-text">
-            Thanks for stopping by. This page will host short updates on papers, talks, lab builds, and milestones.
-          </div>
-          <div class="news-link">
-            <a href="contact.html">Contact →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- If you want to re-enable auto-loading later, just uncomment the block below
-      <div id="news-list" class="news-list"></div>
-      -->
-
-    </div>
-  </main>
-
   <footer>
-    © <span id="y"></span> Wenhao Zheng Lab · <a href="contact.html">Contact</a>
+    <div class="container">
+      <div class="foot">
+        <div>© <span id="y"></span></div>
+        <div><a href="contact.html">Contact</a></div>
+      </div>
+    </div>
   </footer>
 
+  <script src="nav.js"></script>
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-
-    // If you want to re-enable auto-loading from news.json later, paste your original
-    // renderAllNews() code here and render into #news-list.
   </script>
 </body>
 </html>
