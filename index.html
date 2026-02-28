@@ -7,7 +7,7 @@
 
   <style>
     /* =========================================================
-       THEME TOKENS (match People)
+       0) THEME (Light) — align with People page
     ========================================================== */
     :root{
       --bg:#ffffff;
@@ -17,42 +17,45 @@
       --muted:#55627a;
       --line:rgba(17,24,39,.10);
 
+      --card:#ffffff;
       --shadow: 0 16px 40px rgba(15,23,42,.10);
       --shadow2: 0 10px 24px rgba(15,23,42,.08);
 
       --accent:#2f5cff;
       --accent2:#6d28d9;
-      --accentSoft: rgba(47,92,255,.10);
 
-      --radius:22px;
+      --radius:20px;
 
-      /* ✅ match People: big screen wider */
+      /* ✅ 大屏更宽，小屏不变（与 People 一致的思路） */
       --max: clamp(1080px, 92vw, 1360px);
 
+      /* 统一左右边距 */
       --pad:24px;
-      --p: 28px;
-      --p-sm: 22px;
     }
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
-
     body{
       margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,
-        "Noto Sans","PingFang SC","Microsoft Yahei",sans-serif;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
       color:var(--text);
+
+      /* 背景轻微氛围光（与 People 风格一致） */
       background:
         radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.10), transparent 60%),
         radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
         linear-gradient(var(--bg), var(--bg));
+
       line-height:1.65;
-      overflow-x:hidden;
+      overflow-x:hidden; /* 避免横向溢出造成错觉 */
     }
 
     a{ color:var(--accent); text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
+    /* =========================================================
+       1) LAYOUT
+    ========================================================== */
     .container{
       max-width:var(--max);
       margin:0 auto;
@@ -60,7 +63,7 @@
     }
 
     /* =========================================================
-       NAV (FULLY MATCH People)
+       2) NAV (match People sizing & vibe)
     ========================================================== */
     .nav{
       position:sticky; top:0; z-index:1000;
@@ -73,27 +76,27 @@
       justify-content:space-between;
       align-items:center;
       gap:20px;
-      padding:18px 0;              /* ✅ same as People */
+      padding:18px 0;
     }
     .brand{
-      font-weight:850;             /* ✅ same as People */
-      font-size:20px;              /* ✅ same as People */
+      font-weight:850;
+      font-size:20px;
       letter-spacing:.2px;
       white-space:nowrap;
     }
     .menu{
       display:flex;
+      flex-wrap:wrap;
       gap:12px;
       align-items:center;
-      flex-wrap:wrap;
       justify-content:flex-end;
     }
     .menu a{
-      padding:10px 14px;           /* ✅ same as People */
+      padding:10px 14px;
       border-radius:999px;
       color:var(--text);
       font-weight:720;
-      font-size:15px;              /* ✅ same as People */
+      font-size:15px;
       border:1px solid transparent;
       transition: background .15s ease, border-color .15s ease, transform .15s ease;
       text-decoration:none;
@@ -102,9 +105,7 @@
       background: rgba(47,92,255,.08);
       border-color: rgba(47,92,255,.25);
       transform: translateY(-1px);
-      text-decoration:none;
     }
-    /* Home 高亮 */
     .menu a.active{
       background: rgba(47,92,255,.10);
       border-color: rgba(47,92,255,.30);
@@ -116,42 +117,45 @@
     }
 
     /* =========================================================
-       HERO
+       3) HERO
+       Fixes:
+         - ✅ remove right-heavy whitespace by removing max-width on text
+         - ✅ more breathing room below title
+         - ✅ slightly more generous padding
     ========================================================== */
     .hero{
-      padding:30px 0 10px; /* 更接近 People 的节奏 */
+      padding:36px 0 12px;
     }
     .hero-card{
       width:100%;
-      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(246,248,252,.90));
+      margin:0 auto;
+      background: linear-gradient(180deg, rgba(255,255,255,.90), rgba(246,248,252,.88));
       border: 1px solid rgba(17,24,39,.08);
       border-radius: calc(var(--radius) + 10px);
       box-shadow: var(--shadow);
-      padding:34px;
+      padding:42px 48px;
     }
-
     .hero-title{
-      margin:0;
-      font-size:54px;
+      margin:0 0 10px;          /* ✅ 标题与正文拉开 */
+      font-size:56px;
       line-height:1.08;
-      letter-spacing:-.7px;
-      margin-bottom:10px;
+      letter-spacing:-.6px;
     }
     .hero-text{
-      margin:26px 0 0;
-      color:var(--muted);
-      font-size:16px;
-      max-width: 980px;
-      text-align: justify;
-      text-justify: inter-word;
+      margin:22px 0 0;
+      color: var(--muted);
+      font-size:17px;
+      line-height:1.75;
+
+      max-width:none;           /* ✅ 关键：不限制宽度，左右更平衡 */
     }
-    .hero-text p{ margin:0 0 12px; }
+    .hero-text p{ margin:0 0 14px; }
 
     .btn-row{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-top:18px;
+      margin-top:20px;
     }
     .btn{
       display:inline-flex;
@@ -162,17 +166,11 @@
       border:1px solid rgba(17,24,39,.12);
       background:#fff;
       color:var(--text);
-      font-weight:750;
+      font-weight:800;
       box-shadow: 0 6px 14px rgba(15,23,42,.06);
       text-decoration:none;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
-    .btn:hover{
-      text-decoration:none;
-      transform: translateY(-1px);
-      box-shadow: 0 12px 22px rgba(15,23,42,.10);
-      border-color: rgba(47,92,255,.20);
-    }
+    .btn:hover{ text-decoration:none; }
     .btn.primary{
       background: linear-gradient(180deg, rgba(47,92,255,.95), rgba(47,92,255,.85));
       border-color: rgba(47,92,255,.35);
@@ -180,39 +178,32 @@
       box-shadow: 0 14px 30px rgba(47,92,255,.20);
     }
     .btn.ghost{
-      background: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.70);
     }
 
     /* =========================================================
-       NEWS (match People card vibe)
+       4) NEWS
+       Fixes:
+         - ✅ remove the blue line (no ::after)
+         - keep clean heading style
     ========================================================== */
     .news{
-      padding:22px 0 10px;
+      padding:10px 0 10px;
     }
     .news-head{
       display:flex;
       justify-content:space-between;
       align-items:flex-end;
       gap:12px;
-      margin: 18px 0 10px;
+      margin: 18px 0 12px;
     }
     .news-head h2{
       margin:0;
-      font-size:22px;
-      letter-spacing:.1px;
-      display:flex;
-      align-items:center;
-      gap:10px;
+      font-size:26px;
+      font-weight:800;
+      letter-spacing:-.2px;
     }
-    /* 小横条装饰（和 People section-title 一致） */
-    .news-head h2::after{
-      content:"";
-      height:4px;
-      width:120px;
-      border-radius:999px;
-      background: linear-gradient(90deg, rgba(47,92,255,.70), rgba(109,40,217,.55));
-      opacity:.9;
-    }
+    /* ✅ 确保没有蓝线：如果你旧代码里有 h2::after，删掉即可（这里不写） */
 
     .news-list{
       display:flex;
@@ -229,7 +220,7 @@
     }
     .news-item:hover{
       transform: translateY(-1px);
-      box-shadow: 0 16px 34px rgba(15,23,42,.10);
+      box-shadow: 0 14px 30px rgba(15,23,42,.10);
       border-color: rgba(47,92,255,.18);
     }
     .news-top{
@@ -246,13 +237,6 @@
       line-height:1.25;
       color: var(--text);
     }
-    .news-title a{
-      color: var(--text);
-      text-decoration:none;
-    }
-    .news-title a:hover{
-      text-decoration:underline;
-    }
     .news-date{
       color: var(--muted);
       font-size:12px;
@@ -262,6 +246,7 @@
       margin:8px 0 0;
       color: var(--muted);
       font-size:13px;
+      line-height:1.65;
     }
     .news-link{
       margin-top:8px;
@@ -270,7 +255,7 @@
     }
 
     /* =========================================================
-       FOOTER
+       5) FOOTER
     ========================================================== */
     footer{
       margin-top:22px;
@@ -281,20 +266,22 @@
     }
 
     /* =========================================================
-       RESPONSIVE
+       6) RESPONSIVE
     ========================================================== */
     @media (max-width: 900px){
-      .hero-title{ font-size:42px; }
-      .hero-card{ padding:26px; }
-      .hero-text{ margin-top:22px; }
-    }
+      /* 小屏保持“原来差不多”的宽度观感 */
+      :root{ --max: 1080px; }
 
+      .hero-title{ font-size:44px; }
+      .hero-card{ padding:30px; }
+    }
     @media (max-width: 560px){
       :root{ --pad:18px; }
-      .hero-title{ font-size:34px; line-height:1.10; }
-      .hero-text{ margin-top:18px; }
-      .menu a{ font-size:13px; padding:8px 10px; }
-      .brand{ font-size:18px; }
+
+      .hero-title{ font-size:36px; }
+      .menu a{ font-size:13px; padding:7px 9px; }
+      .hero-card{ padding:24px; }
+      .hero-text{ font-size:16px; }
     }
   </style>
 </head>
@@ -377,8 +364,10 @@
   </footer>
 
   <script>
+    /* Footer year */
     document.getElementById("y").textContent = new Date().getFullYear();
 
+    /* Home news loader — reads news.json in site root */
     function parseDateYMD(ymd){
       const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd || "");
       if(!m) return new Date(0);
@@ -433,6 +422,5 @@
 
     renderHomeNews();
   </script>
-
 </body>
 </html>
