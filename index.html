@@ -4,217 +4,432 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Terahertz Electrodynamics Lab @ CAS AIR</title>
+<meta name="description" content="Terahertz Electrodynamics Lab @ CAS AIR — ultrafast THz spectroscopy, on-chip THz platforms, quantum materials." />
 
 <style>
-:root{
-  --bg:#ffffff;
-  --text:#1e293b;
-  --muted:#64748b;
-  --accent:#2563eb;
-  --panel:#f8fafc;
-  --line:#e2e8f0;
-  --max:1080px;
-}
+  :root{
+    --bg:#ffffff;
+    --text:#0f172a;     /* slate-900 */
+    --muted:#475569;    /* slate-600 */
+    --muted2:#64748b;   /* slate-500 */
+    --accent:#2563eb;   /* blue-600 */
+    --accent2:#1d4ed8;  /* blue-700 */
+    --panel:#f8fafc;    /* slate-50 */
+    --line:#e2e8f0;     /* slate-200 */
+    --shadow:0 14px 40px rgba(2,6,23,.08);
+    --shadow2:0 10px 22px rgba(2,6,23,.06);
+    --radius:16px;
+    --max:1120px;
+  }
 
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.75;
-}
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(900px 420px at 15% 0%, rgba(37,99,235,.08), transparent 60%),
+      radial-gradient(900px 460px at 85% 10%, rgba(99,102,241,.06), transparent 60%),
+      linear-gradient(var(--bg), var(--bg));
+    line-height:1.75;
+  }
 
-.container{
-  max-width:var(--max);
-  margin:auto;
-  padding:0 24px;
-}
+  a{ color:var(--accent); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
 
-/* ===== NAV ===== */
-.nav{
-  position:sticky;
-  top:0;
-  background:#ffffffcc;
-  backdrop-filter: blur(6px);
-  border-bottom:1px solid var(--line);
-  z-index:100;
-}
-.nav-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:16px 0;
-}
-.brand{
-  font-weight:700;
-  white-space:nowrap;
-}
+  .container{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 24px;
+  }
 
-.menu a{
-  margin-left:18px;
-  text-decoration:none;
-  color:var(--text);
-  font-weight:500;
-}
-.menu a:hover{
-  color:var(--accent);
-}
+  /* =========================
+     NAV
+  ========================= */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#ffffffcc;
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:14px 0;
+  }
+  .brand{
+    font-weight:800;
+    letter-spacing:.2px;
+    white-space:nowrap;
+  }
+  .menu{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+  .menu a{
+    color:var(--text);
+    font-weight:600;
+    font-size:14px;
+    padding:8px 10px;
+    border-radius:999px;
+    border:1px solid transparent;
+  }
+  .menu a:hover{
+    text-decoration:none;
+    background:rgba(37,99,235,.06);
+    border-color:rgba(37,99,235,.18);
+  }
+  .menu .cta{
+    padding:8px 12px;
+    border:1px solid rgba(37,99,235,.22);
+    background:linear-gradient(180deg, rgba(37,99,235,.12), rgba(37,99,235,.06));
+  }
 
-/* ===== HERO ===== */
-.hero{
-  padding:64px 0 32px;
-}
+  /* =========================
+     HERO
+  ========================= */
+  .hero{
+    padding:42px 0 18px;
+  }
+  .hero-card{
+    background:linear-gradient(180deg, #ffffff, #ffffff);
+    border:1px solid var(--line);
+    border-radius:calc(var(--radius) + 6px);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.25fr .75fr; /* left text / right image */
+    gap:22px;
+    padding:28px 26px;
+    align-items:start;
+  }
+  h1{
+    margin:0 0 10px;
+    font-size:42px;
+    line-height:1.08;
+    letter-spacing:-.5px;
+  }
+  .lede{
+    margin:0 0 14px;
+    color:var(--muted);
+    font-size:16px;
+    text-align:justify;
+  }
+  .lede p{ margin:0 0 12px; }
 
-.hero h1{
-  font-size:48px;
-  margin-bottom:24px;
-  font-weight:800;
-}
+  .lede .small{
+    margin-top:6px;
+    color:var(--muted2);
+    font-size:15px;
+  }
 
-/* 图片区域 */
-.hero-img{
-  margin:30px 0 36px;
-  border-radius:14px;
-  overflow:hidden;
-  border:1px solid var(--line);
-}
-.hero-img img{
-  width:100%;
-  height:260px;
-  object-fit:cover;
-}
+  .btn-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:16px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 14px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    color:var(--text);
+    font-weight:700;
+    font-size:14px;
+    background:#fff;
+    box-shadow:var(--shadow2);
+  }
+  .btn:hover{
+    text-decoration:none;
+    border-color:rgba(37,99,235,.30);
+    color:var(--accent2);
+  }
+  .btn.primary{
+    background:linear-gradient(180deg, rgba(37,99,235,.95), rgba(29,78,216,.95));
+    color:#fff;
+    border-color:transparent;
+  }
+  .btn.primary:hover{ filter:brightness(1.02); color:#fff; }
 
-/* 正文 */
-.hero-text{
-  max-width:800px;
-  text-align:justify;
-  font-size:16px;
-}
+  /* right image */
+  .hero-figure{
+    border-radius:16px;
+    border:1px solid var(--line);
+    background: var(--panel);
+    overflow:hidden;
+    min-height:260px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted2);
+    font-weight:700;
+  }
+  .hero-figure img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .figure-cap{
+    margin-top:10px;
+    color:var(--muted2);
+    font-size:12.5px;
+    line-height:1.5;
+  }
 
-.hero-text p{
-  margin-bottom:18px;
-}
+  /* =========================
+     SECTION: NEWS
+  ========================= */
+  .section{
+    padding:22px 0 34px;
+  }
+  .section-title{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:12px;
+    margin: 0 0 10px;
+  }
+  .section-title h2{
+    margin:0;
+    font-size:18px;
+    letter-spacing:.2px;
+  }
+  .section-title .hint{
+    color:var(--muted2);
+    font-size:13px;
+  }
 
-/* 按钮 */
-.btn-row{
-  margin-top:28px;
-}
-.btn{
-  padding:10px 18px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  margin-right:12px;
-  text-decoration:none;
-  color:var(--text);
-  font-weight:500;
-}
-.btn:hover{
-  border-color:var(--accent);
-  color:var(--accent);
-}
-.btn.primary{
-  background:var(--accent);
-  color:white;
-  border:none;
-}
+  /* 1列*多行（你要的） */
+  .news-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .news-item{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px 16px;
+    box-shadow:var(--shadow2);
+  }
+  .news-top{
+    display:flex;
+    gap:10px;
+    align-items:baseline;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .news-date{
+    color:var(--muted2);
+    font-size:12px;
+    white-space:nowrap;
+  }
+  .news-title{
+    margin:0;
+    font-size:15px;
+    font-weight:900;
+    line-height:1.25;
+  }
+  .news-text{
+    margin:8px 0 0;
+    color:var(--muted);
+    font-size:13.5px;
+  }
+  .news-link{
+    margin-top:8px;
+    font-size:13px;
+    font-weight:800;
+  }
 
-/* ===== NEWS ===== */
-.news{
-  margin-top:40px;
-}
+  /* =========================
+     FOOTER
+  ========================= */
+  footer{
+    margin-top:38px;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+    color:var(--muted2);
+    font-size:13px;
+  }
 
-.news h2{
-  font-size:20px;
-  margin-bottom:20px;
-}
-
-.news-item{
-  padding:18px 0;
-  border-bottom:1px solid var(--line);
-}
-.news-title{
-  font-weight:600;
-}
-.news-date{
-  color:var(--muted);
-  font-size:13px;
-}
-
-footer{
-  margin-top:60px;
-  padding:24px 0;
-  border-top:1px solid var(--line);
-  font-size:13px;
-  color:var(--muted);
-}
+  /* =========================
+     RESPONSIVE
+  ========================= */
+  @media (max-width: 980px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-figure{ min-height:220px; }
+    h1{ font-size:36px; }
+  }
+  @media (max-width: 520px){
+    .container{ padding:0 16px; }
+    h1{ font-size:32px; }
+    .menu a{ padding:7px 9px; }
+  }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <div class="nav">
-<div class="container nav-inner">
-<div class="brand">Terahertz Electrodynamics Lab @ CAS AIR</div>
-<div class="menu">
-<a href="index.html">Home</a>
-<a href="research.html">Research</a>
-<a href="people.html">People</a>
-<a href="publications.html">Publications</a>
-<a href="news.html">News</a>
-<a href="join.html">Join</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
-</div>
-
-<div class="container hero">
-
-<h1>Terahertz Electrodynamics of Quantum Materials group</h1>
-
-<!-- 放实验图 / setup 图 -->
-<div class="hero-img">
-<!-- 有图就用 -->
-<!-- <img src="assets/hero.jpg"> -->
-
-<!-- 没图占位 -->
-<div style="padding:40px;color:var(--muted);text-align:center">
-Hero image placeholder
-</div>
+  <div class="container">
+    <div class="nav-inner">
+      <div class="brand">Terahertz Electrodynamics Lab @ CAS AIR</div>
+      <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="people.html">People</a>
+        <a href="publications.html">Publications</a>
+        <a href="news.html">News</a>
+        <a href="join.html">Join</a>
+        <a class="cta" href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="hero-text">
-<p>
-We build ultrafast THz spectroscopy — especially on-chip integrated THz platforms — to reveal low-energy electrodynamics, correlations, and nonequilibrium transport in low-dimensional quantum materials.
-</p>
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-card">
+      <div class="hero-grid">
 
-<p>
-Our lab is based at the Aerospace Information Research Institute, Chinese Academy of Sciences (GBA branch), Guangzhou. We welcome inquiries from candidates interested in pursuing opportunities as Bachelor’s students, Master’s students, PhD students, Postdoctoral researchers, Engineers, and Assistant Professors.
-If you are motivated to explore ultrafast spectroscopy, low-dimensional (2D) materials, and low-temperature quantum transport, please feel free to contact me at:
-<a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
-</p>
+        <!-- LEFT -->
+        <div>
+          <h1>Terahertz Electrodynamics of Quantum Materials group</h1>
+
+          <div class="lede">
+            <p>
+              We build ultrafast THz spectroscopy — especially on-chip integrated THz platforms — to reveal low-energy electrodynamics,
+              correlations, and nonequilibrium transport in low-dimensional quantum materials.
+            </p>
+
+            <p class="small">
+              Our lab is based at the Aerospace Information Research Institute, Chinese Academy of Sciences (GBA branch), Guangzhou.
+              We welcome inquiries from candidates interested in pursuing opportunities as Bachelor’s students, Master’s students, PhD students,
+              Postdoctoral researchers, Engineers, and Assistant Professors.
+              If you are motivated to explore ultrafast spectroscopy, low-dimensional (2D) materials, and low-temperature quantum transport,
+              please feel free to contact me at:
+              <a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
+            </p>
+          </div>
+
+          <div class="btn-row">
+            <a class="btn primary" href="research.html">Explore Research</a>
+            <a class="btn" href="people.html">Meet the Team</a>
+            <a class="btn" href="join.html">Open Positions</a>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div>
+          <div class="hero-figure">
+            <!-- ✅ 有图片就用这一行（建议 1200×700 左右） -->
+            <!-- <img src="assets/hero.jpg" alt="Lab hero image" /> -->
+
+            <!-- ✅ 没图片暂时显示占位 -->
+            <div>Hero image placeholder</div>
+          </div>
+          <div class="figure-cap">
+            Tip: Put your setup / chip / spectrum figure here (e.g., <code>assets/hero.jpg</code>). This block will instantly improve the layout.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="btn-row">
-<a class="btn primary" href="research.html">Explore Research</a>
-<a class="btn" href="people.html">Meet the Team</a>
-<a class="btn" href="join.html">Open Positions</a>
+<!-- NEWS -->
+<div class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>News</h2>
+      <div class="hint">Latest updates (auto-loaded from <code>news.json</code>)</div>
+    </div>
+
+    <div id="news-list" class="news-list"></div>
+  </div>
 </div>
 
-<div class="news">
-<h2>News</h2>
-<div id="news-list"></div>
-</div>
-
-</div>
-
+<!-- FOOTER -->
 <footer>
-<div class="container">
-© <span id="y"></span>
-</div>
+  <div class="container">
+    © <span id="y"></span>
+  </div>
 </footer>
 
 <script>
-document.getElementById("y").textContent = new Date().getFullYear();
+  // year
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  // parse YYYY-MM-DD
+  function parseDateYMD(ymd){
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd || "");
+    if(!m) return new Date(0);
+    return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+  }
+
+  // render news: show top 10, 1-column list
+  async function renderNews(){
+    const box = document.getElementById("news-list");
+    try{
+      const res = await fetch("news.json", { cache:"no-store" });
+      if(!res.ok) throw new Error("news.json not found");
+      let items = await res.json();
+      items = (items || []).slice()
+        .sort((a,b) => parseDateYMD(b.date) - parseDateYMD(a.date))
+        .slice(0, 10);
+
+      if(items.length === 0){
+        box.innerHTML = `<div class="news-item"><div class="news-text">No updates yet.</div></div>`;
+        return;
+      }
+
+      box.innerHTML = items.map(it => {
+        const date = it.date || "";
+        const title = it.title || "";
+        const text = it.text || "";
+        const link = (it.link || "").trim();
+
+        const titleHtml = link ? `<a href="${link}">${title}</a>` : `${title}`;
+        const linkHtml = link ? `<div class="news-link"><a href="${link}">Read more →</a></div>` : "";
+
+        return `
+          <div class="news-item">
+            <div class="news-top">
+              <div class="news-title">${titleHtml}</div>
+              <div class="news-date">${date}</div>
+            </div>
+            ${text ? `<div class="news-text">${text}</div>` : ""}
+            ${linkHtml}
+          </div>
+        `;
+      }).join("");
+
+    }catch(e){
+      box.innerHTML =
+        `<div class="news-item">
+           <div class="news-text"><b>News not loaded.</b> Please add <code>news.json</code> to the repo root.</div>
+         </div>`;
+    }
+  }
+
+  renderNews();
 </script>
 
 </body>
