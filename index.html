@@ -25,9 +25,11 @@
       --accent2:#6d28d9;
 
       --radius:20px;
-      --max:1080px;
 
-      /* 统一左右边距（避免出现“右边留白比左边多”的观感） */
+      /* ✅ 大屏更宽，小屏不变（和 People 一致） */
+      --max: clamp(1080px, 92vw, 1360px);
+
+      /* 统一左右边距 */
       --pad:24px;
     }
 
@@ -37,16 +39,11 @@
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
       color:var(--text);
-
-      /* 背景轻微氛围光 */
       background:
         radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.10), transparent 60%),
         radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
         linear-gradient(var(--bg), var(--bg));
-
       line-height:1.65;
-
-      /* 关键：避免任何元素导致横向溢出，从而出现“右边更宽/更窄”的错觉 */
       overflow-x:hidden;
     }
 
@@ -79,9 +76,10 @@
       padding:14px 0;
     }
     .brand{
-      font-weight:600;     /* 不要太粗 */
+      font-weight:650;
       letter-spacing:.1px;
       white-space:nowrap;
+      font-size:16px;
     }
     .menu{
       display:flex;
@@ -94,14 +92,16 @@
       padding:8px 10px;
       border-radius:999px;
       color:var(--text);
-      font-weight:600;
+      font-weight:650;
       font-size:14px;
       border:1px solid transparent;
       text-decoration:none;
+      transition: background .15s ease, border-color .15s ease, transform .15s ease;
     }
     .menu a:hover{
       background: rgba(47,92,255,.06);
       border-color: rgba(47,92,255,.18);
+      transform: translateY(-1px);
     }
     .cta{
       padding:8px 14px !important;
@@ -117,24 +117,27 @@
     }
     .hero-card{
       width:100%;
-      margin:0 auto; /* 强制居中 */
+      margin:0 auto;
       background: linear-gradient(180deg, rgba(255,255,255,.90), rgba(246,248,252,.88));
       border: 1px solid rgba(17,24,39,.08);
       border-radius: calc(var(--radius) + 10px);
       box-shadow: var(--shadow);
       padding:34px;
     }
+
+    /* ✅ 核心改动：标题和正文拉开距离 */
     .hero-title{
       margin:0;
-      font-size:50px;
-      line-height:1.05;
-      letter-spacing:-.5px;
+      font-size:54px;
+      line-height:1.10;          /* 更舒服 */
+      letter-spacing:-.6px;
+      margin-bottom:10px;        /* ✅ 标题下面再加一点空隙 */
     }
     .hero-text{
-      margin:16px 0 0;
+      margin:26px 0 0;           /* ✅ 原来 16px → 26px */
       color: var(--muted);
       font-size:16px;
-      max-width: 920px;
+      max-width: 980px;
       text-align: justify;
       text-justify: inter-word;
     }
@@ -144,7 +147,7 @@
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-top:18px;
+      margin-top:20px;
     }
     .btn{
       display:inline-flex;
@@ -155,11 +158,17 @@
       border:1px solid rgba(17,24,39,.12);
       background:#fff;
       color:var(--text);
-      font-weight:700;
+      font-weight:750;
       box-shadow: 0 6px 14px rgba(15,23,42,.06);
       text-decoration:none;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
-    .btn:hover{ text-decoration:none; }
+    .btn:hover{
+      text-decoration:none;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 22px rgba(15,23,42,.10);
+      border-color: rgba(47,92,255,.20);
+    }
     .btn.primary{
       background: linear-gradient(180deg, rgba(47,92,255,.95), rgba(47,92,255,.85));
       border-color: rgba(47,92,255,.35);
@@ -167,11 +176,11 @@
       box-shadow: 0 14px 30px rgba(47,92,255,.20);
     }
     .btn.ghost{
-      background: rgba(255,255,255,.70);
+      background: rgba(255,255,255,.72);
     }
 
     /* =========================================================
-       4) NEWS (Home snippet) — 去掉右侧那行提示
+       4) NEWS
     ========================================================== */
     .news{
       padding:22px 0 10px;
@@ -199,6 +208,12 @@
       border-radius: 16px;
       padding: 14px 16px;
       box-shadow: var(--shadow2);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .news-item:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 16px 34px rgba(15,23,42,.10);
+      border-color: rgba(47,92,255,.18);
     }
     .news-top{
       display:flex;
@@ -210,7 +225,7 @@
     .news-title{
       margin:0;
       font-size:15px;
-      font-weight:800;
+      font-weight:850;
       line-height:1.25;
       color: var(--text);
     }
@@ -227,7 +242,7 @@
     .news-link{
       margin-top:8px;
       font-size:13px;
-      font-weight:800;
+      font-weight:850;
     }
 
     /* =========================================================
@@ -245,13 +260,15 @@
        6) RESPONSIVE
     ========================================================== */
     @media (max-width: 900px){
-      .hero-title{ font-size:40px; }
+      .hero-title{ font-size:42px; }
       .hero-card{ padding:26px; }
+      .hero-text{ margin-top:22px; }
     }
     @media (max-width: 560px){
-      .hero-title{ font-size:34px; }
+      .hero-title{ font-size:34px; line-height:1.12; margin-bottom:8px; }
+      .hero-text{ margin-top:18px; }
       .menu a{ font-size:13px; padding:7px 9px; }
-      :root{ --pad:18px; } /* 小屏略缩左右边距 */
+      :root{ --pad:18px; }
     }
   </style>
 </head>
@@ -318,9 +335,7 @@
     <div class="container">
       <div class="news-head">
         <h2>News</h2>
-        <!-- 你要去掉的那句提示，这里已经删掉 -->
       </div>
-
       <div id="news-list" class="news-list"></div>
     </div>
   </div>
@@ -335,17 +350,8 @@
   </footer>
 
   <script>
-    /* =========================================================
-       JS: Footer year
-    ========================================================== */
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    /* =========================================================
-       JS: Home news loader
-       - reads news.json in site root
-       - sorts by date desc
-       - shows top N items
-    ========================================================== */
     function parseDateYMD(ymd){
       const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd || "");
       if(!m) return new Date(0);
