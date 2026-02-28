@@ -32,12 +32,6 @@
       --radius:20px;
       --max: clamp(1080px, 92vw, 1360px);
       --pad:24px;
-
-      /* typography */
-      --h1:48px;
-      --h2:22px;
-      --body:16px;
-      --small:13px;
     }
 
     *{ box-sizing:border-box; }
@@ -53,7 +47,7 @@
         radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
         linear-gradient(var(--bg), var(--bg));
 
-      line-height:1.75;
+      line-height:1.7;
       overflow-x:hidden;
     }
 
@@ -69,17 +63,17 @@
     /* =========================================================
        PAGE HEADER
     ========================================================== */
-    .header{ padding:30px 0 14px; }
+    .header{ padding:34px 0 14px; }
     .header h1{
       margin:0;
-      font-size:var(--h1);
-      letter-spacing:-.6px;
+      font-size:50px;
+      letter-spacing:-.7px;
       line-height:1.05;
     }
     .header .sub{
       margin:14px 0 0;
       color:var(--muted);
-      font-size:var(--body);
+      font-size:16px;
       max-width: 980px;
     }
 
@@ -91,76 +85,57 @@
       border: 1px solid rgba(17,24,39,.08);
       border-radius: calc(var(--radius) + 10px);
       box-shadow: var(--shadow);
-      padding: 26px;
-      position:relative;
-      overflow:hidden;
-    }
-    /* subtle panel glow */
-    .panel::before{
-      content:"";
-      position:absolute;
-      inset:-120px -160px auto auto;
-      width:420px; height:420px;
-      background: radial-gradient(circle at 30% 30%, rgba(47,92,255,.14), transparent 55%);
-      filter: blur(2px);
-      pointer-events:none;
+      padding: 28px;
     }
 
+    /* 让“Selected / Full List”更像一个层级系统 */
     .section-title{
       display:flex;
       justify-content:space-between;
       align-items:flex-end;
       gap:12px;
-      margin:0 0 12px;
+      margin:0 0 14px;
     }
     .section-title h2{
       margin:0;
-      font-size:var(--h2);
+      font-size:22px;
       letter-spacing:-.2px;
       font-weight:950;
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:12px;
     }
-    /* little accent bar */
+    /* ✅ 去掉蓝线式的“硬分割”，换成更柔和的点+渐变短条 */
     .section-title h2::after{
       content:"";
       height:4px;
       width:120px;
       border-radius:999px;
-      background: linear-gradient(90deg, rgba(47,92,255,.70), rgba(109,40,217,.55));
+      background: linear-gradient(90deg, rgba(47,92,255,.70), rgba(109,40,217,.45));
+      opacity:.85;
       transform: translateY(2px);
-      opacity:.9;
     }
     .hint{
       color:var(--muted);
-      font-size:var(--small);
-      font-weight:800;
+      font-size:13px;
+      font-weight:850;
       white-space:nowrap;
     }
 
-    .divider{
-      height:1px;
-      background: rgba(17,24,39,.08);
-      margin:18px 0;
-      border-radius:999px;
-    }
-
     /* =========================================================
-       PUBLICATION LIST
-       - better spacing, consistent alignment
-       - number column fixed width for clean edges
+       PUBLICATION LIST (bigger + cleaner)
     ========================================================== */
     .publist{
       display:flex;
       flex-direction:column;
-      gap:12px;
+      gap:14px;
     }
+
     .pub{
-      background: rgba(255,255,255,.92);
-      border:1px solid rgba(17,24,39,.08);
-      border-radius: 16px;
-      padding: 14px 16px;
+      background: rgba(255,255,255,.94);
+      border:1px solid rgba(17,24,39,.085);
+      border-radius: 18px;
+      padding: 16px 18px;
       box-shadow: var(--shadow2);
       transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
     }
@@ -168,36 +143,43 @@
       transform: translateY(-2px);
       box-shadow: var(--shadow3);
       border-color: rgba(47,92,255,.22);
-      background: rgba(255,255,255,.96);
+      background: rgba(255,255,255,.98);
     }
 
+    /* Selected 部分没有序号：给一个“无序号模式” */
     .pub-title{
       margin:0;
-      font-size:15px;
+      font-size:17px;      /* ✅ bigger */
       font-weight:950;
-      line-height:1.35;
+      line-height:1.38;
       color:var(--text);
+      display:block;
+    }
+
+    /* Full List 标题用两列：序号 + 标题 */
+    .pub-title.numline{
       display:grid;
-      grid-template-columns: 44px 1fr;  /* ✅ 序号统一列宽 */
-      gap:10px;
+      grid-template-columns: 52px 1fr;
+      gap:12px;
       align-items:start;
     }
 
     /* ✅ Full List 序号：简单 1. 2. ... */
     .num{
       font-weight:950;
-      font-size:14px;
-      color: rgba(17,24,39,.78);
-      line-height:1.35;
+      font-size:15px;
+      color: rgba(17,24,39,.70);
+      line-height:1.38;
       text-align:right;
       padding-top:1px;
+      flex:0 0 auto;
     }
 
     .pub-meta{
-      margin-top:6px;
+      margin-top:8px;
       color:var(--muted);
-      font-size:13px;
-      line-height:1.65;
+      font-size:14.5px;   /* ✅ bigger */
+      line-height:1.7;
     }
 
     /* ✅ 期刊名加粗（pub-meta 里的 <i>） */
@@ -208,10 +190,10 @@
     }
 
     .year{
-      margin:22px 0 10px;
+      margin:26px 0 12px;
       font-weight:1000;
       letter-spacing:.2px;
-      font-size:16px;
+      font-size:17px;
       color: rgba(17,24,39,.92);
       display:flex;
       align-items:center;
@@ -225,9 +207,11 @@
       box-shadow: 0 8px 18px rgba(47,92,255,.18);
     }
 
-    /* Make "Selected" look slightly special */
-    .panel .publist:first-of-type .pub{
-      border-color: rgba(47,92,255,.14);
+    .divider{
+      height:1px;
+      background: rgba(17,24,39,.08);
+      margin:20px 0;
+      border-radius:999px;
     }
 
     /* =========================================================
@@ -248,21 +232,26 @@
     /* =========================================================
        RESPONSIVE
     ========================================================== */
-    @media (max-width: 900px){
-      :root{ --h1:42px; }
-    }
     @media (max-width: 780px){
-      :root{ --pad:18px; --h1:40px; }
+      :root{ --pad:18px; }
+      .header h1{ font-size:42px; }
       .hint{ display:none; }
-      .pub-title{ grid-template-columns: 38px 1fr; }
-      .section-title h2::after{ width:90px; }
+
+      .panel{ padding:22px; }
+
+      .pub-title{ font-size:16px; }
+      .pub-title.numline{ grid-template-columns: 44px 1fr; }
+      .num{ font-size:14.5px; }
+      .pub-meta{ font-size:14px; }
     }
+
     @media (max-width: 560px){
-      :root{ --h1:36px; }
-      .panel{ padding:20px; }
-      .pub{ padding:12px 14px; }
-      .pub-title{ grid-template-columns: 34px 1fr; font-size:14.5px; }
-      .pub-meta{ font-size:12.8px; }
+      .header h1{ font-size:38px; }
+      .panel{ padding:18px; }
+      .pub{ padding:14px 14px; }
+      .pub-title{ font-size:15.5px; }
+      .pub-title.numline{ grid-template-columns: 40px 1fr; }
+      .pub-meta{ font-size:13.6px; }
     }
   </style>
 </head>
@@ -279,7 +268,7 @@
     <div class="header">
       <h1>Publications</h1>
       <div class="sub">
-        以下条目根据你提供的 BibTeX 整理（不新增、不臆造）。目前大多数条目未包含 DOI/URL，因此此页先按标准引文格式展示；后续如补充 DOI/链接可一键加按钮。
+        以下条目根据你提供的 BibTeX 整理（不新增、不臆造）。目前大多数条目未包含 DOI/URL，因此此页先按标准引文格式展示；后续如补充 DOI/链接可再做增强。
       </div>
     </div>
 
@@ -291,27 +280,27 @@
 
       <div class="publist">
         <div class="pub">
-          <div class="pub-title"><span class="num"></span><span>Photothermal effects control ultrafast charge transport in titanium carbide MXenes</span></div>
+          <div class="pub-title">Photothermal effects control ultrafast charge transport in titanium carbide MXenes</div>
           <div class="pub-meta">Wenhao Zheng, Hugh Ramsden, Stefano Ippolito, Max van Hemert, Danzhen Zhang, Teng Zhang, Dongqi Li, Guanzhao Wen, Jaco J. Geuchies, Minghao Yu, et al. · <i>Nature Communications</i> (2026)</div>
         </div>
 
         <div class="pub">
-          <div class="pub-title"><span class="num"></span><span>Triphasic synthesis of MXenes with uniform and controlled halogen terminations</span></div>
+          <div class="pub-title">Triphasic synthesis of MXenes with uniform and controlled halogen terminations</div>
           <div class="pub-meta">Dongqi Li#, Wenhao Zheng#, Mahdi Ghorbani-Asl#, Juliane Scheiter, Kamil Sobczak, Silvan Kretschmer, Josef Polčák, Pranjali Hirasing Jadhao, Paweł P. Michałowski, Ruoling Yu, et al. · <i>Nature Synthesis</i> (2026)</div>
         </div>
 
         <div class="pub">
-          <div class="pub-title"><span class="num"></span><span>MXenes with ordered triatomic-layer borate polyanion terminations</span></div>
+          <div class="pub-title">MXenes with ordered triatomic-layer borate polyanion terminations</div>
           <div class="pub-meta">Dongqi Li#, Wenhao Zheng#, Sai Manoj Gali#, Kamil Sobczak, Michal Horák, Josef Polčák, Nikolaj Lopatik, Zichao Li, Jiaxu Zhang, Davood Sabaghi, et al. · <i>Nature Materials</i> 23, 1085–1092 (2024)</div>
         </div>
 
         <div class="pub">
-          <div class="pub-title"><span class="num"></span><span>Band transport by large Fröhlich polarons in MXenes</span></div>
+          <div class="pub-title">Band transport by large Fröhlich polarons in MXenes</div>
           <div class="pub-meta">Wenhao Zheng, Boya Sun, Dongqi Li, Sai Manoj Gali, Heng Zhang, Shuai Fu, Lucia Di Virgilio, Zichao Li, Sheng Yang, Shengqiang Zhou, et al. · <i>Nature Physics</i> 18(5), 544–550 (2022)</div>
         </div>
 
         <div class="pub">
-          <div class="pub-title"><span class="num"></span><span>Photoconductivity multiplication in semiconducting few-layer MoTe2</span></div>
+          <div class="pub-title">Photoconductivity multiplication in semiconducting few-layer MoTe2</div>
           <div class="pub-meta">Wenhao Zheng, Mischa Bonn, Hai I. Wang · <i>Nano Letters</i> 20(8), 5807–5813 (2020)</div>
         </div>
       </div>
@@ -328,11 +317,11 @@
       <div class="year">2026</div>
       <div class="publist">
         <div class="pub">
-          <div class="pub-title"><span class="num">44.</span><span>Triphasic synthesis of MXenes with uniform and controlled halogen terminations</span></div>
+          <div class="pub-title numline"><span class="num">44.</span>Triphasic synthesis of MXenes with uniform and controlled halogen terminations</div>
           <div class="pub-meta">Dongqi Li, Wenhao Zheng, Mahdi Ghorbani-Asl, Juliane Scheiter, Kamil Sobczak, Silvan Kretschmer, Josef Polčák, Pranjali Hirasing Jadhao, Paweł P. Michałowski, Ruoling Yu, et al. · <i>Nature Synthesis</i>, 1–11 (2026)</div>
         </div>
         <div class="pub">
-          <div class="pub-title"><span class="num">43.</span><span>Photothermal effects control ultrafast charge transport in titanium carbide MXenes</span></div>
+          <div class="pub-title numline"><span class="num">43.</span>Photothermal effects control ultrafast charge transport in titanium carbide MXenes</div>
           <div class="pub-meta">Wenhao Zheng, Hugh Ramsden, Stefano Ippolito, Max van Hemert, Danzhen Zhang, Teng Zhang, Dongqi Li, Guanzhao Wen, Jaco J. Geuchies, Minghao Yu, et al. · <i>Nature Communications</i> (2026)</div>
         </div>
       </div>
@@ -341,19 +330,19 @@
       <div class="year">2025</div>
       <div class="publist">
         <div class="pub">
-          <div class="pub-title"><span class="num">42.</span><span>High charge carrier mobility in porphyrin nanoribbons</span></div>
+          <div class="pub-title numline"><span class="num">42.</span>High charge carrier mobility in porphyrin nanoribbons</div>
           <div class="pub-meta">He Zhu, Guanzhao Wen, Wenhao Zheng, Nicholas H. Rees, Wojciech Stawski, Hai I. Wang, Mischa Bonn, Harry L. Anderson · <i>Angewandte Chemie</i> 137(6), e202417429 (2025)</div>
         </div>
         <div class="pub">
-          <div class="pub-title"><span class="num">41.</span><span>Interface-Tailored Secondary Excitation and Ultrafast Charge/Energy Transfer in Ti3C2Tx–MoS2 Heterostructure Films</span></div>
+          <div class="pub-title numline"><span class="num">41.</span>Interface-Tailored Secondary Excitation and Ultrafast Charge/Energy Transfer in Ti3C2Tx–MoS2 Heterostructure Films</div>
           <div class="pub-meta">Jiaxu Zhang, Rafael Muñoz-Mármol, Shuai Fu, Xiaodong Li, Wenhao Zheng, Andrea Villa, Giuseppe M. Paternò, Darius Pohl, Alexander Tahn, Mike Hambsch, et al. · <i>Journal of the American Chemical Society</i> 147(11), 10012–10022 (2025)</div>
         </div>
         <div class="pub">
-          <div class="pub-title"><span class="num">40.</span><span>Fluorescence of helical molecular springs under high pressure</span></div>
+          <div class="pub-title numline"><span class="num">40.</span>Fluorescence of helical molecular springs under high pressure</div>
           <div class="pub-meta">Jiaxu Liang, Cheng-Wei Ju, Zonghang Liu, Hailong Li, Aigerim Karina, Tobias Eklund, Wenhao Zheng, Katrin Amann-Winkel, Weizhao Cai, Manfred Wagner, et al. · <i>Angewandte Chemie International Edition</i> 64(21), e202500923 (2025)</div>
         </div>
         <div class="pub">
-          <div class="pub-title"><span class="num">39.</span><span>Ultrafast light-induced charge and thermal transport effects in layered MXene materials</span></div>
+          <div class="pub-title numline"><span class="num">39.</span>Ultrafast light-induced charge and thermal transport effects in layered MXene materials</div>
           <div class="pub-meta">Ioannis Georgoulis, Wenhao Zheng, Qi Zhang, Minghao Yu, Hai Wang · <i>The Innovation Materials</i> 3(4), 100168–1 (2025)</div>
         </div>
       </div>
@@ -362,15 +351,15 @@
       <div class="year">2024</div>
       <div class="publist">
         <div class="pub">
-          <div class="pub-title"><span class="num">38.</span><span>Tuning the Inter-Nanoplatelet Distance and Coupling Strength by Thermally Induced Ligand Decomposition</span></div>
+          <div class="pub-title numline"><span class="num">38.</span>Tuning the Inter-Nanoplatelet Distance and Coupling Strength by Thermally Induced Ligand Decomposition</div>
           <div class="pub-meta">Shuai Chen, Samir H. Al-Hilfi, Guangbo Chen, Heng Zhang, Wenhao Zheng, Lucia Di Virgilio, Jaco J. Geuchies, Junren Wang, Xinliang Feng, Andreas Riedinger, et al. · <i>Small</i> 20(16), 2308951 (2024)</div>
         </div>
         <div class="pub">
-          <div class="pub-title"><span class="num">37.</span><span>MXenes with ordered triatomic-layer borate polyanion terminations</span></div>
+          <div class="pub-title numline"><span class="num">37.</span>MXenes with ordered triatomic-layer borate polyanion terminations</div>
           <div class="pub-meta">Dongqi Li, Wenhao Zheng, Sai Manoj Gali, Kamil Sobczak, Michal Horák, Josef Polčák, Nikolaj Lopatik, Zichao Li, Jiaxu Zhang, Davood Sabaghi, et al. · <i>Nature Materials</i> 23(8), 1085–1092 (2024)</div>
         </div>
         <div class="pub">
-          <div class="pub-title"><span class="num">36.</span><span>Polymorph-Dependent Multi-Level Supramolecular Self-Assembly and Local Charge Transport of a Conjugated Polymer in Solution and Solid States</span></div>
+          <div class="pub-title numline"><span class="num">36.</span>Polymorph-Dependent Multi-Level Supramolecular Self-Assembly and Local Charge Transport of a Conjugated Polymer in Solution and Solid States</div>
           <div class="pub-meta">Junyang Deng, Wenhao Zheng, Yun Wang, Miao Cheng, Qingqing Jin, Yubin Ke, Zilong Zheng, René A. J. Janssen, Ling Li, Ming Liu, et al. · <i>Advanced Energy Materials</i> 14(43), 2402778 (2024)</div>
         </div>
       </div>
@@ -378,77 +367,95 @@
       <!-- 2023 -->
       <div class="year">2023</div>
       <div class="publist">
-        <div class="pub"><div class="pub-title"><span class="num">35.</span><span>Targeted Synthesis of Isomeric Naphthalene-Based 2D Kagome Covalent Organic Frameworks</span></div><div class="pub-meta">Yusen Li, Xi Su, Wenhao Zheng, Jia-Jia Zheng, Linshuo Guo, Mischa Bonn, Xingfa Gao, Hai I. Wang, Long Chen · <i>Angewandte Chemie International Edition</i> 62(10), e202216795 (2023)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">34.</span><span>Unveiling charge-transport mechanisms in electronic devices based on defect-engineered MoS2 covalent networks</span></div><div class="pub-meta">Stefano Ippolito, Francesca Urban, Wenhao Zheng, Onofrio Mazzarisi, Cataldo Valentini, Adam G. Kelly, Sai Manoj Gali, Mischa Bonn, David Beljonne, Federico Corberi, et al. · <i>Advanced Materials</i> 35(15), 2211157 (2023)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">33.</span><span>Reversible electrical control of interfacial charge flow across van der Waals interfaces</span></div><div class="pub-meta">Shuai Fu, Xiaoyu Jia, Aliaa S. Hassan, Heng Zhang, Wenhao Zheng, Lei Gao, Lucia Di Virgilio, Sven Krasel, David Beljonne, Klaas-Jan Tielrooij, et al. · <i>Nano Letters</i> 23(5), 1850–1857 (2023)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">32.</span><span>Transiently delocalized states enhance hole mobility in organic molecular semiconductors</span></div><div class="pub-meta">Samuele Giannini, Lucia Di Virgilio, Marco Bardini, Julian Hausch, Jaco J. Geuchies, Wenhao Zheng, Martina Volpi, Jan Elsner, Katharina Broch, Yves H. Geerts, et al. · <i>Nature Materials</i> 22(11), 1361–1369 (2023)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">31.</span><span>Curved graphene nanoribbons derived from tetrahydropyrene-based polyphenylenes via one-pot K-region oxidation and Scholl cyclization</span></div><div class="pub-meta">Sebastian Obermann, Wenhao Zheng, Jason Melidonie, Steffen Böckmann, Silvio Osella, Nicolás Arisnabarreta, L. Andrés Guerrero-León, Felix Hennersdorf, David Beljonne, Jan J. Weigand, et al. · <i>Chemical Science</i> 14(32), 8607–8614 (2023)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">30.</span><span>Cove-edged chiral graphene nanoribbons with chirality-dependent bandgap and carrier mobility</span></div><div class="pub-meta">Kun Liu, Wenhao Zheng, Silvio Osella, Zhen-Lin Qiu, Steffen Böckmann, Wenhui Niu, Laura Meingast, Hartmut Komber, Sebastian Obermann, Roland Gillen, et al. · <i>Journal of the American Chemical Society</i> 146(1), 1026–1034 (2023)</div></div>
+        <div class="pub">
+          <div class="pub-title numline"><span class="num">35.</span>Targeted Synthesis of Isomeric Naphthalene-Based 2D Kagome Covalent Organic Frameworks</div>
+          <div class="pub-meta">Yusen Li, Xi Su, Wenhao Zheng, Jia-Jia Zheng, Linshuo Guo, Mischa Bonn, Xingfa Gao, Hai I. Wang, Long Chen · <i>Angewandte Chemie International Edition</i> 62(10), e202216795 (2023)</div>
+        </div>
+        <div class="pub">
+          <div class="pub-title numline"><span class="num">34.</span>Unveiling charge-transport mechanisms in electronic devices based on defect-engineered MoS2 covalent networks</div>
+          <div class="pub-meta">Stefano Ippolito, Francesca Urban, Wenhao Zheng, Onofrio Mazzarisi, Cataldo Valentini, Adam G. Kelly, Sai Manoj Gali, Mischa Bonn, David Beljonne, Federico Corberi, et al. · <i>Advanced Materials</i> 35(15), 2211157 (2023)</div>
+        </div>
+        <div class="pub">
+          <div class="pub-title numline"><span class="num">33.</span>Reversible electrical control of interfacial charge flow across van der Waals interfaces</div>
+          <div class="pub-meta">Shuai Fu, Xiaoyu Jia, Aliaa S. Hassan, Heng Zhang, Wenhao Zheng, Lei Gao, Lucia Di Virgilio, Sven Krasel, David Beljonne, Klaas-Jan Tielrooij, et al. · <i>Nano Letters</i> 23(5), 1850–1857 (2023)</div>
+        </div>
+        <div class="pub">
+          <div class="pub-title numline"><span class="num">32.</span>Transiently delocalized states enhance hole mobility in organic molecular semiconductors</div>
+          <div class="pub-meta">Samuele Giannini, Lucia Di Virgilio, Marco Bardini, Julian Hausch, Jaco J. Geuchies, Wenhao Zheng, Martina Volpi, Jan Elsner, Katharina Broch, Yves H. Geerts, et al. · <i>Nature Materials</i> 22(11), 1361–1369 (2023)</div>
+        </div>
+        <div class="pub">
+          <div class="pub-title numline"><span class="num">31.</span>Curved graphene nanoribbons derived from tetrahydropyrene-based polyphenylenes via one-pot K-region oxidation and Scholl cyclization</div>
+          <div class="pub-meta">Sebastian Obermann, Wenhao Zheng, Jason Melidonie, Steffen Böckmann, Silvio Osella, Nicolás Arisnabarreta, L. Andrés Guerrero-León, Felix Hennersdorf, David Beljonne, Jan J. Weigand, et al. · <i>Chemical Science</i> 14(32), 8607–8614 (2023)</div>
+        </div>
+        <div class="pub">
+          <div class="pub-title numline"><span class="num">30.</span>Cove-edged chiral graphene nanoribbons with chirality-dependent bandgap and carrier mobility</div>
+          <div class="pub-meta">Kun Liu, Wenhao Zheng, Silvio Osella, Zhen-Lin Qiu, Steffen Böckmann, Wenhui Niu, Laura Meingast, Hartmut Komber, Sebastian Obermann, Roland Gillen, et al. · <i>Journal of the American Chemical Society</i> 146(1), 1026–1034 (2023)</div>
+        </div>
       </div>
 
       <!-- 2022 -->
       <div class="year">2022</div>
       <div class="publist">
-        <div class="pub"><div class="pub-title"><span class="num">29.</span><span>Module-Patterned Polymerization towards Crystalline 2D sp2-Carbon Covalent Organic Framework Semiconductors</span></div><div class="pub-meta">Enquan Jin, Keyu Geng, Shuai Fu, Matthew A. Addicoat, Wenhao Zheng, Shuailei Xie, Jun-Shan Hu, Xudong Hou, Xiao Wu, Qiuhong Jiang, et al. · <i>Angewandte Chemie International Edition</i> 61(9), e202115020 (2022)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">28.</span><span>Electrochemical Deposition of a Single-Crystalline Nanorod Polycyclic Aromatic Hydrocarbon Film with Efficient Charge and Exciton Transport</span></div><div class="pub-meta">Cheng Zeng, Wenhao Zheng, Hong Xu, Silvio Osella, Wei Ma, Hai I. Wang, Zijie Qiu, Ken-ichi Otake, Wencai Ren, Huiming Cheng, et al. · <i>Angewandte Chemie</i> 134(13), e202115389 (2022)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">27.</span><span>Untying the Bundles of Solution-Synthesized Graphene Nanoribbons for Highly Capacitive Micro-Supercapacitors</span></div><div class="pub-meta">Zhaoyang Liu, Yunbin Hu, Wenhao Zheng, Can Wang, Walid Baaziz, Fanny Richard, Ovidiu Ersen, Mischa Bonn, Hai I. Wang, Akimitsu Narita, et al. · <i>Advanced Functional Materials</i> 32(16), 2109543 (2022)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">26.</span><span>Tuning interfacial charge transfer in atomically precise nanographene–graphene heterostructures by engineering van der Waals interactions</span></div><div class="pub-meta">Xiaoqing Yu, Shuai Fu, Mukunda Mandal, Xuelin Yao, Zhaoyang Liu, Wenhao Zheng, Paolo Samorì, Akimitsu Narita, Klaus Müllen, Denis Andrienko, et al. · <i>The Journal of Chemical Physics</i> 156(7) (2022)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">25.</span><span>Redox-active metaphosphate-like terminals enable high-capacity MXene anodes for ultrafast Na-ion storage</span></div><div class="pub-meta">Boya Sun, Qiongqiong Lu, Kaixuan Chen, Wenhao Zheng, Zhongquan Liao, Nikolaj Lopatik, Dongqi Li, Martin Hantusch, Shengqiang Zhou, Hai I. Wang, et al. · <i>Advanced Materials</i> 34(15), 2108682 (2022)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">24.</span><span>Band structure modulation by methoxy-functionalization of graphene nanoribbons</span></div><div class="pub-meta">Alicia Götz, Xiao-Ye Wang, Alice Ruini, Wenhao Zheng, Paniz Soltani, Robert Graf, Alexander Tries, Juan Li, Carlos-Andres Palma, Elisa Molinari, et al. · <i>Journal of Materials Chemistry C</i> 10(11), 4173–4181 (2022)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">23.</span><span>Nonplanar rhombus and kagome 2D covalent organic frameworks from distorted aromatics for electrical conduction</span></div><div class="pub-meta">Guolong Xing, Wenhao Zheng, Lei Gao, Ting Zhang, Xiaowei Wu, Shuai Fu, Xiaoyu Song, Ziqiang Zhao, Silvio Osella, Marta Martinez-Abadia, et al. · <i>Journal of the American Chemical Society</i> 144(11), 5042–5050 (2022)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">22.</span><span>Band transport by large Fröhlich polarons in MXenes</span></div><div class="pub-meta">Wenhao Zheng, Boya Sun, Dongqi Li, Sai Manoj Gali, Heng Zhang, Shuai Fu, Lucia Di Virgilio, Zichao Li, Sheng Yang, Shengqiang Zhou, et al. · <i>Nature Physics</i> 18(5), 544–550 (2022)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">21.</span><span>Solution synthesis and characterization of a long and curved graphene nanoribbon with hybrid cove–armchair–gulf edge structures</span></div><div class="pub-meta">Lin Yang, Ji Ma, Wenhao Zheng, Silvio Osella, Jörn Droste, Hartmut Komber, Kun Liu, Steffen Böckmann, David Beljonne, Michael Ryan Hansen, et al. · <i>Advanced Science</i> 9(19), 2200708 (2022)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">20.</span><span>Solution-Processed Wafer-Scale Ag2S Thin Films: Synthesis and Excellent Charge Transport Properties</span></div><div class="pub-meta">Junren Wang, Shuai Fu, Heng Zhang, Robert Graf, Henry Halim, Shuai Chen, Wenhao Zheng, Mischa Bonn, Katharina Landfester, Andreas Riedinger, et al. · <i>Advanced Functional Materials</i> 32(28), 2113147 (2022)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">19.</span><span>Outstanding charge mobility by band transport in two-dimensional semiconducting covalent organic frameworks</span></div><div class="pub-meta">Shuai Fu, Enquan Jin, Hiroki Hanayama, Wenhao Zheng, Heng Zhang, Lucia Di Virgilio, Matthew A. Addicoat, Markus Mezger, Akimitsu Narita, Mischa Bonn, et al. · <i>Journal of the American Chemical Society</i> 144(16), 7489–7496 (2022)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">18.</span><span>Probing Carrier Dynamics in sp3-Functionalized Single-Walled Carbon Nanotubes with Time-Resolved Terahertz Spectroscopy</span></div><div class="pub-meta">Wenhao Zheng, Nicolas F. Zorn, Mischa Bonn, Jana Zaumseil, Hai I. Wang · <i>ACS Nano</i> 16(6), 9401–9409 (2022)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">17.</span><span>Stable Mott polaron state limits the charge density in lead halide perovskites</span></div><div class="pub-meta">Heng Zhang, Elke Debroye, Beatriz Vina-Bausa, Donato Valli, Shuai Fu, Wenhao Zheng, Lucia Di Virgilio, Lei Gao, Jarvist M. Frost, Aron Walsh, et al. · <i>ACS Energy Letters</i> 8(1), 420–428 (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">29.</span>Module-Patterned Polymerization towards Crystalline 2D sp2-Carbon Covalent Organic Framework Semiconductors</div><div class="pub-meta">Enquan Jin, Keyu Geng, Shuai Fu, Matthew A. Addicoat, Wenhao Zheng, Shuailei Xie, Jun-Shan Hu, Xudong Hou, Xiao Wu, Qiuhong Jiang, et al. · <i>Angewandte Chemie International Edition</i> 61(9), e202115020 (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">28.</span>Electrochemical Deposition of a Single-Crystalline Nanorod Polycyclic Aromatic Hydrocarbon Film with Efficient Charge and Exciton Transport</div><div class="pub-meta">Cheng Zeng, Wenhao Zheng, Hong Xu, Silvio Osella, Wei Ma, Hai I. Wang, Zijie Qiu, Ken-ichi Otake, Wencai Ren, Huiming Cheng, et al. · <i>Angewandte Chemie</i> 134(13), e202115389 (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">27.</span>Untying the Bundles of Solution-Synthesized Graphene Nanoribbons for Highly Capacitive Micro-Supercapacitors</div><div class="pub-meta">Zhaoyang Liu, Yunbin Hu, Wenhao Zheng, Can Wang, Walid Baaziz, Fanny Richard, Ovidiu Ersen, Mischa Bonn, Hai I. Wang, Akimitsu Narita, et al. · <i>Advanced Functional Materials</i> 32(16), 2109543 (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">26.</span>Tuning interfacial charge transfer in atomically precise nanographene–graphene heterostructures by engineering van der Waals interactions</div><div class="pub-meta">Xiaoqing Yu, Shuai Fu, Mukunda Mandal, Xuelin Yao, Zhaoyang Liu, Wenhao Zheng, Paolo Samorì, Akimitsu Narita, Klaus Müllen, Denis Andrienko, et al. · <i>The Journal of Chemical Physics</i> 156(7) (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">25.</span>Redox-active metaphosphate-like terminals enable high-capacity MXene anodes for ultrafast Na-ion storage</div><div class="pub-meta">Boya Sun, Qiongqiong Lu, Kaixuan Chen, Wenhao Zheng, Zhongquan Liao, Nikolaj Lopatik, Dongqi Li, Martin Hantusch, Shengqiang Zhou, Hai I. Wang, et al. · <i>Advanced Materials</i> 34(15), 2108682 (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">24.</span>Band structure modulation by methoxy-functionalization of graphene nanoribbons</div><div class="pub-meta">Alicia Götz, Xiao-Ye Wang, Alice Ruini, Wenhao Zheng, Paniz Soltani, Robert Graf, Alexander Tries, Juan Li, Carlos-Andres Palma, Elisa Molinari, et al. · <i>Journal of Materials Chemistry C</i> 10(11), 4173–4181 (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">23.</span>Nonplanar rhombus and kagome 2D covalent organic frameworks from distorted aromatics for electrical conduction</div><div class="pub-meta">Guolong Xing, Wenhao Zheng, Lei Gao, Ting Zhang, Xiaowei Wu, Shuai Fu, Xiaoyu Song, Ziqiang Zhao, Silvio Osella, Marta Martinez-Abadia, et al. · <i>Journal of the American Chemical Society</i> 144(11), 5042–5050 (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">22.</span>Band transport by large Fröhlich polarons in MXenes</div><div class="pub-meta">Wenhao Zheng, Boya Sun, Dongqi Li, Sai Manoj Gali, Heng Zhang, Shuai Fu, Lucia Di Virgilio, Zichao Li, Sheng Yang, Shengqiang Zhou, et al. · <i>Nature Physics</i> 18(5), 544–550 (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">21.</span>Solution synthesis and characterization of a long and curved graphene nanoribbon with hybrid cove–armchair–gulf edge structures</div><div class="pub-meta">Lin Yang, Ji Ma, Wenhao Zheng, Silvio Osella, Jörn Droste, Hartmut Komber, Kun Liu, Steffen Böckmann, David Beljonne, Michael Ryan Hansen, et al. · <i>Advanced Science</i> 9(19), 2200708 (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">20.</span>Solution-Processed Wafer-Scale Ag2S Thin Films: Synthesis and Excellent Charge Transport Properties</div><div class="pub-meta">Junren Wang, Shuai Fu, Heng Zhang, Robert Graf, Henry Halim, Shuai Chen, Wenhao Zheng, Mischa Bonn, Katharina Landfester, Andreas Riedinger, et al. · <i>Advanced Functional Materials</i> 32(28), 2113147 (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">19.</span>Outstanding charge mobility by band transport in two-dimensional semiconducting covalent organic frameworks</div><div class="pub-meta">Shuai Fu, Enquan Jin, Hiroki Hanayama, Wenhao Zheng, Heng Zhang, Lucia Di Virgilio, Matthew A. Addicoat, Markus Mezger, Akimitsu Narita, Mischa Bonn, et al. · <i>Journal of the American Chemical Society</i> 144(16), 7489–7496 (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">18.</span>Probing Carrier Dynamics in sp3-Functionalized Single-Walled Carbon Nanotubes with Time-Resolved Terahertz Spectroscopy</div><div class="pub-meta">Wenhao Zheng, Nicolas F. Zorn, Mischa Bonn, Jana Zaumseil, Hai I. Wang · <i>ACS Nano</i> 16(6), 9401–9409 (2022)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">17.</span>Stable Mott polaron state limits the charge density in lead halide perovskites</div><div class="pub-meta">Heng Zhang, Elke Debroye, Beatriz Vina-Bausa, Donato Valli, Shuai Fu, Wenhao Zheng, Lucia Di Virgilio, Lei Gao, Jarvist M. Frost, Aron Walsh, et al. · <i>ACS Energy Letters</i> 8(1), 420–428 (2022)</div></div>
       </div>
 
       <!-- 2021 -->
       <div class="year">2021</div>
       <div class="publist">
-        <div class="pub"><div class="pub-title"><span class="num">16.</span><span>Long-lived charge separation following pump-wavelength–dependent ultrafast charge transfer in graphene/WS2 heterostructures</span></div><div class="pub-meta">Shuai Fu, Indy du Fossé, Xiaoyu Jia, Jingyin Xu, Xiaoqing Yu, Heng Zhang, Wenhao Zheng, Sven Krasel, Zongping Chen, Zhiming M. Wang, et al. · <i>Science Advances</i> 7(9), eabd9061 (2021)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">15.</span><span>Synthesis of nonplanar graphene nanoribbon with fjord edges</span></div><div class="pub-meta">Xuelin Yao, Wenhao Zheng, Silvio Osella, Zijie Qiu, Shuai Fu, Dieter Schollmeyer, Beate Müller, David Beljonne, Mischa Bonn, Hai I. Wang, et al. · <i>Journal of the American Chemical Society</i> 143(15), 5654–5658 (2021)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">14.</span><span>Highly mobile hot holes in Cs2AgBiBr6 double perovskite</span></div><div class="pub-meta">Heng Zhang, Elke Debroye, Wenhao Zheng, Shuai Fu, Lucia Di Virgilio, Pushpendra Kumar, Mischa Bonn, Hai I. Wang · <i>Science Advances</i> 7(52), eabj9066 (2021)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">13.</span><span>Cove-edged graphene nanoribbons with incorporation of periodic zigzag-edge segments</span></div><div class="pub-meta">Xu Wang, Ji Ma, Wenhao Zheng, Silvio Osella, Nicolas Arisnabarreta, Jorn Droste, Gianluca Serra, Oleksandr Ivasenko, Andrea Lucotti, David Beljonne, et al. · <i>Journal of the American Chemical Society</i> 144(1), 228–235 (2021)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">16.</span>Long-lived charge separation following pump-wavelength–dependent ultrafast charge transfer in graphene/WS2 heterostructures</div><div class="pub-meta">Shuai Fu, Indy du Fossé, Xiaoyu Jia, Jingyin Xu, Xiaoqing Yu, Heng Zhang, Wenhao Zheng, Sven Krasel, Zongping Chen, Zhiming M. Wang, et al. · <i>Science Advances</i> 7(9), eabd9061 (2021)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">15.</span>Synthesis of nonplanar graphene nanoribbon with fjord edges</div><div class="pub-meta">Xuelin Yao, Wenhao Zheng, Silvio Osella, Zijie Qiu, Shuai Fu, Dieter Schollmeyer, Beate Müller, David Beljonne, Mischa Bonn, Hai I. Wang, et al. · <i>Journal of the American Chemical Society</i> 143(15), 5654–5658 (2021)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">14.</span>Highly mobile hot holes in Cs2AgBiBr6 double perovskite</div><div class="pub-meta">Heng Zhang, Elke Debroye, Wenhao Zheng, Shuai Fu, Lucia Di Virgilio, Pushpendra Kumar, Mischa Bonn, Hai I. Wang · <i>Science Advances</i> 7(52), eabj9066 (2021)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">13.</span>Cove-edged graphene nanoribbons with incorporation of periodic zigzag-edge segments</div><div class="pub-meta">Xu Wang, Ji Ma, Wenhao Zheng, Silvio Osella, Nicolas Arisnabarreta, Jorn Droste, Gianluca Serra, Oleksandr Ivasenko, Andrea Lucotti, David Beljonne, et al. · <i>Journal of the American Chemical Society</i> 144(1), 228–235 (2021)</div></div>
       </div>
 
       <!-- 2020 -->
       <div class="year">2020</div>
       <div class="publist">
-        <div class="pub"><div class="pub-title"><span class="num">12.</span><span>Efficient low-cost all-flexible microcavity semitransparent polymer solar cells enabled by polymer flexible one-dimensional photonic crystals</span></div><div class="pub-meta">Wenhao Zheng, Xuhao Luo, Yangdong Zhang, Canbin Ye, Anjun Qin, Yong Cao, Lintao Hou · <i>ACS Applied Materials & Interfaces</i> 12(20), 23190–23198 (2020)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">11.</span><span>Photoconductivity multiplication in semiconducting few-layer MoTe2</span></div><div class="pub-meta">Wenhao Zheng, Mischa Bonn, Hai I. Wang · <i>Nano Letters</i> 20(8), 5807–5813 (2020)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">10.</span><span>A curved graphene nanoribbon with multi-edge structure and high intrinsic charge carrier mobility</span></div><div class="pub-meta">Wenhui Niu, Ji Ma, Paniz Soltani, Wenhao Zheng, Fupin Liu, Alexey A. Popov, Jan J. Weigand, Hartmut Komber, Emanuele Poliani, Cinzia Casiraghi, et al. · <i>Journal of the American Chemical Society</i> 142(43), 18293–18298 (2020)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">12.</span>Efficient low-cost all-flexible microcavity semitransparent polymer solar cells enabled by polymer flexible one-dimensional photonic crystals</div><div class="pub-meta">Wenhao Zheng, Xuhao Luo, Yangdong Zhang, Canbin Ye, Anjun Qin, Yong Cao, Lintao Hou · <i>ACS Applied Materials & Interfaces</i> 12(20), 23190–23198 (2020)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">11.</span>Photoconductivity multiplication in semiconducting few-layer MoTe2</div><div class="pub-meta">Wenhao Zheng, Mischa Bonn, Hai I. Wang · <i>Nano Letters</i> 20(8), 5807–5813 (2020)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">10.</span>A curved graphene nanoribbon with multi-edge structure and high intrinsic charge carrier mobility</div><div class="pub-meta">Wenhui Niu, Ji Ma, Paniz Soltani, Wenhao Zheng, Fupin Liu, Alexey A. Popov, Jan J. Weigand, Hartmut Komber, Emanuele Poliani, Cinzia Casiraghi, et al. · <i>Journal of the American Chemical Society</i> 142(43), 18293–18298 (2020)</div></div>
       </div>
 
       <!-- 2019 -->
       <div class="year">2019</div>
       <div class="publist">
-        <div class="pub"><div class="pub-title"><span class="num">9.</span><span>Manipulate micrometer surface and nanometer bulk phase separation structures in the active layer of organic solar cells via synergy of ultrasonic and high-pressure gas spraying</span></div><div class="pub-meta">Alei Liu, Wenhao Zheng, Xiaolong Yin, Junyu Yang, Yuanbao Lin, Wanzhu Cai, Xiaomin Yu, Quanbin Liang, Zhicai He, Hongbin Wu, et al. · <i>ACS Applied Materials & Interfaces</i> 11(11), 10777–10784 (2019)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">9.</span>Manipulate micrometer surface and nanometer bulk phase separation structures in the active layer of organic solar cells via synergy of ultrasonic and high-pressure gas spraying</div><div class="pub-meta">Alei Liu, Wenhao Zheng, Xiaolong Yin, Junyu Yang, Yuanbao Lin, Wanzhu Cai, Xiaomin Yu, Quanbin Liang, Zhicai He, Hongbin Wu, et al. · <i>ACS Applied Materials & Interfaces</i> 11(11), 10777–10784 (2019)</div></div>
       </div>
 
       <!-- 2018 -->
       <div class="year">2018</div>
       <div class="publist">
-        <div class="pub"><div class="pub-title"><span class="num">8.</span><span>Printed nonfullerene organic solar cells with the highest efficiency of 9.5%</span></div><div class="pub-meta">Yuanbao Lin, Yingzhi Jin, Sheng Dong, Wenhao Zheng, Junyu Yang, Alei Liu, Feng Liu, Yufeng Jiang, Thomas P. Russell, Fengling Zhang, et al. · <i>Advanced Energy Materials</i> 8(13), 1701942 (2018)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">7.</span><span>Synthesis and photovoltaic properties of silafluorene copolymers substituted by carbazole and triphenylamine pendants</span></div><div class="pub-meta">Shaoshan Lian, Wenhao Zheng, Guangrong Jin, Biao Xiao, Zhe Liu, Xinyuan Li, Yajuan Pan, Jinchang Huang, Lintao Hou, Yueqi Mo, et al. · <i>Dyes and Pigments</i> 149, 133–140 (2018)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">6.</span><span>Roll-to-roll slot-die-printed polymer solar cells by self-assembly</span></div><div class="pub-meta">Junyu Yang, Yuanbao Lin, Wenhao Zheng, Alei Liu, Wanzhu Cai, Xiaomin Yu, Fengling Zhang, Quanbin Liang, Hongbin Wu, Donghuan Qin, et al. · <i>ACS Applied Materials & Interfaces</i> 10(26), 22485–22494 (2018)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">5.</span><span>Energy-effectively printed all-polymer solar cells exceeding 8.61% efficiency</span></div><div class="pub-meta">Yuanbao Lin, Sheng Dong, Zhaojun Li, Wenhao Zheng, Junyu Yang, Alei Liu, Wanzhu Cai, Feng Liu, Yufeng Jiang, Thomas P. Russell, et al. · <i>Nano Energy</i> 46, 428–435 (2018)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">8.</span>Printed nonfullerene organic solar cells with the highest efficiency of 9.5%</div><div class="pub-meta">Yuanbao Lin, Yingzhi Jin, Sheng Dong, Wenhao Zheng, Junyu Yang, Alei Liu, Feng Liu, Yufeng Jiang, Thomas P. Russell, Fengling Zhang, et al. · <i>Advanced Energy Materials</i> 8(13), 1701942 (2018)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">7.</span>Synthesis and photovoltaic properties of silafluorene copolymers substituted by carbazole and triphenylamine pendants</div><div class="pub-meta">Shaoshan Lian, Wenhao Zheng, Guangrong Jin, Biao Xiao, Zhe Liu, Xinyuan Li, Yajuan Pan, Jinchang Huang, Lintao Hou, Yueqi Mo, et al. · <i>Dyes and Pigments</i> 149, 133–140 (2018)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">6.</span>Roll-to-roll slot-die-printed polymer solar cells by self-assembly</div><div class="pub-meta">Junyu Yang, Yuanbao Lin, Wenhao Zheng, Alei Liu, Wanzhu Cai, Xiaomin Yu, Fengling Zhang, Quanbin Liang, Hongbin Wu, Donghuan Qin, et al. · <i>ACS Applied Materials & Interfaces</i> 10(26), 22485–22494 (2018)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">5.</span>Energy-effectively printed all-polymer solar cells exceeding 8.61% efficiency</div><div class="pub-meta">Yuanbao Lin, Sheng Dong, Zhaojun Li, Wenhao Zheng, Junyu Yang, Alei Liu, Wanzhu Cai, Feng Liu, Yufeng Jiang, Thomas P. Russell, et al. · <i>Nano Energy</i> 46, 428–435 (2018)</div></div>
       </div>
 
       <!-- 2017 -->
       <div class="year">2017</div>
       <div class="publist">
-        <div class="pub"><div class="pub-title"><span class="num">4.</span><span>Study of ITO-free roll-to-roll compatible polymer solar cells using the one-step doctor blading technique</span></div><div class="pub-meta">Yuanbao Lin, Chaosheng Cai, Yangdong Zhang, Wenhao Zheng, Junyu Yang, Ergang Wang, Lintao Hou · <i>Journal of Materials Chemistry A</i> 5(8), 4093–4102 (2017)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">3.</span><span>Dual function of UV/ozone plasma-treated polymer in polymer/metal hybrid electrodes and semitransparent polymer solar cells</span></div><div class="pub-meta">Wenhao Zheng, Yuanbao Lin, Yangdong Zhang, Junyu Yang, Zuosheng Peng, Alei Liu, Fengling Zhang, Lintao Hou · <i>ACS Applied Materials & Interfaces</i> 9(51), 44656–44666 (2017)</div></div>
-        <div class="pub"><div class="pub-title"><span class="num">2.</span><span>Improved performance of deep-blue polymer light-emitting diodes by one-step coating self-assembly hole injection/transport nanocomposites with both the optical and electrical optimization</span></div><div class="pub-meta">Zhe Liu, Lianpeng Xia, Yangdong Zhang, Yuanbao Lin, Wenhao Zheng, Junyu Yang, Yang Li, Yuan Li, Yueqi Mo, Lintao Hou · <i>Organic Electronics</i> 45, 285–292 (2017)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">4.</span>Study of ITO-free roll-to-roll compatible polymer solar cells using the one-step doctor blading technique</div><div class="pub-meta">Yuanbao Lin, Chaosheng Cai, Yangdong Zhang, Wenhao Zheng, Junyu Yang, Ergang Wang, Lintao Hou · <i>Journal of Materials Chemistry A</i> 5(8), 4093–4102 (2017)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">3.</span>Dual function of UV/ozone plasma-treated polymer in polymer/metal hybrid electrodes and semitransparent polymer solar cells</div><div class="pub-meta">Wenhao Zheng, Yuanbao Lin, Yangdong Zhang, Junyu Yang, Zuosheng Peng, Alei Liu, Fengling Zhang, Lintao Hou · <i>ACS Applied Materials & Interfaces</i> 9(51), 44656–44666 (2017)</div></div>
+        <div class="pub"><div class="pub-title numline"><span class="num">2.</span>Improved performance of deep-blue polymer light-emitting diodes by one-step coating self-assembly hole injection/transport nanocomposites with both the optical and electrical optimization</div><div class="pub-meta">Zhe Liu, Lianpeng Xia, Yangdong Zhang, Yuanbao Lin, Wenhao Zheng, Junyu Yang, Yang Li, Yuan Li, Yueqi Mo, Lintao Hou · <i>Organic Electronics</i> 45, 285–292 (2017)</div></div>
       </div>
 
       <!-- 2016 -->
       <div class="year">2016</div>
       <div class="publist">
         <div class="pub">
-          <div class="pub-title"><span class="num">1.</span><span>Colorful semitransparent polymer solar cells employing a bottom periodic one-dimensional photonic crystal and a top conductive PEDOT:PSS layer</span></div>
+          <div class="pub-title numline"><span class="num">1.</span>Colorful semitransparent polymer solar cells employing a bottom periodic one-dimensional photonic crystal and a top conductive PEDOT:PSS layer</div>
           <div class="pub-meta">Yangdong Zhang, Zuosheng Peng, Chaosheng Cai, Zhe Liu, Yuanbao Lin, Wenhao Zheng, Junyu Yang, Lintao Hou, Yong Cao · <i>Journal of Materials Chemistry A</i> 4(30), 11821–11828 (2016)</div>
         </div>
       </div>
@@ -469,7 +476,6 @@
 
   <!-- ✅ 统一导航注入脚本 -->
   <script src="nav.js"></script>
-
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
