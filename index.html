@@ -7,7 +7,7 @@
 
   <style>
     /* =========================================================
-       0) THEME (Light) — 和 People/其它页面保持一致
+       THEME TOKENS (match People)
     ========================================================== */
     :root{
       --bg:#ffffff;
@@ -17,27 +17,30 @@
       --muted:#55627a;
       --line:rgba(17,24,39,.10);
 
-      --card:#ffffff;
       --shadow: 0 16px 40px rgba(15,23,42,.10);
       --shadow2: 0 10px 24px rgba(15,23,42,.08);
 
       --accent:#2f5cff;
       --accent2:#6d28d9;
+      --accentSoft: rgba(47,92,255,.10);
 
-      --radius:20px;
+      --radius:22px;
 
-      /* ✅ 大屏更宽，小屏不变（和 People 一致） */
+      /* ✅ match People: big screen wider */
       --max: clamp(1080px, 92vw, 1360px);
 
-      /* 统一左右边距 */
       --pad:24px;
+      --p: 28px;
+      --p-sm: 22px;
     }
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+
     body{
       margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,
+        "Noto Sans","PingFang SC","Microsoft Yahei",sans-serif;
       color:var(--text);
       background:
         radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.10), transparent 60%),
@@ -50,9 +53,6 @@
     a{ color:var(--accent); text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
-    /* =========================================================
-       1) LAYOUT
-    ========================================================== */
     .container{
       max-width:var(--max);
       margin:0 auto;
@@ -60,7 +60,7 @@
     }
 
     /* =========================================================
-       2) NAV (Light)
+       NAV (FULLY MATCH People)
     ========================================================== */
     .nav{
       position:sticky; top:0; z-index:1000;
@@ -72,82 +72,86 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:14px;
-      padding:14px 0;
+      gap:20px;
+      padding:18px 0;              /* ✅ same as People */
     }
     .brand{
-      font-weight:650;
-      letter-spacing:.1px;
+      font-weight:850;             /* ✅ same as People */
+      font-size:20px;              /* ✅ same as People */
+      letter-spacing:.2px;
       white-space:nowrap;
-      font-size:16px;
     }
     .menu{
       display:flex;
-      flex-wrap:wrap;
-      gap:10px;
+      gap:12px;
       align-items:center;
+      flex-wrap:wrap;
       justify-content:flex-end;
     }
     .menu a{
-      padding:8px 10px;
+      padding:10px 14px;           /* ✅ same as People */
       border-radius:999px;
       color:var(--text);
-      font-weight:650;
-      font-size:14px;
+      font-weight:720;
+      font-size:15px;              /* ✅ same as People */
       border:1px solid transparent;
-      text-decoration:none;
       transition: background .15s ease, border-color .15s ease, transform .15s ease;
+      text-decoration:none;
     }
     .menu a:hover{
-      background: rgba(47,92,255,.06);
-      border-color: rgba(47,92,255,.18);
+      background: rgba(47,92,255,.08);
+      border-color: rgba(47,92,255,.25);
       transform: translateY(-1px);
+      text-decoration:none;
+    }
+    /* Home 高亮 */
+    .menu a.active{
+      background: rgba(47,92,255,.10);
+      border-color: rgba(47,92,255,.30);
     }
     .cta{
-      padding:8px 14px !important;
-      border:1px solid rgba(47,92,255,.25) !important;
-      background: linear-gradient(180deg, rgba(47,92,255,.12), rgba(109,40,217,.08));
+      padding:10px 18px !important;
+      border:1px solid rgba(47,92,255,.35) !important;
+      background: linear-gradient(180deg, rgba(47,92,255,.18), rgba(109,40,217,.10));
     }
 
     /* =========================================================
-       3) HERO (No image)
+       HERO
     ========================================================== */
     .hero{
-      padding:36px 0 10px;
+      padding:30px 0 10px; /* 更接近 People 的节奏 */
     }
     .hero-card{
       width:100%;
-      margin:0 auto;
-      background: linear-gradient(180deg, rgba(255,255,255,.90), rgba(246,248,252,.88));
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(246,248,252,.90));
       border: 1px solid rgba(17,24,39,.08);
       border-radius: calc(var(--radius) + 10px);
       box-shadow: var(--shadow);
       padding:34px;
     }
 
-    /* ✅ 核心改动：标题和正文拉开距离 */
     .hero-title{
       margin:0;
       font-size:54px;
-      line-height:1.10;          /* 更舒服 */
-      letter-spacing:-.6px;
-      margin-bottom:10px;        /* ✅ 标题下面再加一点空隙 */
+      line-height:1.08;
+      letter-spacing:-.7px;
+      margin-bottom:10px;
     }
     .hero-text{
-      margin:26px 0 0;           /* ✅ 原来 16px → 26px */
-      color: var(--muted);
+      margin:26px 0 0;
+      color:var(--muted);
       font-size:16px;
       max-width: 980px;
       text-align: justify;
       text-justify: inter-word;
     }
-    .hero-text p{ margin: 0 0 12px; }
+    .hero-text p{ margin:0 0 12px; }
 
     .btn-row{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-top:20px;
+      margin-top:18px;
     }
     .btn{
       display:inline-flex;
@@ -180,7 +184,7 @@
     }
 
     /* =========================================================
-       4) NEWS
+       NEWS (match People card vibe)
     ========================================================== */
     .news{
       padding:22px 0 10px;
@@ -196,7 +200,20 @@
       margin:0;
       font-size:22px;
       letter-spacing:.1px;
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
+    /* 小横条装饰（和 People section-title 一致） */
+    .news-head h2::after{
+      content:"";
+      height:4px;
+      width:120px;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(47,92,255,.70), rgba(109,40,217,.55));
+      opacity:.9;
+    }
+
     .news-list{
       display:flex;
       flex-direction:column;
@@ -229,6 +246,13 @@
       line-height:1.25;
       color: var(--text);
     }
+    .news-title a{
+      color: var(--text);
+      text-decoration:none;
+    }
+    .news-title a:hover{
+      text-decoration:underline;
+    }
     .news-date{
       color: var(--muted);
       font-size:12px;
@@ -246,7 +270,7 @@
     }
 
     /* =========================================================
-       5) FOOTER
+       FOOTER
     ========================================================== */
     footer{
       margin-top:22px;
@@ -257,18 +281,20 @@
     }
 
     /* =========================================================
-       6) RESPONSIVE
+       RESPONSIVE
     ========================================================== */
     @media (max-width: 900px){
       .hero-title{ font-size:42px; }
       .hero-card{ padding:26px; }
       .hero-text{ margin-top:22px; }
     }
+
     @media (max-width: 560px){
-      .hero-title{ font-size:34px; line-height:1.12; margin-bottom:8px; }
-      .hero-text{ margin-top:18px; }
-      .menu a{ font-size:13px; padding:7px 9px; }
       :root{ --pad:18px; }
+      .hero-title{ font-size:34px; line-height:1.10; }
+      .hero-text{ margin-top:18px; }
+      .menu a{ font-size:13px; padding:8px 10px; }
+      .brand{ font-size:18px; }
     }
   </style>
 </head>
@@ -282,7 +308,7 @@
       <div class="nav-inner">
         <div class="brand">THz Electrodynamics Lab @ CAS-Air</div>
         <div class="menu">
-          <a href="index.html">Home</a>
+          <a class="active" href="index.html">Home</a>
           <a href="research.html">Research</a>
           <a href="people.html">People</a>
           <a href="publications.html">Publications</a>
@@ -336,6 +362,7 @@
       <div class="news-head">
         <h2>News</h2>
       </div>
+
       <div id="news-list" class="news-list"></div>
     </div>
   </div>
