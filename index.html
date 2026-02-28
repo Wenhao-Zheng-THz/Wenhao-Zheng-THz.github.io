@@ -4,22 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>THz Electrodynamics Lab @ CAS-Air</title>
- 
 
   <style>
     :root{
       /* ===== Light theme ===== */
       --bg:#ffffff;
       --bg2:#f6f8fc;
-      --text:#111827;
-      --muted:#55627a;
-      --line:rgba(17,24,39,.10);
+      --text:#0f172a;                 /* 更“高级”的深蓝黑 */
+      --muted:#51607a;
+      --line:rgba(15,23,42,.10);
+      --line2:rgba(15,23,42,.06);
+
       --card:#ffffff;
-      --shadow: 0 16px 40px rgba(15,23,42,.10);
-      --shadow2: 0 10px 24px rgba(15,23,42,.08);
+
+      --shadow: 0 18px 50px rgba(15,23,42,.10);
+      --shadow2: 0 10px 26px rgba(15,23,42,.08);
+
       --accent:#2f5cff;
       --accent2:#6d28d9;
-      --radius:20px;
+
+      --radius:22px;
       --max:1080px;
     }
 
@@ -34,6 +38,8 @@
         radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
         linear-gradient(var(--bg), var(--bg));
       line-height:1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     a{ color:var(--accent); text-decoration:none; }
@@ -46,18 +52,19 @@
     ========================== */
     .nav{
       position:sticky; top:0; z-index:1000;
-      background: rgba(255,255,255,.75);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line2);
     }
     .nav-inner{
       display:flex; justify-content:space-between; align-items:center;
       gap:14px; padding:14px 0;
     }
     .brand{
-      font-weight:600;           /* <- 不加粗（从 800/900 改为 600） */
+      font-weight:520;                 /* 更“非加粗” */
       letter-spacing:.1px;
       white-space:nowrap;
+      color: rgba(15,23,42,.92);
     }
 
     .menu{
@@ -67,55 +74,59 @@
     .menu a{
       padding:8px 10px;
       border-radius:999px;
-      color:var(--text);
+      color:rgba(15,23,42,.85);
       font-weight:600;
       font-size:14px;
       border:1px solid transparent;
       text-decoration:none;
+      transition: background .15s ease, border-color .15s ease, transform .15s ease;
     }
     .menu a:hover{
       background: rgba(47,92,255,.06);
-      border-color: rgba(47,92,255,.18);
+      border-color: rgba(47,92,255,.16);
+      text-decoration:none;
     }
     .cta{
       padding:8px 14px !important;
-      border:1px solid rgba(47,92,255,.25) !important;
-      background: linear-gradient(180deg, rgba(47,92,255,.12), rgba(109,40,217,.08));
+      border:1px solid rgba(47,92,255,.22) !important;
+      background: linear-gradient(180deg, rgba(47,92,255,.10), rgba(109,40,217,.07));
     }
 
     /* =========================
        HERO (no image)
     ========================== */
     .hero{
-      padding:36px 0 8px;
+      padding:34px 0 8px;
     }
     .hero-card{
-      background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(246,248,252,.85));
-      border: 1px solid rgba(17,24,39,.08);
+      background:
+        radial-gradient(900px 320px at 80% 10%, rgba(47,92,255,.06), transparent 55%),
+        radial-gradient(900px 320px at 10% 0%, rgba(109,40,217,.05), transparent 55%),
+        rgba(255,255,255,.86);
+      border: 1px solid rgba(15,23,42,.07);
       border-radius: calc(var(--radius) + 10px);
       box-shadow: var(--shadow);
-      padding:34px 34px;
+      padding:34px 36px;
     }
 
     .hero-title{
       margin:0;
-      font-size:50px;
-      line-height:1.05;
-      letter-spacing:-.5px;
+      font-size:46px;                 /* 稍收一点更稳 */
+      line-height:1.10;               /* 让两行标题更舒服 */
+      letter-spacing:-.6px;
+      color: rgba(15,23,42,.96);
     }
 
     .hero-text{
       margin:16px 0 0;
       color: var(--muted);
       font-size:16px;
-      max-width: 920px;
-      text-align: justify;         /* 两端对齐 */
+      max-width: 860px;              /* 收窄，提高可读性 */
+      text-align: justify;
       text-justify: inter-word;
+      hyphens: auto;                  /* 英文断行更自然 */
     }
-
-    .hero-text p{
-      margin: 0 0 12px;
-    }
+    .hero-text p{ margin: 0 0 12px; }
 
     .btn-row{
       display:flex; flex-wrap:wrap; gap:12px;
@@ -126,30 +137,40 @@
       display:inline-flex; align-items:center; justify-content:center;
       padding:10px 16px;
       border-radius:14px;
-      border:1px solid rgba(17,24,39,.12);
-      background:#fff;
-      color:var(--text);
-      font-weight:700;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.86);
+      color: rgba(15,23,42,.90);
+      font-weight:750;
       box-shadow: 0 6px 14px rgba(15,23,42,.06);
       text-decoration:none;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
     }
-    .btn:hover{ text-decoration:none; }
+    .btn:hover{
+      text-decoration:none;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 18px rgba(15,23,42,.08);
+      border-color: rgba(47,92,255,.18);
+    }
+
     .btn.primary{
-      background: linear-gradient(180deg, rgba(47,92,255,.95), rgba(47,92,255,.85));
-      border-color: rgba(47,92,255,.35);
+      background: linear-gradient(180deg, rgba(47,92,255,.96), rgba(47,92,255,.86));
+      border-color: rgba(47,92,255,.32);
       color:#fff;
-      box-shadow: 0 14px 30px rgba(47,92,255,.20);
+      box-shadow: 0 16px 34px rgba(47,92,255,.22);
+    }
+    .btn.primary:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 20px 44px rgba(47,92,255,.24);
     }
     .btn.ghost{
-      background: rgba(255,255,255,.70);
+      background: rgba(246,248,252,.85);   /* 次按钮更统一 */
     }
 
     /* =========================
        NEWS (home snippet)
     ========================== */
-    .news{
-      padding:22px 0 10px;
-    }
+    .news{ padding:22px 0 10px; }
+
     .news-head{
       display:flex; justify-content:space-between; align-items:flex-end;
       gap:12px; margin: 18px 0 10px;
@@ -158,6 +179,7 @@
       margin:0;
       font-size:22px;
       letter-spacing:.1px;
+      color: rgba(15,23,42,.94);
     }
     .news-hint{
       color: var(--muted);
@@ -166,26 +188,34 @@
 
     .news-list{
       display:flex;
-      flex-direction:column;   /* 1列多行 */
+      flex-direction:column;
       gap:12px;
     }
+
     .news-item{
-      background: rgba(255,255,255,.85);
-      border: 1px solid rgba(17,24,39,.08);
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(15,23,42,.07);
       border-radius: 16px;
       padding: 14px 16px;
       box-shadow: var(--shadow2);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
+    .news-item:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(15,23,42,.10);
+      border-color: rgba(47,92,255,.14);
+    }
+
     .news-top{
       display:flex; justify-content:space-between; gap:10px;
       align-items:baseline; flex-wrap:wrap;
     }
     .news-title{
       margin:0;
-      font-size:15px;
+      font-size:14.5px;
       font-weight:800;
       line-height:1.25;
-      color: var(--text);
+      color: rgba(15,23,42,.92);
     }
     .news-date{
       color: var(--muted);
@@ -211,18 +241,19 @@
       padding:18px 0 30px;
       color: var(--muted);
       font-size:13px;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--line2);
     }
 
     /* =========================
        RESPONSIVE
     ========================== */
     @media (max-width: 900px){
-      .hero-title{ font-size:40px; }
+      .hero-title{ font-size:38px; }
       .hero-card{ padding:26px; }
+      .hero-text{ max-width: 100%; }
     }
     @media (max-width: 560px){
-      .hero-title{ font-size:34px; }
+      .hero-title{ font-size:32px; }
       .menu a{ font-size:13px; padding:7px 9px; }
     }
   </style>
@@ -256,14 +287,17 @@
 
         <div class="hero-text">
           <p>
-          We are an interdisciplinary research group dedicated to quantum physics and advanced spectroscopy. 
-            By bridging quantum materials, ultrafast optics, and chip-scale electronics, we develop state-of-the-art 
-            THz platforms to probe the hidden dynamics of low-dimensional systems. 
-            Our mission is to uncover the fundamental physics governing low-energy electrodynamics, 
+            We are an interdisciplinary research group dedicated to quantum physics and advanced spectroscopy.
+            By bridging quantum materials, ultrafast optics, and chip-scale electronics, we develop state-of-the-art
+            THz platforms to probe the hidden dynamics of low-dimensional systems.
+            Our mission is to uncover the fundamental physics governing low-energy electrodynamics,
             many-body correlations, and non-equilibrium transport in condensed matter.
           </p>
+
           <p>
-            Based at the Aerospace Information Research Institute (AIR), Chinese Academy of Sciences (GBA Branch) in Guangzhou, we are actively seeking motivated students (UG/Master/PhD), Postdocs, Engineers, and Assistant Professors. If you are passionate about ultrafast physics, 2D materials, and cryogenic quantum transport, join us in exploring the terahertz world.:
+           Based at the Aerospace Information Research Institute (AIR), Chinese Academy of Sciences (GBA Branch) in Guangzhou, 
+            we are actively seeking motivated students (UG/Master/PhD), Postdocs, Engineers, and Assistant Professors. 
+            If you are passionate about ultrafast physics, 2D materials, and cryogenic quantum transport, join us:
             <a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
           </p>
         </div>
@@ -313,14 +347,14 @@
         let items = await res.json();
 
         items = (items || []).slice().sort((a,b) => parseDateYMD(b.date) - parseDateYMD(a.date));
-        const top = items.slice(0, 10); // 主页最多显示前10条（你现在屏幕只看得到3条也没关系，滚动即可）
+        const top = items.slice(0, 10);
 
         if(top.length === 0){
           box.innerHTML = '<div class="news-item"><div class="news-text">No updates yet.</div></div>';
           return;
         }
 
-        box.innerHTML = top.map((it, idx) => {
+        box.innerHTML = top.map(it => {
           const date = it.date || "";
           const title = it.title || "";
           const text = it.text || "";
