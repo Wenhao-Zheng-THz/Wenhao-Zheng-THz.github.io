@@ -1,423 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Join | THz Electrodynamics Lab @ CAS-Air</title>
-  <meta name="description" content="Join — THz Electrodynamics Lab @ CAS-Air" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Join | THz Electrodynamics Lab @ CAS-Air</title>
 
-  <!-- ✅ Site-wide nav -->
-  <link rel="stylesheet" href="nav.css" />
+<link rel="stylesheet" href="nav.css" />
 
-  <style>
-    /* =========================================================
-       THEME (Light) — align with Home/People/Publications
-    ========================================================== */
-    :root{
-      --bg:#ffffff;
-      --bg2:#f6f8fc;
+<style>
+:root{
+  --text:#111827;
+  --muted:#55627a;
+  --accent:#2f5cff;
+  --line:rgba(17,24,39,.10);
+  --shadow:0 16px 40px rgba(15,23,42,.10);
+  --shadow2:0 10px 24px rgba(15,23,42,.08);
+  --radius:20px;
+  --max: clamp(1080px, 92vw, 1360px);
+  --pad:24px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:#fff;
+  line-height:1.7;
+}
+.container{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
 
-      --text:#111827;
-      --muted:#55627a;
-      --line:rgba(17,24,39,.10);
+.header{padding:30px 0 14px}
+.header h1{margin:0;font-size:46px}
+.header .sub{margin-top:12px;color:var(--muted);max-width:900px}
 
-      --shadow: 0 16px 40px rgba(15,23,42,.10);
-      --shadow2: 0 10px 24px rgba(15,23,42,.08);
+.layout{
+  display:grid;
+  grid-template-columns:1.5fr .9fr;
+  gap:20px;
+}
 
-      --accent:#2f5cff;
-      --accent2:#6d28d9;
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:calc(var(--radius) + 8px);
+  box-shadow:var(--shadow);
+  padding:22px;
+}
 
-      --radius:20px;
-      --max: clamp(1080px, 92vw, 1360px);
-      --pad:24px;
+.card h2{
+  margin:0 0 16px;
+  font-size:20px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.card h2::after{
+  content:"";
+  height:4px;
+  width:120px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#2f5cff,#6d28d9);
+}
 
-      --cardPad: 22px;
-      --gap: 18px;
-    }
+.role-row{
+  display:grid;
+  grid-template-columns:240px 1fr;
+  gap:14px;
+  margin-bottom:12px;
+  background:#f8fafc;
+  border-radius:14px;
+  padding:12px 14px;
+  border:1px solid var(--line);
+}
+.role-title{font-weight:900}
+.role-desc{color:var(--muted)}
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,
-        "Noto Sans","PingFang SC","Microsoft Yahei",sans-serif;
-      color:var(--text);
+.bullet{
+  background:#f8fafc;
+  border-radius:14px;
+  padding:12px 14px;
+  border:1px solid var(--line);
+  margin-bottom:10px;
+}
+.bullet b{color:var(--text)}
 
-      background:
-        radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.08), transparent 60%),
-        radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
-        linear-gradient(var(--bg), var(--bg));
+.contact p{color:var(--muted)}
+.email-btn{
+  display:inline-block;
+  margin:12px 0;
+  padding:10px 16px;
+  border-radius:999px;
+  background:#eef2ff;
+  border:1px solid #c7d2fe;
+  font-weight:800;
+  text-decoration:none;
+  color:#111827;
+}
+.label{
+  margin-top:14px;
+  font-size:12px;
+  font-weight:900;
+  color:#64748b;
+  text-transform:uppercase;
+}
+.box{
+  background:#f8fafc;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  margin-top:6px;
+  font-size:14px;
+  color:var(--muted);
+}
 
-      line-height:1.7;
-      overflow-x:hidden;
-    }
-
-    a{ color:var(--accent); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-
-    .container{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:0 var(--pad);
-    }
-
-    /* =========================================================
-       PAGE HEADER
-    ========================================================== */
-    .header{ padding:30px 0 14px; }
-    .header h1{
-      margin:0;
-      font-size:46px;
-      letter-spacing:-.6px;
-      line-height:1.05;
-    }
-    .header .sub{
-      margin:14px 0 0;
-      color:var(--muted);
-      font-size:16px;
-      max-width: 980px;
-    }
-
-    /* =========================================================
-       LAYOUT: left column + right contact card
-    ========================================================== */
-    .layout{
-      display:grid;
-      grid-template-columns: 1.55fr .85fr;
-      gap: var(--gap);
-      align-items:start;
-      padding-bottom: 26px;
-    }
-
-    /* =========================================================
-       CARDS
-    ========================================================== */
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(246,248,252,.92));
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: calc(var(--radius) + 10px);
-      box-shadow: var(--shadow);
-      padding: var(--cardPad);
-    }
-
-    .card h2{
-      margin:0 0 14px;
-      font-size:20px;
-      font-weight:950;
-      letter-spacing:-.2px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .card h2::after{
-      content:"";
-      height:4px;
-      width:120px;
-      border-radius:999px;
-      background: linear-gradient(90deg, rgba(47,92,255,.75), rgba(109,40,217,.55));
-      opacity:.95;
-      transform: translateY(2px);
-    }
-
-    .muted{ color:var(--muted); }
-
-    /* =========================================================
-       Open Roles — FIXED ALIGNMENT
-       Use a 2-col grid per row: [role] [keywords]
-    ========================================================== */
-    .roles{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      margin-top: 6px;
-    }
-
-    .role-row{
-      display:grid;
-      grid-template-columns: 260px 1fr;
-      gap: 14px;
-      align-items:start;
-
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: 16px;
-      padding: 14px 16px;
-      box-shadow: var(--shadow2);
-    }
-
-    .role-left{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      min-width:0;
-    }
-    .dot{
-      width:10px;
-      height:10px;
-      border-radius:999px;
-      margin-top:7px;
-      background: rgba(47,92,255,.55);
-      box-shadow: 0 10px 18px rgba(47,92,255,.18);
-      flex:0 0 auto;
-    }
-    .role-title{
-      margin:0;
-      font-weight:950;
-      font-size:16px;
-      line-height:1.35;
-    }
-    .role-right{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.7;
-    }
-
-    /* =========================================================
-       How We Work / Good Fit — tidy bullets
-    ========================================================== */
-    .bullets{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      margin-top: 6px;
-    }
-    .bullet{
-      display:grid;
-      grid-template-columns: 14px 1fr;
-      gap:10px;
-      align-items:start;
-
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: 16px;
-      padding: 14px 16px;
-      box-shadow: var(--shadow2);
-    }
-    .bullet .btitle{
-      font-weight:950;
-      color:var(--text);
-    }
-    .bullet p{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.7;
-    }
-
-    /* =========================================================
-       Contact card
-    ========================================================== */
-    .contact p{
-      margin:0 0 12px;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.75;
-    }
-
-    .email-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(47,92,255,.25);
-      background: rgba(47,92,255,.08);
-      color: rgba(17,24,39,.92);
-      font-weight:950;
-      text-decoration:none;
-      box-shadow: 0 8px 16px rgba(15,23,42,.06);
-    }
-    .email-btn:hover{
-      text-decoration:none;
-      transform: translateY(-1px);
-    }
-
-    .contact .label{
-      margin:14px 0 6px;
-      font-size:12px;
-      letter-spacing:.2px;
-      font-weight:950;
-      color: rgba(17,24,39,.60);
-      text-transform: uppercase;
-    }
-
-    .contact .box{
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: 16px;
-      padding: 12px 14px;
-      box-shadow: var(--shadow2);
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .contact b{ color: rgba(17,24,39,.88); }
-
-    /* =========================================================
-       FOOTER
-    ========================================================== */
-    footer{
-      margin-top:26px;
-      padding:18px 0 34px;
-      color: var(--muted);
-      font-size:14px;
-      border-top: 1px solid var(--line);
-    }
-    .foot{
-      display:flex; flex-wrap:wrap; gap:10px;
-      align-items:center; justify-content:space-between;
-    }
-
-    /* =========================================================
-       RESPONSIVE
-    ========================================================== */
-    @media (max-width: 980px){
-      .layout{ grid-template-columns: 1fr; }
-      .role-row{ grid-template-columns: 1fr; }
-    }
-    @media (max-width: 560px){
-      :root{ --pad:18px; }
-      .header h1{ font-size:38px; }
-    }
-  </style>
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .role-row{grid-template-columns:1fr}
+}
+</style>
 </head>
 
-<!-- ✅ nav.js will highlight Join -->
 <body data-page="join">
+<div id="site-nav"></div>
 
-  <!-- ✅ injected nav -->
-  <div id="site-nav"></div>
+<div class="container">
 
-  <div class="container">
-    <div class="header">
-      <h1>Join</h1>
-      <div class="sub">
-        We’re a small, hands-on group building ultrafast THz platforms and using them to explore the low-energy electrodynamics of quantum materials.
-        If you enjoy both <b>building</b> and <b>doing careful physics</b>, we’d love to chat.
-      </div>
-    </div>
+<div class="header">
+<h1>Join</h1>
+<div class="sub">
+We’re a small, hands-on group building ultrafast THz platforms and using them to explore the low-energy electrodynamics of quantum materials.
+We believe research works best when people build, think, and solve problems together.
+</div>
+</div>
 
-    <div class="layout">
-      <!-- LEFT COLUMN -->
-      <div style="display:flex; flex-direction:column; gap: var(--gap);">
+<div class="layout">
 
-        <!-- Open Roles -->
-        <section class="card">
-          <h2>Open Roles</h2>
+<div>
 
-          <div class="roles">
-            <div class="role-row">
-              <div class="role-left">
-                <span class="dot"></span>
-                <p class="role-title">PhD / Master Students</p>
-              </div>
-              <p class="role-right">
-                Ultrafast optics, THz spectroscopy, on-chip platforms, 2D quantum materials, low-temperature transport
-              </p>
-            </div>
+<section class="card">
+<h2>Open Roles</h2>
 
-            <div class="role-row">
-              <div class="role-left">
-                <span class="dot"></span>
-                <p class="role-title">Postdoctoral Researchers</p>
-              </div>
-              <p class="role-right">
-                THz/ultrafast, device physics, correlated states & superconducting electrodynamics
-              </p>
-            </div>
+<div class="role-row">
+<div class="role-title">PhD / Master Students</div>
+<div class="role-desc">
+Interested in ultrafast optics, THz spectroscopy, on-chip platforms, 2D quantum materials, or low-temperature transport.
+</div>
+</div>
 
-            <div class="role-row">
-              <div class="role-left">
-                <span class="dot"></span>
-                <p class="role-title">Engineers / Research Assistants</p>
-              </div>
-              <p class="role-right">
-                System building, automation & control, data pipelines, measurement workflows
-              </p>
-            </div>
-          </div>
-        </section>
+<div class="role-row">
+<div class="role-title">Postdoctoral Researchers</div>
+<div class="role-desc">
+Working on THz / ultrafast science, device physics, correlated states or superconducting electrodynamics.
+</div>
+</div>
 
-        <!-- How We Work -->
-        <section class="card">
-          <h2>How We Work</h2>
+<div class="role-row">
+<div class="role-title">Engineers / Research Assistants</div>
+<div class="role-desc">
+Helping build systems, develop automation and improve measurement workflows.
+</div>
+</div>
 
-          <div class="bullets">
-            <div class="bullet">
-              <span class="dot"></span>
-              <p><span class="btitle">Mentorship & co-working</span> — we solve problems side-by-side and share know-how openly.</p>
-            </div>
-            <div class="bullet">
-              <span class="dot"></span>
-              <p><span class="btitle">Reproducible research</span> — careful notes, clean data, and results we can trust.</p>
-            </div>
-            <div class="bullet">
-              <span class="dot"></span>
-              <p><span class="btitle">Respectful collaboration</span> — honest discussion, supportive teamwork, and steady progress.</p>
-            </div>
-          </div>
-        </section>
+</section>
 
-        <!-- Good Fit -->
-        <section class="card">
-          <h2>Good Fit If You Like…</h2>
+<section class="card">
+<h2>How We Work</h2>
 
-          <div class="bullets">
-            <div class="bullet">
-              <span class="dot"></span>
-              <p><span class="btitle">Building platforms</span> (optics/THz/cryogenics/electronics) and seeing them come to life.</p>
-            </div>
-            <div class="bullet">
-              <span class="dot"></span>
-              <p><span class="btitle">Hard measurements</span> with real-world imperfections—and learning to make them robust.</p>
-            </div>
-            <div class="bullet">
-              <span class="dot"></span>
-              <p><span class="btitle">Turning data into physics</span> through thoughtful analysis and discussion.</p>
-            </div>
-          </div>
-        </section>
+<div class="bullet"><b>Mentorship & co-working</b> — we solve problems side-by-side and share know-how openly.</div>
+<div class="bullet"><b>Reproducible research</b> — careful notes, clean data, and results we can trust.</div>
+<div class="bullet"><b>Respectful collaboration</b> — honest discussion and helping each other succeed.</div>
 
-      </div>
+</section>
 
-      <!-- RIGHT COLUMN: Contact -->
-      <aside class="card contact">
-        <h2>Contact</h2>
-        <p>
-          If you’re interested, feel free to send a short email.
-          I’m happy to chat and see whether there’s a good match on both sides.
-        </p>
+<section class="card">
+<h2>Good Fit If You Like…</h2>
 
-        <a class="email-btn" href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>
+<div class="bullet"><b>Building platforms</b> and seeing them come to life.</div>
+<div class="bullet"><b>Hard measurements</b> with real-world imperfections.</div>
+<div class="bullet"><b>Turning data into physics</b> through thoughtful analysis.</div>
 
-        <div class="label">Recommended contents</div>
-        <div class="box">
-          <b>CV</b> + <b>transcript / representative work</b> + a <b>short note about your interests</b> (a few sentences are enough).
-        </div>
+</section>
 
-        <div class="label">Suggested subject line</div>
-        <div class="box">
-          <span class="muted">[Join]</span> Name — Role — Keywords
-        </div>
-      </aside>
-    </div>
-  </div>
+</div>
 
-  <footer>
-    <div class="container">
-      <div class="foot">
-        <div>© <span id="y"></span></div>
-        <div><a href="contact.html">Contact</a></div>
-      </div>
-    </div>
-  </footer>
+<aside class="card contact">
+<h2>Contact</h2>
 
-  <!-- ✅ injected nav -->
-  <script src="nav.js"></script>
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+<p>
+If you're interested, feel free to send a short email.
+I'm always happy to chat and see whether there's a good match on both sides.
+</p>
+
+<a class="email-btn" href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>
+
+<div class="label">Recommended contents</div>
+<div class="box">
+CV + transcript / representative work + a short note about your interests.
+</div>
+
+<div class="label">Suggested subject</div>
+<div class="box">
+[Join] Name — Role — Keywords
+</div>
+
+</aside>
+
+</div>
+</div>
+
+<script src="nav.js"></script>
+<script>
+document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
