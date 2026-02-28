@@ -3,347 +3,393 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Research | Terahertz Electrodynamics Lab @ CAS AIR</title>
-  <meta name="description" content="Research — Terahertz Electrodynamics Lab @ CAS AIR" />
+  <title>Research | THz Electrodynamics Lab @ CAS-Air</title>
+  <meta name="description" content="Research — THz Electrodynamics Lab @ CAS-Air" />
+
+  <!-- ✅ Site-wide unified nav -->
+  <link rel="stylesheet" href="nav.css" />
 
   <style>
-    /* =========================================================
-       THEME (keep consistent across all pages)
-    ========================================================= */
     :root{
-      --bg:#0a0f1c;
-      --panel:rgba(17,24,39,.55);
-      --panel2:rgba(15,23,42,.62);
-      --text:#e8eeff;
-      --muted:#b6c2ea;
-      --line:rgba(255,255,255,.10);
-      --accent:#4da6ff;
-      --accent2:#7c3aed;
-      --radius:18px;
-      --shadow: 0 18px 40px rgba(0,0,0,.38);
-      --max: 1080px;
+      --bg:#ffffff;
+      --bg2:#f6f8fc;
+
+      --text:#111827;
+      --muted:#55627a;
+      --line:rgba(17,24,39,.10);
+
+      --shadow: 0 16px 40px rgba(15,23,42,.10);
+      --shadow2: 0 10px 22px rgba(15,23,42,.08);
+      --shadow3: 0 22px 60px rgba(15,23,42,.12);
+
+      --accent:#2f5cff;
+      --accent2:#6d28d9;
+
+      --radius:20px;
+      --max: clamp(1080px, 92vw, 1360px);
+      --pad:24px;
+
+      /* typography */
+      --h1: 52px;
+      --h2: 22px;
+      --h3: 18px;
+      --body: 16.5px;
+      --body2: 15.8px;
+      --small: 14px;
+
+      /* layout */
+      --gap:18px;
+      --cardPad:20px;
     }
 
-    *{box-sizing:border-box}
-    html, body{height:100%}
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
       margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,
+        "Noto Sans","PingFang SC","Microsoft Yahei",sans-serif;
       color:var(--text);
-      line-height:1.65;
-      min-height:100vh;
+      line-height:1.7;
+      overflow-x:hidden;
       background:
-        radial-gradient(900px 420px at 15% 0%, rgba(124,58,237,.20), transparent 60%),
-        radial-gradient(900px 460px at 85% 10%, rgba(77,166,255,.18), transparent 60%),
+        radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.08), transparent 60%),
+        radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
         linear-gradient(var(--bg), var(--bg));
     }
 
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-    .page{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-    }
-    .main{flex:1}
-
-    /* =========================================================
-       TOP NAV (same as home/people)
-    ========================================================= */
-    .nav{
-      position:sticky; top:0; z-index:100;
-      background: rgba(10,15,28,.62);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px; padding:12px 0;
-    }
-    .brand{
-      display:flex; flex-direction:column; gap:2px;
-      font-weight:900; letter-spacing:.2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:clip;
-      min-width: 280px;
-    }
-    .brand small{
-      color:var(--muted);
-      font-weight:650;
-      letter-spacing:.2px
-    }
-    .menu{
-      display:flex; flex-wrap:wrap;
-      gap:8px; align-items:center; justify-content:flex-end
-    }
-    .menu a{
-      padding:8px 10px;
-      border-radius:12px;
-      color:var(--text);
-      font-weight:650;
-      font-size:14px;
-      border:1px solid transparent;
-      text-decoration:none;
-    }
-    .menu a:hover{
-      background: rgba(77,166,255,.08);
-      border-color: rgba(77,166,255,.25);
-    }
-    .menu a.active{
-      background: rgba(77,166,255,.12);
-      border-color: rgba(77,166,255,.32);
-    }
-    .cta{
-      padding:8px 12px !important;
-      border:1px solid rgba(77,166,255,.35) !important;
-      background: linear-gradient(135deg, rgba(77,166,255,.18), rgba(124,58,237,.14));
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 var(--pad);
     }
 
-    /* =========================================================
-       PAGE HEADER
-    ========================================================= */
-    .header{
-      padding:34px 0 14px;
-    }
+    /* =========================
+       HEADER
+    ========================== */
+    .header{ padding:38px 0 16px; }
     .header h1{
       margin:0;
-      font-size:34px;
-      letter-spacing:.2px;
+      font-size: var(--h1);
+      letter-spacing:-.8px;
+      line-height:1.06;
     }
     .header .sub{
-      margin:10px 0 0;
+      margin:16px 0 0;
       color:var(--muted);
-      font-size:14px;
-      font-weight:650;
-      max-width: 900px;
+      font-size: var(--body);
+      max-width: 980px;
     }
 
-    /* =========================================================
-       PANELS / CARDS
-    ========================================================= */
-    .panel{
-      background: var(--panel2);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius: calc(var(--radius) + 6px);
-      box-shadow: var(--shadow);
-      padding:18px;
+    /* =========================
+       HERO / SUMMARY
+    ========================== */
+    .hero{
+      background: linear-gradient(135deg, rgba(47,92,255,.08), rgba(109,40,217,.06));
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: calc(var(--radius) + 12px);
+      box-shadow: var(--shadow2);
+      padding: 18px 18px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin: 10px 0 18px;
+    }
+    .hero .kicker{
+      font-weight:950;
+      letter-spacing:.2px;
+      color: rgba(17,24,39,.92);
+      font-size: 16.5px;
+    }
+    .hero .desc{
+      color:var(--muted);
+      font-size: var(--body2);
+      line-height:1.78;
+      max-width: 980px;
     }
 
+    /* =========================
+       GRID
+    ========================== */
     .grid{
       display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap:14px;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      align-items:start;
     }
 
+    /* =========================
+       CARDS
+    ========================== */
     .card{
-      background: var(--panel);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius: var(--radius);
-      padding:16px;
+      background: rgba(255,255,255,.94);
+      border:1px solid rgba(17,24,39,.085);
+      border-radius: 18px;
+      box-shadow: var(--shadow2);
+      padding: var(--cardPad);
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow3);
+      border-color: rgba(17,24,39,.14);
+      background: rgba(255,255,255,.98);
     }
 
     .card h2{
-      margin:0 0 8px;
-      font-size:16px;
-      font-weight:900;
-      letter-spacing:.2px;
+      margin:0 0 10px;
+      font-size: var(--h2);
+      font-weight:950;
+      letter-spacing:-.25px;
+      line-height:1.25;
+    }
+    .card p.lead{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size: var(--body2);
+      line-height:1.78;
     }
 
-    .card p{
-      margin:0;
-      color: rgba(232,238,255,.92);
-      font-size:13.5px;
-    }
-
-    .bullets{
-      margin:12px 0 0;
-      padding-left:18px;
-      color: rgba(232,238,255,.92);
-      font-size:13.5px;
-    }
-    .bullets li{margin:8px 0;color: rgba(232,238,255,.92);}
-    .muted{color:var(--muted)}
-
-    .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-    .tag{
-      font-size:12px;
+    /* soft section label */
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:6px 10px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color:rgba(232,238,255,.92);
+      border:1px solid rgba(17,24,39,.10);
+      background: rgba(17,24,39,.03);
+      color: rgba(17,24,39,.82);
+      font-size: 13px;
+      font-weight:900;
+      margin-bottom:10px;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: rgba(17,24,39,.26);
+      flex:0 0 auto;
     }
 
-    /* Optional: callout */
-    .callout{
-      margin-top:14px;
-      padding:14px;
-      border-radius: var(--radius);
-      border:1px solid rgba(77,166,255,.20);
-      background: linear-gradient(135deg, rgba(77,166,255,.10), rgba(124,58,237,.08));
-      color: rgba(232,238,255,.92);
-      font-size:13.5px;
+    /* list */
+    ul{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
-
-    /* =========================================================
-       FOOTER
-    ========================================================= */
-    footer{
-      padding:22px 0;
-      border-top:1px solid rgba(255,255,255,.06);
+    li{
       color:var(--muted);
-      font-size:13px;
+      font-size: var(--body2);
+      line-height:1.78;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    li::before{
+      content:"";
+      width:8px; height:8px;
+      border-radius:999px;
+      background: rgba(17,24,39,.22);
+      margin-top:10px;
+      flex:0 0 auto;
+    }
+    .strong{
+      color: rgba(17,24,39,.92);
+      font-weight:900;
+    }
+
+    /* tags */
+    .tagrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:14px;
+    }
+    .tag{
+      font-size: 13px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(17,24,39,.10);
+      background: rgba(17,24,39,.03);
+      color: rgba(17,24,39,.78);
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    /* =========================
+       CALLOUT
+    ========================== */
+    .callout{
+      margin-top: var(--gap);
+      background: rgba(255,255,255,.92);
+      border:1px solid rgba(17,24,39,.085);
+      border-radius: 18px;
+      box-shadow: var(--shadow2);
+      padding: 18px 20px;
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
+    .callout .badge{
+      width:36px;height:36px;
+      border-radius: 12px;
+      border:1px solid rgba(17,24,39,.12);
+      background: rgba(17,24,39,.03);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:950;
+      color: rgba(17,24,39,.78);
+      flex:0 0 auto;
+      margin-top:2px;
+    }
+    .callout b{
+      display:block;
+      margin:0 0 4px;
+      font-size: 16px;
+      letter-spacing:-.1px;
+      color: rgba(17,24,39,.92);
+    }
+    .callout p{
+      margin:0;
+      color:var(--muted);
+      font-size: var(--body2);
+      line-height:1.78;
+    }
+
+    /* FOOTER */
+    footer{
+      margin-top:28px;
+      padding:18px 0 34px;
+      color: var(--muted);
+      font-size:14px;
+      border-top: 1px solid var(--line);
     }
     .foot{
-      display:flex; flex-wrap:wrap; gap:10px;
-      align-items:center; justify-content:space-between
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
     }
 
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
-    @media (max-width: 900px){
-      .grid{grid-template-columns:1fr;}
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
     }
     @media (max-width: 780px){
-      .brand small{display:none}
-      .header h1{font-size:30px}
+      :root{ --pad:18px; --h1:44px; --h2:21px; --cardPad:18px; }
+      .hero{ padding:16px; }
+    }
+    @media (max-width: 560px){
+      :root{ --h1:38px; --h2:20px; --body:16px; --body2:15.2px; }
     }
   </style>
 </head>
 
-<body>
-  <div class="page">
+<body data-page="research">
+  <!-- ✅ unified nav injection placeholder -->
+  <div id="site-nav"></div>
 
-    <!-- NAV -->
-    <div class="nav">
-      <div class="container">
-        <div class="nav-inner">
-          <div class="brand">
-            <div>Terahertz Electrodynamics Lab @ CAS AIR</div>
-          </div>
+  <div class="container">
 
-          <div class="menu">
-            <a href="index.html">Home</a>
-            <a class="active" href="research.html">Research</a>
-            <a href="people.html">People</a>
-            <a href="publications.html">Publications</a>
-            <a href="news.html">News</a>
-            <a href="join.html">Join</a>
-            <a class="cta" href="contact.html">Contact</a>
-          </div>
-        </div>
+    <div class="header">
+      <h1>Research</h1>
+      <div class="sub">
+        Our research focuses on ultrafast terahertz (THz) spectroscopy—especially on-chip integrated THz platforms—
+        to reveal low-energy electrodynamics, correlations, and nonequilibrium transport in low-dimensional quantum materials.
       </div>
     </div>
 
-    <div class="main">
-      <div class="container">
-
-        <!-- HEADER -->
-        <div class="header">
-          <h1>Research</h1>
-          <div class="sub">
-            Our research focuses on ultrafast terahertz (THz) spectroscopy—especially on-chip integrated THz platforms—
-            to reveal low-energy electrodynamics, correlations, and nonequilibrium transport in low-dimensional quantum materials.
-          </div>
-        </div>
-
-        <!-- MAIN PANEL -->
-        <div class="panel">
-          <div class="grid">
-
-            <!-- 1 -->
-            <div class="card">
-              <h2>On-chip Terahertz Spectroscopy</h2>
-              <p class="muted">Integrated THz sources/detectors and calibrated pipelines for device-level spectroscopy.</p>
-              <ul class="bullets">
-                <li>On-chip THz emitters/detectors and compact spectrometer architectures</li>
-                <li>System response calibration & quantitative extraction (E(t), σ(ω), ε(ω))</li>
-                <li>Compatibility with cryogenic and magneto-transport environments</li>
-              </ul>
-              <div class="tagrow">
-                <span class="tag">On-chip THz</span>
-                <span class="tag">THz-TDS</span>
-                <span class="tag">Calibration</span>
-              </div>
-            </div>
-
-            <!-- 2 -->
-            <div class="card">
-              <h2>Correlated Electrodynamics & Superconductivity</h2>
-              <p class="muted">THz complex conductivity fingerprints of low-energy excitations and collective dynamics.</p>
-              <ul class="bullets">
-                <li>Complex conductivity σ(ω) across phase transitions and correlated regimes</li>
-                <li>Low-energy modes, scattering, and spectral weight transfer</li>
-                <li>Field/temperature tuning with cryogenic THz spectroscopy</li>
-              </ul>
-              <div class="tagrow">
-                <span class="tag">Complex σ(ω)</span>
-                <span class="tag">Superconductivity</span>
-                <span class="tag">Correlations</span>
-              </div>
-            </div>
-
-            <!-- 3 -->
-            <div class="card">
-              <h2>Ultrafast Carrier & Heat Transport</h2>
-              <p class="muted">Multi-timescale dynamics from femtoseconds to nanoseconds in low-dimensional materials.</p>
-              <ul class="bullets">
-                <li>Carrier relaxation, hot-carrier transport, and transient conductivity</li>
-                <li>Lattice heating & thermal dissipation pathways</li>
-                <li>Coupling between photophysics and electrical transport</li>
-              </ul>
-              <div class="tagrow">
-                <span class="tag">Ultrafast</span>
-                <span class="tag">Transport</span>
-                <span class="tag">Thermal</span>
-              </div>
-            </div>
-
-            <!-- 4 -->
-            <div class="card">
-              <h2>Quantum Transport in 2D Devices</h2>
-              <p class="muted">Gate-tunable transport and intrinsic electrodynamics in quantum materials and heterostructures.</p>
-              <ul class="bullets">
-                <li>Low-temperature quantum transport (gating, magneto-transport, Hall)</li>
-                <li>2D materials and vdW heterostructures: devices and characterization</li>
-                <li>Connecting DC transport with THz electrodynamics</li>
-              </ul>
-              <div class="tagrow">
-                <span class="tag">2D Devices</span>
-                <span class="tag">Cryogenic</span>
-                <span class="tag">Quantum Transport</span>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- OPTIONAL CALLOUT -->
-          <div class="callout">
-            <b>Looking for collaborations?</b>
-            If you are interested in ultrafast THz spectroscopy, on-chip platforms, or quantum materials/devices,
-            feel free to reach out via <a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
-          </div>
-        </div>
-
-        <div style="height:26px"></div>
+    <div class="hero">
+      <div class="kicker">Two main directions, one common goal.</div>
+      <div class="desc">
+        We develop rigorous THz measurement platforms and use them to understand quantum materials and devices,
+        connecting time-domain signals to quantitative electrodynamic response and transport physics.
       </div>
     </div>
 
-    <footer>
-      <div class="container">
-        <div class="foot">
-          <div>© <span id="y"></span></div>
-          <div><a href="contact.html">Contact</a></div>
+    <div class="grid">
+
+      <!-- Direction 1 -->
+      <div class="card">
+        <div class="pill"><span class="dot"></span>Direction 1</div>
+        <h2>On-chip Terahertz Spectroscopy Platforms</h2>
+        <p class="lead">
+          Integrated THz sources/detectors and calibrated pipelines for device-level spectroscopy.
+        </p>
+
+        <ul>
+          <li><span class="strong">On-chip THz emitters/detectors</span> and compact spectrometer architectures</li>
+          <li><span class="strong">System response calibration</span> & quantitative extraction (E(t), σ(ω), ε(ω))</li>
+          <li><span class="strong">Hardware–software co-design</span> for robust, reproducible measurements</li>
+          <li><span class="strong">Compatibility</span> with cryogenic and magneto-transport environments</li>
+        </ul>
+
+        <div class="tagrow">
+          <span class="tag">On-chip THz</span>
+          <span class="tag">THz-TDS</span>
+          <span class="tag">Calibration</span>
+          <span class="tag">Cryo / Magnet</span>
         </div>
       </div>
-    </footer>
 
+      <!-- Direction 2 -->
+      <div class="card">
+        <div class="pill"><span class="dot"></span>Direction 2</div>
+        <h2>THz Electrodynamics & Quantum Transport in Quantum Materials</h2>
+        <p class="lead">
+          THz complex conductivity fingerprints of low-energy excitations, collective dynamics, and nonequilibrium transport.
+        </p>
+
+        <ul>
+          <li><span class="strong">Correlated electrodynamics & superconductivity</span>: complex conductivity σ(ω), low-energy modes, spectral weight transfer</li>
+          <li><span class="strong">Ultrafast carrier & heat transport</span>: dynamics from femtoseconds to nanoseconds and their impact on charge transport</li>
+          <li><span class="strong">Quantum transport in 2D devices</span>: gate-tunable transport, magneto-transport, and connections to THz response</li>
+          <li><span class="strong">Materials and heterostructures</span>: 2D quantum materials, vdW stacks, and functional thin films</li>
+        </ul>
+
+        <div class="tagrow">
+          <span class="tag">Complex σ(ω)</span>
+          <span class="tag">Superconductivity</span>
+          <span class="tag">Correlations</span>
+          <span class="tag">Ultrafast</span>
+          <span class="tag">Quantum Transport</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout">
+      <div class="badge">✦</div>
+      <div>
+        <b>Looking for collaborations?</b>
+        <p>
+          If you are interested in ultrafast THz spectroscopy, on-chip platforms, or quantum materials/devices,
+          feel free to reach out via <a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
+        </p>
+      </div>
+    </div>
+
+    <div style="height:26px"></div>
   </div>
 
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>© <span id="y"></span></div>
+        <div><a href="contact.html">Contact</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="nav.js"></script>
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
