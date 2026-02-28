@@ -1,204 +1,353 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Join | Terahertz Electrodynamics Lab @ CAS AIR</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Join | THz Electrodynamics Lab @ CAS-Air</title>
+  <meta name="description" content="Join — THz Electrodynamics Lab @ CAS-Air" />
 
-<style>
-:root{
-  --bg:#0a0f1c;
-  --panel:rgba(17,24,39,.55);
-  --panel2:rgba(15,23,42,.62);
-  --text:#e8eeff;
-  --muted:#b6c2ea;
-  --accent:#4da6ff;
-  --accent2:#7c3aed;
-  --radius:18px;
-  --shadow: 0 18px 40px rgba(0,0,0,.38);
-  --max:1080px;
-}
+  <!-- ✅ 全站统一导航（和 publications 同一套） -->
+  <link rel="stylesheet" href="nav.css" />
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"PingFang SC","Microsoft Yahei",sans-serif;
-  color:var(--text);
-  min-height:100vh;
+  <style>
+    /* =========================================================
+       THEME (Light) — align with Publications/Home/People
+    ========================================================== */
+    :root{
+      --bg:#ffffff;
+      --bg2:#f6f8fc;
 
-  background:
-    radial-gradient(900px 420px at 15% 0%, rgba(124,58,237,.20), transparent 60%),
-    radial-gradient(900px 460px at 85% 10%, rgba(77,166,255,.18), transparent 60%),
-    linear-gradient(var(--bg), var(--bg));
-}
+      --text:#111827;
+      --muted:#55627a;
+      --line:rgba(17,24,39,.10);
 
-.container{max-width:var(--max);margin:0 auto;padding:0 20px}
+      --card:#ffffff;
+      --shadow: 0 16px 40px rgba(15,23,42,.10);
+      --shadow2: 0 10px 24px rgba(15,23,42,.08);
+      --shadow3: 0 22px 60px rgba(15,23,42,.12);
 
-.page{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-}
-.main{flex:1}
+      --accent:#2f5cff;
+      --accent2:#6d28d9;
 
-/* ================= NAV ================= */
-.nav{
-  position:sticky; top:0; z-index:100;
-  background: rgba(10,15,28,.62);
-  backdrop-filter: blur(10px);
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.nav-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px 0;
-}
-.brand{
-  font-weight:900;
-}
-.menu a{
-  padding:8px 10px;
-  border-radius:12px;
-  color:var(--text);
-  text-decoration:none;
-  font-weight:600;
-}
-.menu a:hover{
-  background: rgba(77,166,255,.08);
-}
-.menu a.active{
-  background: rgba(77,166,255,.12);
-}
-.cta{
-  border:1px solid rgba(77,166,255,.35);
-  background: linear-gradient(135deg, rgba(77,166,255,.18), rgba(124,58,237,.14));
-}
+      --radius:20px;
+      --max: clamp(1080px, 92vw, 1360px);
+      --pad:24px;
+    }
 
-/* ================= CONTENT ================= */
-.content{
-  padding:50px 0;
-}
-h1{
-  margin:0 0 10px;
-  font-size:30px;
-}
-.hint{
-  color:var(--muted);
-  margin-bottom:20px;
-}
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,
+        "Noto Sans","PingFang SC","Microsoft Yahei",sans-serif;
+      color:var(--text);
+      line-height:1.7;
+      overflow-x:hidden;
 
-/* 卡片 */
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-}
-.card{
-  background:var(--panel);
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:var(--radius);
-  padding:18px;
-}
-.card h3{margin:0 0 10px}
-.card p{margin:0;color:var(--muted)}
-ul{margin:10px 0 0 18px;color:var(--muted)}
-li{margin:6px 0}
+      background:
+        radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.08), transparent 60%),
+        radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
+        linear-gradient(var(--bg), var(--bg));
+    }
 
-.email a{
-  color:var(--accent);
-  font-weight:800;
-}
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-@media (max-width:760px){
-  .grid{grid-template-columns:1fr}
-}
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 var(--pad);
+    }
 
-/* ================= FOOTER ================= */
-footer{
-  padding:22px 0;
-  border-top:1px solid rgba(255,255,255,.06);
-  color:var(--muted);
-  font-size:13px;
-}
-.foot{
-  display:flex;
-  justify-content:space-between;
-}
-</style>
+    /* =========================================================
+       PAGE HEADER
+    ========================================================== */
+    .header{ padding:34px 0 16px; }
+    .header h1{
+      margin:0;
+      font-size:50px;
+      letter-spacing:-.7px;
+      line-height:1.05;
+    }
+    .header .sub{
+      margin:14px 0 0;
+      color:var(--muted);
+      font-size:16px;
+      max-width: 980px;
+    }
+
+    /* =========================================================
+       HERO STRIP
+    ========================================================== */
+    .hero{
+      background: linear-gradient(135deg, rgba(47,92,255,.10), rgba(109,40,217,.08));
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: calc(var(--radius) + 10px);
+      box-shadow: var(--shadow2);
+      padding: 18px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      margin: 6px 0 18px;
+    }
+    .hero .left{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .hero .kicker{
+      font-weight:900;
+      letter-spacing:.2px;
+      color: rgba(17,24,39,.92);
+    }
+    .hero .desc{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    /* =========================================================
+       LAYOUT
+    ========================================================== */
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:start;
+    }
+
+    /* =========================================================
+       CARDS
+    ========================================================== */
+    .card{
+      background: rgba(255,255,255,.94);
+      border:1px solid rgba(17,24,39,.085);
+      border-radius: 18px;
+      box-shadow: var(--shadow2);
+      padding: 18px 18px;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow3);
+      border-color: rgba(47,92,255,.22);
+      background: rgba(255,255,255,.98);
+    }
+
+    .card h2{
+      margin:0 0 10px;
+      font-size:20px;
+      font-weight:950;
+      letter-spacing:-.2px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .card h2::after{
+      content:"";
+      height:4px;
+      width:96px;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(47,92,255,.70), rgba(109,40,217,.45));
+      opacity:.85;
+      transform: translateY(2px);
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.75;
+    }
+
+    /* nicer list */
+    ul{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    li{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.7;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    li::before{
+      content:"";
+      width:9px; height:9px;
+      border-radius:999px;
+      background: rgba(47,92,255,.55);
+      box-shadow: 0 8px 18px rgba(47,92,255,.15);
+      margin-top:7px;
+      flex:0 0 auto;
+    }
+
+    /* =========================================================
+       CONTACT / APPLY CARD
+    ========================================================== */
+    .apply{
+      position: sticky;
+      top: 86px; /* leave space for nav */
+    }
+    .email{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(47,92,255,.22);
+      background: rgba(47,92,255,.06);
+      font-weight:950;
+      color: rgba(17,24,39,.92);
+      margin-top:10px;
+    }
+    .email:hover{
+      text-decoration:none;
+      background: rgba(47,92,255,.10);
+      border-color: rgba(47,92,255,.30);
+    }
+    .apply small{
+      display:block;
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.65;
+    }
+
+    /* =========================================================
+       EXTRA SECTION (values)
+    ========================================================== */
+    .stack{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      margin-top:16px;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================== */
+    footer{
+      margin-top:26px;
+      padding:18px 0 34px;
+      color: var(--muted);
+      font-size:14px;
+      border-top: 1px solid var(--line);
+    }
+    .foot{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================== */
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+      .apply{ position: static; }
+    }
+    @media (max-width: 780px){
+      :root{ --pad:18px; }
+      .header h1{ font-size:42px; }
+      .card{ padding:16px; }
+      .hero{ padding:16px; }
+    }
+    @media (max-width: 560px){
+      .header h1{ font-size:38px; }
+      .card h2{ font-size:19px; }
+      li{ font-size:14.5px; }
+      .hero .desc{ font-size:14.5px; }
+    }
+  </style>
 </head>
 
-<body>
-<div class="page">
+<!-- ✅ 让 nav.js 自动高亮 Join -->
+<body data-page="join">
 
-<!-- NAV -->
-<div class="nav">
-  <div class="container nav-inner">
-    <div class="brand">Terahertz Electrodynamics Lab @ CAS AIR</div>
-    <div class="menu">
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="people.html">People</a>
-      <a href="publications.html">Publications</a>
-      <a href="news.html">News</a>
-      <a class="active" href="join.html">Join</a>
-      <a class="cta" href="contact.html">Contact</a>
+  <!-- ✅ 统一导航注入占位 -->
+  <div id="site-nav"></div>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <h1>Join Us</h1>
+      <div class="sub">
+        我们欢迎对“搭平台 + 做硬核测量 + 解物理问题”感兴趣的同学与合作者。方向覆盖：超快光学 / 太赫兹谱学 / 片上集成平台 / 二维量子材料 / 低温输运与强关联电动力学等。
+      </div>
     </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="left">
+        <div class="kicker">Hands-on • Reproducible • Collaborative</div>
+        <div class="desc">如果你喜欢把系统从 0 跑到 1、把数据做“干净”、把问题讲清楚并一起推进，欢迎联系。</div>
+      </div>
+    </div>
+
+    <!-- MAIN GRID -->
+    <div class="grid">
+
+      <!-- LEFT -->
+      <div>
+        <div class="card">
+          <h2>Open Positions</h2>
+          <ul>
+            <li><b style="color:rgba(17,24,39,.92)">PhD / Master Students</b>：超快光学、太赫兹谱学、片上集成平台、二维量子材料、低温输运</li>
+            <li><b style="color:rgba(17,24,39,.92)">Postdocs</b>：THz / ultrafast、器件物理、强关联 / 超导电动力学</li>
+            <li><b style="color:rgba(17,24,39,.92)">Engineers / Research Assistants</b>：平台搭建、自动化、数据处理与测量流程</li>
+          </ul>
+        </div>
+
+        <div class="stack">
+          <div class="card">
+            <h2>What We Value</h2>
+            <ul>
+              <li><b style="color:rgba(17,24,39,.92)">Strong hands-on ability</b>：愿意从 0 到 1 把系统跑通</li>
+              <li><b style="color:rgba(17,24,39,.92)">Clean data habits</b>：严谨、可复验、记录清晰</li>
+              <li><b style="color:rgba(17,24,39,.92)">Communication & teamwork</b>：能把问题讲清楚、一起推进</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="card apply">
+        <h2>How to Apply</h2>
+        <p>请发邮件至：</p>
+        <a class="email" href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>
+        <small>
+          建议包含：<b style="color:rgba(17,24,39,.92)">CV</b> + <b style="color:rgba(17,24,39,.92)">成绩单 / 代表作</b> + <b style="color:rgba(17,24,39,.92)">简短研究兴趣（1段即可）</b>。<br/>
+          邮件标题可用：<i style="font-style:italic">[Join] Name — Position — Keyword</i>
+        </small>
+      </div>
+
+    </div>
+
+    <div style="height:26px"></div>
   </div>
-</div>
 
-<div class="main">
-<div class="container content">
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>© <span id="y"></span></div>
+        <div><a href="contact.html">Contact</a></div>
+      </div>
+    </div>
+  </footer>
 
-<h1>Join Us</h1>
-<div class="hint">我们欢迎对“搭平台 + 做硬核测量 + 解物理问题”感兴趣的同学与合作者。</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>开放岗位</h3>
-<ul>
-<li>博士 / 硕士研究生：超快光学、太赫兹谱学、片上集成平台、二维量子材料、低温输运</li>
-<li>博士后：THz / ultrafast、器件物理、强关联 / 超导电动力学</li>
-<li>工程师 / 科研助理：平台搭建、自动化、数据处理与测量流程</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>申请方式</h3>
-<p>
-请发送邮件至：<span class="email"><a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a></span><br/><br/>
-建议包含：CV + 成绩单 / 代表作 + 简短研究兴趣（1段即可）
-</p>
-</div>
-
-</div>
-
-<div class="card" style="margin-top:16px;">
-<h3>我们看重</h3>
-<ul>
-<li>动手能力强：愿意从 0 到 1 把系统跑通</li>
-<li>数据习惯干净：严谨、可复验</li>
-<li>沟通协作：能把问题讲清楚、一起推进</li>
-</ul>
-</div>
-
-</div>
-</div>
-
-<footer>
-<div class="container foot">
-<div>© <span id="y"></span></div>
-<div><a href="contact.html">Contact</a></div>
-</div>
-</footer>
-
-</div>
-
-<script>
-document.getElementById("y").textContent = new Date().getFullYear();
-</script>
-
+  <!-- ✅ 统一导航注入脚本 -->
+  <script src="nav.js"></script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
