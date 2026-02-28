@@ -1,62 +1,277 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact | Quantum Materials & Ultrafast Electrodynamics Lab </title>
-<style>
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans","PingFang SC","Microsoft Yahei",sans-serif;background:#0a0f1c;color:#e6ecff;line-height:1.6;}
-  .nav{background:#111827;padding:15px 0;text-align:center;position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.06);}
-  .nav a{color:#e6ecff;margin:0 14px;text-decoration:none;font-weight:500;}
-  .nav a:hover{color:#4da6ff;}
-  .container{max-width:900px;margin:0 auto;padding:0 18px;}
-  .content{padding:56px 0;}
-  h1{margin:0 0 12px;font-size:28px;}
-  .hint{color:#b8c2e6;font-size:14px;margin-bottom:18px;}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  .card{background:rgba(17,24,39,.55);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:16px;}
-  .card h3{margin:0 0 8px;font-size:16px}
-  .card p{margin:0;color:#b8c2e6;font-size:14px}
-  @media (max-width:760px){.grid{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact | THz Electrodynamics Lab @ CAS-Air</title>
+  <meta name="description" content="Contact — THz Electrodynamics Lab @ CAS-Air" />
+
+  <!-- ✅ Site-wide unified nav -->
+  <link rel="stylesheet" href="nav.css" />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --bg2:#f6f8fc;
+
+      --text:#111827;
+      --muted:#55627a;
+      --line:rgba(17,24,39,.10);
+
+      --shadow: 0 16px 40px rgba(15,23,42,.10);
+      --shadow2: 0 10px 22px rgba(15,23,42,.08);
+      --shadow3: 0 22px 60px rgba(15,23,42,.12);
+
+      --accent:#2f5cff;
+      --accent2:#6d28d9;
+
+      --radius:20px;
+      --max: clamp(1080px, 92vw, 1360px);
+      --pad:24px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,
+        "Noto Sans","PingFang SC","Microsoft Yahei",sans-serif;
+      color:var(--text);
+      line-height:1.7;
+      overflow-x:hidden;
+      background:
+        radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.08), transparent 60%),
+        radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
+        linear-gradient(var(--bg), var(--bg));
+    }
+
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 var(--pad);
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+    .header{ padding:38px 0 16px; }
+    .header h1{
+      margin:0;
+      font-size:52px;
+      letter-spacing:-.8px;
+      line-height:1.05;
+    }
+    .header .sub{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:16.5px;
+      max-width:980px;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+    .hero{
+      background: linear-gradient(135deg, rgba(47,92,255,.08), rgba(109,40,217,.06));
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: 26px;
+      padding:18px;
+      margin: 10px 0 22px;
+      box-shadow: var(--shadow2);
+    }
+    .hero .kicker{
+      font-weight:900;
+      margin-bottom:6px;
+      letter-spacing:-.2px;
+    }
+    .hero .desc{
+      color:var(--muted);
+      font-size:15.8px;
+      max-width:980px;
+    }
+
+    /* =========================
+       GRID
+    ========================== */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+      align-items:stretch;
+    }
+
+    /* =========================
+       CARD
+    ========================== */
+    .card{
+      background: rgba(255,255,255,.96);
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:18px;
+      padding:20px;
+      box-shadow: var(--shadow2);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow3);
+      border-color: rgba(47,92,255,.20);
+      background: rgba(255,255,255,.98);
+    }
+
+    .card h2{
+      margin:0 0 10px;
+      font-size:18px;
+      font-weight:950;
+      letter-spacing:-.2px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    /* subtle title accent (not a blue underline line) */
+    .card h2::after{
+      content:"";
+      height:4px;
+      width:78px;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(17,24,39,.22), rgba(17,24,39,.08));
+      opacity:.85;
+      transform: translateY(2px);
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:15.8px;
+      line-height:1.75;
+    }
+
+    .label{
+      display:block;
+      margin:10px 0 6px;
+      color: rgba(17,24,39,.78);
+      font-weight:900;
+      font-size:13px;
+      letter-spacing:.2px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:14px;
+      border: 1px solid rgba(47,92,255,.22);
+      background: rgba(47,92,255,.06);
+      font-weight:950;
+      color: rgba(17,24,39,.92);
+      margin-top:10px;
+    }
+    .pill:hover{
+      text-decoration:none;
+      background: rgba(47,92,255,.10);
+      border-color: rgba(47,92,255,.30);
+    }
+
+    .full{
+      margin-top:16px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    footer{
+      margin-top:26px;
+      padding:18px 0 34px;
+      color: var(--muted);
+      font-size:14px;
+      border-top: 1px solid var(--line);
+    }
+    .foot{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 780px){
+      :root{ --pad:18px; }
+      .header h1{ font-size:42px; }
+      .card{ padding:18px; }
+    }
+  </style>
 </head>
-<body>
 
-<div class="nav">
-  <a href="index.html">Home</a>
-  <a href="research.html">Research</a>
-  <a href="people.html">People</a>
-  <a href="publications.html">Publications</a>
-  <a href="news.html">News</a>
-  <a href="join.html">Join</a>
-  <a href="contact.html">Contact</a>
-</div>
+<body data-page="contact">
+  <!-- ✅ unified nav injection placeholder -->
+  <div id="site-nav"></div>
 
-<div class="container content">
-  <h1>Contact</h1>
-  <div class="hint">中国科学院 空天信息创新研究院（大湾区研究院）｜广州黄埔</div>
+  <div class="container">
 
-  <div class="grid">
-    <div class="card">
-      <h3>Address</h3>
+    <div class="header">
+      <h1>Contact</h1>
+      <div class="sub">
+        Aerospace Information Research Institute, Chinese Academy of Sciences (CAS) — Greater Bay Area Branch (Guangzhou, Huangpu).
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="kicker">Let’s connect.</div>
+      <div class="desc">
+        For collaboration, student supervision, or general inquiries, feel free to email us.
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Address</h2>
+        <p>
+          Aerospace Information Research Institute, Chinese Academy of Sciences (CAS)<br/>
+          Greater Bay Area Branch (GBA), Guangzhou Huangpu, China
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Email</h2>
+        <p>
+          The fastest way to reach us is email.
+        </p>
+        <a class="pill" href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>
+      </div>
+    </div>
+
+    <div class="card full">
+      <h2>Collaboration</h2>
       <p>
-        中国科学院 空天信息创新研究院（大湾区研究院）<br/>
-        广州黄埔
+        We welcome discussions on samples, joint proposals, student mentoring, and shared measurement campaigns.
+        If you can, please include a short summary of what you have in mind and any relevant links or files.
       </p>
     </div>
-    <div class="card">
-      <h3>Email</h3>
-      <p>
-        <a href="mailto:THz_zheng@163.com">THz_zheng@163.com</a>
-      </p>
+
+    <div style="height:26px"></div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>© <span id="y"></span></div>
+        <div><a href="contact.html">Contact</a></div>
+      </div>
     </div>
-  </div>
+  </footer>
 
-  <div class="card" style="margin-top:14px;">
-    <h3>Collaboration</h3>
-    <p>如有样品合作、联合项目、学生培养等交流需求，欢迎邮件联系。</p>
-  </div>
-</div>
-
+  <script src="nav.js"></script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
