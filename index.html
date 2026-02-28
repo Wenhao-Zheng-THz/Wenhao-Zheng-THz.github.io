@@ -1,451 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Terahertz Electrodynamics Lab @ CAS AIR</title>
-  <meta name="description" content="Terahertz Electrodynamics Lab @ CAS AIR — Ultrafast THz spectroscopy, on-chip THz platforms, and quantum materials." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Terahertz Electrodynamics Lab @ CAS AIR</title>
 
-  <style>
-    /* =========================
-       Theme / Global
-       你说“字太亮” -> 关键是把 --text / --muted 调暗
-    ========================= */
-    :root{
-      --bg:#0a0f1c;
+<style>
+:root{
+  --bg:#ffffff;
+  --text:#1e293b;
+  --muted:#64748b;
+  --accent:#2563eb;
+  --panel:#f8fafc;
+  --line:#e2e8f0;
+  --max:1080px;
+}
 
-      /* ↓↓↓ 这两行是“降亮度”的核心（比纯白柔和很多） */
-      --text:#dbe4ff;   /* 主文字：偏灰蓝，降低刺眼感 */
-      --muted:#aebbe6;  /* 次文字：更柔和 */
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+}
 
-      --panel:rgba(17,24,39,.52);
-      --panel2:rgba(15,23,42,.62);
-      --line:rgba(255,255,255,.10);
+.container{
+  max-width:var(--max);
+  margin:auto;
+  padding:0 24px;
+}
 
-      --accent:#4da6ff;
-      --accent2:#7c3aed;
+/* ===== NAV ===== */
+.nav{
+  position:sticky;
+  top:0;
+  background:#ffffffcc;
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid var(--line);
+  z-index:100;
+}
+.nav-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 0;
+}
+.brand{
+  font-weight:700;
+  white-space:nowrap;
+}
 
-      --radius:18px;
-      --shadow: 0 18px 40px rgba(0,0,0,.38);
-      --max:1080px;
-    }
+.menu a{
+  margin-left:18px;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:500;
+}
+.menu a:hover{
+  color:var(--accent);
+}
 
-    *{ box-sizing:border-box; }
-    html, body { height:100%; }
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
-      color:var(--text);
-      line-height:1.75; /* 正文更舒服一点 */
-      min-height:100vh;
+/* ===== HERO ===== */
+.hero{
+  padding:64px 0 32px;
+}
 
-      /* 背景氛围光：保持你现在的风格 */
-      background:
-        radial-gradient(900px 420px at 15% 0%, rgba(124,58,237,.18), transparent 60%),
-        radial-gradient(900px 460px at 85% 10%, rgba(77,166,255,.16), transparent 60%),
-        linear-gradient(var(--bg), var(--bg));
-    }
-    a{ color:var(--accent); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-    .container{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+.hero h1{
+  font-size:48px;
+  margin-bottom:24px;
+  font-weight:800;
+}
 
-    /* 让 footer 贴底（不露底色块） */
-    .page{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-    }
-    .main{ flex:1; }
+/* 图片区域 */
+.hero-img{
+  margin:30px 0 36px;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+.hero-img img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+}
 
-    /* =========================
-       Nav (统一所有页面风格用这一套)
-    ========================= */
-    .nav{
-      position:sticky; top:0; z-index:1000;
-      background: rgba(10,15,28,.65);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav-inner{
-      display:flex; justify-content:space-between; align-items:center;
-      gap:14px; padding:12px 0;
-    }
+/* 正文 */
+.hero-text{
+  max-width:800px;
+  text-align:justify;
+  font-size:16px;
+}
 
-    /* 品牌标题：不换行、不省略号 -> 用缩放适配（JS实现） */
-    .brand{
-      font-weight:900;
-      letter-spacing:.2px;
-      white-space:nowrap;
-      overflow:visible;
-      transform-origin:left center;
-    }
+.hero-text p{
+  margin-bottom:18px;
+}
 
-    .menu{ display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; }
-    .menu a{
-      padding:8px 10px;
-      border-radius:12px;
-      color:var(--text);
-      font-weight:650;
-      font-size:14px;
-      border:1px solid transparent;
-      text-decoration:none;
-    }
-    .menu a:hover{
-      background: rgba(77,166,255,.08);
-      border-color: rgba(77,166,255,.25);
-    }
-    .cta{
-      padding:8px 12px !important;
-      border:1px solid rgba(77,166,255,.35) !important;
-      background: linear-gradient(135deg, rgba(77,166,255,.18), rgba(124,58,237,.14));
-    }
+/* 按钮 */
+.btn-row{
+  margin-top:28px;
+}
+.btn{
+  padding:10px 18px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  margin-right:12px;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:500;
+}
+.btn:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+.btn.primary{
+  background:var(--accent);
+  color:white;
+  border:none;
+}
 
-    /* =========================
-       Hero
-    ========================= */
-    .hero{ padding:54px 0 18px; }
-    .hero-card{
-      border-radius: calc(var(--radius) + 8px);
-      background: linear-gradient(180deg, rgba(17,24,39,.70), rgba(15,23,42,.58));
-      border:1px solid rgba(255,255,255,.07);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .hero-card:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(700px 220px at 12% 18%, rgba(77,166,255,.14), transparent 60%),
-        radial-gradient(740px 260px at 86% 10%, rgba(124,58,237,.12), transparent 60%);
-      pointer-events:none;
-    }
-    .hero-inner{
-      position:relative;
-      padding:34px 28px 30px;
-      max-width: 960px;
-      margin: 0 auto;
-    }
+/* ===== NEWS ===== */
+.news{
+  margin-top:40px;
+}
 
-    /* 标题：你现在太“贴”正文了 -> 增加 margin-bottom */
-    h1{
-      margin: 0;
-      font-size: 44px;
-      line-height: 1.12;
-      font-weight: 950;
-      letter-spacing:.2px;
-    }
+.news h2{
+  font-size:20px;
+  margin-bottom:20px;
+}
 
-    /* 标题下方留足空间（你要放图，就放这里） */
-    .hero-media{
-      margin-top: 18px;        /* 标题和图之间的距离 */
-      margin-bottom: 20px;     /* 图和正文之间的距离（关键！） */
-      border-radius: 18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-    }
-    .hero-media img{
-      display:block;
-      width:100%;
-      height: 220px;           /* 你可以改高度 */
-      object-fit: cover;
-      opacity: .92;
-    }
-    /* 如果暂时没有图片，显示一个占位 */
-    .hero-media.placeholder{
-      padding: 26px;
-      color: var(--muted);
-      font-size: 13px;
-    }
+.news-item{
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+.news-title{
+  font-weight:600;
+}
+.news-date{
+  color:var(--muted);
+  font-size:13px;
+}
 
-    /* 正文：不居中，两端对齐（justify） */
-    .hero-text{
-      font-size: 15px;
-      color: var(--text);
-      opacity: .96;
-      text-align: justify;
-      text-justify: inter-word;
-    }
-    .hero-text p{ margin: 0 0 14px; }
-    .hero-text p:last-child{ margin-bottom: 0; }
-
-    .btn-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content:center;
-      margin-top: 22px;
-    }
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:10px 14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color:var(--text);
-      font-weight:750;
-      font-size:14px;
-      text-decoration:none;
-    }
-    .btn:hover{ filter:brightness(1.06); }
-    .btn.primary{
-      border-color: rgba(77,166,255,.38);
-      background: linear-gradient(135deg, rgba(77,166,255,.18), rgba(124,58,237,.14));
-    }
-
-    /* =========================
-       News (首页摘要：1列×最多10条)
-    ========================= */
-    .news{
-      padding: 22px 0 34px;
-    }
-    .section-title{
-      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
-      margin: 0 0 12px;
-    }
-    .section-title h2{ margin:0; font-size:18px; }
-    .section-title .hint{ color:var(--muted); font-size:13px; }
-
-    /* 你要 1列*多行 */
-    .news-list{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    .news-item{
-      background: rgba(17,24,39,.48);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius: 18px;
-      padding: 14px 16px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.16);
-    }
-    .news-top{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:baseline;
-    }
-    .news-title{
-      margin:0;
-      font-size:15px;
-      font-weight:900;
-      line-height:1.25;
-      color: var(--text);
-    }
-    .news-date{
-      color: rgba(174,187,230,.90);
-      font-size:12px;
-      white-space:nowrap;
-    }
-    .news-text{
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .news-link{
-      margin-top: 8px;
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    /* Footer */
-    footer{
-      padding:22px 0;
-      border-top:1px solid rgba(255,255,255,.06);
-      color:var(--muted);
-      font-size:13px;
-    }
-    .foot{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
-
-    @media (max-width: 980px){
-      h1{ font-size: 38px; }
-      .hero-media img{ height: 200px; }
-    }
-    @media (max-width: 520px){
-      h1{ font-size: 32px; }
-      .hero-media img{ height: 180px; }
-    }
-  </style>
+footer{
+  margin-top:60px;
+  padding:24px 0;
+  border-top:1px solid var(--line);
+  font-size:13px;
+  color:var(--muted);
+}
+</style>
 </head>
 
 <body>
-  <div class="page">
-    <!-- NAV -->
-    <div class="nav">
-      <div class="container">
-        <div class="nav-inner">
-          <div id="brand" class="brand">Terahertz Electrodynamics Lab @ CAS AIR</div>
-          <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="research.html">Research</a>
-            <a href="people.html">People</a>
-            <a href="publications.html">Publications</a>
-            <a href="news.html">News</a>
-            <a href="join.html">Join</a>
-            <a href="contact.html" class="cta">Contact</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="main">
-      <!-- HERO -->
-      <div class="hero">
-        <div class="container">
-          <div class="hero-card">
-            <div class="hero-inner">
+<div class="nav">
+<div class="container nav-inner">
+<div class="brand">Terahertz Electrodynamics Lab @ CAS AIR</div>
+<div class="menu">
+<a href="index.html">Home</a>
+<a href="research.html">Research</a>
+<a href="people.html">People</a>
+<a href="publications.html">Publications</a>
+<a href="news.html">News</a>
+<a href="join.html">Join</a>
+<a href="contact.html">Contact</a>
+</div>
+</div>
+</div>
 
-              <!-- 标题（你要的一行） -->
-              <h1>Terahertz Electrodynamics of Quantum Materials group</h1>
+<div class="container hero">
 
-              <!-- 这里放你要加的图片（推荐 1600×600 或 1600×800）
-                   1) 先把图片放到 /assets/hero.jpg
-                   2) 把 src 改成 assets/hero.jpg
-              -->
-              <div class="hero-media">
-                <!-- ✅ 有图就用下面这行 -->
-                <!-- <img src="assets/hero.jpg" alt="Lab hero image"> -->
+<h1>Terahertz Electrodynamics of Quantum Materials group</h1>
 
-                <!-- ✅ 暂时没图就用占位 -->
-                <div class="hero-media placeholder">
-                  Hero image placeholder: put your image at <b>assets/hero.jpg</b> and uncomment the &lt;img&gt; line.
-                </div>
-              </div>
+<!-- 放实验图 / setup 图 -->
+<div class="hero-img">
+<!-- 有图就用 -->
+<!-- <img src="assets/hero.jpg"> -->
 
-              <!-- 正文（两端对齐 + 分两段） -->
-              <div class="hero-text">
-                <p>
-                  We build ultrafast THz spectroscopy — especially on-chip integrated THz platforms — to reveal low-energy
-                  electrodynamics, correlations, and nonequilibrium transport in low-dimensional quantum materials.
-                </p>
-                <p>
-                  Our lab is based at the Aerospace Information Research Institute, Chinese Academy of Sciences (GBA branch),
-                  Guangzhou. We welcome inquiries from candidates interested in pursuing opportunities as Bachelor’s students,
-                  Master’s students, PhD students, Postdoctoral researchers, Engineers, and Assistant Professors. If you are
-                  motivated to explore ultrafast spectroscopy, low-dimensional (2D) materials, and low-temperature quantum
-                  transport, please feel free to contact me at: <a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
-                </p>
-              </div>
+<!-- 没图占位 -->
+<div style="padding:40px;color:var(--muted);text-align:center">
+Hero image placeholder
+</div>
+</div>
 
-              <div class="btn-row">
-                <a class="btn primary" href="research.html">Explore Research</a>
-                <a class="btn" href="people.html">Meet the Team</a>
-                <a class="btn" href="join.html">Open Positions</a>
-              </div>
-            </div>
-          </div>
+<div class="hero-text">
+<p>
+We build ultrafast THz spectroscopy — especially on-chip integrated THz platforms — to reveal low-energy electrodynamics, correlations, and nonequilibrium transport in low-dimensional quantum materials.
+</p>
 
-          <!-- NEWS (首页摘要，来自 news.json，最多10条) -->
-          <div class="news">
-            <div class="section-title">
-              <h2>News</h2>
-              <div class="hint">Latest updates (auto-loaded from <code>news.json</code>)</div>
-            </div>
-            <div id="news-list" class="news-list"></div>
-          </div>
+<p>
+Our lab is based at the Aerospace Information Research Institute, Chinese Academy of Sciences (GBA branch), Guangzhou. We welcome inquiries from candidates interested in pursuing opportunities as Bachelor’s students, Master’s students, PhD students, Postdoctoral researchers, Engineers, and Assistant Professors.
+If you are motivated to explore ultrafast spectroscopy, low-dimensional (2D) materials, and low-temperature quantum transport, please feel free to contact me at:
+<a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
+</p>
+</div>
 
-        </div>
-      </div>
-    </div>
+<div class="btn-row">
+<a class="btn primary" href="research.html">Explore Research</a>
+<a class="btn" href="people.html">Meet the Team</a>
+<a class="btn" href="join.html">Open Positions</a>
+</div>
 
-    <footer>
-      <div class="container">
-        <div class="foot">
-          <div>© <span id="y"></span></div>
-          <div><a href="contact.html">Contact</a></div>
-        </div>
-      </div>
-    </footer>
-  </div>
+<div class="news">
+<h2>News</h2>
+<div id="news-list"></div>
+</div>
 
-  <script>
-    // 自动年份
-    document.getElementById("y").textContent = new Date().getFullYear();
+</div>
 
-    // ====== 品牌标题强制不换行且不省略号：用缩放适配 nav 容器 ======
-    // 说明：小屏如果空间不够，就把 brand 缩小一点；仍保持“一行完整显示”
-    function fitBrand(){
-      const brand = document.getElementById("brand");
-      if(!brand) return;
+<footer>
+<div class="container">
+© <span id="y"></span>
+</div>
+</footer>
 
-      // 先恢复到 1
-      brand.style.transform = "scale(1)";
+<script>
+document.getElementById("y").textContent = new Date().getFullYear();
+</script>
 
-      const navInner = brand.closest(".nav-inner");
-      if(!navInner) return;
-
-      // 可用宽度：左侧 brand 所在区域大致占 navInner 的剩余空间
-      const navRect = navInner.getBoundingClientRect();
-      const menu = navInner.querySelector(".menu");
-      const menuW = menu ? menu.getBoundingClientRect().width : 0;
-
-      const paddingReserve = 24; // 给 gap / 边距留点余量
-      const avail = Math.max(120, navRect.width - menuW - paddingReserve);
-
-      const brandW = brand.getBoundingClientRect().width;
-      if(brandW > avail){
-        const scale = Math.max(0.72, avail / brandW); // 最小缩到 0.72，避免太小
-        brand.style.transform = `scale(${scale})`;
-      }
-    }
-    window.addEventListener("resize", fitBrand);
-    window.addEventListener("load", fitBrand);
-
-    // ====== News：最多10条，按 date(YYYY-MM-DD) 倒序 ======
-    function parseDateYMD(ymd){
-      const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd || "");
-      if(!m) return new Date(0);
-      return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
-    }
-
-    async function renderHomeNews(){
-      const box = document.getElementById("news-list");
-      try{
-        const res = await fetch("news.json", { cache: "no-store" });
-        if(!res.ok) throw new Error("news.json not found");
-        let items = await res.json();
-
-        items = (items || [])
-          .slice()
-          .sort((a,b) => parseDateYMD(b.date) - parseDateYMD(a.date))
-          .slice(0, 10); // ✅ 只取前10条
-
-        if(items.length === 0){
-          box.innerHTML = '<div class="news-item"><div class="news-text">No updates yet.</div></div>';
-          return;
-        }
-
-        box.innerHTML = items.map(it => {
-          const date = it.date || "";
-          const title = it.title || "";
-          const text = it.text || "";
-          const link = (it.link || "").trim();
-
-          const titleHtml = link ? `<a href="${link}">${title}</a>` : `${title}`;
-          const linkHtml = link ? `<div class="news-link"><a href="${link}">Read more →</a></div>` : "";
-
-          return `
-            <div class="news-item">
-              <div class="news-top">
-                <div class="news-title">${titleHtml}</div>
-                <div class="news-date">${date}</div>
-              </div>
-              ${text ? `<div class="news-text">${text}</div>` : ""}
-              ${linkHtml}
-            </div>
-          `;
-        }).join("");
-
-      }catch(e){
-        box.innerHTML =
-          `<div class="news-item">
-             <div class="news-text"><b>News not loaded.</b> Please add <code>news.json</code> to the site root.</div>
-           </div>`;
-      }
-    }
-    renderHomeNews();
-  </script>
 </body>
 </html>
