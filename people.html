@@ -7,69 +7,69 @@
   <meta name="description" content="People — THz Electrodynamics Lab @ CAS-Air" />
 
   <style>
+    /* =========================================================
+       0) THEME (Light) — 与 index.html 保持一致
+    ========================================================== */
     :root{
-      /* ===== Light theme (match your new home) ===== */
       --bg:#ffffff;
       --bg2:#f6f8fc;
-      --text:#0f172a;
-      --muted:#51607a;
-      --line:rgba(15,23,42,.10);
-      --line2:rgba(15,23,42,.06);
+
+      --text:#111827;
+      --muted:#55627a;
+      --line:rgba(17,24,39,.10);
 
       --card:#ffffff;
-      --shadow: 0 18px 50px rgba(15,23,42,.10);
-      --shadow2: 0 10px 26px rgba(15,23,42,.08);
+      --shadow: 0 16px 40px rgba(15,23,42,.10);
+      --shadow2: 0 10px 24px rgba(15,23,42,.08);
 
       --accent:#2f5cff;
       --accent2:#6d28d9;
 
-      --radius:22px;
+      --radius:20px;
       --max:1080px;
+      --pad:24px;
     }
 
-    *{box-sizing:border-box}
-    html, body{height:100%}
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans","PingFang SC","Microsoft Yahei",sans-serif;
       color:var(--text);
-      line-height:1.65;
       background:
         radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.10), transparent 60%),
         radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
         linear-gradient(var(--bg), var(--bg));
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      line-height:1.65;
+      overflow-x:hidden;
     }
 
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-    /* sticky footer layout */
-    .page{min-height:100vh;display:flex;flex-direction:column}
-    .main{flex:1}
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 var(--pad);
+    }
 
-    /* =========================
-       NAV (light, match home)
-    ========================= */
+    /* =========================================================
+       1) NAV (Light)
+    ========================================================== */
     .nav{
       position:sticky; top:0; z-index:1000;
       background: rgba(255,255,255,.78);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line2);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
     }
     .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
+      display:flex; justify-content:space-between; align-items:center;
       gap:14px; padding:14px 0;
     }
     .brand{
-      font-weight:520;          /* not bold */
+      font-weight:600;
       letter-spacing:.1px;
       white-space:nowrap;
-      color: rgba(15,23,42,.92);
-      overflow:hidden;
-      text-overflow:ellipsis;
     }
     .menu{
       display:flex; flex-wrap:wrap;
@@ -78,37 +78,36 @@
     .menu a{
       padding:8px 10px;
       border-radius:999px;
-      color:rgba(15,23,42,.85);
+      color:var(--text);
       font-weight:600;
       font-size:14px;
       border:1px solid transparent;
       text-decoration:none;
-      transition: background .15s ease, border-color .15s ease, transform .15s ease;
     }
     .menu a:hover{
       background: rgba(47,92,255,.06);
-      border-color: rgba(47,92,255,.16);
-      text-decoration:none;
+      border-color: rgba(47,92,255,.18);
     }
     .menu a.active{
-      background: rgba(47,92,255,.08);
-      border-color: rgba(47,92,255,.18);
+      background: rgba(47,92,255,.10);
+      border-color: rgba(47,92,255,.22);
     }
     .cta{
       padding:8px 14px !important;
-      border:1px solid rgba(47,92,255,.22) !important;
-      background: linear-gradient(180deg, rgba(47,92,255,.10), rgba(109,40,217,.07));
+      border:1px solid rgba(47,92,255,.25) !important;
+      background: linear-gradient(180deg, rgba(47,92,255,.12), rgba(109,40,217,.08));
     }
 
-    /* =========================
-       PAGE HEADER
-    ========================= */
-    .header{padding:28px 0 14px}
+    /* =========================================================
+       2) PAGE HEADER
+    ========================================================== */
+    .header{
+      padding:30px 0 10px;
+    }
     .header h1{
       margin:0;
-      font-size:32px;
+      font-size:30px;
       letter-spacing:-.2px;
-      color: rgba(15,23,42,.96);
     }
     .header .sub{
       margin:10px 0 0;
@@ -116,18 +115,112 @@
       font-size:14px;
     }
 
-    /* =========================
-       PANELS / CARDS (light)
-    ========================= */
+    /* =========================================================
+       3) PANELS / CARDS
+    ========================================================== */
     .panel{
-      background:
-        radial-gradient(900px 320px at 85% 10%, rgba(47,92,255,.06), transparent 55%),
-        radial-gradient(900px 320px at 12% 0%, rgba(109,40,217,.05), transparent 55%),
-        rgba(255,255,255,.90);
-      border:1px solid rgba(15,23,42,.07);
+      background: rgba(255,255,255,.90);
+      border:1px solid rgba(17,24,39,.08);
       border-radius: calc(var(--radius) + 10px);
       box-shadow: var(--shadow);
-      padding:20px;
+      padding:18px;
+    }
+
+    /* =========================================================
+       4) PI PROFILE
+    ========================================================== */
+    .profile{ padding:18px; }
+    .profile-top{
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+    .profile-left{
+      flex: 1 1 560px;
+      min-width: 280px;
+    }
+    .profile-right{
+      flex: 0 0 300px;
+      min-width: 260px;
+    }
+
+    .big-name{
+      margin:0;
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:.1px;
+    }
+    .role{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-weight:650;
+      font-size:14px;
+    }
+    .email-line{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .block{
+      margin-top:14px;
+      padding-top:12px;
+      border-top:1px solid rgba(17,24,39,.10);
+    }
+    .sec-title{
+      margin:0 0 10px;
+      font-size:16px;
+      font-weight:900;
+      letter-spacing:.1px;
+    }
+    .sec-title::after{
+      content:"";
+      display:block;
+      width:120px;
+      height:4px;
+      margin-top:10px;
+      border-radius:999px;
+      background: rgba(47,92,255,.65);
+    }
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color: var(--text);
+    }
+    .list li{
+      margin:8px 0;
+      color: rgba(17,24,39,.92);
+    }
+
+    .mini-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(246,248,252,.88));
+      border:1px solid rgba(17,24,39,.08);
+      border-radius: var(--radius);
+      padding:14px;
+      box-shadow: var(--shadow2);
+    }
+    .mini-card .k{
+      color: var(--muted);
+      font-size:12px;
+      font-weight:800;
+      margin:10px 0 2px;
+    }
+    .mini-card .v{
+      font-size:13px;
+      color: var(--text);
+      margin:0;
+      word-break:break-word;
+    }
+
+    /* =========================================================
+       5) TEAM LIST (with photos)
+    ========================================================== */
+    .section-gap{ height:16px; }
+    .section-title{
+      margin:0 0 12px;
+      font-size:18px;
+      letter-spacing:.1px;
     }
 
     .grid{
@@ -137,303 +230,290 @@
     }
 
     .card{
-      background: rgba(255,255,255,.92);
-      border:1px solid rgba(15,23,42,.07);
+      background: rgba(255,255,255,.90);
+      border:1px solid rgba(17,24,39,.08);
       border-radius: 16px;
-      padding:16px;
+      padding: 14px 16px;
       box-shadow: var(--shadow2);
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-    }
-    .card:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 14px 34px rgba(15,23,42,.10);
-      border-color: rgba(47,92,255,.14);
     }
 
-    .row{display:flex; gap:14px; align-items:flex-start}
+    .row{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
 
+    /* 头像：优先照片；没有照片也不塌（fallback） */
     .avatar{
-      width:56px; height:56px; border-radius:16px;
-      display:flex; align-items:center; justify-content:center;
-      font-weight:850;
-      color:#fff;
-      background: linear-gradient(135deg, rgba(47,92,255,.95), rgba(109,40,217,.85));
-      border:1px solid rgba(47,92,255,.22);
+      width:64px; height:64px;
+      border-radius:18px;
+      overflow:hidden;
       flex:0 0 auto;
-      box-shadow: 0 10px 22px rgba(47,92,255,.16);
+      border:1px solid rgba(17,24,39,.08);
+      background: linear-gradient(135deg, rgba(47,92,255,.12), rgba(109,40,217,.10));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 8px 18px rgba(15,23,42,.08);
+    }
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .avatar .initials{
+      font-weight:900;
+      color: rgba(17,24,39,.70);
+      letter-spacing:.5px;
     }
 
-    .name{font-weight:900; font-size:18px; margin:0; color: rgba(15,23,42,.95)}
-    .role{margin:3px 0 10px; color:var(--muted); font-weight:650; font-size:13px}
-    .meta{color:var(--muted); font-size:13px; margin:0}
+    .name{
+      margin:0;
+      font-weight:900;
+      font-size:16px;
+    }
+    .role2{
+      margin:4px 0 8px;
+      color:var(--muted);
+      font-weight:650;
+      font-size:13px;
+    }
 
-    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .meta{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .meta strong{
+      color: rgba(17,24,39,.86);
+      font-weight:800;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
     .tag{
       font-size:12px;
       padding:6px 10px;
       border-radius:999px;
-      border:1px solid rgba(15,23,42,.08);
-      background: rgba(246,248,252,.85);
-      color: rgba(15,23,42,.80);
+      border:1px solid rgba(17,24,39,.10);
+      background: rgba(47,92,255,.06);
+      color: rgba(17,24,39,.86);
+      font-weight:650;
     }
 
-    /* =========================
-       PI PROFILE
-    ========================= */
-    .profile{padding:20px}
-    .profile-top{
-      display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;
-    }
-    .profile-left{
-      flex: 1 1 560px;
-      min-width: 280px;
-    }
-    .profile-right{
-      flex: 0 0 280px;
-      min-width: 240px;
-    }
-
-    .big-name{
-      margin:0;
-      font-size:22px;
-      font-weight:950;
-      letter-spacing:.1px;
-      color: rgba(15,23,42,.96);
-    }
-
-    .profile-block{
-      margin-top:14px;
-      padding-top:12px;
-      border-top:1px solid rgba(15,23,42,.08);
-    }
-
-    .sec-title{
-      margin:0 0 10px;
-      font-size:16px;
-      font-weight:900;
-      letter-spacing:.1px;
-      color: rgba(15,23,42,.92);
-    }
-    .sec-title::after{
-      content:"";
-      display:block;
-      width:110px;
-      height:4px;
-      margin-top:10px;
-      border-radius:999px;
-      background: rgba(47,92,255,.75);
-    }
-
-    .list{
-      margin:10px 0 0;
-      padding-left:18px;
-      color: rgba(15,23,42,.88);
-    }
-    .list li{margin:8px 0; color: rgba(15,23,42,.88)}
-
-    .mini-card{
-      background: rgba(255,255,255,.92);
-      border:1px solid rgba(15,23,42,.07);
-      border-radius: 16px;
-      padding:14px;
-      box-shadow: var(--shadow2);
-    }
-    .mini-card .k{
-      color: rgba(81,96,122,.95);
-      font-size:12px;
-      font-weight:750;
-      margin:10px 0 2px;
-    }
-    .mini-card .v{
-      font-size:13px;
-      color: rgba(15,23,42,.90);
-      margin:0;
-      word-break:break-word;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
+    /* =========================================================
+       6) FOOTER
+    ========================================================== */
     footer{
-      padding:18px 0 30px;
-      border-top:1px solid var(--line2);
-      color:var(--muted);
-      font-size:13px;
       margin-top:22px;
+      padding:18px 0 30px;
+      color: var(--muted);
+      font-size:13px;
+      border-top: 1px solid var(--line);
     }
-    .foot{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between}
 
-    @media (max-width: 780px){
-      .header h1{font-size:28px}
-      .menu a{font-size:13px; padding:7px 9px}
-      .profile-right{flex: 1 1 260px}
+    /* =========================================================
+       7) RESPONSIVE
+    ========================================================== */
+    @media (max-width: 560px){
+      :root{ --pad:18px; }
+      .header h1{ font-size:26px; }
+      .profile-right{ flex:1 1 100%; }
+      .avatar{ width:56px; height:56px; border-radius:16px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="page">
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">THz Electrodynamics Lab @ CAS-Air</div>
+        <div class="menu">
+          <a href="index.html">Home</a>
+          <a href="research.html">Research</a>
+          <a class="active" href="people.html">People</a>
+          <a href="publications.html">Publications</a>
+          <a href="news.html">News</a>
+          <a href="join.html">Join</a>
+          <a class="cta" href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- NAV -->
-    <div class="nav">
-      <div class="container">
-        <div class="nav-inner">
-          <div class="brand">THz Electrodynamics Lab @ CAS-Air</div>
+  <!-- MAIN -->
+  <div class="container">
+    <div class="header">
+      <h1>People</h1>
+      <div class="sub">中国科学院 空天信息创新研究院（大湾区研究院）· 广州</div>
+    </div>
 
-          <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="research.html">Research</a>
-            <a class="active" href="people.html">People</a>
-            <a href="publications.html">Publications</a>
-            <a href="news.html">News</a>
-            <a href="join.html">Join</a>
-            <a class="cta" href="contact.html">Contact</a>
+    <!-- PI PROFILE -->
+    <div class="panel profile">
+      <div class="profile-top">
+        <div class="profile-left">
+          <p class="big-name">郑文浩</p>
+          <p class="role">研究员，博士生导师</p>
+          <p class="email-line">邮箱：<a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a></p>
+
+          <div class="block">
+            <h3 class="sec-title">研究方向</h3>
+            <ul class="list">
+              <li>超快泵浦太赫兹光谱：非平衡载流子动力学</li>
+              <li>低温输运与片上集成太赫兹光谱：量子材料关联电子态（如超导）</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3 class="sec-title">教育 / 科研经历</h3>
+            <ul class="list">
+              <li>2026–至今　研究员，中国科学院空天信息创新研究院（大湾区研究院）</li>
+              <li>2024–2025　博士后，美国麻省理工学院（MIT）</li>
+              <li>2023–2024　博士后，德国马克斯-普朗克高分子研究所（MPIP）</li>
+              <li>2018–2023　博士，德国马克斯-普朗克高分子研究所（MPIP）</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3 class="sec-title">荣誉奖励</h3>
+            <ul class="list">
+              <li>国家优秀自费留学生奖学金（2022）</li>
+              <li>Kalkhof-Rose Polymer Science Award（2022）</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="profile-right">
+          <div class="mini-card">
+            <div class="k">单位</div>
+            <p class="v">中国科学院 空天信息创新研究院（大湾区研究院）</p>
+
+            <div class="k">地点</div>
+            <p class="v">广州黄埔</p>
+
+            <div class="k">联系邮箱</div>
+            <p class="v"><a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a></p>
+
+            <div class="k">链接</div>
+            <p class="v">
+              <a href="#" style="margin-right:8px;">Google Scholar</a>
+              <a href="#" style="margin-right:8px;">ORCID</a>
+              <a href="#">GitHub</a>
+            </p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="main">
-      <div class="container">
+    <div class="section-gap"></div>
 
-        <!-- PAGE TITLE -->
-        <div class="header">
-          <h1>People</h1>
-          <div class="sub">中国科学院空天信息创新研究院（大湾区研究院） · 广州</div>
+    <!-- TEAM MEMBERS -->
+    <div class="panel">
+      <h2 class="section-title">Team Members</h2>
+
+      <!-- =====================================================
+           你主要改这里：照片路径 & 成员信息
+           建议照片放到：assets/people/*.jpg (或 png/webp)
+           - zihu i.jpg / zehuai.jpg / wenjun.jpg / zhuoyi.jpg
+      ====================================================== -->
+      <div class="grid">
+
+        <!-- 帅文君 -->
+        <div class="card">
+          <div class="row">
+            <div class="avatar">
+              <img src="assets/people/wenjun.jpg" alt="Wenjun Shuai" onerror="this.remove(); this.parentElement.querySelector('.initials').style.display='block';">
+              <div class="initials" style="display:none;">WS</div>
+            </div>
+            <div>
+              <p class="name">帅文君</p>
+              <p class="role2">工程师</p>
+              <p class="meta"><strong>硕士：</strong>华南师范大学</p>
+              <p class="meta">关键词：<span style="color:var(--muted)">(待补)</span></p>
+              <div class="tags">
+                <span class="tag">光机搭建</span>
+                <span class="tag">实验流程</span>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <!-- PI PROFILE -->
-        <div class="panel profile">
-          <div class="profile-top">
-
-            <!-- LEFT -->
-            <div class="profile-left">
-              <p class="big-name">郑文浩</p>
-              <p class="role">研究员，博士生导师</p>
-
-              <div class="profile-block">
-                <h3 class="sec-title">研究方向</h3>
-                <ul class="list">
-                  <li>超快泵浦太赫兹光谱：非平衡载流子动力学</li>
-                  <li>低温输运与片上集成太赫兹光谱：量子材料关联电子态</li>
-                </ul>
-              </div>
-
-              <div class="profile-block">
-                <h3 class="sec-title">教育 / 科研背景</h3>
-                <ul class="list">
-                  <li>2026–至今 研究员，中国科学院空天信息创新研究院（大湾区研究院）</li>
-                  <li>2024–2025 博士后，美国麻省理工学院</li>
-                  <li>2023–2024 博士后，德国马克斯-普朗克高分子研究所</li>
-                  <li>2018–2023 博士，德国马克斯-普朗克高分子研究所</li>
-                </ul>
-              </div>
-
-              <div class="profile-block">
-                <h3 class="sec-title">荣誉奖励</h3>
-                <ul class="list">
-                  <li>国家优秀自费留学生奖学金（2022）</li>
-                  <li>Kalkhof-Rose Polymer Science Award（2022）</li>
-                </ul>
+        
+        <!-- 黄泽怀 -->
+        <div class="card">
+          <div class="row">
+            <div class="avatar">
+              <img src="assets/people/zehuai.jpg" alt="Zehuai Huang" onerror="this.remove(); this.parentElement.querySelector('.initials').style.display='block';">
+              <div class="initials" style="display:none;">ZH</div>
+            </div>
+            <div>
+              <p class="name">黄泽怀</p>
+              <p class="role2">工程师</p>
+              <p class="meta"><strong>硕士：</strong>电子科技大学（UESTC）</p>
+              <p class="meta">关键词：<span style="color:var(--muted)">(待补)</span></p>
+              <div class="tags">
+                <span class="tag">平台搭建</span>
+                <span class="tag">自动化</span>
               </div>
             </div>
-
-            <!-- RIGHT -->
-            <div class="profile-right">
-              <div class="mini-card">
-                <div class="k">单位</div>
-                <p class="v">中国科学院 空天信息创新研究院（大湾区研究院）</p>
-
-                <div class="k">地点</div>
-                <p class="v">广州黄埔</p>
-
-                <div class="k">邮箱</div>
-                <p class="v"><a href="mailto:zhengwenhao@aircas.ac.cn">zhengwenhao@aircas.ac.cn</a></p>
-
-                <div class="k">链接</div>
-                <p class="v">
-                  <a href="#" style="color:var(--accent);font-weight:750;">Google Scholar</a> ·
-                  <a href="#" style="color:var(--accent);font-weight:750;">ORCID</a> ·
-                  <a href="#" style="color:var(--accent);font-weight:750;">GitHub</a>
-                </p>
-              </div>
-            </div>
-
           </div>
         </div>
 
-        <!-- TEAM MEMBERS -->
-        <div style="height:18px"></div>
-
-        <div class="panel">
-          <h2 style="margin:0 0 12px; font-size:18px; color:rgba(15,23,42,.94);">Team Members</h2>
-
-          <div class="grid">
-
-            <!-- Member 1 -->
-            <div class="card">
-              <div class="row">
-                <div class="avatar">ZL</div>
-                <div>
-                  <p class="name">陆子辉</p>
-                  <p class="role">博士研究生</p>
-                  <p class="meta">关键词：<span style="color:var(--muted)">(待补)</span></p>
-                  <div class="tags">
-                    <span class="tag">超快太赫兹光谱</span>
-                    <span class="tag">器件与平台</span>
-                  </div>
-                </div>
+             <!-- 陆子辉 -->
+        <div class="card">
+          <div class="row">
+            <div class="avatar">
+              <!-- 有照片就用 img；没有就把 img 注释掉，保留 initials -->
+              <img src="assets/people/zihui.jpg" alt="Zihui Lu" onerror="this.remove(); this.parentElement.querySelector('.initials').style.display='block';">
+              <div class="initials" style="display:none;">ZL</div>
+            </div>
+            <div>
+              <p class="name">陆子辉</p>
+              <p class="role2">博士研究生</p>
+              <p class="meta"><strong>本科：</strong>北京航空航天大学</p>
+              <p class="meta">关键词：<span style="color:var(--muted)">(待补)</span></p>
+              <div class="tags">
+                <span class="tag">超快太赫兹光谱</span>
+                <span class="tag">量子材料</span>
               </div>
             </div>
-
-            <!-- Member 2 -->
-            <div class="card">
-              <div class="row">
-                <div class="avatar">ZH</div>
-                <div>
-                  <p class="name">黄泽怀</p>
-                  <p class="role">工程师</p>
-                  <p class="meta">关键词：<span style="color:var(--muted)">(待补)</span></p>
-                  <div class="tags">
-                    <span class="tag">平台搭建</span>
-                    <span class="tag">电子学</span>
-                    <span class="tag">自动化</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Member 3 -->
-            <div class="card">
-              <div class="row">
-                <div class="avatar">WS</div>
-                <div>
-                  <p class="name">帅文君</p>
-                  <p class="role">工程师</p>
-                  <p class="meta">关键词：<span style="color:var(--muted)">(待补)</span></p>
-                  <div class="tags">
-                    <span class="tag">光学搭建</span>
-                    <span class="tag">机械结构</span>
-                    <span class="tag">流程规范</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
 
-        <div style="height:26px"></div>
+        <!-- 汪卓毅（联培博士生） -->
+        <div class="card">
+          <div class="row">
+            <div class="avatar">
+              <img src="assets/people/zhuoyi.jpg" alt="Zhuoyi Wang" onerror="this.remove(); this.parentElement.querySelector('.initials').style.display='block';">
+              <div class="initials" style="display:none;">WY</div>
+            </div>
+            <div>
+              <p class="name">汪卓毅</p>
+              <p class="role2">联培博士研究生</p>
+              <p class="meta"><strong>本科：</strong>吉林大学</p>
+              <p class="meta"><strong>联培 / 合作：</strong>吉林大学刘朝阳教授；荷兰乌德勒支大学 Prof. Hai I. Wang 组</p>
+              <p class="meta">关键词：<span style="color:var(--muted)">(待补)</span></p>
+              <div class="tags">
+                <span class="tag">太赫兹谱学</span>
+                <span class="tag">关联电子态</span>
+                <span class="tag">二维材料</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <footer>
-      <div class="container">
-        <div class="foot">
-          <div>© <span id="y"></span></div>
-          <div><a href="contact.html">Contact</a></div>
-        </div>
-      </div>
+      © <span id="y"></span>
     </footer>
   </div>
 
