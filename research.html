@@ -32,7 +32,6 @@
       /* typography */
       --h1: 52px;
       --h2: 22px;
-      --h3: 18px;
       --body: 16.5px;
       --body2: 15.8px;
       --small: 14px;
@@ -111,13 +110,13 @@
     }
 
     /* =========================
-       GRID
+       STACK (1 column, 2 rows)
     ========================== */
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
+    .stack{
+      display:flex;
+      flex-direction:column;
       gap: var(--gap);
-      align-items:start;
+      align-items:stretch;
     }
 
     /* =========================
@@ -152,6 +151,7 @@
       color:var(--muted);
       font-size: var(--body2);
       line-height:1.78;
+      max-width: 1020px;
     }
 
     /* soft section label */
@@ -280,9 +280,6 @@
     }
 
     /* RESPONSIVE */
-    @media (max-width: 980px){
-      .grid{ grid-template-columns: 1fr; }
-    }
     @media (max-width: 780px){
       :root{ --pad:18px; --h1:44px; --h2:21px; --cardPad:18px; }
       .hero{ padding:16px; }
@@ -308,59 +305,58 @@
     </div>
 
     <div class="hero">
-      <div class="kicker">Two main directions, one common goal.</div>
+      <div class="kicker">Two directions, one shared motivation.</div>
       <div class="desc">
-        We develop rigorous THz measurement platforms and use them to understand quantum materials and devices,
-        connecting time-domain signals to quantitative electrodynamic response and transport physics.
+        We build robust THz measurement capabilities and use them to understand quantum materials and devices,
+        bridging time-domain signals with quantitative electrodynamic response and transport physics.
       </div>
     </div>
 
-    <div class="grid">
+    <!-- ✅ 1 column, 2 rows -->
+    <div class="stack">
 
       <!-- Direction 1 -->
       <div class="card">
         <div class="pill"><span class="dot"></span>Direction 1</div>
-        <h2>On-chip Terahertz Spectroscopy Platforms</h2>
+        <h2>超快泵浦太赫兹光谱：非平衡载流子动力学</h2>
         <p class="lead">
-          Integrated THz sources/detectors and calibrated pipelines for device-level spectroscopy.
+          Ultrafast pump–THz probes for disentangling nonequilibrium charge dynamics across wide time scales.
         </p>
 
         <ul>
-          <li><span class="strong">On-chip THz emitters/detectors</span> and compact spectrometer architectures</li>
-          <li><span class="strong">System response calibration</span> & quantitative extraction (E(t), σ(ω), ε(ω))</li>
-          <li><span class="strong">Hardware–software co-design</span> for robust, reproducible measurements</li>
-          <li><span class="strong">Compatibility</span> with cryogenic and magneto-transport environments</li>
+          <li><span class="strong">Transient photoconductivity</span> and carrier scattering/relaxation following photoexcitation</li>
+          <li><span class="strong">Hot-carrier and energy-flow pathways</span> (carrier–phonon coupling, thermalization, dissipation)</li>
+          <li><span class="strong">Multi-timescale dynamics</span> from femtoseconds to nanoseconds, connected to transport behavior</li>
         </ul>
 
         <div class="tagrow">
-          <span class="tag">On-chip THz</span>
-          <span class="tag">THz-TDS</span>
-          <span class="tag">Calibration</span>
-          <span class="tag">Cryo / Magnet</span>
+          <span class="tag">Pump–THz</span>
+          <span class="tag">Nonequilibrium</span>
+          <span class="tag">Carrier Dynamics</span>
+          <span class="tag">Thermal Transport</span>
         </div>
       </div>
 
       <!-- Direction 2 -->
       <div class="card">
         <div class="pill"><span class="dot"></span>Direction 2</div>
-        <h2>THz Electrodynamics & Quantum Transport in Quantum Materials</h2>
+        <h2>低温输运与片上集成太赫兹光谱：量子材料关联电子态（如超导等）</h2>
         <p class="lead">
-          THz complex conductivity fingerprints of low-energy excitations, collective dynamics, and nonequilibrium transport.
+          Combining cryogenic transport and on-chip THz spectroscopy to probe correlated electronic states and low-energy electrodynamics.
         </p>
 
         <ul>
-          <li><span class="strong">Correlated electrodynamics & superconductivity</span>: complex conductivity σ(ω), low-energy modes, spectral weight transfer</li>
-          <li><span class="strong">Ultrafast carrier & heat transport</span>: dynamics from femtoseconds to nanoseconds and their impact on charge transport</li>
-          <li><span class="strong">Quantum transport in 2D devices</span>: gate-tunable transport, magneto-transport, and connections to THz response</li>
-          <li><span class="strong">Materials and heterostructures</span>: 2D quantum materials, vdW stacks, and functional thin films</li>
+          <li><span class="strong">Complex conductivity σ(ω)</span> as a fingerprint of low-energy excitations and collective dynamics</li>
+          <li><span class="strong">Field/temperature tuning</span> with cryogenic and magneto-transport compatible THz measurements</li>
+          <li><span class="strong">On-chip integrated THz platforms</span> for device-level spectroscopy and quantitative extraction (E(t), σ(ω), ε(ω))</li>
         </ul>
 
         <div class="tagrow">
+          <span class="tag">Cryogenic Transport</span>
+          <span class="tag">On-chip THz</span>
           <span class="tag">Complex σ(ω)</span>
           <span class="tag">Superconductivity</span>
           <span class="tag">Correlations</span>
-          <span class="tag">Ultrafast</span>
-          <span class="tag">Quantum Transport</span>
         </div>
       </div>
 
