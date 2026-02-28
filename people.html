@@ -1,194 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>People | Terahertz Electrodynamics Lab @ CAS AIR</title>
-  <meta name="description" content="People — Terahertz Electrodynamics Lab @ CAS AIR" />
+  <title>People | THz Electrodynamics Lab @ CAS-Air</title>
+  <meta name="description" content="People — THz Electrodynamics Lab @ CAS-Air" />
 
   <style>
     :root{
-      --bg:#0a0f1c;
-      --panel:rgba(17,24,39,.55);
-      --panel2:rgba(15,23,42,.62);
-      --text:#e8eeff;
-      --muted:#b6c2ea;
-      --line:rgba(255,255,255,.10);
-      --accent:#4da6ff;
-      --accent2:#7c3aed;
-      --radius:18px;
-      --shadow: 0 18px 40px rgba(0,0,0,.38);
-      --max: 1080px;
+      /* ===== Light theme (match your new home) ===== */
+      --bg:#ffffff;
+      --bg2:#f6f8fc;
+      --text:#0f172a;
+      --muted:#51607a;
+      --line:rgba(15,23,42,.10);
+      --line2:rgba(15,23,42,.06);
+
+      --card:#ffffff;
+      --shadow: 0 18px 50px rgba(15,23,42,.10);
+      --shadow2: 0 10px 26px rgba(15,23,42,.08);
+
+      --accent:#2f5cff;
+      --accent2:#6d28d9;
+
+      --radius:22px;
+      --max:1080px;
     }
 
     *{box-sizing:border-box}
     html, body{height:100%}
     body{
       margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans","PingFang SC","Microsoft Yahei",sans-serif;
       color:var(--text);
-      line-height:1.6;
-      min-height:100vh;
+      line-height:1.65;
       background:
-        radial-gradient(900px 420px at 15% 0%, rgba(124,58,237,.20), transparent 60%),
-        radial-gradient(900px 460px at 85% 10%, rgba(77,166,255,.18), transparent 60%),
+        radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.10), transparent 60%),
+        radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
         linear-gradient(var(--bg), var(--bg));
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
-    .page{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-    }
+    /* sticky footer layout */
+    .page{min-height:100vh;display:flex;flex-direction:column}
     .main{flex:1}
 
     /* =========================
-       TOP NAV (一致风格)
+       NAV (light, match home)
     ========================= */
     .nav{
-      position:sticky; top:0; z-index:100;
-      background: rgba(10,15,28,.62);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      position:sticky; top:0; z-index:1000;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line2);
     }
     .nav-inner{
       display:flex; align-items:center; justify-content:space-between;
-      gap:14px; padding:12px 0;
+      gap:14px; padding:14px 0;
     }
     .brand{
-      display:flex; flex-direction:column; gap:2px;
-      font-weight:900; letter-spacing:.2px;
+      font-weight:520;          /* not bold */
+      letter-spacing:.1px;
       white-space:nowrap;
+      color: rgba(15,23,42,.92);
       overflow:hidden;
-      text-overflow:clip;
-      min-width: 280px;
-    }
-    .brand small{
-      color:var(--muted);
-      font-weight:650;
-      letter-spacing:.2px
+      text-overflow:ellipsis;
     }
     .menu{
       display:flex; flex-wrap:wrap;
-      gap:8px; align-items:center; justify-content:flex-end
+      gap:10px; align-items:center; justify-content:flex-end;
     }
     .menu a{
       padding:8px 10px;
-      border-radius:12px;
-      color:var(--text);
-      font-weight:650;
+      border-radius:999px;
+      color:rgba(15,23,42,.85);
+      font-weight:600;
       font-size:14px;
       border:1px solid transparent;
       text-decoration:none;
+      transition: background .15s ease, border-color .15s ease, transform .15s ease;
     }
     .menu a:hover{
-      background: rgba(77,166,255,.08);
-      border-color: rgba(77,166,255,.25);
+      background: rgba(47,92,255,.06);
+      border-color: rgba(47,92,255,.16);
+      text-decoration:none;
     }
     .menu a.active{
-      background: rgba(77,166,255,.12);
-      border-color: rgba(77,166,255,.32);
+      background: rgba(47,92,255,.08);
+      border-color: rgba(47,92,255,.18);
     }
     .cta{
-      padding:8px 12px !important;
-      border:1px solid rgba(77,166,255,.35) !important;
-      background: linear-gradient(135deg, rgba(77,166,255,.18), rgba(124,58,237,.14));
+      padding:8px 14px !important;
+      border:1px solid rgba(47,92,255,.22) !important;
+      background: linear-gradient(180deg, rgba(47,92,255,.10), rgba(109,40,217,.07));
     }
 
     /* =========================
        PAGE HEADER
     ========================= */
-    .header{
-      padding:34px 0 14px;
-    }
+    .header{padding:28px 0 14px}
     .header h1{
       margin:0;
-      font-size:34px;
-      letter-spacing:.2px;
+      font-size:32px;
+      letter-spacing:-.2px;
+      color: rgba(15,23,42,.96);
     }
     .header .sub{
       margin:10px 0 0;
       color:var(--muted);
       font-size:14px;
-      font-weight:650;
     }
 
     /* =========================
-       PANELS / CARDS
+       PANELS / CARDS (light)
     ========================= */
     .panel{
-      background: var(--panel2);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius: calc(var(--radius) + 6px);
+      background:
+        radial-gradient(900px 320px at 85% 10%, rgba(47,92,255,.06), transparent 55%),
+        radial-gradient(900px 320px at 12% 0%, rgba(109,40,217,.05), transparent 55%),
+        rgba(255,255,255,.90);
+      border:1px solid rgba(15,23,42,.07);
+      border-radius: calc(var(--radius) + 10px);
       box-shadow: var(--shadow);
-      padding:18px;
+      padding:20px;
     }
 
     .grid{
       display:grid;
-      grid-template-columns: 1fr; /* 一列 */
-      gap:14px;
+      grid-template-columns: 1fr;
+      gap:12px;
     }
 
     .card{
-      background: var(--panel);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius: var(--radius);
+      background: rgba(255,255,255,.92);
+      border:1px solid rgba(15,23,42,.07);
+      border-radius: 16px;
       padding:16px;
+      box-shadow: var(--shadow2);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .card:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(15,23,42,.10);
+      border-color: rgba(47,92,255,.14);
     }
 
-    .row{
-      display:flex; gap:14px; align-items:flex-start;
-    }
+    .row{display:flex; gap:14px; align-items:flex-start}
 
     .avatar{
-      width:58px; height:58px; border-radius:16px;
+      width:56px; height:56px; border-radius:16px;
       display:flex; align-items:center; justify-content:center;
-      font-weight:900;
-      background: linear-gradient(135deg, rgba(77,166,255,.20), rgba(124,58,237,.18));
-      border:1px solid rgba(255,255,255,.10);
+      font-weight:850;
+      color:#fff;
+      background: linear-gradient(135deg, rgba(47,92,255,.95), rgba(109,40,217,.85));
+      border:1px solid rgba(47,92,255,.22);
       flex:0 0 auto;
+      box-shadow: 0 10px 22px rgba(47,92,255,.16);
     }
 
-    .name{
-      font-weight:900; font-size:18px; margin:0;
-    }
-    .role{
-      margin:2px 0 8px; color:var(--muted); font-weight:650; font-size:13px;
-    }
-    .meta{
-      color:var(--muted);
-      font-size:13px;
-      margin:0;
-    }
+    .name{font-weight:900; font-size:18px; margin:0; color: rgba(15,23,42,.95)}
+    .role{margin:3px 0 10px; color:var(--muted); font-weight:650; font-size:13px}
+    .meta{color:var(--muted); font-size:13px; margin:0}
 
     .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
     .tag{
       font-size:12px;
       padding:6px 10px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color:rgba(232,238,255,.92);
+      border:1px solid rgba(15,23,42,.08);
+      background: rgba(246,248,252,.85);
+      color: rgba(15,23,42,.80);
     }
 
     /* =========================
-       PI PROFILE（中文）
+       PI PROFILE
     ========================= */
-    .profile{ padding:18px; }
+    .profile{padding:20px}
     .profile-top{
       display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;
     }
     .profile-left{
-      flex: 1 1 520px;
+      flex: 1 1 560px;
       min-width: 280px;
     }
     .profile-right{
-      flex: 0 0 260px;
+      flex: 0 0 280px;
       min-width: 240px;
     }
 
@@ -196,56 +197,56 @@
       margin:0;
       font-size:22px;
       font-weight:950;
-      letter-spacing:.2px;
+      letter-spacing:.1px;
+      color: rgba(15,23,42,.96);
     }
 
     .profile-block{
       margin-top:14px;
       padding-top:12px;
-      border-top:1px solid rgba(255,255,255,.08);
+      border-top:1px solid rgba(15,23,42,.08);
     }
 
     .sec-title{
       margin:0 0 10px;
       font-size:16px;
       font-weight:900;
-      letter-spacing:.2px;
+      letter-spacing:.1px;
+      color: rgba(15,23,42,.92);
     }
     .sec-title::after{
       content:"";
       display:block;
-      width:120px;
+      width:110px;
       height:4px;
       margin-top:10px;
       border-radius:999px;
-      background: rgba(77,166,255,.65);
+      background: rgba(47,92,255,.75);
     }
 
     .list{
       margin:10px 0 0;
       padding-left:18px;
-      color:rgba(232,238,255,.92);
+      color: rgba(15,23,42,.88);
     }
-    .list li{
-      margin:8px 0;
-      color: rgba(232,238,255,.92);
-    }
+    .list li{margin:8px 0; color: rgba(15,23,42,.88)}
 
     .mini-card{
-      background: rgba(10,15,28,.35);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius: var(--radius);
+      background: rgba(255,255,255,.92);
+      border:1px solid rgba(15,23,42,.07);
+      border-radius: 16px;
       padding:14px;
+      box-shadow: var(--shadow2);
     }
     .mini-card .k{
-      color:rgba(182,194,234,.95);
+      color: rgba(81,96,122,.95);
       font-size:12px;
       font-weight:750;
       margin:10px 0 2px;
     }
     .mini-card .v{
       font-size:13px;
-      color:rgba(232,238,255,.95);
+      color: rgba(15,23,42,.90);
       margin:0;
       word-break:break-word;
     }
@@ -254,19 +255,18 @@
        FOOTER
     ========================= */
     footer{
-      padding:22px 0;
-      border-top:1px solid rgba(255,255,255,.06);
+      padding:18px 0 30px;
+      border-top:1px solid var(--line2);
       color:var(--muted);
       font-size:13px;
+      margin-top:22px;
     }
-    .foot{
-      display:flex; flex-wrap:wrap; gap:10px;
-      align-items:center; justify-content:space-between
-    }
+    .foot{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between}
 
     @media (max-width: 780px){
-      .brand small{display:none}
-      .header h1{font-size:30px}
+      .header h1{font-size:28px}
+      .menu a{font-size:13px; padding:7px 9px}
+      .profile-right{flex: 1 1 260px}
     }
   </style>
 </head>
@@ -278,9 +278,7 @@
     <div class="nav">
       <div class="container">
         <div class="nav-inner">
-          <div class="brand">
-            <div>Terahertz Electrodynamics Lab @ CAS AIR</div>
-          </div>
+          <div class="brand">THz Electrodynamics Lab @ CAS-Air</div>
 
           <div class="menu">
             <a href="index.html">Home</a>
@@ -301,6 +299,7 @@
         <!-- PAGE TITLE -->
         <div class="header">
           <h1>People</h1>
+          <div class="sub">中国科学院空天信息创新研究院（大湾区研究院） · 广州</div>
         </div>
 
         <!-- PI PROFILE -->
@@ -321,7 +320,7 @@
               </div>
 
               <div class="profile-block">
-                <h3 class="sec-title">教育/科研背景</h3>
+                <h3 class="sec-title">教育 / 科研背景</h3>
                 <ul class="list">
                   <li>2026–至今 研究员，中国科学院空天信息创新研究院（大湾区研究院）</li>
                   <li>2024–2025 博士后，美国麻省理工学院</li>
@@ -329,8 +328,6 @@
                   <li>2018–2023 博士，德国马克斯-普朗克高分子研究所</li>
                 </ul>
               </div>
-
-    
 
               <div class="profile-block">
                 <h3 class="sec-title">荣誉奖励</h3>
@@ -351,13 +348,13 @@
                 <p class="v">广州黄埔</p>
 
                 <div class="k">邮箱</div>
-                <p class="v"><a href="mailto:THz_zheng@163.com">THz_zheng@163.com</a></p>
+                <p class="v"><a href="mailto:zhengwenhao@aircas.ac.cn">zhengwenhao@aircas.ac.cn</a></p>
 
                 <div class="k">链接</div>
                 <p class="v">
-                  <span style="color:var(--muted)">Google Scholar</span> ·
-                  <span style="color:var(--muted)">ORCID</span> ·
-                  <span style="color:var(--muted)">GitHub</span>
+                  <a href="#" style="color:var(--accent);font-weight:750;">Google Scholar</a> ·
+                  <a href="#" style="color:var(--accent);font-weight:750;">ORCID</a> ·
+                  <a href="#" style="color:var(--accent);font-weight:750;">GitHub</a>
                 </p>
               </div>
             </div>
@@ -369,7 +366,7 @@
         <div style="height:18px"></div>
 
         <div class="panel">
-          <h2 style="margin:0 0 12px; font-size:18px;">Team Members</h2>
+          <h2 style="margin:0 0 12px; font-size:18px; color:rgba(15,23,42,.94);">Team Members</h2>
 
           <div class="grid">
 
@@ -378,11 +375,12 @@
               <div class="row">
                 <div class="avatar">ZL</div>
                 <div>
-                  <p class="name"> 陆子辉</p>
+                  <p class="name">陆子辉</p>
                   <p class="role">博士研究生</p>
-                  <p class="meta">Keywords: <span style="color:var(--muted)">(待补)</span></p>
+                  <p class="meta">关键词：<span style="color:var(--muted)">(待补)</span></p>
                   <div class="tags">
                     <span class="tag">超快太赫兹光谱</span>
+                    <span class="tag">器件与平台</span>
                   </div>
                 </div>
               </div>
@@ -395,9 +393,11 @@
                 <div>
                   <p class="name">黄泽怀</p>
                   <p class="role">工程师</p>
-                  <p class="meta">Keywords: <span style="color:var(--muted)">(待补)</span></p>
+                  <p class="meta">关键词：<span style="color:var(--muted)">(待补)</span></p>
                   <div class="tags">
-                    <span class="tag">超快太赫兹光谱</span>
+                    <span class="tag">平台搭建</span>
+                    <span class="tag">电子学</span>
+                    <span class="tag">自动化</span>
                   </div>
                 </div>
               </div>
@@ -410,9 +410,11 @@
                 <div>
                   <p class="name">帅文君</p>
                   <p class="role">工程师</p>
-                  <p class="meta">Keywords: <span style="color:var(--muted)">(待补)</span></p>
+                  <p class="meta">关键词：<span style="color:var(--muted)">(待补)</span></p>
                   <div class="tags">
-                    <span class="tag">超快太赫兹光谱</span>
+                    <span class="tag">光学搭建</span>
+                    <span class="tag">机械结构</span>
+                    <span class="tag">流程规范</span>
                   </div>
                 </div>
               </div>
