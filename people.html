@@ -1,319 +1,610 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>People | THz Electrodynamics Lab @ CAS AIR</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>People | THz Electrodynamics Lab @ CAS AIR</title>
+  <meta name="description" content="People — THz Electrodynamics Lab @ CAS AIR" />
 
-<style>
-:root{
-  --bg:#ffffff;
-  --bg2:#f6f8fc;
-  --text:#111827;
-  --muted:#55627a;
-  --line:rgba(17,24,39,.10);
-  --shadow: 0 16px 40px rgba(15,23,42,.10);
-  --shadow2: 0 10px 24px rgba(15,23,42,.08);
-  --accent:#2f5cff;
-  --accentSoft: rgba(47,92,255,.10);
-  --radius:22px;
+  <!-- =========================================================
+    People Page (Light Theme) — FINAL
+    Goals:
+      1) 大屏更宽，小屏不变（自适应自然）
+      2) PI 信息完整（方向/背景/奖励不删）
+      3) Team 信息完整（身份/毕业院校/合作/标签）
+      4) 所有人照片统一尺寸：不裁脸、不拉伸（contain + 画框）
+      5) 代码可读性强（分区清晰 + 注释）
+    Images:
+      /assets/people/Wenhao.jpg
+      /assets/people/Zihui.jpg
+      /assets/people/Zehuai.jpg
+      /assets/people/Wenjun.jpg
+      /assets/people/Zhuoyi.jpg
+  ========================================================== -->
 
-  /* ⭐ 自适应宽度 */
-  --max:1120px;
-}
+  <style>
+    /* =========================
+       THEME TOKENS
+    ========================== */
+    :root{
+      --bg:#ffffff;
+      --bg2:#f6f8fc;
 
-/* ⭐ 大屏自动变宽 */
-@media (min-width:1100px){
-  :root{ --max:1320px; }
-}
-@media (min-width:1400px){
-  :root{ --max:1480px; }
-}
-@media (min-width:1700px){
-  :root{ --max:1560px; }
-}
+      --text:#111827;
+      --muted:#55627a;
+      --line:rgba(17,24,39,.10);
 
-*{ box-sizing:border-box; }
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft Yahei",sans-serif;
-  color:var(--text);
-  background:linear-gradient(var(--bg),var(--bg));
-  line-height:1.7;
-  font-size:17px;   /* ⭐ 全局字体放大 */
-}
+      --shadow: 0 16px 40px rgba(15,23,42,.10);
+      --shadow2: 0 10px 24px rgba(15,23,42,.08);
 
-.container{
-  max-width:var(--max);
-  margin:0 auto;
-  padding:0 28px;
-}
+      --accent:#2f5cff;
+      --accentSoft: rgba(47,92,255,.10);
 
-/* NAV */
-.nav{
-  position:sticky;
-  top:0;
-  background:rgba(255,255,255,.85);
-  backdrop-filter: blur(8px);
-  border-bottom:1px solid var(--line);
-}
-.nav-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 0;
-}
-.menu a{
-  padding:8px 12px;
-  border-radius:999px;
-  font-weight:600;
-  text-decoration:none;
-  color:var(--text);
-}
-.menu a.active{
-  background:rgba(47,92,255,.10);
-}
+      --radius:22px;
 
-/* HEADER */
-.header h1{
-  font-size:42px;
-  margin:30px 0 10px;
-}
-.header .sub{
-  font-size:18px;
-  color:var(--muted);
-}
+      /* ✅ 大屏更宽，小屏不变：
+         - 最小 1080（小屏/常规屏幕不变）
+         - 最大 1360（大屏拉宽）
+         - 中间跟随视口宽度
+      */
+      --max: clamp(1080px, 92vw, 1360px);
+    }
 
-/* PANEL */
-.panel{
-  background:linear-gradient(180deg,#fff,#f6f8fc);
-  border-radius:28px;
-  padding:30px;
-  box-shadow:var(--shadow);
-  margin-top:26px;
-}
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
 
-/* PROFILE */
-.profile{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:30px;
-}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,
+        "Noto Sans","PingFang SC","Microsoft Yahei",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.08), transparent 60%),
+        radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
+        linear-gradient(var(--bg), var(--bg));
+      line-height:1.7;
+    }
 
-.pi-name{
-  font-size:32px;
-  font-weight:900;
-}
-.pi-role{
-  font-size:18px;
-  color:var(--muted);
-  margin-bottom:18px;
-}
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-.block{
-  margin-top:20px;
-  border-top:1px solid var(--line);
-  padding-top:16px;
-}
-.block h3{
-  font-size:18px;
-  margin-bottom:10px;
-}
-.block li{
-  margin:10px 0;
-  font-size:17px;
-}
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 24px;            /* 大屏更宽时，留白更舒服 */
+    }
 
-/* ⭐ 原图展示 */
-.pi-photo{
-  width:100%;
-  border-radius:28px;
-  box-shadow:var(--shadow2);
-}
+    /* =========================
+       NAV (same as Home vibe)
+    ========================== */
+    .nav{
+      position:sticky; top:0; z-index:1000;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding:14px 0;
+    }
+    .brand{
+      font-weight:600;
+      letter-spacing:.1px;
+      white-space:nowrap;
+    }
+    .menu{
+      display:flex; flex-wrap:wrap;
+      gap:10px; align-items:center; justify-content:flex-end;
+    }
+    .menu a{
+      padding:8px 10px;
+      border-radius:999px;
+      color:var(--text);
+      font-weight:600;
+      font-size:14px;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+    .menu a:hover{
+      background: rgba(47,92,255,.06);
+      border-color: rgba(47,92,255,.18);
+    }
+    .menu a.active{
+      background: rgba(47,92,255,.08);
+      border-color: rgba(47,92,255,.22);
+    }
+    .cta{
+      padding:8px 14px !important;
+      border:1px solid rgba(47,92,255,.25) !important;
+      background: linear-gradient(180deg, rgba(47,92,255,.12), rgba(109,40,217,.08));
+    }
 
-/* MINI CARD */
-.mini-card{
-  margin-top:18px;
-  background:#fff;
-  padding:18px;
-  border-radius:20px;
-  box-shadow:var(--shadow2);
-}
-.k{ font-size:14px; color:var(--muted); margin-top:10px;}
-.v{ font-size:16px; }
+    /* =========================
+       PAGE HEADER
+    ========================== */
+    .header{ padding:28px 0 10px; }
+    .header h1{
+      margin:0;
+      font-size:44px;           /* ✅ 文字更大 */
+      letter-spacing:-.4px;
+      line-height:1.05;
+    }
+    .header .sub{
+      margin:14px 0 0;
+      color:var(--muted);
+      font-size:18px;           /* ✅ 文字更大 */
+      max-width: 980px;
+    }
 
-/* TEAM */
-.section-title{
-  font-size:26px;
-  margin-bottom:18px;
-}
-.team-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
-}
-.person-card{
-  background:#fff;
-  border-radius:26px;
-  overflow:hidden;
-  box-shadow:var(--shadow2);
-}
-.person-photo{
-  width:50%;
-  display:block; /* ⭐ 原图，不裁切 */
-}
-.person-body{
-  padding:20px;
-}
-.person-name{
-  font-size:22px;
-  font-weight:900;
-}
-.person-role{
-  font-size:16px;
-  color:var(--muted);
-}
-.person-meta{
-  margin-top:10px;
-  font-size:16px;
-  color:var(--muted);
-}
-.pill{
-  display:inline-block;
-  margin-top:10px;
-  margin-right:6px;
-  padding:6px 12px;
-  border-radius:999px;
-  background:var(--accentSoft);
-  font-size:14px;
-}
+    /* =========================
+       PANEL / SECTION TITLE
+    ========================== */
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(246,248,252,.92));
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: calc(var(--radius) + 10px);
+      box-shadow: var(--shadow);
+      padding:28px;
+    }
+    .section-title{
+      margin:0 0 16px;
+      font-size:22px;          /* ✅ 更大 */
+      letter-spacing:.1px;
+    }
 
-/* MOBILE */
-@media(max-width:900px){
-  .profile{ grid-template-columns:1fr; }
-  .team-grid{ grid-template-columns:1fr; }
-}
-</style>
+    /* =========================================================
+       PI SECTION
+       - 左：完整文字（方向/背景/奖励）
+       - 右：照片 + 迷你信息卡
+    ========================================================== */
+    .profile{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:26px;
+      align-items:start;
+    }
+
+    .pi-name{
+      font-size:30px;          /* ✅ 更大 */
+      font-weight:900;
+      margin:0 0 6px;
+      letter-spacing:.2px;
+    }
+    .pi-role{
+      color:var(--muted);
+      font-size:16px;          /* ✅ 更大 */
+      margin:0 0 14px;
+      font-weight:750;
+    }
+
+    .block{
+      margin-top:16px;
+      padding-top:14px;
+      border-top:1px solid rgba(17,24,39,.08);
+    }
+    .block h3{
+      margin:0 0 10px;
+      font-size:16px;          /* ✅ 更大 */
+      font-weight:900;
+      letter-spacing:.1px;
+    }
+    .block ul{
+      margin:0;
+      padding-left:20px;
+      font-size:16px;          /* ✅ 更大 */
+    }
+    .block li{ margin:10px 0; }
+    .block li span{ color:var(--muted); }
+
+    /* 右侧：照片 + mini-card */
+    .pi-side{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      align-items:flex-start;
+    }
+
+    /* ✅ 统一画框：不裁脸、不变形 */
+    .frame{
+      width:100%;
+      border-radius: 30px;
+      border:1px solid rgba(17,24,39,.10);
+      box-shadow:0 14px 34px rgba(15,23,42,.12);
+      background: var(--bg2);
+      padding: 12px;
+      overflow:hidden;
+    }
+
+    /* PI 照片画框尺寸（你要“原图不要直接放”，这里统一进框） */
+    .pi-photo{
+      width:100%;
+      height: 360px;           /* ✅ 统一高度 */
+      object-fit: contain;     /* ✅ 不裁脸 */
+      object-position: center;
+      display:block;
+      border-radius: 22px;
+      background: var(--bg2);
+    }
+
+    .mini-card{
+      width:100%;
+      background: rgba(255,255,255,.78);
+      border:1px solid rgba(17,24,39,.08);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow2);
+      font-size:16px;          /* ✅ 更大 */
+    }
+    .k{
+      color:var(--muted);
+      font-size:13px;          /* ✅ 更大 */
+      font-weight:900;
+      margin:12px 0 4px;
+      letter-spacing:.2px;
+    }
+    .v{
+      margin:0;
+      color:var(--text);
+      word-break:break-word;
+      line-height:1.65;
+    }
+
+    /* =========================================================
+       TEAM GRID
+       - 每个成员：照片（统一画框）+ 内容
+       - 内容完整：身份/毕业院校/合作/标签
+    ========================================================== */
+    .team-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:18px;
+    }
+
+    .person-card{
+      background: rgba(255,255,255,.90);
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: calc(var(--radius) + 10px);
+      box-shadow: var(--shadow2);
+      padding:18px;
+      display:grid;
+      grid-template-columns: 170px 1fr; /* 左：照片框 右：文字 */
+      gap:16px;
+      align-items:start;
+    }
+
+    /* 成员照片的统一画框（不裁脸） */
+    .person-frame{
+      width:170px;
+      height:170px;
+      border-radius: 26px;
+      border:1px solid rgba(17,24,39,.10);
+      background: var(--bg2);
+      padding: 10px;
+      overflow:hidden;
+      box-shadow:0 10px 22px rgba(15,23,42,.10);
+    }
+    .person-photo{
+      width:100%;
+      height:100%;
+      object-fit: contain;      /* ✅ 不裁脸 */
+      object-position: center;
+      display:block;
+      border-radius: 18px;
+      background: var(--bg2);
+    }
+
+    .person-body{ min-width:0; }
+
+    .person-top{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .person-name{
+      margin:0;
+      font-size:22px;          /* ✅ 更大 */
+      font-weight:900;
+      letter-spacing:.1px;
+      line-height:1.15;
+    }
+    .person-role{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;          /* ✅ 更大 */
+      font-weight:850;
+      white-space:nowrap;
+    }
+
+    .person-meta{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:16px;          /* ✅ 更大 */
+      line-height:1.75;
+    }
+    .person-meta b{ color: rgba(17,24,39,.85); }
+
+    .pill-row{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:12px;
+    }
+    .pill{
+      font-size:13px;          /* ✅ 更大 */
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid rgba(47,92,255,.18);
+      background: var(--accentSoft);
+      color:rgba(17,24,39,.90);
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    footer{
+      margin-top:26px;
+      padding:18px 0 34px;
+      color:var(--muted);
+      font-size:14px;
+      border-top: 1px solid var(--line);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       - 小屏不变（自然）
+       - 中屏：一列
+       - 小屏：照片框变小但仍统一
+    ========================================================== */
+    @media (max-width: 980px){
+      :root{ --max: 1080px; } /* ✅ 小屏保持原本宽度逻辑 */
+      .profile{ grid-template-columns: 1fr; }
+      .pi-photo{ height: 320px; }
+
+      .team-grid{ grid-template-columns: 1fr; }
+      .person-card{ grid-template-columns: 160px 1fr; }
+      .person-frame{ width:160px; height:160px; }
+    }
+
+    @media (max-width: 560px){
+      .container{ padding:0 18px; }
+      .header h1{ font-size:36px; }
+      .header .sub{ font-size:16px; }
+
+      .panel{ padding:22px; }
+
+      .pi-name{ font-size:26px; }
+      .pi-role{ font-size:15px; }
+      .block ul{ font-size:15px; }
+
+      .pi-photo{ height: 260px; }
+
+      .person-card{
+        grid-template-columns: 1fr; /* 手机：照片在上，文字在下 */
+      }
+      .person-frame{
+        width:100%;
+        height:220px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="nav">
-<div class="container nav-inner">
-<div><b>THz Electrodynamics Lab @ CAS-Air</b></div>
-<div class="menu">
-<a href="index.html">Home</a>
-<a href="research.html">Research</a>
-<a class="active" href="people.html">People</a>
-<a href="publications.html">Publications</a>
-<a href="news.html">News</a>
-<a href="join.html">Join</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
-</div>
+  <!-- =========================
+       NAV
+  ========================== -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">THz Electrodynamics Lab @ CAS-Air</div>
+        <div class="menu">
+          <a href="index.html">Home</a>
+          <a href="research.html">Research</a>
+          <a class="active" href="people.html">People</a>
+          <a href="publications.html">Publications</a>
+          <a href="news.html">News</a>
+          <a href="join.html">Join</a>
+          <a class="cta" href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="container header">
-<h1>People</h1>
-<div class="sub">
-我们致力于超快太赫兹谱学与片上集成平台，研究低维量子材料中的低能电动力学、关联效应与非平衡输运。
-</div>
-</div>
+  <!-- =========================
+       PAGE HEADER
+  ========================== -->
+  <div class="header">
+    <div class="container">
+      <h1>People</h1>
+      <div class="sub">
+        我们致力于超快太赫兹谱学与片上集成平台，研究低维量子材料中的低能电动力学、关联效应与非平衡输运。
+      </div>
+    </div>
+  </div>
 
-<div class="container">
+  <div class="container">
 
-<div class="panel profile">
+    <!-- =========================
+         PI PANEL
+    ========================== -->
+    <div class="panel">
+      <div class="profile">
 
-<div>
-<div class="pi-name">郑文浩</div>
-<div class="pi-role">研究员 · 博士生导师</div>
+        <!-- LEFT: PI TEXT (完整保留，不删) -->
+        <div>
+          <div class="pi-name">郑文浩</div>
+          <div class="pi-role">研究员 · 博士生导师</div>
 
-<div class="block">
-<h3>研究方向</h3>
-<ul>
-<li>超快泵浦太赫兹光谱：非平衡载流子动力学</li>
-<li>低温输运与片上集成太赫兹光谱：量子材料关联电子态（如超导等）</li>
-</ul>
-</div>
+          <div class="block">
+            <h3>研究方向</h3>
+            <ul>
+              <li>超快泵浦太赫兹光谱：<span>非平衡载流子动力学</span></li>
+              <li>低温输运与片上集成太赫兹光谱：<span>量子材料关联电子态（如超导等）</span></li>
+            </ul>
+          </div>
 
-<div class="block">
-<h3>教育 / 科研背景</h3>
-<ul>
-<li>2026–至今：研究员，中国科学院空天信息创新研究院（大湾区研究院）</li>
-<li>2024–2025：博士后，美国麻省理工学院</li>
-<li>2023–2024：博士后，德国马克斯-普朗克高分子研究所</li>
-<li>2018–2023：博士，德国马克斯-普朗克高分子研究所</li>
-</ul>
-</div>
+          <div class="block">
+            <h3>教育 / 科研背景</h3>
+            <ul>
+              <li>2026–至今：<span>研究员，中国科学院空天信息创新研究院（大湾区研究院）</span></li>
+              <li>2024–2025：<span>博士后，美国麻省理工学院</span></li>
+              <li>2023–2024：<span>博士后，德国马克斯-普朗克高分子研究所</span></li>
+              <li>2018–2023：<span>博士，德国马克斯-普朗克高分子研究所</span></li>
+            </ul>
+          </div>
 
-<div class="block">
-<h3>荣誉奖励</h3>
-<ul>
-<li>国家优秀自费留学生奖学金（2022）</li>
-<li>Kalkhof-Rose Polymer Science Award（2022）</li>
-</ul>
-</div>
-</div>
+          <div class="block">
+            <h3>荣誉奖励</h3>
+            <ul>
+              <li>国家优秀自费留学生奖学金（2022）</li>
+              <li>Kalkhof-Rose Polymer Science Award（2022）</li>
+            </ul>
+          </div>
+        </div>
 
-<div>
-<img class="pi-photo" src="assets/people/Wenhao.jpg">
-<div class="mini-card">
-<div class="k">单位</div>
-<div class="v">中国科学院 空天信息创新研究院（大湾区研究院）</div>
-<div class="k">地点</div>
-<div class="v">广州 · 黄埔</div>
-<div class="k">邮箱</div>
-<div class="v">thz_zheng@163.com</div>
-</div>
-</div>
+        <!-- RIGHT: PI PHOTO + CONTACT CARD -->
+        <div class="pi-side">
+          <!-- ✅ 原图不直接铺满：放入统一画框 -->
+          <div class="frame">
+            <img class="pi-photo" src="assets/people/Wenhao.jpg" alt="Wenhao Zheng" />
+          </div>
 
-</div>
+          <div class="mini-card">
+            <div class="k">单位</div>
+            <p class="v">中国科学院 空天信息创新研究院（大湾区研究院）</p>
 
-<div class="panel">
-<h2 class="section-title">Team Members</h2>
+            <div class="k">地点</div>
+            <p class="v">广州 · 黄埔</p>
 
-<div class="team-grid">
+            <div class="k">邮箱</div>
+            <p class="v"><a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a></p>
 
-<div class="person-card">
-<img class="person-photo" src="assets/people/Wenjun.jpg">
-<div class="person-body">
-<div class="person-name">帅文君</div>
-<div class="person-role">工程师</div>
-<div class="person-meta">硕士 · 华南师范大学</div>
-</div>
-</div>
+            <div class="k">链接</div>
+            <p class="v">
+              <!-- 你后面把 # 换成真实链接即可 -->
+              <a href="#" title="Add your Scholar URL">Google Scholar</a> ·
+              <a href="#" title="Add your ORCID URL">ORCID</a> ·
+              <a href="#" title="Add your GitHub URL">GitHub</a>
+            </p>
+          </div>
+        </div>
 
-<div class="person-card">
-<img class="person-photo" src="assets/people/Zehuai.jpg">
-<div class="person-body">
-<div class="person-name">黄泽怀</div>
-<div class="person-role">工程师</div>
-<div class="person-meta">硕士 · 电子科技大学</div>
-</div>
-</div>
+      </div>
+    </div>
 
-<div class="person-card">
-<img class="person-photo" src="assets/people/Zihui.jpg">
-<div class="person-body">
-<div class="person-name">陆子辉</div>
-<div class="person-role">博士研究生</div>
-<div class="person-meta">本科 · 北京邮电大学</div>
-</div>
-</div>
+    <div style="height:18px"></div>
 
-<div class="person-card">
-<img class="person-photo" src="assets/people/Zhuoyi.jpg">
-<div class="person-body">
-<div class="person-name">汪卓毅</div>
-<div class="person-role">联培博士研究生</div>
-<div class="person-meta">本科 · 吉林大学</div>
-</div>
-</div>
+    <!-- =========================
+         TEAM PANEL
+    ========================== -->
+    <div class="panel">
+      <h2 class="section-title">Team Members</h2>
 
-</div>
-</div>
+      <div class="team-grid">
 
-</div>
+         <!-- 1) 帅文君 -->
+        <div class="person-card">
+          <div class="person-frame">
+            <img class="person-photo" src="assets/people/Wenjun.jpg" alt="Wenjun Shuai" />
+          </div>
+          <div class="person-body">
+            <div class="person-top">
+              <h3 class="person-name">帅文君</h3>
+              <p class="person-role">工程师</p>
+            </div>
+            <div class="person-meta"><b>毕业院校：</b>硕士 · 华南师范大学</div>
+            <div class="pill-row">
+              <span class="pill">平台搭建</span>
+              <span class="pill">自动化与测控</span>
+              <span class="pill">超快太赫兹光谱</span>
+              <span class="pill">理论计算</span>
+            </div>
+          </div>
+        </div>
 
+         <!-- 2) 黄泽怀 -->
+        <div class="person-card">
+          <div class="person-frame">
+            <img class="person-photo" src="assets/people/Zehuai.jpg" alt="Zehuai Huang" />
+          </div>
+          <div class="person-body">
+            <div class="person-top">
+              <h3 class="person-name">黄泽怀</h3>
+              <p class="person-role">工程师</p>
+            </div>
+            <div class="person-meta"><b>毕业院校：</b>硕士 · 电子科技大学（UESTC）</div>
+            <div class="pill-row">
+              <span class="pill">平台搭建</span>
+              <span class="pill">自动化与测控</span>
+              <span class="pill">超快太赫兹光谱</span>
+              <span class="pill">理论计算</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3) 陆子辉 -->
+        <div class="person-card">
+          <div class="person-frame">
+            <img class="person-photo" src="assets/people/Zihui.jpg" alt="Zihui Lu" />
+          </div>
+          <div class="person-body">
+            <div class="person-top">
+              <h3 class="person-name">陆子辉</h3>
+              <p class="person-role">博士研究生</p>
+            </div>
+            <div class="person-meta"><b>毕业院校：</b>本科 · 北京邮电大学</div>
+            <div class="pill-row">
+              <span class="pill">超快太赫兹光谱</span>
+              <span class="pill">片上集成平台</span>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- 4) 汪卓毅（联培） -->
+        <div class="person-card">
+          <div class="person-frame">
+            <img class="person-photo" src="assets/people/Zhuoyi.jpg" alt="Zhuoyi Wang" />
+          </div>
+          <div class="person-body">
+            <div class="person-top">
+              <h3 class="person-name">汪卓毅</h3>
+              <p class="person-role">联培博士研究生</p>
+            </div>
+            <div class="person-meta"><b>毕业院校：</b>本科 · 吉林大学</div>
+            <div class="person-meta">
+              <b>合作：</b>吉林大学刘朝阳教授 / 荷兰乌德勒支大学 Prof. Hai I. Wang 课题组
+            </div>
+            <div class="pill-row">
+              <span class="pill">超快太赫兹光谱</span>
+              <span class="pill">二维有机晶体载流子动力学</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="height:22px"></div>
+  </div>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer>
+    <div class="container">
+      © <span id="y"></span> · <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
