@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>THz Electrodynamics Lab @ CAS-Air</title>
 
+  <!-- ✅ 统一导航栏样式（全站一致） -->
+  <link rel="stylesheet" href="nav.css" />
+
   <style>
     /* =========================================================
        0) THEME (Light) — align with People page
@@ -26,10 +29,10 @@
 
       --radius:20px;
 
-      /* ✅ 大屏更宽，小屏不变（与 People 一致的思路） */
+      /* ✅ 大屏更宽，小屏不变（与 People 一致） */
       --max: clamp(1080px, 92vw, 1360px);
 
-      /* 统一左右边距 */
+      /* 统一左右边距（与 People 一致） */
       --pad:24px;
     }
 
@@ -40,14 +43,13 @@
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
       color:var(--text);
 
-      /* 背景轻微氛围光（与 People 风格一致） */
       background:
         radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.10), transparent 60%),
         radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
         linear-gradient(var(--bg), var(--bg));
 
       line-height:1.65;
-      overflow-x:hidden; /* 避免横向溢出造成错觉 */
+      overflow-x:hidden;
     }
 
     a{ color:var(--accent); text-decoration:none; }
@@ -63,65 +65,11 @@
     }
 
     /* =========================================================
-       2) NAV (match People sizing & vibe)
-    ========================================================== */
-    .nav{
-      position:sticky; top:0; z-index:1000;
-      background: rgba(255,255,255,.78);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-      padding:18px 0;
-    }
-    .brand{
-      font-weight:850;
-      font-size:20px;
-      letter-spacing:.2px;
-      white-space:nowrap;
-    }
-    .menu{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      align-items:center;
-      justify-content:flex-end;
-    }
-    .menu a{
-      padding:10px 14px;
-      border-radius:999px;
-      color:var(--text);
-      font-weight:720;
-      font-size:15px;
-      border:1px solid transparent;
-      transition: background .15s ease, border-color .15s ease, transform .15s ease;
-      text-decoration:none;
-    }
-    .menu a:hover{
-      background: rgba(47,92,255,.08);
-      border-color: rgba(47,92,255,.25);
-      transform: translateY(-1px);
-    }
-    .menu a.active{
-      background: rgba(47,92,255,.10);
-      border-color: rgba(47,92,255,.30);
-    }
-    .cta{
-      padding:10px 18px !important;
-      border:1px solid rgba(47,92,255,.35) !important;
-      background: linear-gradient(180deg, rgba(47,92,255,.18), rgba(109,40,217,.10));
-    }
-
-    /* =========================================================
-       3) HERO
+       2) HERO
        Fixes:
-         - ✅ remove right-heavy whitespace by removing max-width on text
          - ✅ more breathing room below title
-         - ✅ slightly more generous padding
+         - ✅ reduce "right-heavy" feel (slightly tighter padding)
+         - ✅ no max-width restriction on text
     ========================================================== */
     .hero{
       padding:36px 0 12px;
@@ -133,21 +81,22 @@
       border: 1px solid rgba(17,24,39,.08);
       border-radius: calc(var(--radius) + 10px);
       box-shadow: var(--shadow);
-      padding:42px 48px;
+
+      /* ✅ 比你原来 48px 稍收一点，视觉更均衡 */
+      padding:42px 40px;
     }
     .hero-title{
-      margin:0 0 10px;          /* ✅ 标题与正文拉开 */
+      margin:0 0 14px;          /* ✅ 标题与正文拉开 */
       font-size:56px;
       line-height:1.08;
       letter-spacing:-.6px;
     }
     .hero-text{
-      margin:22px 0 0;
+      margin:18px 0 0;
       color: var(--muted);
       font-size:17px;
       line-height:1.75;
-
-      max-width:none;           /* ✅ 关键：不限制宽度，左右更平衡 */
+      max-width:none;           /* ✅ 不限制宽度 */
     }
     .hero-text p{ margin:0 0 14px; }
 
@@ -182,10 +131,9 @@
     }
 
     /* =========================================================
-       4) NEWS
-       Fixes:
-         - ✅ remove the blue line (no ::after)
-         - keep clean heading style
+       3) NEWS
+       Fix:
+         - ✅ remove the blue line (force disable ::after)
     ========================================================== */
     .news{
       padding:10px 0 10px;
@@ -203,7 +151,8 @@
       font-weight:800;
       letter-spacing:-.2px;
     }
-    /* ✅ 确保没有蓝线：如果你旧代码里有 h2::after，删掉即可（这里不写） */
+    /* ✅ 保险：不管哪里冒出来的蓝线，都禁掉 */
+    .news-head h2::after{ content:none !important; }
 
     .news-list{
       display:flex;
@@ -255,7 +204,7 @@
     }
 
     /* =========================================================
-       5) FOOTER
+       4) FOOTER
     ========================================================== */
     footer{
       margin-top:22px;
@@ -266,46 +215,27 @@
     }
 
     /* =========================================================
-       6) RESPONSIVE
+       5) RESPONSIVE
     ========================================================== */
     @media (max-width: 900px){
-      /* 小屏保持“原来差不多”的宽度观感 */
       :root{ --max: 1080px; }
-
       .hero-title{ font-size:44px; }
       .hero-card{ padding:30px; }
     }
     @media (max-width: 560px){
       :root{ --pad:18px; }
-
       .hero-title{ font-size:36px; }
-      .menu a{ font-size:13px; padding:7px 9px; }
       .hero-card{ padding:24px; }
       .hero-text{ font-size:16px; }
     }
   </style>
 </head>
 
-<body>
-  <!-- =========================
-       NAV
-  ========================== -->
-  <div class="nav">
-    <div class="container">
-      <div class="nav-inner">
-        <div class="brand">THz Electrodynamics Lab @ CAS-Air</div>
-        <div class="menu">
-          <a class="active" href="index.html">Home</a>
-          <a href="research.html">Research</a>
-          <a href="people.html">People</a>
-          <a href="publications.html">Publications</a>
-          <a href="news.html">News</a>
-          <a href="join.html">Join</a>
-          <a class="cta" href="contact.html">Contact</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- ✅ 关键：data-page="index" 让 nav.js 自动高亮 Home -->
+<body data-page="index">
+
+  <!-- ✅ 统一导航注入占位 -->
+  <div id="site-nav"></div>
 
   <!-- =========================
        HERO
@@ -362,6 +292,9 @@
       © <span id="y"></span>
     </div>
   </footer>
+
+  <!-- ✅ 统一导航注入脚本（必须放在 #site-nav 之后） -->
+  <script src="nav.js"></script>
 
   <script>
     /* Footer year */
