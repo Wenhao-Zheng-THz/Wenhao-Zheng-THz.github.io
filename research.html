@@ -1,322 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Research | THz Electrodynamics Lab @ CAS-Air</title>
-  <meta name="description" content="Research — THz Electrodynamics Lab @ CAS-Air" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Research | THz Electrodynamics Lab @ CAS-Air</title>
+<meta name="description" content="Research — THz Electrodynamics Lab @ CAS-Air" />
 
-  <!-- ✅ Site-wide unified nav -->
-  <link rel="stylesheet" href="nav.css" />
+<link rel="stylesheet" href="nav.css" />
 
-  <style>
-    :root{
-      --bg:#ffffff;
-      --text:#111827;
-      --muted:#55627a;
-      --line:rgba(17,24,39,.10);
+<style>
+:root{
+  --bg:#ffffff;
+  --text:#111827;
+  --muted:#55627a;
+  --line:rgba(17,24,39,.10);
 
-      --shadow: 0 16px 40px rgba(15,23,42,.10);
-      --shadow2: 0 10px 22px rgba(15,23,42,.08);
+  --shadow: 0 16px 40px rgba(15,23,42,.10);
+  --shadow2: 0 10px 22px rgba(15,23,42,.08);
 
-      --radius:20px;
-      --max: clamp(1080px, 92vw, 1360px);
-      --pad:24px;
-    }
+  --radius:20px;
+  --max: clamp(1080px, 92vw, 1360px);
+  --pad:24px;
+}
 
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
-      color:var(--text);
-      line-height:1.7;
-      background:
-        radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.08), transparent 60%),
-        radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
-        linear-gradient(#ffffff, #ffffff);
-    }
+*{ box-sizing:border-box; }
 
-    .container{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:0 var(--pad);
-    }
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
+  color:var(--text);
+  line-height:1.7;
+  background:
+    radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.08), transparent 60%),
+    radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
+    linear-gradient(#ffffff, #ffffff);
+}
 
-    /* =========================
-       HEADER
-    ========================== */
-    .header{ padding:38px 0 16px; }
-    .header h1{
-      margin:0;
-      font-size:52px;
-      letter-spacing:-.8px;
-      line-height:1.05;
-    }
-    .header .sub{
-      margin-top:16px;
-      color:var(--muted);
-      font-size:16.5px;
-      max-width:980px;
-    }
+.container{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 var(--pad);
+}
 
-    /* =========================
-       HERO
-    ========================== */
-    .hero{
-      background: linear-gradient(135deg, rgba(47,92,255,.08), rgba(109,40,217,.06));
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: 26px;
-      padding:18px;
-      margin: 10px 0 22px;
-      box-shadow: var(--shadow2);
-    }
-    .hero .kicker{
-      font-weight:900;
-      margin-bottom:6px;
-      letter-spacing:-.2px;
-    }
-    .hero .desc{
-      color:var(--muted);
-      font-size:15.8px;
-      max-width:980px;
-    }
+/* HEADER */
+.header{ padding:38px 0 16px; }
+.header h1{
+  margin:0;
+  font-size:52px;
+  letter-spacing:-.8px;
+}
+.header .sub{
+  margin-top:16px;
+  color:var(--muted);
+  font-size:16.5px;
+  max-width:980px;
+}
 
-    /* =========================
-       STACK (1 column, 2 rows)
-    ========================== */
-    .stack{
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-      padding-bottom: 10px;
-    }
+/* HERO */
+.hero{
+  background: linear-gradient(135deg, rgba(47,92,255,.08), rgba(109,40,217,.06));
+  border: 1px solid rgba(17,24,39,.08);
+  border-radius: 26px;
+  padding:18px;
+  margin: 10px 0 22px;
+  box-shadow: var(--shadow2);
+}
+.hero .kicker{ font-weight:900; margin-bottom:6px; }
+.hero .desc{ color:var(--muted); }
 
-    /* =========================
-       CARD
-    ========================== */
-    .card{
-      background: rgba(255,255,255,.96);
-      border:1px solid rgba(17,24,39,.08);
-      border-radius:18px;
-      padding:22px;
-      box-shadow: var(--shadow2);
-    }
+/* STACK */
+.stack{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
 
-    /* Two-column layout inside each card: text + image */
-    .cardgrid{
-      display:grid;
-      grid-template-columns: 1.25fr .95fr;
-      gap:18px;
-      align-items:start;
-    }
+/* CARD */
+.card{
+  background:#fff;
+  border:1px solid rgba(17,24,39,.08);
+  border-radius:18px;
+  padding:22px;
+  box-shadow: var(--shadow2);
+}
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(17,24,39,.10);
-      background: rgba(17,24,39,.03);
-      font-size:13px;
-      font-weight:900;
-      margin-bottom:10px;
-    }
+.cardgrid{
+  display:grid;
+  grid-template-columns: 1.25fr .95fr;
+  gap:18px;
+  align-items:start;
+}
 
-    h2{
-      margin:0 0 12px;
-      font-size:24px;
-      font-weight:900;
-      letter-spacing:-.3px;
-      line-height:1.25;
-    }
+.pill{
+  display:inline-flex;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(17,24,39,.10);
+  background: rgba(17,24,39,.03);
+  font-size:13px;
+  font-weight:900;
+  margin-bottom:10px;
+}
 
-    .lead{
-      color:var(--muted);
-      margin-bottom:12px;
-      font-size:15.8px;
-      max-width: 760px;
-    }
+h2{
+  margin:0 0 12px;
+  font-size:24px;
+  font-weight:900;
+}
 
-    ul{
-      padding:0;
-      margin:0;
-      list-style:none;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    li{
-      color:var(--muted);
-      display:flex;
-      gap:10px;
-      font-size:15.6px;
-      line-height:1.75;
-    }
-    li::before{
-      content:"";
-      width:8px;height:8px;
-      border-radius:999px;
-      background: rgba(17,24,39,.25);
-      margin-top:10px;
-      flex:0 0 auto;
-    }
-    .strong{
-      color:#111827;
-      font-weight:900;
-    }
+.lead{
+  color:var(--muted);
+  margin-bottom:12px;
+  font-size:15.8px;
+}
 
-    /* =========================
-       IMAGE BLOCK
-    ========================== */
-    .figure{
-      border-radius:16px;
-      border:1px solid rgba(17,24,39,.10);
-      overflow:hidden;
-      background: rgba(246,248,252,.85);
-      box-shadow: 0 10px 24px rgba(15,23,42,.06);
-    }
-    .figure img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-    .figcap{
-      padding:10px 12px 12px;
-      color:var(--muted);
-      font-size:13.5px;
-      line-height:1.6;
-      border-top:1px solid rgba(17,24,39,.08);
-      background: rgba(255,255,255,.75);
-    }
+ul{
+  padding:0;
+  margin:0;
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
 
-    /* =========================
-       FOOTER
-    ========================== */
-    footer{
-      margin-top:26px;
-      padding:18px 0 34px;
-      color: var(--muted);
-      font-size:14px;
-      border-top: 1px solid var(--line);
-    }
+li{
+  color:var(--muted);
+  display:flex;
+  gap:10px;
+  font-size:15.6px;
+}
 
-    /* =========================
-       RESPONSIVE
-    ========================== */
-    @media (max-width: 980px){
-      .cardgrid{ grid-template-columns: 1fr; }
-    }
-    @media (max-width: 780px){
-      :root{ --pad:18px; }
-      .header h1{ font-size:42px; }
-      h2{ font-size:22px; }
-      .card{ padding:18px; }
-    }
-  </style>
+li::before{
+  content:"";
+  width:8px;height:8px;
+  border-radius:999px;
+  background: rgba(17,24,39,.25);
+  margin-top:10px;
+}
+
+.strong{
+  color:#111827;
+  font-weight:900;
+}
+
+/* ===== UNIFIED IMAGE SIZE ===== */
+
+.figure{
+  height:300px;
+  border-radius:16px;
+  border:1px solid rgba(17,24,39,.10);
+  background:#f4f6fb;
+  box-shadow: 0 10px 24px rgba(15,23,42,.06);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.figure img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+}
+
+.figcap{
+  padding:10px 12px;
+  color:var(--muted);
+  font-size:13.5px;
+  border-top:1px solid rgba(17,24,39,.08);
+  background: rgba(255,255,255,.75);
+}
+
+footer{
+  margin-top:26px;
+  padding:18px 0 34px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width:980px){
+  .cardgrid{ grid-template-columns:1fr; }
+}
+</style>
 </head>
 
 <body data-page="research">
-  <!-- ✅ unified nav injection placeholder -->
-  <div id="site-nav"></div>
 
-  <div class="container">
+<div id="site-nav"></div>
 
-    <div class="header">
-      <h1>Research</h1>
-      <div class="sub">
-        We develop ultrafast terahertz spectroscopy and on-chip THz platforms to understand
-        low-energy electrodynamics and transport in quantum materials.
-      </div>
-    </div>
+<div class="container">
 
-    <div class="hero">
-      <div class="kicker">Two complementary research directions</div>
-      <div class="desc">
-        We build experimental capabilities and use them to probe nonequilibrium dynamics
-        and correlated electronic states.
-      </div>
-    </div>
+<div class="header">
+<h1>Research</h1>
+<div class="sub">
+We develop ultrafast terahertz spectroscopy and on-chip THz platforms to understand
+low-energy electrodynamics and transport in quantum materials.
+</div>
+</div>
 
-    <div class="stack">
+<div class="hero">
+<div class="kicker">Two complementary research directions</div>
+<div class="desc">
+We build experimental capabilities and use them to probe nonequilibrium dynamics
+and correlated electronic states.
+</div>
+</div>
 
-      <!-- =========================
-           Direction 1
-      ========================== -->
-      <div class="card">
-        <div class="cardgrid">
+<div class="stack">
 
-          <!-- TEXT -->
-          <div>
-            <div class="pill">Direction 1</div>
-            <h2>Ultrafast optical/THz pump/probe spectroscopy: nonequilibrium carrier dynamics</h2>
-            <p class="lead">
-              Using pump–probe techniques to resolve transient charge dynamics
-              and energy flow following photoexcitation.
-            </p>
-            <ul>
-              <li><span class="strong">Transient photoconductivity</span> </li>
-              <li><span class="strong">Many-body interaction (carrier-phonon, electron-hole, etc...)</span> </li>
-            </ul>
-          </div>
+<!-- Direction 1 -->
+<div class="card">
+<div class="cardgrid">
 
-          <!-- IMAGE -->
-          <div class="figure">
-            <!-- ✅ Replace the src with your image path -->
-            <img src="img/pump-thz2.jpg" alt="Ultrafast pump–THz spectroscopy schematic" loading="lazy" />
-            <div class="figcap">
-              Example figure placeholder — replace with your schematic/representative data.
-            </div>
-          </div>
+<div>
+<div class="pill">Direction 1</div>
+<h2>Ultrafast optical/THz pump-probe spectroscopy: nonequilibrium carrier dynamics</h2>
+<p class="lead">
+Using pump–probe techniques to resolve transient charge dynamics and energy flow following photoexcitation.
+</p>
+<ul>
+<li><span class="strong">Transient photoconductivity</span></li>
+<li><span class="strong">Many-body interaction</span> (carrier-phonon, electron-hole)</li>
+</ul>
+</div>
 
-        </div>
-      </div>
+<div>
+<div class="figure">
+<img src="img/pump-thz.jpg">
+</div>
+<div class="figcap">Ultrafast pump–THz spectroscopy</div>
+</div>
 
-      <!-- =========================
-           Direction 2
-      ========================== -->
-      <div class="card">
-        <div class="cardgrid">
+</div>
+</div>
 
-          <!-- TEXT -->
-          <div>
-            <div class="pill">Direction 2</div>
-            <h2>Cryogenic transport & on-chip THz spectroscopy: correlated quantum states</h2>
-            <p class="lead">
-              Combining low-temperature transport and integrated THz spectroscopy
-              to investigate correlated electronic states such as superconductivity.
-            </p>
-            <ul>
-              <li><span class="strong">Complex conductivity σ(ω)</span> as a probe of low-energy excitations</li>
-              <li><span class="strong">Field- and temperature-dependent THz response</span></li>
-              <li><span class="strong">On-chip THz platforms</span> for device-level electrodynamics</li>
-            </ul>
-          </div>
+<!-- Direction 2 -->
+<div class="card">
+<div class="cardgrid">
 
-          <!-- IMAGE -->
-          <div class="figure">
-            <!-- ✅ Replace the src with your image path -->
-            <img src="img/research-cryogenic-onchip.jpg" alt="Cryogenic transport and on-chip THz spectroscopy" loading="lazy" />
-            <div class="figcap">
-              Example figure placeholder — replace with your device/cryostat photo or key spectra.
-            </div>
-          </div>
+<div>
+<div class="pill">Direction 2</div>
+<h2>Cryogenic transport & on-chip THz spectroscopy: correlated quantum states</h2>
+<p class="lead">
+Combining low-temperature transport and integrated THz spectroscopy to investigate correlated electronic states.
+</p>
+<ul>
+<li><span class="strong">Complex conductivity σ(ω)</span></li>
+<li><span class="strong">Field & temperature dependent THz response</span></li>
+<li><span class="strong">On-chip THz platforms</span></li>
+</ul>
+</div>
 
-        </div>
-      </div>
+<div>
+<div class="figure">
+<img src="img/research-pump-thz.jpg">
+</div>
+<div class="figcap">On-chip THz spectroscopy</div>
+</div>
 
-    </div>
-  </div>
+</div>
+</div>
 
-  <footer>
-    <div class="container">
-      © <span id="y"></span>
-    </div>
-  </footer>
+</div>
+</div>
 
-  <script src="nav.js"></script>
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+<footer>
+<div class="container">
+© <span id="y"></span>
+</div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
