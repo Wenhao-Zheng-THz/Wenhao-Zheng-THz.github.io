@@ -86,11 +86,17 @@
       padding:42px 40px;
     }
 
-    /* ✅ UNIQUE letters styling (only bold the selected letters) */
-    .u-accent{
-      font-weight:950;
-      letter-spacing:-.2px;
-    }
+  .u-accent{
+  font-weight:950;
+  letter-spacing:-.2px;
+
+  background: linear-gradient(135deg, #3b82f6 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  transition: all .35s ease;
+}
 
     .hero-title{
       margin:0 0 14px;          /* ✅ 标题与正文拉开 */
@@ -105,6 +111,32 @@
       line-height:1.75;
       max-width:none;           /* ✅ 不限制宽度 */
     }
+
+.hero-title .u-accent{
+  position:relative;
+}
+
+.hero-title:hover .u-accent{
+  text-shadow:
+    0 0 6px rgba(59,130,246,.18),
+    0 0 12px rgba(124,58,237,.15);
+}
+
+
+    .hero-title .u-accent::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background: radial-gradient(circle, rgba(59,130,246,.15), transparent 70%);
+  opacity:0;
+  transition:opacity .35s ease;
+  z-index:-1;
+}
+
+.hero-title:hover .u-accent::after{
+  opacity:1;
+}
+    
     .hero-text p{ margin:0 0 14px; }
 
     .btn-row{
@@ -258,8 +290,8 @@
              e (Materials)
         -->
         <h1 class="hero-title">
-          <span class="u-accent">U</span>ltrafast Terahertz Electrody<span class="u-accent">n</span>am<span class="u-accent">i</span>cs of
-          <span class="u-accent">q</span><span class="u-accent">u</span>antum Mat<span class="u-accent">e</span>rials group
+          <span class="u-accent">U</span>ltrafast terahertz electrody<span class="u-accent">n</span>am<span class="u-accent">i</span>cs of
+          <span class="u-accent">q</span><span class="u-accent">u</span>antum mat<span class="u-accent">e</span>rials group
         </h1>
 
         <div class="hero-text">
