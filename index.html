@@ -23,7 +23,6 @@
       --card:#ffffff;
       --shadow: 0 16px 40px rgba(15,23,42,.10);
       --shadow2: 0 10px 24px rgba(15,23,42,.08);
-      --shadow3: 0 22px 60px rgba(15,23,42,.12);
 
       --accent:#2f5cff;
       --accent2:#6d28d9;
@@ -67,74 +66,116 @@
 
     /* =========================================================
        2) HERO
-       (beauty upgrades, minimal changes)
-         - slightly richer glass + softer border
-         - subtle top highlight
-         - better vertical rhythm
     ========================================================== */
     .hero{
-      padding:40px 0 14px;
+      padding:36px 0 12px;
     }
-
     .hero-card{
       width:100%;
       margin:0 auto;
-      position:relative;
-
-      background:
-        radial-gradient(1200px 420px at 20% 0%, rgba(109,40,217,.08), transparent 55%),
-        radial-gradient(1200px 460px at 80% 0%, rgba(47,92,255,.08), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,.92), rgba(246,248,252,.88));
-
-      border: 1px solid rgba(17,24,39,.085);
+      background: linear-gradient(180deg, rgba(255,255,255,.90), rgba(246,248,252,.88));
+      border: 1px solid rgba(17,24,39,.08);
       border-radius: calc(var(--radius) + 10px);
       box-shadow: var(--shadow);
-
-      padding:44px 40px;
-      overflow:hidden;
+      padding:42px 40px;
     }
 
-    /* subtle “sheen” */
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: radial-gradient(800px 220px at 35% 0%, rgba(255,255,255,.85), transparent 65%);
-      opacity:.55;
-      pointer-events:none;
-    }
-
-    .hero-card::after{
-      content:"";
-      position:absolute;
-      left:14px; right:14px; top:14px;
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(17,24,39,.08), transparent);
-      pointer-events:none;
-    }
-
-    /* =========================
-       UNIQUE accent
-    ========================== */
+    /* ===============================
+       UNIQUE Accent Letters
+       =============================== */
     .u-accent{
       font-weight:950;
       letter-spacing:-.2px;
 
       background: linear-gradient(135deg, #3b82f6 0%, #7c3aed 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
 
-      transition: filter .35s ease, text-shadow .35s ease, transform .35s ease;
+      position:relative;
+      transition: all .35s ease;
+    }
+    .u-accent-word{
+      font-weight:950;
     }
 
+    /* Subtle glow on hover — very restrained */
+    .hero-title:hover .u-accent{
+      text-shadow:
+        0 0 6px rgba(59,130,246,.16),
+        0 0 10px rgba(124,58,237,.12);
+    }
+
+    /* Soft aura behind letters */
+    .hero-title .u-accent::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(circle, rgba(59,130,246,.12), transparent 70%);
+      opacity:0;
+      transition:opacity .35s ease;
+      z-index:-1;
+    }
+    .hero-title:hover .u-accent::after{
+      opacity:1;
+    }
+
+    /* Force elegant line break */
+    .title-break{
+      display:block;
+      height:8px;
+    }
+
+    /* Entrance animation trigger */
     .hero-title{
-      margin:0 0 16px;
+      margin:0 0 14px;
       font-size:56px;
       line-height:1.08;
-      letter-spacing:-.65px;
-      position:relative;
-      z-index:1; /* sit above sheen */
+      letter-spacing:-.6px;
+    }
+
+    /* Subtle entrance fade for UNIQUE letters */
+    @keyframes uniquePulse {
+      0%{
+        filter:saturate(1) brightness(1);
+        text-shadow:
+          0 0 0 rgba(59,130,246,0),
+          0 0 0 rgba(124,58,237,0);
+        transform: translateY(0);
+      }
+      35%{
+        filter:saturate(1.08) brightness(1.05);
+        text-shadow:
+          0 0 10px rgba(59,130,246,.20),
+          0 0 16px rgba(124,58,237,.16);
+        transform: translateY(-0.5px);
+      }
+      100%{
+        filter:saturate(1) brightness(1);
+        text-shadow:
+          0 0 0 rgba(59,130,246,0),
+          0 0 0 rgba(124,58,237,0);
+        transform: translateY(0);
+      }
+    }
+
+    /* Only runs when body has .intro */
+    body.intro .u-accent{
+      animation: uniquePulse 900ms ease-out 1;
+    }
+    /* Slight stagger for nicer feel */
+    body.intro .u-accent:nth-of-type(1){ animation-delay: 40ms; }
+    body.intro .u-accent:nth-of-type(2){ animation-delay: 90ms; }
+    body.intro .u-accent:nth-of-type(3){ animation-delay: 140ms; }
+    body.intro .u-accent:nth-of-type(4){ animation-delay: 190ms; }
+    body.intro .u-accent:nth-of-type(5){ animation-delay: 240ms; }
+    body.intro .u-accent:nth-of-type(6){ animation-delay: 290ms; }
+    body.intro .u-accent:nth-of-type(7){ animation-delay: 340ms; } /* for "Unique" word */
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      body.intro .u-accent{ animation:none !important; }
+      .hero-title:hover .u-accent{ text-shadow:none; }
     }
 
     .hero-text{
@@ -143,47 +184,14 @@
       font-size:17px;
       line-height:1.75;
       max-width:none;
-      position:relative;
-      z-index:1;
     }
     .hero-text p{ margin:0 0 14px; }
 
-    .hero-title .u-accent{
-      position:relative;
-    }
-
-    /* subtle, controlled glow on hover */
-    .hero-title:hover .u-accent{
-      text-shadow:
-        0 0 6px rgba(59,130,246,.18),
-        0 0 12px rgba(124,58,237,.15);
-      filter: saturate(1.05) brightness(1.03);
-    }
-
-    .hero-title .u-accent::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: radial-gradient(circle, rgba(59,130,246,.14), transparent 70%);
-      opacity:0;
-      transition:opacity .35s ease;
-      z-index:-1;
-      border-radius:10px;
-    }
-    .hero-title:hover .u-accent::after{
-      opacity:1;
-    }
-
-    /* =========================
-       Buttons (slightly nicer)
-    ========================== */
     .btn-row{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-top:22px;
-      position:relative;
-      z-index:1;
+      margin-top:20px;
     }
     .btn{
       display:inline-flex;
@@ -197,36 +205,23 @@
       font-weight:800;
       box-shadow: 0 6px 14px rgba(15,23,42,.06);
       text-decoration:none;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
-    .btn:hover{
-      text-decoration:none;
-      transform: translateY(-1px);
-      box-shadow: 0 12px 26px rgba(15,23,42,.10);
-      border-color: rgba(47,92,255,.20);
-    }
+    .btn:hover{ text-decoration:none; }
     .btn.primary{
       background: linear-gradient(180deg, rgba(47,92,255,.95), rgba(47,92,255,.85));
       border-color: rgba(47,92,255,.35);
       color:#fff;
       box-shadow: 0 14px 30px rgba(47,92,255,.20);
     }
-    .btn.primary:hover{
-      box-shadow: 0 18px 40px rgba(47,92,255,.24);
-      border-color: rgba(47,92,255,.45);
-    }
     .btn.ghost{
       background: rgba(255,255,255,.70);
-      backdrop-filter: blur(6px);
     }
 
     /* =========================================================
        3) NEWS
-         - keep your style, slightly cleaner rhythm
-         - ensure no blue line
     ========================================================== */
     .news{
-      padding:12px 0 10px;
+      padding:10px 0 10px;
     }
     .news-head{
       display:flex;
@@ -238,8 +233,8 @@
     .news-head h2{
       margin:0;
       font-size:26px;
-      font-weight:850;
-      letter-spacing:-.25px;
+      font-weight:800;
+      letter-spacing:-.2px;
     }
     .news-head h2::after{ content:none !important; }
 
@@ -258,7 +253,7 @@
     }
     .news-item:hover{
       transform: translateY(-1px);
-      box-shadow: var(--shadow3);
+      box-shadow: 0 14px 30px rgba(15,23,42,.10);
       border-color: rgba(47,92,255,.18);
     }
     .news-top{
@@ -309,7 +304,7 @@
     @media (max-width: 900px){
       :root{ --max: 1080px; }
       .hero-title{ font-size:44px; }
-      .hero-card{ padding:32px; }
+      .hero-card{ padding:30px; }
     }
     @media (max-width: 560px){
       :root{ --pad:18px; }
@@ -337,28 +332,16 @@
              U (Ultrafast),
              n+i (Electrodynamics),
              q+u (quantum),
-             e (Materials)
+             e (Materials),
+             + "Unique" word itself also accent
         -->
-       <h1 class="hero-title">
-  <span class="u-accent">U</span>ltrafast terahertz electrody<span class="u-accent">n</span>am<span class="u-accent">i</span>cs of
-  <span class="title-break"></span>
-  <span class="u-accent">q</span><span class="u-accent">u</span>antum mat<span class="u-accent">e</span>rials
-  (<span class="u-accent u-accent-word">Unique</span>) 
-</h1>
+        <h1 class="hero-title">
+          <span class="u-accent">U</span>ltrafast terahertz electrody<span class="u-accent">n</span>am<span class="u-accent">i</span>cs of
+          <span class="title-break"></span>
+          <span class="u-accent">q</span><span class="u-accent">u</span>antum mat<span class="u-accent">e</span>rials
+          (<span class="u-accent u-accent-word">Unique</span>) 
+        </h1>
 
-        /* Force a clean line break inside the title */
-.title-break{
-  display:block;
-  height:10px;  /* spacing between lines */
-}
-
-/* For the word "Unique": keep the same gradient look but slightly calmer */
-.u-accent-word{
-  font-weight:950;
-  letter-spacing:-.1px;
-}
-
-        
         <div class="hero-text">
           <p>
             We are an interdisciplinary research group dedicated to quantum physics and advanced spectroscopy.
@@ -413,6 +396,13 @@
   <script>
     /* Footer year */
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    /* Subtle entrance fade for UNIQUE letters (run once) */
+    (function(){
+      // avoid re-triggering on bfcache/back nav too aggressively
+      document.body.classList.add("intro");
+      window.setTimeout(() => document.body.classList.remove("intro"), 1200);
+    })();
 
     /* Home news loader — reads news.json in site root */
     function parseDateYMD(ymd){
