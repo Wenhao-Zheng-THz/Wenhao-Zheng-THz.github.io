@@ -8,22 +8,11 @@
 
   <meta
     name="description"
-    content="Ultrafast terahertz electrodynamics of quantum materials at CAS AIR."
+    content="Ultrafast terahertz electrodynamics of quantum materials at the Aerospace Information Research Institute, Chinese Academy of Sciences."
   />
 
-  <!-- Site-wide unified navigation -->
+  <!-- Site-wide navigation style -->
   <link rel="stylesheet" href="nav.css" />
-
-  <!--
-    Replace YOUR-ID-HERE with your real Umami Website ID.
-    Delete this script temporarily if Umami has not been configured.
-  -->
-  <script
-    async
-    defer
-    data-website-id="YOUR-ID-HERE"
-    src="https://cloud.umami.is/script.js">
-  </script>
 
   <style>
     /* =========================================================
@@ -38,8 +27,6 @@
       --muted:#55627a;
       --line:rgba(17,24,39,.10);
 
-      --card:#ffffff;
-
       --shadow:0 16px 40px rgba(15,23,42,.10);
       --shadow2:0 10px 24px rgba(15,23,42,.08);
       --shadow3:0 22px 60px rgba(15,23,42,.12);
@@ -49,9 +36,7 @@
 
       --radius:20px;
 
-      /* Large-screen width aligned with the People page */
       --max:clamp(1080px, 92vw, 1360px);
-
       --pad:24px;
     }
 
@@ -106,10 +91,11 @@
     }
 
     /* =========================================================
-       1) LAYOUT
+       1) GENERAL LAYOUT
     ========================================================== */
 
     .container{
+      width:100%;
       max-width:var(--max);
       margin:0 auto;
       padding:0 var(--pad);
@@ -120,19 +106,18 @@
     ========================================================== */
 
     .hero{
-      padding:36px 0 12px;
+      padding:36px 0 14px;
     }
 
     .hero-card{
       width:100%;
-      margin:0 auto;
       padding:42px 40px;
 
       background:
         linear-gradient(
           180deg,
-          rgba(255,255,255,.90),
-          rgba(246,248,252,.88)
+          rgba(255,255,255,.92),
+          rgba(246,248,252,.90)
         );
 
       border:1px solid rgba(17,24,39,.08);
@@ -146,10 +131,16 @@
       font-size:56px;
       font-weight:900;
       line-height:1.08;
-      letter-spacing:-.6px;
+      letter-spacing:-.8px;
+    }
+
+    .title-break{
+      display:block;
+      height:8px;
     }
 
     /* UNIQUE accent letters */
+
     .u-accent{
       position:relative;
 
@@ -167,7 +158,10 @@
       -webkit-text-fill-color:transparent;
       background-clip:text;
 
-      transition:all .35s ease;
+      transition:
+        filter .35s ease,
+        text-shadow .35s ease,
+        transform .35s ease;
     }
 
     .u-accent-word{
@@ -180,61 +174,28 @@
         0 0 10px rgba(124,58,237,.12);
     }
 
-    .hero-title .u-accent::after{
-      content:"";
-
-      position:absolute;
-      inset:-2px;
-      z-index:-1;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(59,130,246,.12),
-          transparent 70%
-        );
-
-      opacity:0;
-      transition:opacity .35s ease;
-    }
-
-    .hero-title:hover .u-accent::after{
-      opacity:1;
-    }
-
-    .title-break{
-      display:block;
-      height:8px;
-    }
-
     @keyframes uniquePulse{
       0%{
         filter:saturate(1) brightness(1);
-
         text-shadow:
           0 0 0 rgba(59,130,246,0),
           0 0 0 rgba(124,58,237,0);
-
         transform:translateY(0);
       }
 
       35%{
         filter:saturate(1.08) brightness(1.05);
-
         text-shadow:
           0 0 10px rgba(59,130,246,.20),
           0 0 16px rgba(124,58,237,.16);
-
         transform:translateY(-.5px);
       }
 
       100%{
         filter:saturate(1) brightness(1);
-
         text-shadow:
           0 0 0 rgba(59,130,246,0),
           0 0 0 rgba(124,58,237,0);
-
         transform:translateY(0);
       }
     }
@@ -271,18 +232,7 @@
       animation-delay:340ms;
     }
 
-    @media (prefers-reduced-motion:reduce){
-      body.intro .u-accent{
-        animation:none !important;
-      }
-
-      .hero-title:hover .u-accent{
-        text-shadow:none;
-      }
-    }
-
     .hero-text{
-      max-width:none;
       margin:18px 0 0;
 
       color:var(--muted);
@@ -311,9 +261,8 @@
 
       color:var(--text);
       font-weight:800;
-      text-decoration:none;
 
-      background:#fff;
+      background:#ffffff;
       border:1px solid rgba(17,24,39,.12);
       border-radius:14px;
 
@@ -328,16 +277,17 @@
     .btn:hover{
       text-decoration:none;
       transform:translateY(-1px);
+      box-shadow:0 10px 22px rgba(15,23,42,.09);
     }
 
     .btn.primary{
-      color:#fff;
+      color:#ffffff;
 
       background:
         linear-gradient(
           180deg,
-          rgba(47,92,255,.95),
-          rgba(47,92,255,.85)
+          rgba(47,92,255,.96),
+          rgba(47,92,255,.86)
         );
 
       border-color:rgba(47,92,255,.35);
@@ -345,7 +295,7 @@
     }
 
     .btn.ghost{
-      background:rgba(255,255,255,.70);
+      background:rgba(255,255,255,.74);
     }
 
     /* =========================================================
@@ -353,7 +303,7 @@
     ========================================================== */
 
     .home-news{
-      padding:18px 0 14px;
+      padding:18px 0 18px;
     }
 
     .home-news-panel{
@@ -362,8 +312,8 @@
       background:
         linear-gradient(
           180deg,
-          rgba(255,255,255,.92),
-          rgba(246,248,252,.90)
+          rgba(255,255,255,.94),
+          rgba(246,248,252,.92)
         );
 
       border:1px solid rgba(17,24,39,.08);
@@ -431,7 +381,7 @@
 
       padding:19px 21px;
 
-      background:rgba(255,255,255,.92);
+      background:rgba(255,255,255,.94);
       border:1px solid rgba(17,24,39,.08);
       border-radius:17px;
       box-shadow:var(--shadow2);
@@ -452,28 +402,28 @@
       flex:0 0 auto;
 
       color:var(--accent);
-      font-size:18px;
+      font-size:19px;
       font-weight:900;
-      line-height:1.6;
+      line-height:1.55;
       white-space:nowrap;
     }
 
     .home-news-separator{
       flex:0 0 auto;
 
-      color:rgba(85,98,122,.58);
+      color:rgba(85,98,122,.56);
       font-size:21px;
       font-weight:900;
-      line-height:1.45;
+      line-height:1.4;
     }
 
     .home-news-text{
       margin:0;
 
       color:var(--text);
-      font-size:18px;
-      font-weight:560;
-      line-height:1.65;
+      font-size:19px;
+      font-weight:550;
+      line-height:1.6;
     }
 
     .home-news-loading,
@@ -484,7 +434,7 @@
       font-size:17px;
       line-height:1.7;
 
-      background:rgba(255,255,255,.88);
+      background:rgba(255,255,255,.90);
       border:1px solid rgba(17,24,39,.08);
       border-radius:17px;
     }
@@ -563,6 +513,10 @@
         --pad:18px;
       }
 
+      .hero{
+        padding-top:24px;
+      }
+
       .hero-title{
         font-size:36px;
       }
@@ -591,20 +545,35 @@
         font-size:15px;
       }
     }
+
+    @media (prefers-reduced-motion:reduce){
+      body.intro .u-accent{
+        animation:none !important;
+      }
+
+      .hero-title:hover .u-accent{
+        text-shadow:none;
+      }
+
+      .btn,
+      .home-news-item{
+        transition:none;
+      }
+    }
   </style>
 </head>
 
-<!-- data-page="index" lets nav.js highlight Home -->
 <body data-page="index">
 
   <!-- Unified navigation injection placeholder -->
   <div id="site-nav"></div>
 
-  <!-- =========================================================
-       HERO
-  ========================================================== -->
-
   <main>
+
+    <!-- =======================================================
+         HERO
+    ======================================================== -->
+
     <section class="hero">
       <div class="container">
         <div class="hero-card">
@@ -623,25 +592,23 @@
 
           <div class="hero-text">
             <p>
-              We are an interdisciplinary research group dedicated to
-              quantum physics and advanced spectroscopy. By bridging quantum
-              materials, ultrafast optics, and chip-scale electronics, we
-              develop state-of-the-art THz platforms to probe the hidden
-              dynamics of low-dimensional systems. Our mission is to uncover
-              the fundamental physics governing low-energy electrodynamics,
-              many-body correlations, and nonequilibrium transport in
-              condensed matter.
+              We are an interdisciplinary research group dedicated to quantum
+              physics and advanced spectroscopy. By bridging quantum materials,
+              ultrafast optics, and chip-scale electronics, we develop
+              state-of-the-art THz platforms to probe the hidden dynamics of
+              low-dimensional systems. Our mission is to uncover the fundamental
+              physics governing low-energy electrodynamics, many-body
+              correlations, and nonequilibrium transport in condensed matter.
             </p>
 
             <p>
-              Our lab is based at the Aerospace Information Research
-              Institute, Chinese Academy of Sciences (GBA branch), Guangzhou.
-              We welcome inquiries from candidates interested in opportunities
-              as undergraduate students, master's students, Ph.D. students,
-              postdoctoral researchers, engineers, and assistant professors.
-              Candidates interested in ultrafast spectroscopy,
-              low-dimensional materials, and low-temperature quantum
-              transport are welcome to contact us at
+              Our lab is based at the Aerospace Information Research Institute,
+              Chinese Academy of Sciences, Greater Bay Area branch, in Guangzhou.
+              We welcome inquiries from undergraduate students, master's
+              students, Ph.D. students, postdoctoral researchers, engineers, and
+              assistant professors interested in ultrafast spectroscopy,
+              low-dimensional materials, and low-temperature quantum transport.
+              Please feel free to contact us at
               <a href="mailto:thz_zheng@163.com">
                 thz_zheng@163.com
               </a>.
@@ -666,9 +633,9 @@
       </div>
     </section>
 
-    <!-- =========================================================
+    <!-- =======================================================
          NEWS
-    ========================================================== -->
+    ======================================================== -->
 
     <section class="home-news">
       <div class="container">
@@ -695,6 +662,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- =========================================================
@@ -707,7 +675,7 @@
     </div>
   </footer>
 
-  <!-- Unified navigation -->
+  <!-- Site-wide navigation script -->
   <script src="nav.js"></script>
 
   <script>
@@ -719,7 +687,7 @@
       new Date().getFullYear();
 
     /* =========================================================
-       UNIQUE TITLE INTRO ANIMATION
+       UNIQUE TITLE ANIMATION
     ========================================================== */
 
     (function () {
@@ -731,17 +699,17 @@
     })();
 
     /* =========================================================
-       AUTOMATIC HOME NEWS LOADER
+       AUTOMATIC NEWS LOADER
 
-       This reads the first four news items directly from news.html.
+       The homepage reads the first four items directly from:
 
-       Therefore, future updates only need to be added to news.html
-       inside:
+       news.html
+       #news-source .news-item
 
-       <div class="news-list" id="news-source">
+       Future news only needs to be added to news.html.
     ========================================================== */
 
-    document.addEventListener("DOMContentLoaded", async function () {
+    async function loadHomepageNews() {
       const homeNewsList =
         document.getElementById("home-news-list");
 
@@ -750,16 +718,12 @@
       }
 
       try {
-        /*
-          Timestamp and no-store help prevent an outdated cached
-          copy of news.html from being displayed.
-        */
-        const newsURL =
-          "news.html?updated=" + Date.now();
-
-        const response = await fetch(newsURL, {
-          cache:"no-store"
-        });
+        const response = await fetch(
+          "news.html?updated=" + Date.now(),
+          {
+            cache:"no-store"
+          }
+        );
 
         if (!response.ok) {
           throw new Error(
@@ -768,7 +732,8 @@
           );
         }
 
-        const html = await response.text();
+        const html =
+          await response.text();
 
         const parser =
           new DOMParser();
@@ -783,10 +748,6 @@
             )
           );
 
-        /*
-          Number of news items displayed on the homepage.
-          Change 4 to another number when needed.
-        */
         const numberOfItems = 4;
 
         const latestItems =
@@ -794,7 +755,7 @@
 
         if (latestItems.length === 0) {
           throw new Error(
-            "No items were found inside #news-source."
+            "No news items were found inside #news-source."
           );
         }
 
@@ -883,7 +844,9 @@
           </div>
         `;
       }
-    });
+    }
+
+    loadHomepageNews();
   </script>
 
 </body>
