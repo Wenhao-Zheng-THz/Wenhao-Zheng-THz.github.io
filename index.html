@@ -3,22 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>THz Electrodynamics Lab @ CAS-Air</title>
 
-  <!-- ✅ 统一导航栏样式（全站一致） -->
+  <title>THz Electrodynamics Lab @ CAS AIR</title>
+
+  <meta
+    name="description"
+    content="Ultrafast terahertz electrodynamics of quantum materials at CAS AIR."
+  />
+
+  <!-- Site-wide unified navigation -->
   <link rel="stylesheet" href="nav.css" />
 
-  <link rel="stylesheet" href="nav.css" />
-
-<script async defer
-data-website-id="YOUR-ID-HERE"
-src="https://cloud.umami.is/script.js">
-</script>
+  <!--
+    Replace YOUR-ID-HERE with your real Umami Website ID.
+    Delete this script temporarily if Umami has not been configured.
+  -->
+  <script
+    async
+    defer
+    data-website-id="YOUR-ID-HERE"
+    src="https://cloud.umami.is/script.js">
+  </script>
 
   <style>
     /* =========================================================
-       0) THEME (Light) — align with People page
+       0) THEME
     ========================================================== */
+
     :root{
       --bg:#ffffff;
       --bg2:#f6f8fc;
@@ -28,43 +39,76 @@ src="https://cloud.umami.is/script.js">
       --line:rgba(17,24,39,.10);
 
       --card:#ffffff;
-      --shadow: 0 16px 40px rgba(15,23,42,.10);
-      --shadow2: 0 10px 24px rgba(15,23,42,.08);
+
+      --shadow:0 16px 40px rgba(15,23,42,.10);
+      --shadow2:0 10px 24px rgba(15,23,42,.08);
+      --shadow3:0 22px 60px rgba(15,23,42,.12);
 
       --accent:#2f5cff;
       --accent2:#6d28d9;
 
       --radius:20px;
 
-      /* ✅ 大屏更宽，小屏不变（与 People 一致） */
-      --max: clamp(1080px, 92vw, 1360px);
+      /* Large-screen width aligned with the People page */
+      --max:clamp(1080px, 92vw, 1360px);
 
-      /* 统一左右边距（与 People 一致） */
       --pad:24px;
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
-      color:var(--text);
-
-      background:
-        radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.10), transparent 60%),
-        radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
-        linear-gradient(var(--bg), var(--bg));
-
-      line-height:1.65;
-      overflow-x:hidden;
+    *{
+      box-sizing:border-box;
     }
 
-    a{ color:var(--accent); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
+    html,
+    body{
+      min-height:100%;
+    }
+
+    body{
+      margin:0;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        "Noto Sans",
+        "PingFang SC",
+        "Microsoft Yahei",
+        sans-serif;
+
+      color:var(--text);
+      line-height:1.65;
+      overflow-x:hidden;
+
+      background:
+        radial-gradient(
+          900px 420px at 10% 0%,
+          rgba(109,40,217,.10),
+          transparent 60%
+        ),
+        radial-gradient(
+          900px 460px at 90% 10%,
+          rgba(47,92,255,.10),
+          transparent 60%
+        ),
+        linear-gradient(var(--bg), var(--bg));
+    }
+
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+
+    a:hover{
+      text-decoration:underline;
+    }
 
     /* =========================================================
        1) LAYOUT
     ========================================================== */
+
     .container{
       max-width:var(--max);
       margin:0 auto;
@@ -74,581 +118,773 @@ src="https://cloud.umami.is/script.js">
     /* =========================================================
        2) HERO
     ========================================================== */
+
     .hero{
       padding:36px 0 12px;
     }
+
     .hero-card{
       width:100%;
       margin:0 auto;
-      background: linear-gradient(180deg, rgba(255,255,255,.90), rgba(246,248,252,.88));
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: calc(var(--radius) + 10px);
-      box-shadow: var(--shadow);
       padding:42px 40px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.90),
+          rgba(246,248,252,.88)
+        );
+
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:calc(var(--radius) + 10px);
+      box-shadow:var(--shadow);
     }
 
-    /* ===============================
-       UNIQUE Accent Letters
-       =============================== */
+    .hero-title{
+      margin:0 0 14px;
+
+      font-size:56px;
+      font-weight:900;
+      line-height:1.08;
+      letter-spacing:-.6px;
+    }
+
+    /* UNIQUE accent letters */
     .u-accent{
+      position:relative;
+
       font-weight:950;
       letter-spacing:-.2px;
 
-      background: linear-gradient(135deg, #3b82f6 0%, #7c3aed 100%);
+      background:
+        linear-gradient(
+          135deg,
+          #3b82f6 0%,
+          #7c3aed 100%
+        );
+
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
       background-clip:text;
 
-      position:relative;
-      transition: all .35s ease;
+      transition:all .35s ease;
     }
+
     .u-accent-word{
       font-weight:950;
     }
 
-    /* Subtle glow on hover — very restrained */
     .hero-title:hover .u-accent{
       text-shadow:
         0 0 6px rgba(59,130,246,.16),
         0 0 10px rgba(124,58,237,.12);
     }
 
-    /* Soft aura behind letters */
     .hero-title .u-accent::after{
       content:"";
+
       position:absolute;
       inset:-2px;
-      background: radial-gradient(circle, rgba(59,130,246,.12), transparent 70%);
+      z-index:-1;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(59,130,246,.12),
+          transparent 70%
+        );
+
       opacity:0;
       transition:opacity .35s ease;
-      z-index:-1;
     }
+
     .hero-title:hover .u-accent::after{
       opacity:1;
     }
 
-    /* Force elegant line break */
     .title-break{
       display:block;
       height:8px;
     }
 
-    /* Entrance animation trigger */
-    .hero-title{
-      margin:0 0 14px;
-      font-size:56px;
-      line-height:1.08;
-      letter-spacing:-.6px;
-    }
-
-    /* Subtle entrance fade for UNIQUE letters */
-    @keyframes uniquePulse {
+    @keyframes uniquePulse{
       0%{
         filter:saturate(1) brightness(1);
+
         text-shadow:
           0 0 0 rgba(59,130,246,0),
           0 0 0 rgba(124,58,237,0);
-        transform: translateY(0);
+
+        transform:translateY(0);
       }
+
       35%{
         filter:saturate(1.08) brightness(1.05);
+
         text-shadow:
           0 0 10px rgba(59,130,246,.20),
           0 0 16px rgba(124,58,237,.16);
-        transform: translateY(-0.5px);
+
+        transform:translateY(-.5px);
       }
+
       100%{
         filter:saturate(1) brightness(1);
+
         text-shadow:
           0 0 0 rgba(59,130,246,0),
           0 0 0 rgba(124,58,237,0);
-        transform: translateY(0);
+
+        transform:translateY(0);
       }
     }
 
-    /* Only runs when body has .intro */
     body.intro .u-accent{
-      animation: uniquePulse 900ms ease-out 1;
+      animation:uniquePulse 900ms ease-out 1;
     }
-    /* Slight stagger for nicer feel */
-    body.intro .u-accent:nth-of-type(1){ animation-delay: 40ms; }
-    body.intro .u-accent:nth-of-type(2){ animation-delay: 90ms; }
-    body.intro .u-accent:nth-of-type(3){ animation-delay: 140ms; }
-    body.intro .u-accent:nth-of-type(4){ animation-delay: 190ms; }
-    body.intro .u-accent:nth-of-type(5){ animation-delay: 240ms; }
-    body.intro .u-accent:nth-of-type(6){ animation-delay: 290ms; }
-    body.intro .u-accent:nth-of-type(7){ animation-delay: 340ms; } /* for "Unique" word */
 
-    /* Respect reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      body.intro .u-accent{ animation:none !important; }
-      .hero-title:hover .u-accent{ text-shadow:none; }
+    body.intro .u-accent:nth-of-type(1){
+      animation-delay:40ms;
+    }
+
+    body.intro .u-accent:nth-of-type(2){
+      animation-delay:90ms;
+    }
+
+    body.intro .u-accent:nth-of-type(3){
+      animation-delay:140ms;
+    }
+
+    body.intro .u-accent:nth-of-type(4){
+      animation-delay:190ms;
+    }
+
+    body.intro .u-accent:nth-of-type(5){
+      animation-delay:240ms;
+    }
+
+    body.intro .u-accent:nth-of-type(6){
+      animation-delay:290ms;
+    }
+
+    body.intro .u-accent:nth-of-type(7){
+      animation-delay:340ms;
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      body.intro .u-accent{
+        animation:none !important;
+      }
+
+      .hero-title:hover .u-accent{
+        text-shadow:none;
+      }
     }
 
     .hero-text{
+      max-width:none;
       margin:18px 0 0;
-      color: var(--muted);
+
+      color:var(--muted);
       font-size:17px;
       line-height:1.75;
-      max-width:none;
     }
-    .hero-text p{ margin:0 0 14px; }
+
+    .hero-text p{
+      margin:0 0 14px;
+    }
 
     .btn-row{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
+
       margin-top:20px;
     }
+
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
+
       padding:10px 16px;
-      border-radius:14px;
-      border:1px solid rgba(17,24,39,.12);
-      background:#fff;
+
       color:var(--text);
       font-weight:800;
-      box-shadow: 0 6px 14px rgba(15,23,42,.06);
       text-decoration:none;
+
+      background:#fff;
+      border:1px solid rgba(17,24,39,.12);
+      border-radius:14px;
+
+      box-shadow:0 6px 14px rgba(15,23,42,.06);
+
+      transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease;
     }
-    .btn:hover{ text-decoration:none; }
+
+    .btn:hover{
+      text-decoration:none;
+      transform:translateY(-1px);
+    }
+
     .btn.primary{
-      background: linear-gradient(180deg, rgba(47,92,255,.95), rgba(47,92,255,.85));
-      border-color: rgba(47,92,255,.35);
       color:#fff;
-      box-shadow: 0 14px 30px rgba(47,92,255,.20);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(47,92,255,.95),
+          rgba(47,92,255,.85)
+        );
+
+      border-color:rgba(47,92,255,.35);
+      box-shadow:0 14px 30px rgba(47,92,255,.20);
     }
+
     .btn.ghost{
-      background: rgba(255,255,255,.70);
+      background:rgba(255,255,255,.70);
     }
 
     /* =========================================================
-       3) NEWS
+       3) HOMEPAGE NEWS
     ========================================================== */
-    <!-- =========================
-     HOMEPAGE NEWS
-========================== -->
 
-<section class="home-news">
-  <div class="home-news-heading">
-    <h2>News</h2>
-
-    <a class="home-news-more" href="news.html">
-      View all
-    </a>
-  </div>
-
-  <div id="home-news-list" class="home-news-list">
-    <div class="home-news-loading">
-      Loading news...
-    </div>
-  </div>
-</section>
-
-<style>
-  .home-news{
-    margin-top:24px;
-  }
-
-  .home-news-heading{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:18px;
-    margin-bottom:16px;
-  }
-
-  .home-news-heading h2{
-    margin:0;
-    font-size:24px;
-    font-weight:900;
-    line-height:1.3;
-    letter-spacing:-.3px;
-  }
-
-  .home-news-more{
-    flex:0 0 auto;
-    color:#2f5cff;
-    font-size:15px;
-    font-weight:800;
-    text-decoration:none;
-  }
-
-  .home-news-more:hover{
-    text-decoration:underline;
-  }
-
-  .home-news-list{
-    display:flex;
-    flex-direction:column;
-    gap:11px;
-  }
-
-  .home-news-item{
-    display:flex;
-    align-items:baseline;
-    gap:11px;
-
-    padding:15px 17px;
-
-    background:rgba(255,255,255,.88);
-    border:1px solid rgba(17,24,39,.08);
-    border-radius:16px;
-    box-shadow:0 8px 20px rgba(15,23,42,.07);
-  }
-
-  .home-news-date{
-    flex:0 0 auto;
-
-    color:#2f5cff;
-    font-size:15.5px;
-    font-weight:900;
-    line-height:1.6;
-    white-space:nowrap;
-  }
-
-  .home-news-separator{
-    flex:0 0 auto;
-
-    color:rgba(85,98,122,.55);
-    font-size:17px;
-    font-weight:900;
-  }
-
-  .home-news-text{
-    margin:0;
-
-    color:#111827;
-    font-size:16px;
-    font-weight:540;
-    line-height:1.65;
-  }
-
-  .home-news-loading,
-  .home-news-error{
-    padding:15px 17px;
-
-    color:#55627a;
-    font-size:15px;
-
-    background:rgba(255,255,255,.80);
-    border:1px solid rgba(17,24,39,.08);
-    border-radius:16px;
-  }
-
-  @media (max-width:700px){
-    .home-news-item{
-      display:block;
+    .home-news{
+      padding:18px 0 14px;
     }
 
-    .home-news-date,
-    .home-news-separator,
-    .home-news-text{
-      display:inline;
+    .home-news-panel{
+      padding:28px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.92),
+          rgba(246,248,252,.90)
+        );
+
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:calc(var(--radius) + 10px);
+      box-shadow:var(--shadow);
+    }
+
+    .home-news-heading{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+
+      margin-bottom:20px;
+    }
+
+    .home-news-heading h2{
+      display:flex;
+      align-items:center;
+      gap:12px;
+
+      margin:0;
+
+      font-size:30px;
+      font-weight:900;
+      line-height:1.25;
+      letter-spacing:-.4px;
+    }
+
+    .home-news-heading h2::after{
+      content:"";
+
+      width:140px;
+      height:4px;
+
+      border-radius:999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(47,92,255,.78),
+          rgba(109,40,217,.58)
+        );
+    }
+
+    .home-news-more{
+      flex:0 0 auto;
+
+      color:var(--accent);
+      font-size:16px;
+      font-weight:850;
+      white-space:nowrap;
+    }
+
+    .home-news-list{
+      display:flex;
+      flex-direction:column;
+      gap:13px;
+    }
+
+    .home-news-item{
+      display:flex;
+      align-items:baseline;
+      gap:13px;
+
+      padding:19px 21px;
+
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:17px;
+      box-shadow:var(--shadow2);
+
+      transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease;
+    }
+
+    .home-news-item:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow3);
+      border-color:rgba(47,92,255,.22);
+    }
+
+    .home-news-date{
+      flex:0 0 auto;
+
+      color:var(--accent);
+      font-size:18px;
+      font-weight:900;
+      line-height:1.6;
+      white-space:nowrap;
     }
 
     .home-news-separator{
-      margin:0 4px;
-    }
-  }
-</style>
+      flex:0 0 auto;
 
-<script>
-  document.addEventListener("DOMContentLoaded", async function () {
-    const homeNewsList =
-      document.getElementById("home-news-list");
-
-    if (!homeNewsList) {
-      return;
+      color:rgba(85,98,122,.58);
+      font-size:21px;
+      font-weight:900;
+      line-height:1.45;
     }
 
-    try {
-      /*
-        Add a timestamp to prevent the browser from displaying
-        an older cached copy of news.html.
-      */
-      const newsURL =
-        "news.html?updated=" + Date.now();
+    .home-news-text{
+      margin:0;
 
-      const response = await fetch(newsURL, {
-        cache: "no-store"
-      });
-
-      if (!response.ok) {
-        throw new Error(
-          "Unable to load news.html: " + response.status
-        );
-      }
-
-      const html = await response.text();
-
-      const parser = new DOMParser();
-      const newsDocument =
-        parser.parseFromString(html, "text/html");
-
-      const sourceItems = Array.from(
-        newsDocument.querySelectorAll(
-          "#news-source .news-item"
-        )
-      );
-
-      /*
-        Change this number to control how many items
-        appear on the homepage.
-      */
-      const numberOfItems = 3;
-
-      const latestItems =
-        sourceItems.slice(0, numberOfItems);
-
-      if (latestItems.length === 0) {
-        throw new Error(
-          "No news items were found in news.html."
-        );
-      }
-
-      homeNewsList.innerHTML = "";
-
-      latestItems.forEach(function (item) {
-        const dateElement =
-          item.querySelector(".news-date");
-
-        const textElement =
-          item.querySelector(".news-text");
-
-        if (!dateElement || !textElement) {
-          return;
-        }
-
-        const article =
-          document.createElement("article");
-
-        article.className = "home-news-item";
-
-        const date =
-          document.createElement("time");
-
-        date.className = "home-news-date";
-        date.textContent =
-          dateElement.textContent.trim();
-
-        const dateTime =
-          dateElement.getAttribute("datetime");
-
-        if (dateTime) {
-          date.setAttribute("datetime", dateTime);
-        }
-
-        const separator =
-          document.createElement("span");
-
-        separator.className =
-          "home-news-separator";
-
-        separator.textContent = "·";
-
-        const text =
-          document.createElement("p");
-
-        text.className = "home-news-text";
-        text.textContent =
-          textElement.textContent
-            .replace(/\s+/g, " ")
-            .trim();
-
-        article.appendChild(date);
-        article.appendChild(separator);
-        article.appendChild(text);
-
-        homeNewsList.appendChild(article);
-      });
-
-    } catch (error) {
-      console.error(error);
-
-      homeNewsList.innerHTML = `
-        <div class="home-news-error">
-          News updates are temporarily unavailable.
-          <a href="news.html">View the News page</a>.
-        </div>
-      `;
+      color:var(--text);
+      font-size:18px;
+      font-weight:560;
+      line-height:1.65;
     }
-  });
-</script>
+
+    .home-news-loading,
+    .home-news-error{
+      padding:18px 20px;
+
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:17px;
+    }
 
     /* =========================================================
        4) FOOTER
     ========================================================== */
+
     footer{
       margin-top:22px;
       padding:18px 0 30px;
-      color: var(--muted);
+
+      color:var(--muted);
       font-size:13px;
-      border-top: 1px solid var(--line);
+
+      border-top:1px solid var(--line);
     }
 
     /* =========================================================
        5) RESPONSIVE
     ========================================================== */
-    @media (max-width: 900px){
-      :root{ --max: 1080px; }
-      .hero-title{ font-size:44px; }
-      .hero-card{ padding:30px; }
+
+    @media (max-width:900px){
+      :root{
+        --max:1080px;
+      }
+
+      .hero-title{
+        font-size:44px;
+      }
+
+      .hero-card{
+        padding:30px;
+      }
     }
-    @media (max-width: 560px){
-      :root{ --pad:18px; }
-      .hero-title{ font-size:36px; }
-      .hero-card{ padding:24px; }
-      .hero-text{ font-size:16px; }
+
+    @media (max-width:700px){
+      .home-news-panel{
+        padding:20px;
+      }
+
+      .home-news-heading h2{
+        font-size:26px;
+      }
+
+      .home-news-heading h2::after{
+        width:90px;
+      }
+
+      .home-news-item{
+        display:block;
+        padding:17px 18px;
+      }
+
+      .home-news-date,
+      .home-news-separator,
+      .home-news-text{
+        display:inline;
+      }
+
+      .home-news-separator{
+        margin:0 5px;
+      }
+
+      .home-news-date{
+        font-size:17px;
+      }
+
+      .home-news-text{
+        font-size:17px;
+      }
+    }
+
+    @media (max-width:560px){
+      :root{
+        --pad:18px;
+      }
+
+      .hero-title{
+        font-size:36px;
+      }
+
+      .hero-card{
+        padding:24px;
+      }
+
+      .hero-text{
+        font-size:16px;
+      }
+
+      .home-news-heading{
+        align-items:baseline;
+      }
+
+      .home-news-heading h2{
+        font-size:24px;
+      }
+
+      .home-news-heading h2::after{
+        display:none;
+      }
+
+      .home-news-more{
+        font-size:15px;
+      }
     }
   </style>
 </head>
 
-<!-- ✅ 关键：data-page="index" 让 nav.js 自动高亮 Home -->
+<!-- data-page="index" lets nav.js highlight Home -->
 <body data-page="index">
 
-  <!-- ✅ 统一导航注入占位 -->
+  <!-- Unified navigation injection placeholder -->
   <div id="site-nav"></div>
 
-  <!-- =========================
+  <!-- =========================================================
        HERO
-  ========================== -->
-  <div class="hero">
-    <div class="container">
-      <div class="hero-card">
+  ========================================================== -->
 
-        <!-- ✅ UNIQUE letters:
-             U (Ultrafast),
-             n+i (Electrodynamics),
-             q+u (quantum),
-             e (Materials),
-             + "Unique" word itself also accent
-        -->
-        <h1 class="hero-title">
-          <span class="u-accent">U</span>ltrafast terahertz electrody<span class="u-accent">n</span>am<span class="u-accent">i</span>cs of
-          <span class="title-break"></span>
-          <span class="u-accent">q</span><span class="u-accent">u</span>antum mat<span class="u-accent">e</span>rials
-          (<span class="u-accent u-accent-word">Unique</span>) 
-        </h1>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
 
-        <div class="hero-text">
-          <p>
-            We are an interdisciplinary research group dedicated to quantum physics and advanced spectroscopy.
-            By bridging quantum materials, ultrafast optics, and chip-scale electronics, we develop state-of-the-art
-            THz platforms to probe the hidden dynamics of low-dimensional systems. Our mission is to uncover the
-            fundamental physics governing low-energy electrodynamics, many-body correlations, and non-equilibrium
-            transport in condensed matter.
-          </p>
-          <p>
-            Our lab is based at the Aerospace Information Research Institute, Chinese Academy of Sciences (GBA branch), Guangzhou.
-            We welcome inquiries from candidates interested in pursuing opportunities as Bachelor’s students, Master’s students,
-            PhD students, Postdoctoral researchers, Engineers, and Assistant Professors. If you are motivated to explore ultrafast
-            spectroscopy, low-dimensional (2D) materials, and low-temperature quantum transport, please feel free to contact me at:
-            <a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
-          </p>
-        </div>
+          <h1 class="hero-title">
+            <span class="u-accent">U</span>ltrafast terahertz
+            electrody<span class="u-accent">n</span>am<span class="u-accent">i</span>cs
+            of
 
-        <div class="btn-row">
-          <a class="btn primary" href="research.html">Explore Research</a>
-          <a class="btn ghost" href="people.html">Meet the Team</a>
-          <a class="btn ghost" href="join.html">Open Positions</a>
+            <span class="title-break"></span>
+
+            <span class="u-accent">q</span><span class="u-accent">u</span>antum
+            mat<span class="u-accent">e</span>rials
+            (<span class="u-accent u-accent-word">Unique</span>)
+          </h1>
+
+          <div class="hero-text">
+            <p>
+              We are an interdisciplinary research group dedicated to
+              quantum physics and advanced spectroscopy. By bridging quantum
+              materials, ultrafast optics, and chip-scale electronics, we
+              develop state-of-the-art THz platforms to probe the hidden
+              dynamics of low-dimensional systems. Our mission is to uncover
+              the fundamental physics governing low-energy electrodynamics,
+              many-body correlations, and nonequilibrium transport in
+              condensed matter.
+            </p>
+
+            <p>
+              Our lab is based at the Aerospace Information Research
+              Institute, Chinese Academy of Sciences (GBA branch), Guangzhou.
+              We welcome inquiries from candidates interested in opportunities
+              as undergraduate students, master's students, Ph.D. students,
+              postdoctoral researchers, engineers, and assistant professors.
+              Candidates interested in ultrafast spectroscopy,
+              low-dimensional materials, and low-temperature quantum
+              transport are welcome to contact us at
+              <a href="mailto:thz_zheng@163.com">
+                thz_zheng@163.com
+              </a>.
+            </p>
+          </div>
+
+          <div class="btn-row">
+            <a class="btn primary" href="research.html">
+              Explore Research
+            </a>
+
+            <a class="btn ghost" href="people.html">
+              Meet the Team
+            </a>
+
+            <a class="btn ghost" href="join.html">
+              Open Positions
+            </a>
+          </div>
+
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- =========================
-       NEWS
-  ========================== -->
-  <div class="news">
-    <div class="container">
-      <div class="news-head">
-        <h2>News</h2>
+    <!-- =========================================================
+         NEWS
+    ========================================================== -->
+
+    <section class="home-news">
+      <div class="container">
+        <div class="home-news-panel">
+
+          <div class="home-news-heading">
+            <h2>News</h2>
+
+            <a class="home-news-more" href="news.html">
+              View all →
+            </a>
+          </div>
+
+          <div
+            id="home-news-list"
+            class="home-news-list"
+            aria-live="polite"
+          >
+            <div class="home-news-loading">
+              Loading news...
+            </div>
+          </div>
+
+        </div>
       </div>
+    </section>
+  </main>
 
-      <div id="news-list" class="news-list"></div>
-    </div>
-  </div>
-
-  <!-- =========================
+  <!-- =========================================================
        FOOTER
-  ========================== -->
+  ========================================================== -->
+
   <footer>
     <div class="container">
       © <span id="y"></span>
     </div>
   </footer>
 
-  <!-- ✅ 统一导航注入脚本（必须放在 #site-nav 之后） -->
+  <!-- Unified navigation -->
   <script src="nav.js"></script>
 
   <script>
-    /* Footer year */
-    document.getElementById("y").textContent = new Date().getFullYear();
+    /* =========================================================
+       FOOTER YEAR
+    ========================================================== */
 
-    /* Subtle entrance fade for UNIQUE letters (run once) */
-    (function(){
-      // avoid re-triggering on bfcache/back nav too aggressively
+    document.getElementById("y").textContent =
+      new Date().getFullYear();
+
+    /* =========================================================
+       UNIQUE TITLE INTRO ANIMATION
+    ========================================================== */
+
+    (function () {
       document.body.classList.add("intro");
-      window.setTimeout(() => document.body.classList.remove("intro"), 1200);
+
+      window.setTimeout(function () {
+        document.body.classList.remove("intro");
+      }, 1200);
     })();
 
-    /* Home news loader — reads news.json in site root */
-    function parseDateYMD(ymd){
-      const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd || "");
-      if(!m) return new Date(0);
-      return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
-    }
+    /* =========================================================
+       AUTOMATIC HOME NEWS LOADER
 
-    async function renderHomeNews(){
-      const box = document.getElementById("news-list");
+       This reads the first four news items directly from news.html.
 
-      try{
-        const res = await fetch("news.json", { cache: "no-store" });
-        if(!res.ok) throw new Error("news.json not found");
+       Therefore, future updates only need to be added to news.html
+       inside:
 
-        let items = await res.json();
-        items = (items || []).slice().sort((a,b) => parseDateYMD(b.date) - parseDateYMD(a.date));
+       <div class="news-list" id="news-source">
+    ========================================================== */
 
-        const top = items.slice(0, 10);
+    document.addEventListener("DOMContentLoaded", async function () {
+      const homeNewsList =
+        document.getElementById("home-news-list");
 
-        if(top.length === 0){
-          box.innerHTML = '<div class="news-item"><div class="news-text">No updates yet.</div></div>';
-          return;
+      if (!homeNewsList) {
+        return;
+      }
+
+      try {
+        /*
+          Timestamp and no-store help prevent an outdated cached
+          copy of news.html from being displayed.
+        */
+        const newsURL =
+          "news.html?updated=" + Date.now();
+
+        const response = await fetch(newsURL, {
+          cache:"no-store"
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            "Unable to load news.html. HTTP status: " +
+            response.status
+          );
         }
 
-        box.innerHTML = top.map((it) => {
-          const date = it.date || "";
-          const title = it.title || "";
-          const text = it.text || "";
-          const link = (it.link || "").trim();
+        const html = await response.text();
 
-          const titleHtml = link ? `<a href="${link}">${title}</a>` : `${title}`;
-          const moreHtml  = link ? `<div class="news-link"><a href="${link}">Read more →</a></div>` : "";
+        const parser =
+          new DOMParser();
 
-          return `
-            <div class="news-item">
-              <div class="news-top">
-                <div class="news-title">${titleHtml}</div>
-                <div class="news-date">${date}</div>
-              </div>
-              ${text ? `<div class="news-text">${text}</div>` : ""}
-              ${moreHtml}
-            </div>
-          `;
-        }).join("");
+        const newsDocument =
+          parser.parseFromString(html, "text/html");
 
-      }catch(e){
-        box.innerHTML =
-          `<div class="news-item">
-             <div class="news-text"><b>News not loaded.</b> Please add <code>news.json</code> to the site root.</div>
-           </div>`;
+        const sourceItems =
+          Array.from(
+            newsDocument.querySelectorAll(
+              "#news-source .news-item"
+            )
+          );
+
+        /*
+          Number of news items displayed on the homepage.
+          Change 4 to another number when needed.
+        */
+        const numberOfItems = 4;
+
+        const latestItems =
+          sourceItems.slice(0, numberOfItems);
+
+        if (latestItems.length === 0) {
+          throw new Error(
+            "No items were found inside #news-source."
+          );
+        }
+
+        homeNewsList.innerHTML = "";
+
+        latestItems.forEach(function (item) {
+          const sourceDate =
+            item.querySelector(".news-date");
+
+          const sourceText =
+            item.querySelector(".news-text");
+
+          if (!sourceDate || !sourceText) {
+            return;
+          }
+
+          const article =
+            document.createElement("article");
+
+          article.className =
+            "home-news-item";
+
+          const date =
+            document.createElement("time");
+
+          date.className =
+            "home-news-date";
+
+          date.textContent =
+            sourceDate.textContent
+              .replace(/\s+/g, " ")
+              .trim();
+
+          const dateTime =
+            sourceDate.getAttribute("datetime");
+
+          if (dateTime) {
+            date.setAttribute(
+              "datetime",
+              dateTime
+            );
+          }
+
+          const separator =
+            document.createElement("span");
+
+          separator.className =
+            "home-news-separator";
+
+          separator.setAttribute(
+            "aria-hidden",
+            "true"
+          );
+
+          separator.textContent = "·";
+
+          const text =
+            document.createElement("p");
+
+          text.className =
+            "home-news-text";
+
+          text.textContent =
+            sourceText.textContent
+              .replace(/\s+/g, " ")
+              .trim();
+
+          article.appendChild(date);
+          article.appendChild(separator);
+          article.appendChild(text);
+
+          homeNewsList.appendChild(article);
+        });
+
+      } catch (error) {
+        console.error(
+          "Homepage news loading failed:",
+          error
+        );
+
+        homeNewsList.innerHTML = `
+          <div class="home-news-error">
+            News updates are temporarily unavailable.
+            Please visit the
+            <a href="news.html">News page</a>.
+          </div>
+        `;
       }
-    }
-
-    renderHomeNews();
+    });
   </script>
+
 </body>
 </html>
