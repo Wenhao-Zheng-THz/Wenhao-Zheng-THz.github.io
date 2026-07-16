@@ -29,7 +29,6 @@
 
       --accent:#2f5cff;
       --accent2:#6d28d9;
-      --accentSoft:rgba(47,92,255,.10);
 
       --radius:20px;
       --max:clamp(1080px, 92vw, 1360px);
@@ -42,7 +41,7 @@
 
     html,
     body{
-      height:100%;
+      min-height:100%;
     }
 
     body{
@@ -93,71 +92,41 @@
     }
 
     /* =========================
-       HEADER
+       PAGE HEADER
     ========================== */
 
     .header{
-      padding:38px 0 16px;
+      padding:38px 0 22px;
     }
 
     .header h1{
       margin:0;
       font-size:52px;
-      letter-spacing:-.8px;
       line-height:1.05;
+      letter-spacing:-.8px;
     }
 
     .header .sub{
+      max-width:980px;
       margin-top:16px;
+
       color:var(--muted);
-      font-size:16.5px;
-      max-width:980px;
+      font-size:17px;
+      line-height:1.7;
     }
 
     /* =========================
-       HERO
-    ========================== */
-
-    .hero{
-      margin:10px 0 22px;
-      padding:18px 20px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(47,92,255,.08),
-          rgba(109,40,217,.06)
-        );
-
-      border:1px solid rgba(17,24,39,.08);
-      border-radius:26px;
-      box-shadow:var(--shadow2);
-    }
-
-    .hero .kicker{
-      margin-bottom:5px;
-      font-weight:900;
-      letter-spacing:-.2px;
-    }
-
-    .hero .desc{
-      color:var(--muted);
-      font-size:15.8px;
-      max-width:980px;
-    }
-
-    /* =========================
-       PANEL
+       NEWS PANEL
     ========================== */
 
     .panel{
-      padding:22px;
+      padding:26px;
 
       background:
         linear-gradient(
           180deg,
-          rgba(255,255,255,.92),
-          rgba(246,248,252,.92)
+          rgba(255,255,255,.94),
+          rgba(246,248,252,.94)
         );
 
       border:1px solid rgba(17,24,39,.08);
@@ -170,24 +139,26 @@
       align-items:center;
       gap:12px;
 
-      margin:0 0 18px;
-      font-size:22px;
+      margin:0 0 20px;
+
+      font-size:25px;
       font-weight:900;
-      letter-spacing:-.2px;
+      line-height:1.3;
+      letter-spacing:-.3px;
     }
 
     .section-title::after{
       content:"";
 
-      width:140px;
+      width:150px;
       height:4px;
       border-radius:999px;
 
       background:
         linear-gradient(
           90deg,
-          rgba(47,92,255,.75),
-          rgba(109,40,217,.55)
+          rgba(47,92,255,.78),
+          rgba(109,40,217,.58)
         );
     }
 
@@ -198,7 +169,7 @@
     .news-list{
       display:flex;
       flex-direction:column;
-      gap:12px;
+      gap:14px;
     }
 
     .news-item{
@@ -206,9 +177,9 @@
       align-items:baseline;
       gap:14px;
 
-      padding:17px 20px;
+      padding:20px 22px;
 
-      background:rgba(255,255,255,.90);
+      background:rgba(255,255,255,.92);
       border:1px solid rgba(17,24,39,.08);
       border-radius:18px;
       box-shadow:var(--shadow2);
@@ -222,33 +193,39 @@
     .news-item:hover{
       transform:translateY(-2px);
       box-shadow:var(--shadow3);
-      border-color:rgba(47,92,255,.20);
+      border-color:rgba(47,92,255,.22);
     }
 
     .news-date{
       flex:0 0 auto;
 
       color:var(--accent);
-      font-size:15px;
+      font-size:18px;
       font-weight:900;
+      line-height:1.6;
       white-space:nowrap;
     }
 
     .news-separator{
       flex:0 0 auto;
-      color:rgba(85,98,122,.55);
-      font-weight:800;
+
+      color:rgba(85,98,122,.58);
+      font-size:20px;
+      font-weight:900;
+      line-height:1.5;
     }
 
     .news-text{
       margin:0;
+
       color:var(--text);
-      font-size:16px;
-      line-height:1.7;
+      font-size:18px;
+      font-weight:560;
+      line-height:1.65;
     }
 
     /* =========================
-       CONTACT
+       CONTACT CARD
     ========================== */
 
     .contact-card{
@@ -256,10 +233,10 @@
       align-items:flex-start;
       gap:14px;
 
-      margin-top:18px;
-      padding:18px;
+      margin-top:20px;
+      padding:20px 22px;
 
-      background:rgba(255,255,255,.86);
+      background:rgba(255,255,255,.88);
       border:1px solid rgba(17,24,39,.08);
       border-radius:18px;
       box-shadow:var(--shadow2);
@@ -268,7 +245,7 @@
     .contact-dot{
       width:12px;
       height:12px;
-      margin-top:7px;
+      margin-top:8px;
       flex:0 0 auto;
 
       border-radius:999px;
@@ -276,8 +253,8 @@
       background:
         linear-gradient(
           135deg,
-          rgba(47,92,255,.75),
-          rgba(109,40,217,.55)
+          rgba(47,92,255,.78),
+          rgba(109,40,217,.58)
         );
 
       box-shadow:0 12px 22px rgba(47,92,255,.14);
@@ -285,15 +262,18 @@
 
     .contact-card h2{
       margin:0 0 6px;
-      font-size:18px;
+
+      font-size:19px;
       font-weight:900;
+      line-height:1.4;
       letter-spacing:-.2px;
     }
 
     .contact-card p{
       margin:0;
+
       color:var(--muted);
-      font-size:15.8px;
+      font-size:16.5px;
       line-height:1.75;
     }
 
@@ -328,30 +308,62 @@
         --pad:18px;
       }
 
+      .header{
+        padding-top:30px;
+      }
+
       .header h1{
         font-size:42px;
+      }
+
+      .header .sub{
+        font-size:16px;
       }
 
       .panel{
         padding:18px;
       }
 
+      .section-title{
+        font-size:22px;
+      }
+
       .news-item{
         display:block;
-        padding:16px;
+        padding:17px 18px;
       }
 
       .news-date,
-      .news-separator{
-        display:inline;
-      }
-
+      .news-separator,
       .news-text{
         display:inline;
       }
 
+      .news-date{
+        font-size:16.5px;
+      }
+
+      .news-separator{
+        margin:0 5px;
+        font-size:18px;
+      }
+
+      .news-text{
+        font-size:16.5px;
+      }
+
       .contact-card{
-        padding:16px;
+        padding:17px 18px;
+      }
+    }
+
+    @media (max-width:480px){
+      .header h1{
+        font-size:38px;
+      }
+
+      .section-title::after{
+        width:90px;
       }
     }
   </style>
@@ -365,7 +377,7 @@
   <main class="container">
 
     <!-- =========================
-         HEADER
+         PAGE HEADER
     ========================== -->
 
     <header class="header">
@@ -378,28 +390,27 @@
     </header>
 
     <!-- =========================
-         HERO
-    ========================== -->
-
-    <section class="hero">
-      <div class="kicker">Latest updates from UNIQUE Lab</div>
-
-      <div class="desc">
-        Follow the growth of our team, research platforms,
-        collaborations, and scientific activities.
-      </div>
-    </section>
-
-    <!-- =========================
          NEWS PANEL
     ========================== -->
 
     <section class="panel">
       <h2 class="section-title">Latest News</h2>
 
-      <div class="news-list">
+      <!--
+        IMPORTANT:
+        The homepage automatically reads news from this list.
 
-        <!-- Latest news -->
+        To add a new item:
+        1. Copy one complete <article class="news-item"> block.
+        2. Place the newest item at the top.
+        3. Update the date and text.
+
+        There is no need to edit news-snippet.html or news.json.
+      -->
+
+      <div class="news-list" id="news-source">
+
+        <!-- 1. Latest news -->
         <article class="news-item">
           <time class="news-date" datetime="2026-07">
             July 2026
@@ -413,6 +424,7 @@
           </p>
         </article>
 
+        <!-- 2 -->
         <article class="news-item">
           <time class="news-date" datetime="2026-07">
             July 2026
@@ -426,6 +438,7 @@
           </p>
         </article>
 
+        <!-- 3 -->
         <article class="news-item">
           <time class="news-date" datetime="2026-06">
             June 2026
@@ -440,6 +453,7 @@
           </p>
         </article>
 
+        <!-- 4 -->
         <article class="news-item">
           <time class="news-date" datetime="2026-06">
             June 2026
@@ -454,7 +468,10 @@
 
       </div>
 
-      <!-- Contact -->
+      <!-- =========================
+           CONTACT
+      ========================== -->
+
       <div class="contact-card">
         <div class="contact-dot"></div>
 
