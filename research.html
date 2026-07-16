@@ -39,6 +39,9 @@
 
       --max:clamp(1080px, 92vw, 1360px);
       --pad:24px;
+
+      /* Keep platform images at a restrained, unified size */
+      --figureH:300px;
     }
 
     *{
@@ -338,7 +341,7 @@
 
     .platform-card{
       display:grid;
-      grid-template-columns:minmax(0, 1.05fr) minmax(420px, .95fr);
+      grid-template-columns:minmax(0, 1.08fr) minmax(360px, .92fr);
       gap:24px;
       align-items:center;
 
@@ -428,6 +431,11 @@
       border-radius:999px;
     }
 
+    /*
+      Images are displayed inside a fixed frame using contain.
+      They are neither cropped nor enlarged to fill the frame.
+    */
+
     .platform-visual{
       overflow:hidden;
 
@@ -437,20 +445,29 @@
       box-shadow:0 12px 28px rgba(15,23,42,.09);
     }
 
+    .platform-figure{
+      width:100%;
+      height:var(--figureH);
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:10px;
+
+      background:#f4f6fb;
+    }
+
     .platform-image{
       display:block;
 
-      width:100%;
-      height:320px;
+      width:auto;
+      height:auto;
+      max-width:100%;
+      max-height:100%;
 
-      object-fit:cover;
-      object-position:center;
-    }
-
-    .platform-image.contain{
       object-fit:contain;
-      padding:8px;
-      background:#f6f8fc;
+      object-position:center;
     }
 
     .platform-caption{
@@ -582,6 +599,7 @@
     @media (max-width:700px){
       :root{
         --pad:18px;
+        --figureH:260px;
       }
 
       .header{
@@ -625,23 +643,19 @@
       .platform-content h3{
         font-size:22px;
       }
-
-      .platform-image{
-        height:250px;
-      }
     }
 
     @media (max-width:480px){
+      :root{
+        --figureH:220px;
+      }
+
       .header h1{
         font-size:38px;
       }
 
       .section-title::after{
         display:none;
-      }
-
-      .platform-image{
-        height:220px;
       }
     }
 
@@ -674,9 +688,9 @@
       <h1>Research</h1>
 
       <div class="sub">
-        We combine frontier physics, ultrafast spectroscopy, precision
-        instrumentation, and device engineering to investigate light–matter
-        interactions and quantum dynamics.
+        We bring together frontier physics, ultrafast spectroscopy,
+        precision instrumentation, and device engineering to investigate
+        light–matter interactions and quantum dynamics.
       </div>
     </header>
 
@@ -693,34 +707,29 @@
       </h2>
 
       <p>
-        We study how carriers, excitations, and correlated quantum states
-        emerge and evolve across ultrafast and low-energy scales. Our focus
-        includes <strong>nonequilibrium dynamics</strong>,
+        We investigate how charge carriers, excitations, and correlated
+        quantum states emerge and evolve across ultrafast and low-energy
+        scales. Our interests include
+        <strong>nonequilibrium dynamics</strong>,
         <strong>many-body interactions</strong>, and
         <strong>low-energy electrodynamics</strong> in quantum and
         low-dimensional materials.
       </p>
 
       <p>
-        To address these questions, we develop and optimize advanced
-        spectroscopic platforms that connect optical excitation,
-        terahertz electrodynamics, cryogenic transport, and
-        chip-integrated devices.
+        To address these questions, we develop and optimize complementary
+        spectroscopic platforms that connect optical excitation, terahertz
+        electrodynamics, cryogenic transport, and chip-integrated devices.
       </p>
     </section>
 
     <!-- =======================================================
-         RESEARCH QUESTIONS
+         SCIENTIFIC QUESTIONS
     ======================================================== -->
 
     <section class="section">
       <div class="section-head">
         <h2 class="section-title">Scientific Questions</h2>
-
-        <p class="section-desc">
-          We design each measurement around a physical question rather than
-          around a single technique or material system.
-        </p>
       </div>
 
       <div class="question-grid">
@@ -732,7 +741,7 @@
 
           <p>
             How do photoexcited carriers and collective excitations form,
-            relax, and transport energy after ultrafast excitation?
+            relax, and transport energy following ultrafast excitation?
           </p>
         </article>
 
@@ -753,8 +762,8 @@
           <h3>Correlated Quantum States</h3>
 
           <p>
-            How do correlations, dimensionality, interfaces, and external
-            fields reshape low-energy electronic states?
+            How do electronic correlations, dimensionality, interfaces,
+            and external fields reshape low-energy quantum states?
           </p>
         </article>
 
@@ -770,8 +779,8 @@
         <h2 class="section-title">Spectroscopy Platforms</h2>
 
         <p class="section-desc">
-          We build complementary platforms that span optical, terahertz,
-          electrical, cryogenic, and chip-scale measurements.
+          Our complementary platforms span optical, terahertz, electrical,
+          cryogenic, and chip-scale measurements.
         </p>
       </div>
 
@@ -788,9 +797,9 @@
             <h3>Transient Absorption Spectroscopy</h3>
 
             <p>
-              Broadband transient absorption spectroscopy tracks excited
-              states, excitons, polarons, and interfacial charge transfer
-              with femtosecond resolution.
+              Broadband transient absorption spectroscopy resolves the
+              evolution of excited states, excitons, polarons, and
+              interfacial charge transfer with femtosecond resolution.
             </p>
 
             <div class="feature-row">
@@ -801,11 +810,13 @@
           </div>
 
           <div class="platform-visual">
-            <img
-              class="platform-image"
-              src="img/瞬态吸收.jpg"
-              alt="Transient absorption spectroscopy platform"
-            />
+            <div class="platform-figure">
+              <img
+                class="platform-image"
+                src="img/瞬态吸收.jpg"
+                alt="Transient absorption spectroscopy platform"
+              />
+            </div>
 
             <div class="platform-caption">
               Broadband transient absorption spectroscopy platform
@@ -825,8 +836,8 @@
 
             <p>
               Optical-pump–terahertz-probe spectroscopy measures transient
-              photoconductivity and reveals carrier mobility, scattering,
-              localization, and many-body coupling.
+              photoconductivity and provides access to carrier mobility,
+              scattering, localization, and many-body coupling.
             </p>
 
             <div class="feature-row">
@@ -837,11 +848,13 @@
           </div>
 
           <div class="platform-visual">
-            <img
-              class="platform-image"
-              src="img/太赫兹泵浦光谱.png"
-              alt="Optical-pump terahertz-probe spectroscopy platform"
-            />
+            <div class="platform-figure">
+              <img
+                class="platform-image"
+                src="img/太赫兹泵浦光谱.png"
+                alt="Optical-pump terahertz-probe spectroscopy platform"
+              />
+            </div>
 
             <div class="platform-caption">
               Optical-pump–terahertz-probe spectroscopy platform
@@ -860,8 +873,8 @@
             <h3>On-Chip Terahertz Spectroscopy</h3>
 
             <p>
-              Chip-integrated terahertz spectroscopy confines broadband
-              terahertz pulses to microscopic transmission structures,
+              Chip-integrated terahertz spectroscopy guides broadband
+              terahertz pulses through microscopic transmission structures,
               enabling measurements of micron-scale samples and devices.
             </p>
 
@@ -873,11 +886,13 @@
           </div>
 
           <div class="platform-visual">
-            <img
-              class="platform-image contain"
-              src="img/chip.png"
-              alt="Chip-integrated terahertz spectroscopy"
-            />
+            <div class="platform-figure">
+              <img
+                class="platform-image"
+                src="img/chip.jpeg"
+                alt="Chip-integrated terahertz spectroscopy"
+              />
+            </div>
 
             <div class="platform-caption">
               Chip-integrated terahertz spectroscopy platform
@@ -896,32 +911,39 @@
       <h2>Physics-Informed Instrumentation</h2>
 
       <p>
-        Our interdisciplinary strength lies in combining physical insight
-        with precision instrumentation. We do not simply apply existing
-        techniques: we design, build, and optimize spectroscopic systems
-        around the quantum phenomena we aim to resolve.
+        Our interdisciplinary research integrates physical insight with
+        precision instrumentation and device engineering. By connecting
+        spectroscopy development with materials and device studies, we aim
+        to resolve quantum phenomena across ultrafast, low-energy, and
+        microscopic scales.
       </p>
 
       <div class="identity-grid">
 
         <div class="identity-item">
           <strong>Frontier Physics</strong>
+
           <span>
-            Light–matter interactions, many-body physics, and quantum states
+            Light–matter interactions, many-body physics,
+            and emergent quantum states
           </span>
         </div>
 
         <div class="identity-item">
           <strong>Precision Instrumentation</strong>
+
           <span>
-            Ultrafast optics, terahertz systems, synchronization, and control
+            Ultrafast optics, terahertz systems,
+            synchronization, automation, and control
           </span>
         </div>
 
         <div class="identity-item">
-          <strong>Devices and Materials</strong>
+          <strong>Materials and Devices</strong>
+
           <span>
-            Quantum materials, microdevices, transport, and chip integration
+            Quantum materials, microdevices, electrical transport,
+            and chip integration
           </span>
         </div>
 
