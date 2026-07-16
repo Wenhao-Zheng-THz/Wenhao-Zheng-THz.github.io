@@ -180,7 +180,7 @@
 
     .profile{
       display:grid;
-      grid-template-columns:1.18fr .82fr;
+      grid-template-columns:minmax(0, 1.18fr) minmax(340px, .82fr);
       gap:28px;
       align-items:start;
     }
@@ -225,6 +225,7 @@
 
       width:10px;
       height:10px;
+      flex:0 0 auto;
 
       border-radius:999px;
       background:rgba(47,92,255,.55);
@@ -234,7 +235,6 @@
     .block ul{
       margin:0;
       padding-left:20px;
-
       font-size:16px;
     }
 
@@ -251,6 +251,8 @@
       flex-direction:column;
       align-items:flex-start;
       gap:16px;
+
+      min-width:0;
     }
 
     .frame{
@@ -310,6 +312,10 @@
       font-size:13px;
       font-weight:900;
       letter-spacing:.2px;
+    }
+
+    .k:first-child{
+      margin-top:0;
     }
 
     .v{
@@ -573,7 +579,6 @@
   </style>
 </head>
 
-<!-- data-page="people" allows nav.js to highlight People -->
 <body data-page="people">
 
   <!-- Navigation injection placeholder -->
@@ -607,7 +612,7 @@
 
         <!-- LEFT: PI INFORMATION -->
 
-        <div>
+        <div class="pi-main">
           <div class="pi-name">
             Wenhao Zheng (郑文浩)
           </div>
@@ -646,7 +651,7 @@
                 2026–Present:
                 <span>
                   Professor, Aerospace Information Research Institute,
-                  Chinese Academy of Sciences, Greater Bay Area branch
+                  Chinese Academy of Sciences, Greater Bay Area Branch
                 </span>
               </li>
 
@@ -680,41 +685,31 @@
             <h3>Honors and Awards</h3>
 
             <ul>
+              <li>
+                National Young Talent Program
+              </li>
 
-    <li>
+              <li>
+                Walter Benjamin Fellow, German Research Foundation
+                (DFG), 2023
+              </li>
 
-      National Young Talent Program
+              <li>
+                Chinese Government Award for Outstanding
+                Self-Financed Students Abroad, 2022
+              </li>
 
-    </li>
-
-    <li>
-
-      Walter Benjamin Fellow, German Research Foundation (DFG), 2023
-
-    </li>
-
-    <li>
-
-      Chinese Government Award for Outstanding
-
-      Self-Financed Students Abroad, 2022
-
-    </li>
-
-    <li>
-
-      Kalkhof-Rose Polymer Science Award, 2022
-
-    </li>
-
-  </ul>
-
-</div>
+              <li>
+                Kalkhof-Rose Polymer Science Award, 2022
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- END LEFT: PI INFORMATION -->
 
         <!-- RIGHT: PI PHOTO AND CONTACT INFORMATION -->
 
         <div class="pi-side">
-
           <div class="frame">
             <img
               class="pi-photo"
@@ -729,7 +724,7 @@
             <p class="v">
               Aerospace Information Research Institute,
               Chinese Academy of Sciences
-              (Greater Bay Area branch)
+              (Greater Bay Area Branch)
             </p>
 
             <div class="k">LOCATION</div>
@@ -762,8 +757,9 @@
               </a>
             </p>
           </div>
-
         </div>
+        <!-- END RIGHT: PI PHOTO AND CONTACT INFORMATION -->
+
       </div>
     </section>
 
