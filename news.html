@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>News | THz Electrodynamics Lab @ CAS-Air</title>
-  <meta name="description" content="News — THz Electrodynamics Lab @ CAS-Air" />
+  <title>News | THz Electrodynamics Lab @ CAS AIR</title>
+  <meta name="description" content="News — THz Electrodynamics Lab @ CAS AIR" />
 
-  <!-- ✅ Site-wide unified nav -->
+  <!-- Site-wide unified nav -->
   <link rel="stylesheet" href="nav.css" />
 
   <style>
@@ -18,35 +18,67 @@
       --muted:#55627a;
       --line:rgba(17,24,39,.10);
 
-      --shadow: 0 16px 40px rgba(15,23,42,.10);
-      --shadow2: 0 10px 22px rgba(15,23,42,.08);
-      --shadow3: 0 22px 60px rgba(15,23,42,.12);
+      --shadow:0 16px 40px rgba(15,23,42,.10);
+      --shadow2:0 10px 22px rgba(15,23,42,.08);
+      --shadow3:0 22px 60px rgba(15,23,42,.12);
 
       --accent:#2f5cff;
       --accent2:#6d28d9;
+      --accentSoft:rgba(47,92,255,.10);
 
       --radius:20px;
-      --max: clamp(1080px, 92vw, 1360px);
+      --max:clamp(1080px, 92vw, 1360px);
       --pad:24px;
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{
+      box-sizing:border-box;
+    }
+
+    html,
+    body{
+      height:100%;
+    }
+
     body{
       margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,
-        "Noto Sans","PingFang SC","Microsoft Yahei",sans-serif;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        "Noto Sans",
+        "PingFang SC",
+        "Microsoft Yahei",
+        sans-serif;
+
       color:var(--text);
       line-height:1.7;
       overflow-x:hidden;
+
       background:
-        radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.08), transparent 60%),
-        radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
+        radial-gradient(
+          900px 420px at 10% 0%,
+          rgba(109,40,217,.08),
+          transparent 60%
+        ),
+        radial-gradient(
+          900px 460px at 90% 10%,
+          rgba(47,92,255,.10),
+          transparent 60%
+        ),
         linear-gradient(var(--bg), var(--bg));
     }
 
-    a{ color:var(--accent); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+
+    a:hover{
+      text-decoration:underline;
+    }
 
     .container{
       max-width:var(--max);
@@ -57,13 +89,17 @@
     /* =========================
        HEADER
     ========================== */
-    .header{ padding:38px 0 16px; }
+    .header{
+      padding:38px 0 16px;
+    }
+
     .header h1{
       margin:0;
       font-size:52px;
       letter-spacing:-.8px;
       line-height:1.05;
     }
+
     .header .sub{
       margin-top:16px;
       color:var(--muted);
@@ -75,18 +111,27 @@
        HERO
     ========================== */
     .hero{
-      background: linear-gradient(135deg, rgba(47,92,255,.08), rgba(109,40,217,.06));
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: 26px;
+      margin:10px 0 22px;
       padding:18px;
-      margin: 10px 0 22px;
-      box-shadow: var(--shadow2);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(47,92,255,.08),
+          rgba(109,40,217,.06)
+        );
+
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:26px;
+      box-shadow:var(--shadow2);
     }
+
     .hero .kicker{
-      font-weight:900;
       margin-bottom:6px;
+      font-weight:900;
       letter-spacing:-.2px;
     }
+
     .hero .desc{
       color:var(--muted);
       font-size:15.8px;
@@ -94,34 +139,173 @@
     }
 
     /* =========================
-       PANEL / CARD
+       PANEL
     ========================== */
     .panel{
-      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(246,248,252,.92));
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: calc(var(--radius) + 10px);
-      box-shadow: var(--shadow);
-      padding: 22px;
+      padding:22px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.92),
+          rgba(246,248,252,.92)
+        );
+
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:calc(var(--radius) + 10px);
+      box-shadow:var(--shadow);
     }
 
+    .section-title{
+      margin:0 0 18px;
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:-.2px;
+
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .section-title::after{
+      content:"";
+      width:140px;
+      height:4px;
+      border-radius:999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(47,92,255,.75),
+          rgba(109,40,217,.55)
+        );
+    }
+
+    /* =========================
+       NEWS LIST
+    ========================== */
+    .news-list{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .news-item{
+      display:grid;
+      grid-template-columns:130px 1fr;
+      gap:20px;
+      align-items:start;
+
+      padding:20px;
+
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:18px;
+      box-shadow:var(--shadow2);
+
+      transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease;
+    }
+
+    .news-item:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow3);
+      border-color:rgba(47,92,255,.20);
+    }
+
+    .news-date{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      min-height:36px;
+      padding:6px 12px;
+
+      border:1px solid rgba(47,92,255,.18);
+      border-radius:999px;
+
+      background:var(--accentSoft);
+      color:rgba(17,24,39,.88);
+
+      font-size:14px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .news-content{
+      position:relative;
+      padding-left:20px;
+    }
+
+    .news-content::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:8px;
+
+      width:10px;
+      height:10px;
+      border-radius:999px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(47,92,255,.85),
+          rgba(109,40,217,.65)
+        );
+
+      box-shadow:0 8px 18px rgba(47,92,255,.20);
+    }
+
+    .news-content h2{
+      margin:0;
+      font-size:18px;
+      font-weight:900;
+      line-height:1.5;
+      letter-spacing:-.1px;
+    }
+
+    .news-content p{
+      margin:5px 0 0;
+      color:var(--muted);
+      font-size:15.5px;
+      line-height:1.75;
+    }
+
+    /* =========================
+       CONTACT CARD
+    ========================== */
     .coming{
       display:flex;
       gap:14px;
       align-items:flex-start;
-      padding:18px 18px;
-      border-radius: 18px;
+
+      margin-top:18px;
+      padding:18px;
+
       border:1px solid rgba(17,24,39,.08);
-      background: rgba(255,255,255,.86);
-      box-shadow: var(--shadow2);
+      border-radius:18px;
+      background:rgba(255,255,255,.86);
+      box-shadow:var(--shadow2);
     }
 
     .dot{
-      width:12px; height:12px;
-      border-radius:999px;
+      width:12px;
+      height:12px;
       margin-top:7px;
       flex:0 0 auto;
-      background: linear-gradient(135deg, rgba(47,92,255,.75), rgba(109,40,217,.55));
-      box-shadow: 0 12px 22px rgba(47,92,255,.14);
+
+      border-radius:999px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(47,92,255,.75),
+          rgba(109,40,217,.55)
+        );
+
+      box-shadow:0 12px 22px rgba(47,92,255,.14);
     }
 
     .coming h2{
@@ -144,10 +328,13 @@
     footer{
       margin-top:26px;
       padding:18px 0 34px;
-      color: var(--muted);
+
+      color:var(--muted);
       font-size:14px;
-      border-top: 1px solid var(--line);
+
+      border-top:1px solid var(--line);
     }
+
     .foot{
       display:flex;
       flex-wrap:wrap;
@@ -159,51 +346,157 @@
     /* =========================
        RESPONSIVE
     ========================== */
-    @media (max-width: 780px){
-      :root{ --pad:18px; }
-      .header h1{ font-size:42px; }
-      .panel{ padding:18px; }
-      .coming{ padding:16px; }
+    @media (max-width:780px){
+      :root{
+        --pad:18px;
+      }
+
+      .header h1{
+        font-size:42px;
+      }
+
+      .panel{
+        padding:18px;
+      }
+
+      .news-item{
+        grid-template-columns:1fr;
+        gap:12px;
+        padding:16px;
+      }
+
+      .news-date{
+        justify-self:start;
+      }
+
+      .coming{
+        padding:16px;
+      }
     }
   </style>
 </head>
 
 <body data-page="news">
-  <!-- ✅ unified nav injection placeholder -->
+
+  <!-- Unified nav injection placeholder -->
   <div id="site-nav"></div>
 
-  <div class="container">
+  <main class="container">
 
-    <div class="header">
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="header">
       <h1>News</h1>
+
       <div class="sub">
-        Updates from the lab — publications, milestones, talks, and opportunities.
+        Updates from the lab — publications, milestones, talks, new members,
+        and opportunities.
       </div>
-    </div>
+    </header>
 
-    <div class="hero">
-      <div class="kicker">More updates coming soon.</div>
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="hero">
+      <div class="kicker">Latest updates from UNIQUE Lab</div>
+
       <div class="desc">
-        We’re setting up the lab and building the platform — we’ll start posting regular updates here once things settle.
+        Follow the growth of our team, research platforms, collaborations,
+        and scientific activities.
       </div>
-    </div>
+    </section>
 
-    <div class="panel">
+    <!-- =========================
+         NEWS PANEL
+    ========================== -->
+    <section class="panel">
+      <h2 class="section-title">Latest News</h2>
+
+      <div class="news-list">
+
+        <!-- Latest -->
+        <article class="news-item">
+          <div class="news-date">July 2026</div>
+
+          <div class="news-content">
+            <h2>Welcome, Tianyi Zhang!</h2>
+
+            <p>
+              Tianyi joins UNIQUE Lab as a new doctoral student after
+              completing his undergraduate studies at Harbin Institute of
+              Technology.
+            </p>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="news-item">
+          <div class="news-date">July 2026</div>
+
+          <div class="news-content">
+            <h2>Welcome, Junhui Huang!</h2>
+
+            <p>
+              Junhui joins UNIQUE Lab as an undergraduate visiting student
+              from Imperial College London.
+            </p>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="news-item">
+          <div class="news-date">June 2026</div>
+
+          <div class="news-content">
+            <h2>Welcome, Guangpeng Zhu!</h2>
+
+            <p>
+              Guangpeng joins UNIQUE Lab as a postdoctoral researcher after
+              receiving his Ph.D. from Macau University of Science and
+              Technology.
+            </p>
+          </div>
+        </article>
+
+        <!-- Oldest -->
+        <article class="news-item">
+          <div class="news-date">June 2026</div>
+
+          <div class="news-content">
+            <h2>Welcome to UNIQUE Lab!</h2>
+
+            <p>
+              UNIQUE Lab is officially launched at the Aerospace Information
+              Research Institute, Chinese Academy of Sciences.
+            </p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Contact -->
       <div class="coming">
         <div class="dot"></div>
+
         <div>
-          <h2>In the meantime…</h2>
+          <h2>Connect with us</h2>
+
           <p>
-            If you’d like to connect (collaboration, joining the lab, or just a quick chat), feel free to reach out at
+            For research collaborations, visiting opportunities, or joining
+            the lab, please contact
             <a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
           </p>
         </div>
       </div>
-    </div>
+    </section>
 
     <div style="height:26px"></div>
-  </div>
+  </main>
 
+  <!-- =========================
+       FOOTER
+  ========================== -->
   <footer>
     <div class="container">
       <div class="foot">
@@ -214,8 +507,11 @@
   </footer>
 
   <script src="nav.js"></script>
+
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    document.getElementById("y").textContent =
+      new Date().getFullYear();
   </script>
+
 </body>
 </html>
