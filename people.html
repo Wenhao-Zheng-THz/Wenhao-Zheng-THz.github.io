@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>People | THz Electrodynamics Lab @ CAS AIR</title>
+
   <meta
     name="description"
     content="People — THz Electrodynamics Lab @ CAS AIR"
   />
 
-  <!-- 统一导航栏样式 -->
+  <!-- Site-wide navigation style -->
   <link rel="stylesheet" href="nav.css" />
 
   <style>
     /* =========================
        THEME TOKENS
     ========================== */
+
     :root{
       --bg:#ffffff;
       --bg2:#f6f8fc;
@@ -35,14 +37,11 @@
 
       --radius:22px;
 
-      /* 大屏更宽，小屏不变 */
       --max:clamp(1080px, 92vw, 1360px);
 
-      /* spacing */
       --p:28px;
       --p-sm:22px;
 
-      /* image frames */
       --piFrameH:420px;
       --teamFrameH:520px;
     }
@@ -53,11 +52,12 @@
 
     html,
     body{
-      height:100%;
+      min-height:100%;
     }
 
     body{
       margin:0;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -70,6 +70,8 @@
         sans-serif;
 
       color:var(--text);
+      line-height:1.7;
+      overflow-x:hidden;
 
       background:
         radial-gradient(
@@ -83,9 +85,6 @@
           transparent 60%
         ),
         linear-gradient(var(--bg), var(--bg));
-
-      line-height:1.7;
-      overflow-x:hidden;
     }
 
     a{
@@ -106,6 +105,7 @@
     /* =========================
        PAGE HEADER
     ========================== */
+
     .header{
       padding:30px 0 12px;
     }
@@ -113,21 +113,25 @@
     .header h1{
       margin:0;
       font-size:48px;
-      letter-spacing:-.6px;
       line-height:1.05;
+      letter-spacing:-.6px;
     }
 
     .header .sub{
+      max-width:980px;
       margin:14px 0 0;
+
       color:var(--muted);
       font-size:18px;
-      max-width:980px;
     }
 
     /* =========================
        PANEL / SECTION TITLE
     ========================== */
+
     .panel{
+      padding:var(--p);
+
       background:
         linear-gradient(
           180deg,
@@ -138,23 +142,25 @@
       border:1px solid rgba(17,24,39,.08);
       border-radius:calc(var(--radius) + 10px);
       box-shadow:var(--shadow);
-      padding:var(--p);
     }
 
     .section-title{
-      margin:0 0 16px;
-      font-size:22px;
-      letter-spacing:.1px;
-
       display:flex;
       align-items:center;
       gap:12px;
+
+      margin:0 0 16px;
+
+      font-size:22px;
+      letter-spacing:.1px;
     }
 
     .section-title::after{
       content:"";
-      height:4px;
+
       width:140px;
+      height:4px;
+
       border-radius:999px;
 
       background:
@@ -171,6 +177,7 @@
     /* =========================================================
        PI SECTION
     ========================================================== */
+
     .profile{
       display:grid;
       grid-template-columns:1.18fr .82fr;
@@ -180,6 +187,7 @@
 
     .pi-name{
       margin:0 0 6px;
+
       font-size:32px;
       font-weight:900;
       letter-spacing:.2px;
@@ -187,6 +195,7 @@
 
     .pi-role{
       margin:0 0 16px;
+
       color:var(--muted);
       font-size:16px;
       font-weight:780;
@@ -195,24 +204,28 @@
     .block{
       margin-top:16px;
       padding-top:14px;
+
       border-top:1px solid rgba(17,24,39,.08);
     }
 
     .block h3{
-      margin:0 0 10px;
-      font-size:16px;
-      font-weight:900;
-      letter-spacing:.1px;
-
       display:flex;
       align-items:center;
       gap:8px;
+
+      margin:0 0 10px;
+
+      font-size:16px;
+      font-weight:900;
+      letter-spacing:.1px;
     }
 
     .block h3::before{
       content:"";
+
       width:10px;
       height:10px;
+
       border-radius:999px;
       background:rgba(47,92,255,.55);
       box-shadow:0 6px 14px rgba(47,92,255,.18);
@@ -221,6 +234,7 @@
     .block ul{
       margin:0;
       padding-left:20px;
+
       font-size:16px;
     }
 
@@ -235,8 +249,8 @@
     .pi-side{
       display:flex;
       flex-direction:column;
-      gap:16px;
       align-items:flex-start;
+      gap:16px;
     }
 
     .frame{
@@ -264,16 +278,17 @@
     }
 
     .pi-photo{
+      display:block;
+
       width:100%;
       height:var(--piFrameH);
-      display:block;
 
       object-fit:contain;
       object-position:center;
 
+      background:rgba(255,255,255,.55);
       border:1px solid rgba(17,24,39,.06);
       border-radius:22px;
-      background:rgba(255,255,255,.55);
     }
 
     .mini-card{
@@ -290,6 +305,7 @@
 
     .k{
       margin:12px 0 4px;
+
       color:var(--muted);
       font-size:13px;
       font-weight:900;
@@ -298,6 +314,7 @@
 
     .v{
       margin:0;
+
       color:var(--text);
       line-height:1.65;
       word-break:break-word;
@@ -310,6 +327,7 @@
     /* =========================================================
        TEAM GRID
     ========================================================== */
+
     .team-grid{
       display:grid;
       grid-template-columns:repeat(2, minmax(0, 1fr));
@@ -340,9 +358,10 @@
     }
 
     /*
-      团队共有奇数个人时，让最后一张卡片在大屏居中。
-      卡片仍保持一列宽度，不会拉满整行。
+      Center the final card on wide screens when the number
+      of team members is odd.
     */
+
     .person-card.last-person{
       grid-column:1 / -1;
       width:calc((100% - 18px) / 2);
@@ -371,22 +390,24 @@
     }
 
     .person-photo{
+      display:block;
+
       width:100%;
       height:100%;
-      display:block;
 
       object-fit:contain;
       object-position:center;
 
+      background:rgba(255,255,255,.60);
       border:1px solid rgba(17,24,39,.06);
       border-radius:22px;
-      background:rgba(255,255,255,.60);
     }
 
     .person-body{
       display:flex;
-      flex-direction:column;
       flex:1;
+      flex-direction:column;
+
       padding:18px 18px 16px;
     }
 
@@ -400,14 +421,16 @@
 
     .person-name{
       margin:0;
+
       font-size:24px;
       font-weight:900;
-      letter-spacing:.1px;
       line-height:1.15;
+      letter-spacing:.1px;
     }
 
     .person-role{
       margin:0;
+
       color:var(--muted);
       font-size:15.5px;
       font-weight:850;
@@ -416,6 +439,7 @@
 
     .person-meta{
       margin:10px 0 0;
+
       color:var(--muted);
       font-size:16px;
       line-height:1.75;
@@ -429,26 +453,27 @@
       display:flex;
       flex-wrap:wrap;
       gap:8px;
+
       margin-top:12px;
     }
 
     .pill{
       padding:7px 12px;
 
-      border:1px solid rgba(47,92,255,.18);
-      border-radius:999px;
-
-      background:var(--accentSoft);
       color:rgba(17,24,39,.90);
-
       font-size:13px;
       font-weight:900;
       white-space:nowrap;
+
+      background:var(--accentSoft);
+      border:1px solid rgba(47,92,255,.18);
+      border-radius:999px;
     }
 
     /* =========================
        SPACING
     ========================== */
+
     .section-gap{
       height:18px;
     }
@@ -460,6 +485,7 @@
     /* =========================
        FOOTER
     ========================== */
+
     footer{
       margin-top:26px;
       padding:18px 0 34px;
@@ -473,6 +499,7 @@
     /* =========================================================
        RESPONSIVE
     ========================================================== */
+
     @media (max-width:980px){
       :root{
         --max:1080px;
@@ -533,25 +560,38 @@
         padding:16px;
       }
     }
+
+    @media (prefers-reduced-motion:reduce){
+      .person-card{
+        transition:none;
+      }
+
+      .person-card:hover{
+        transform:none;
+      }
+    }
   </style>
 </head>
 
-<!-- data-page="people" 让 nav.js 自动高亮 People -->
+<!-- data-page="people" allows nav.js to highlight People -->
 <body data-page="people">
 
-  <!-- 统一导航注入占位 -->
+  <!-- Navigation injection placeholder -->
   <div id="site-nav"></div>
 
   <!-- =========================
        PAGE HEADER
   ========================== -->
+
   <header class="header">
     <div class="container">
       <h1>People</h1>
 
       <div class="sub">
-        我们致力于超快太赫兹谱学与片上集成平台，
-        研究低维量子材料中的低能电动力学、关联效应与非平衡输运。
+        We develop ultrafast terahertz spectroscopy and chip-integrated
+        platforms to investigate low-energy electrodynamics, many-body
+        interactions, and nonequilibrium transport in low-dimensional
+        quantum materials.
       </div>
     </div>
   </header>
@@ -561,69 +601,99 @@
     <!-- =========================
          PI PANEL
     ========================== -->
+
     <section class="panel">
       <div class="profile">
 
-        <!-- LEFT: PI TEXT -->
+        <!-- LEFT: PI INFORMATION -->
+
         <div>
-          <div class="pi-name">郑文浩</div>
-          <div class="pi-role">研究员 · 博士生导师</div>
+          <div class="pi-name">
+            Wenhao Zheng (郑文浩)
+          </div>
 
-          <div class="block">
-            <h3>研究方向</h3>
-
-            <ul>
-              <li>
-                超快泵浦太赫兹光谱：
-                <span>非平衡载流子动力学</span>
-              </li>
-
-              <li>
-                低温输运与片上集成太赫兹光谱：
-                <span>量子材料关联电子态（如超导等）</span>
-              </li>
-            </ul>
+          <div class="pi-role">
+            Principal Investigator · Professor · Ph.D. Supervisor
           </div>
 
           <div class="block">
-            <h3>教育 / 科研背景</h3>
+            <h3>Research Interests</h3>
 
             <ul>
               <li>
-                2026–至今：
+                Ultrafast optical-pump terahertz-probe spectroscopy:
                 <span>
-                  研究员，中国科学院空天信息创新研究院（大湾区研究院）
+                  nonequilibrium charge-carrier dynamics
                 </span>
               </li>
 
               <li>
-                2024–2025：
-                <span>博士后，美国麻省理工学院</span>
-              </li>
-
-              <li>
-                2023–2024：
-                <span>博士后，德国马克斯-普朗克高分子研究所</span>
-              </li>
-
-              <li>
-                2018–2023：
-                <span>博士，德国马克斯-普朗克高分子研究所</span>
+                Low-temperature transport and chip-integrated terahertz
+                spectroscopy:
+                <span>
+                  correlated electronic states in quantum materials,
+                  including superconducting systems
+                </span>
               </li>
             </ul>
           </div>
 
           <div class="block">
-            <h3>荣誉奖励</h3>
+            <h3>Education and Research Experience</h3>
 
             <ul>
-              <li>国家优秀自费留学生奖学金（2022）</li>
-              <li>Kalkhof-Rose Polymer Science Award（2022）</li>
+              <li>
+                2026–Present:
+                <span>
+                  Professor, Aerospace Information Research Institute,
+                  Chinese Academy of Sciences, Greater Bay Area branch
+                </span>
+              </li>
+
+              <li>
+                2024–2025:
+                <span>
+                  Postdoctoral Researcher, Massachusetts Institute of
+                  Technology, USA
+                </span>
+              </li>
+
+              <li>
+                2023–2024:
+                <span>
+                  Postdoctoral Researcher, Max Planck Institute for
+                  Polymer Research, Germany
+                </span>
+              </li>
+
+              <li>
+                2018–2023:
+                <span>
+                  Ph.D., Max Planck Institute for Polymer Research,
+                  Germany
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h3>Honors and Awards</h3>
+
+            <ul>
+              <li>
+                Chinese Government Award for Outstanding
+                Self-Financed Students Abroad, 2022
+              </li>
+
+              <li>
+                Kalkhof-Rose Polymer Science Award, 2022
+              </li>
             </ul>
           </div>
         </div>
 
-        <!-- RIGHT: PI PHOTO + MINI CARD -->
+        <!-- RIGHT: PI PHOTO AND CONTACT INFORMATION -->
+
         <div class="pi-side">
 
           <div class="frame">
@@ -635,19 +705,21 @@
           </div>
 
           <div class="mini-card">
-            <div class="k">单位</div>
+            <div class="k">AFFILIATION</div>
 
             <p class="v">
-              中国科学院空天信息创新研究院（大湾区研究院）
+              Aerospace Information Research Institute,
+              Chinese Academy of Sciences
+              (Greater Bay Area branch)
             </p>
 
-            <div class="k">地点</div>
+            <div class="k">LOCATION</div>
 
             <p class="v">
-              广州 · 黄埔
+              Huangpu, Guangzhou, China
             </p>
 
-            <div class="k">邮箱</div>
+            <div class="k">EMAIL</div>
 
             <p class="v">
               <a href="mailto:thz_zheng@163.com">
@@ -655,18 +727,18 @@
               </a>
             </p>
 
-            <div class="k">链接</div>
+            <div class="k">LINKS</div>
 
             <p class="v links">
-              <a href="#" title="Add your Scholar URL">
+              <a href="#" title="Add Google Scholar profile">
                 Google Scholar
               </a>
               ·
-              <a href="#" title="Add your ORCID URL">
+              <a href="#" title="Add ORCID profile">
                 ORCID
               </a>
               ·
-              <a href="#" title="Add your GitHub URL">
+              <a href="#" title="Add GitHub profile">
                 GitHub
               </a>
             </p>
@@ -681,12 +753,14 @@
     <!-- =========================
          TEAM PANEL
     ========================== -->
+
     <section class="panel">
       <h2 class="section-title">Team Members</h2>
 
       <div class="team-grid">
 
-        <!-- 1) 帅文君 -->
+        <!-- 1) Wenjun Shuai -->
+
         <article class="person-card">
           <div class="person-frame">
             <img
@@ -698,24 +772,42 @@
 
           <div class="person-body">
             <div class="person-top">
-              <h3 class="person-name">帅文君</h3>
-              <p class="person-role">工程师</p>
+              <h3 class="person-name">
+                Wenjun Shuai (帅文君)
+              </h3>
+
+              <p class="person-role">
+                Engineer
+              </p>
             </div>
 
             <div class="person-meta">
-              <b>毕业院校：</b>硕士 · 华南师范大学
+              <b>Education:</b>
+              M.S. · South China Normal University
             </div>
 
             <div class="pill-row">
-              <span class="pill">光机电集成</span>
-              <span class="pill">数据流程</span>
-              <span class="pill">超快太赫兹光谱</span>
-              <span class="pill">理论计算</span>
+              <span class="pill">
+                Optomechanical and Electronic Integration
+              </span>
+
+              <span class="pill">
+                Data Processing
+              </span>
+
+              <span class="pill">
+                Ultrafast Terahertz Spectroscopy
+              </span>
+
+              <span class="pill">
+                Theoretical Modeling
+              </span>
             </div>
           </div>
         </article>
 
-        <!-- 2) 黄泽怀 -->
+        <!-- 2) Zehuai Huang -->
+
         <article class="person-card">
           <div class="person-frame">
             <img
@@ -727,24 +819,43 @@
 
           <div class="person-body">
             <div class="person-top">
-              <h3 class="person-name">黄泽怀</h3>
-              <p class="person-role">工程师</p>
+              <h3 class="person-name">
+                Zehuai Huang (黄泽怀)
+              </h3>
+
+              <p class="person-role">
+                Engineer
+              </p>
             </div>
 
             <div class="person-meta">
-              <b>毕业院校：</b>硕士 · 电子科技大学
+              <b>Education:</b>
+              M.S. · University of Electronic Science and
+              Technology of China
             </div>
 
             <div class="pill-row">
-              <span class="pill">平台搭建</span>
-              <span class="pill">自动化与测控</span>
-              <span class="pill">超快太赫兹光谱</span>
-              <span class="pill">理论计算</span>
+              <span class="pill">
+                Platform Development
+              </span>
+
+              <span class="pill">
+                Automation and Instrument Control
+              </span>
+
+              <span class="pill">
+                Ultrafast Terahertz Spectroscopy
+              </span>
+
+              <span class="pill">
+                Theoretical Modeling
+              </span>
             </div>
           </div>
         </article>
 
-        <!-- 3) 陆子辉 -->
+        <!-- 3) Zihui Lu -->
+
         <article class="person-card">
           <div class="person-frame">
             <img
@@ -756,22 +867,35 @@
 
           <div class="person-body">
             <div class="person-top">
-              <h3 class="person-name">陆子辉</h3>
-              <p class="person-role">博士研究生</p>
+              <h3 class="person-name">
+                Zihui Lu (陆子辉)
+              </h3>
+
+              <p class="person-role">
+                Ph.D. Student
+              </p>
             </div>
 
             <div class="person-meta">
-              <b>毕业院校：</b>本科 · 北京邮电大学
+              <b>Education:</b>
+              B.S. · Beijing University of Posts and
+              Telecommunications
             </div>
 
             <div class="pill-row">
-              <span class="pill">超快太赫兹光谱</span>
-              <span class="pill">片上集成平台</span>
+              <span class="pill">
+                Ultrafast Terahertz Spectroscopy
+              </span>
+
+              <span class="pill">
+                Chip-Integrated Terahertz Platforms
+              </span>
             </div>
           </div>
         </article>
 
-        <!-- 4) 张添奕 -->
+        <!-- 4) Tianyi Zhang -->
+
         <article class="person-card">
           <div class="person-frame">
             <img
@@ -783,22 +907,34 @@
 
           <div class="person-body">
             <div class="person-top">
-              <h3 class="person-name">张添奕</h3>
-              <p class="person-role">博士研究生</p>
+              <h3 class="person-name">
+                Tianyi Zhang (张添奕)
+              </h3>
+
+              <p class="person-role">
+                Ph.D. Student
+              </p>
             </div>
 
             <div class="person-meta">
-              <b>毕业院校：</b>本科 · 哈尔滨工业大学
+              <b>Education:</b>
+              B.S. · Harbin Institute of Technology
             </div>
 
             <div class="pill-row">
-              <span class="pill">超快太赫兹光谱</span>
-              <span class="pill">片上集成平台</span>
+              <span class="pill">
+                Ultrafast Terahertz Spectroscopy
+              </span>
+
+              <span class="pill">
+                Chip-Integrated Terahertz Platforms
+              </span>
             </div>
           </div>
         </article>
 
-        <!-- 5) 汪卓毅 -->
+        <!-- 5) Zhuoyi Wang -->
+
         <article class="person-card">
           <div class="person-frame">
             <img
@@ -810,28 +946,41 @@
 
           <div class="person-body">
             <div class="person-top">
-              <h3 class="person-name">汪卓毅</h3>
-              <p class="person-role">联培博士研究生</p>
+              <h3 class="person-name">
+                Zhuoyi Wang (汪卓毅)
+              </h3>
+
+              <p class="person-role">
+                Jointly Supervised Ph.D. Student
+              </p>
             </div>
 
             <div class="person-meta">
-              <b>毕业院校：</b>本科 · 吉林大学
+              <b>Education:</b>
+              B.S. · Jilin University
             </div>
 
             <div class="person-meta">
-              <b>合作：</b>
-              吉林大学刘朝阳教授 /
-              荷兰乌德勒支大学 Prof. Hai I. Wang 课题组
+              <b>Collaborators:</b>
+              Prof. Chaoyang Liu, Jilin University /
+              Prof. Hai I. Wang, Utrecht University
             </div>
 
             <div class="pill-row">
-              <span class="pill">超快太赫兹光谱</span>
-              <span class="pill">二维有机晶体载流子动力学</span>
+              <span class="pill">
+                Ultrafast Terahertz Spectroscopy
+              </span>
+
+              <span class="pill">
+                Charge-Carrier Dynamics in
+                Two-Dimensional Organic Crystals
+              </span>
             </div>
           </div>
         </article>
 
-        <!-- 6) 朱广朋 -->
+        <!-- 6) Guangpeng Zhu -->
+
         <article class="person-card">
           <div class="person-frame">
             <img
@@ -843,23 +992,38 @@
 
           <div class="person-body">
             <div class="person-top">
-              <h3 class="person-name">朱广朋</h3>
-              <p class="person-role">博士后</p>
+              <h3 class="person-name">
+                Guangpeng Zhu (朱广朋)
+              </h3>
+
+              <p class="person-role">
+                Postdoctoral Researcher
+              </p>
             </div>
 
             <div class="person-meta">
-              <b>毕业院校：</b>博士 · 澳门科技大学
+              <b>Education:</b>
+              Ph.D. · Macau University of Science and Technology
             </div>
 
             <div class="pill-row">
-              <span class="pill">器件输运</span>
-              <span class="pill">瞬态吸收</span>
-              <span class="pill">超快太赫兹光谱</span>
+              <span class="pill">
+                Electronic Transport in Devices
+              </span>
+
+              <span class="pill">
+                Transient Absorption Spectroscopy
+              </span>
+
+              <span class="pill">
+                Ultrafast Terahertz Spectroscopy
+              </span>
             </div>
           </div>
         </article>
 
-        <!-- 7) 黄俊辉 -->
+        <!-- 7) Junhui Huang -->
+
         <article class="person-card last-person">
           <div class="person-frame">
             <img
@@ -871,18 +1035,28 @@
 
           <div class="person-body">
             <div class="person-top">
-              <h3 class="person-name">黄俊辉</h3>
-              <p class="person-role">科研助理（RA）</p>
+              <h3 class="person-name">
+                Junhui Huang (黄俊辉)
+              </h3>
+
+              <p class="person-role">
+                Research Assistant (RA)
+              </p>
             </div>
 
             <div class="person-meta">
-              <b>就读院校：</b>
-              本科 · 伦敦帝国学院（Imperial College London）
+              <b>Current Institution:</b>
+              Undergraduate · Imperial College London
             </div>
 
             <div class="pill-row">
-              <span class="pill">微纳加工</span>
-              <span class="pill">太赫兹光谱</span>
+              <span class="pill">
+                Micro- and Nanofabrication
+              </span>
+
+              <span class="pill">
+                Terahertz Spectroscopy
+              </span>
             </div>
           </div>
         </article>
@@ -896,6 +1070,7 @@
   <!-- =========================
        FOOTER
   ========================== -->
+
   <footer>
     <div class="container">
       © <span id="y"></span> ·
@@ -903,7 +1078,7 @@
     </div>
   </footer>
 
-  <!-- 统一导航注入脚本，必须放在 #site-nav 之后 -->
+  <!-- Site-wide navigation script -->
   <script src="nav.js"></script>
 
   <script>
