@@ -8,7 +8,7 @@
 
   <meta
     name="description"
-    content="Gallery — academic activities, achievements, and team life at the THz Electrodynamics Lab."
+    content="Gallery — academic achievements and team life at the THz Electrodynamics Lab."
   />
 
   <!-- Site-wide navigation -->
@@ -240,6 +240,16 @@
       display:grid;
       grid-template-columns:repeat(2, minmax(0, 1fr));
       gap:20px;
+    }
+
+    /*
+      Use this class when a section currently contains
+      only one gallery card.
+    */
+
+    .gallery-grid.single-item{
+      grid-template-columns:minmax(0, 620px);
+      justify-content:center;
     }
 
     .gallery-card{
@@ -528,7 +538,8 @@
         padding:20px;
       }
 
-      .gallery-grid{
+      .gallery-grid,
+      .gallery-grid.single-item{
         grid-template-columns:1fr;
       }
 
@@ -612,8 +623,8 @@
       <h1>Gallery</h1>
 
       <div class="sub">
-        A glimpse into our academic activities, achievements,
-        collaborations, and life beyond the laboratory.
+        A glimpse into our academic achievements, team activities,
+        and life beyond the laboratory.
       </div>
     </header>
 
@@ -625,8 +636,8 @@
       <strong>Science, collaboration, and community</strong>
 
       <p>
-        Our gallery records memorable moments of scientific exchange,
-        academic achievement, and team life as UNIQUE Lab continues to grow.
+        Our gallery records memorable moments of academic achievement
+        and team life as UNIQUE Lab continues to grow.
       </p>
     </section>
 
@@ -639,55 +650,18 @@
         <h2 class="section-title">Academic Activities</h2>
 
         <p class="section-desc">
-          Scientific exchanges, academic events, and research achievements.
+          Academic events and research achievements.
         </p>
       </div>
 
-      <div class="gallery-grid">
+      <div class="gallery-grid single-item">
 
         <!-- ===================================================
-             PHOTO 1: PROF. HAI WANG'S VISIT
+             PHOTO 1: POSTER AWARD
 
-             To add another photo later, copy one complete
-             <article class="gallery-card"> block.
-        ==================================================== -->
-
-        <article class="gallery-card">
-          <button
-            class="gallery-button"
-            type="button"
-            data-full="img/hai.jpg"
-            data-caption="Prof. Hai Wang from Utrecht University visited us in June 2026 for discussions and scientific exchanges with our group members."
-            aria-label="View photo of Prof. Hai Wang's visit"
-          >
-            <img
-              class="gallery-image"
-              src="img/hai.jpg"
-              alt="Prof. Hai Wang discussing research with members of UNIQUE Lab"
-            />
-
-            <span class="zoom-hint">View</span>
-          </button>
-
-          <div class="gallery-body">
-            <div class="gallery-meta">
-              Academic Visit · June 2026
-            </div>
-
-            <h3 class="gallery-title">
-              Visit by Prof. Hai Wang
-            </h3>
-
-            <p class="gallery-caption">
-              Prof. Hai Wang from Utrecht University visited us in June
-              2026 for discussions and scientific exchanges with our group
-              members.
-            </p>
-          </div>
-        </article>
-
-        <!-- ===================================================
-             PHOTO 2: POSTER AWARD
+             To add another academic photo later, copy this
+             complete <article class="gallery-card"> block and
+             remove "single-item" from the gallery-grid class.
         ==================================================== -->
 
         <article class="gallery-card">
@@ -742,7 +716,7 @@
       <div class="gallery-grid">
 
         <!-- ===================================================
-             PHOTO 3: FISHING ACTIVITY
+             PHOTO 2: FISHING AND SHRIMP-CATCHING ACTIVITY
         ==================================================== -->
 
         <article class="gallery-card">
@@ -772,14 +746,14 @@
             </h3>
 
             <p class="gallery-caption">
-              Our fishing and shrimp-catching team-building activity in
-              June 2026.
+              Our fishing and shrimp-catching team-building activity
+              in June 2026.
             </p>
           </div>
         </article>
 
         <!-- ===================================================
-             PHOTO 4: GROUP DINNER
+             PHOTO 3: GROUP DINNER
         ==================================================== -->
 
         <article class="gallery-card">
@@ -787,13 +761,13 @@
             class="gallery-button"
             type="button"
             data-full="img/jucan.jpg"
-            data-caption="A group dinner at Wenhao's house in April 2026."
+            data-caption="A group dinner at Wenhao's home in April 2026."
             aria-label="View April 2026 group dinner"
           >
             <img
               class="gallery-image"
               src="img/jucan.jpg"
-              alt="UNIQUE Lab group dinner at Wenhao's house"
+              alt="UNIQUE Lab group dinner at Wenhao's home"
             />
 
             <span class="zoom-hint">View</span>
@@ -805,11 +779,11 @@
             </div>
 
             <h3 class="gallery-title">
-              Dinner at Wenhao's house
+              Dinner at Wenhao's Home
             </h3>
 
             <p class="gallery-caption">
-              A group dinner at Wenhao's house in April 2026.
+              A group dinner at Wenhao's home in April 2026.
             </p>
           </div>
         </article>
