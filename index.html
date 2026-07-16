@@ -227,72 +227,256 @@ src="https://cloud.umami.is/script.js">
     /* =========================================================
        3) NEWS
     ========================================================== */
-    .news{
-      padding:10px 0 10px;
-    }
-    .news-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:12px;
-      margin: 18px 0 12px;
-    }
-    .news-head h2{
-      margin:0;
-      font-size:26px;
-      font-weight:800;
-      letter-spacing:-.2px;
-    }
-    .news-head h2::after{ content:none !important; }
+    <!-- =========================
+     HOMEPAGE NEWS
+========================== -->
 
-    .news-list{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
+<section class="home-news">
+  <div class="home-news-heading">
+    <h2>News</h2>
+
+    <a class="home-news-more" href="news.html">
+      View all
+    </a>
+  </div>
+
+  <div id="home-news-list" class="home-news-list">
+    <div class="home-news-loading">
+      Loading news...
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-news{
+    margin-top:24px;
+  }
+
+  .home-news-heading{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:16px;
+  }
+
+  .home-news-heading h2{
+    margin:0;
+    font-size:24px;
+    font-weight:900;
+    line-height:1.3;
+    letter-spacing:-.3px;
+  }
+
+  .home-news-more{
+    flex:0 0 auto;
+    color:#2f5cff;
+    font-size:15px;
+    font-weight:800;
+    text-decoration:none;
+  }
+
+  .home-news-more:hover{
+    text-decoration:underline;
+  }
+
+  .home-news-list{
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+  }
+
+  .home-news-item{
+    display:flex;
+    align-items:baseline;
+    gap:11px;
+
+    padding:15px 17px;
+
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(17,24,39,.08);
+    border-radius:16px;
+    box-shadow:0 8px 20px rgba(15,23,42,.07);
+  }
+
+  .home-news-date{
+    flex:0 0 auto;
+
+    color:#2f5cff;
+    font-size:15.5px;
+    font-weight:900;
+    line-height:1.6;
+    white-space:nowrap;
+  }
+
+  .home-news-separator{
+    flex:0 0 auto;
+
+    color:rgba(85,98,122,.55);
+    font-size:17px;
+    font-weight:900;
+  }
+
+  .home-news-text{
+    margin:0;
+
+    color:#111827;
+    font-size:16px;
+    font-weight:540;
+    line-height:1.65;
+  }
+
+  .home-news-loading,
+  .home-news-error{
+    padding:15px 17px;
+
+    color:#55627a;
+    font-size:15px;
+
+    background:rgba(255,255,255,.80);
+    border:1px solid rgba(17,24,39,.08);
+    border-radius:16px;
+  }
+
+  @media (max-width:700px){
+    .home-news-item{
+      display:block;
     }
-    .news-item{
-      background: rgba(255,255,255,.90);
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: 16px;
-      padding: 14px 16px;
-      box-shadow: var(--shadow2);
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+
+    .home-news-date,
+    .home-news-separator,
+    .home-news-text{
+      display:inline;
     }
-    .news-item:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(15,23,42,.10);
-      border-color: rgba(47,92,255,.18);
+
+    .home-news-separator{
+      margin:0 4px;
     }
-    .news-top{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      align-items:baseline;
-      flex-wrap:wrap;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", async function () {
+    const homeNewsList =
+      document.getElementById("home-news-list");
+
+    if (!homeNewsList) {
+      return;
     }
-    .news-title{
-      margin:0;
-      font-size:15px;
-      font-weight:850;
-      line-height:1.25;
-      color: var(--text);
+
+    try {
+      /*
+        Add a timestamp to prevent the browser from displaying
+        an older cached copy of news.html.
+      */
+      const newsURL =
+        "news.html?updated=" + Date.now();
+
+      const response = await fetch(newsURL, {
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          "Unable to load news.html: " + response.status
+        );
+      }
+
+      const html = await response.text();
+
+      const parser = new DOMParser();
+      const newsDocument =
+        parser.parseFromString(html, "text/html");
+
+      const sourceItems = Array.from(
+        newsDocument.querySelectorAll(
+          "#news-source .news-item"
+        )
+      );
+
+      /*
+        Change this number to control how many items
+        appear on the homepage.
+      */
+      const numberOfItems = 3;
+
+      const latestItems =
+        sourceItems.slice(0, numberOfItems);
+
+      if (latestItems.length === 0) {
+        throw new Error(
+          "No news items were found in news.html."
+        );
+      }
+
+      homeNewsList.innerHTML = "";
+
+      latestItems.forEach(function (item) {
+        const dateElement =
+          item.querySelector(".news-date");
+
+        const textElement =
+          item.querySelector(".news-text");
+
+        if (!dateElement || !textElement) {
+          return;
+        }
+
+        const article =
+          document.createElement("article");
+
+        article.className = "home-news-item";
+
+        const date =
+          document.createElement("time");
+
+        date.className = "home-news-date";
+        date.textContent =
+          dateElement.textContent.trim();
+
+        const dateTime =
+          dateElement.getAttribute("datetime");
+
+        if (dateTime) {
+          date.setAttribute("datetime", dateTime);
+        }
+
+        const separator =
+          document.createElement("span");
+
+        separator.className =
+          "home-news-separator";
+
+        separator.textContent = "·";
+
+        const text =
+          document.createElement("p");
+
+        text.className = "home-news-text";
+        text.textContent =
+          textElement.textContent
+            .replace(/\s+/g, " ")
+            .trim();
+
+        article.appendChild(date);
+        article.appendChild(separator);
+        article.appendChild(text);
+
+        homeNewsList.appendChild(article);
+      });
+
+    } catch (error) {
+      console.error(error);
+
+      homeNewsList.innerHTML = `
+        <div class="home-news-error">
+          News updates are temporarily unavailable.
+          <a href="news.html">View the News page</a>.
+        </div>
+      `;
     }
-    .news-date{
-      color: var(--muted);
-      font-size:12px;
-      white-space:nowrap;
-    }
-    .news-text{
-      margin:8px 0 0;
-      color: var(--muted);
-      font-size:13px;
-      line-height:1.65;
-    }
-    .news-link{
-      margin-top:8px;
-      font-size:13px;
-      font-weight:850;
-    }
+  });
+</script>
 
     /* =========================================================
        4) FOOTER
