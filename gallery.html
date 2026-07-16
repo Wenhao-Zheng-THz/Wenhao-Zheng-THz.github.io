@@ -1,1 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
+  <title>Gallery | THz Electrodynamics Lab @ CAS AIR</title>
+
+  <meta
+    name="description"
+    content="Gallery — academic activities, laboratory life, and research highlights from the THz Electrodynamics Lab at CAS AIR."
+  />
+
+  <!-- Site-wide navigation -->
+  <link rel="stylesheet" href="nav.css" />
+
+  <style>
+    /* =========================================================
+       THEME
+    ========================================================== */
+
+    :root{
+      --bg:#ffffff;
+      --bg2:#f6f8fc;
+
+      --text:#111827;
+      --muted:#55627a;
+      --line:rgba(17,24,39,.10);
+
+      --shadow:0 16px 40px rgba(15,23,42,.10);
+      --shadow2:0 10px 24px rgba(15,23,42,.08);
+      --shadow3:0 22px 60px rgba(15,23,42,.14);
+
+      --accent:#2f5cff;
+      --accent2:#6d28d9;
+      --accentSoft:rgba(47,92,255,.10);
+
+      --radius:22px;
+
+      --max:clamp(1080px, 92vw, 1360px);
+      --pad:24px;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html,
+    body{
+      min-height:100%;
+    }
+
+    body{
+      margin:0;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        "Noto Sans",
+        "PingFang SC",
+        "Microsoft Yahei",
+        sans-serif;
+
+      color:var(--text);
+      line-height:1.7;
+      overflow-x:hidden;
+
+      background:
+        radial-gradient(
+          900px 420px at 10% 0%,
+          rgba(109,40,217,.08),
+          transparent 60%
+        ),
+        radial-gradient(
+          900px 460px at 90% 10%,
+          rgba(47,92,255,.10),
+          transparent 60%
+        ),
+        linear-gradient(var(--bg), var(--bg));
+    }
+
+    body.modal-open{
+      overflow:hidden;
+    }
+
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+
+    a:hover{
+      text-decoration:underline;
+    }
+
+    button{
+      font:inherit;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 var(--pad);
+    }
+
+    /* =========================================================
+       PAGE HEADER
+    ========================================================== */
+
+    .header{
+      padding:38px 0 18px;
+    }
+
+    .header h1{
+      margin:0;
+
+      font-size:52px;
+      font-weight:900;
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
+
+    .header .sub{
+      max-width:1000px;
+      margin:16px 0 0;
+
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.75;
+    }
+
+    /* =========================================================
+       INTRO
+    ========================================================== */
+
+    .intro{
+      margin:8px 0 24px;
+      padding:25px 28px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(47,92,255,.08),
+          rgba(109,40,217,.06)
+        );
+
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:calc(var(--radius) + 6px);
+      box-shadow:var(--shadow2);
+    }
+
+    .intro strong{
+      display:block;
+      margin-bottom:5px;
+
+      color:var(--text);
+      font-size:18px;
+      font-weight:900;
+    }
+
+    .intro p{
+      max-width:1000px;
+      margin:0;
+
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.75;
+    }
+
+    /* =========================================================
+       SECTION
+    ========================================================== */
+
+    .gallery-section{
+      margin-top:22px;
+      padding:28px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.95),
+          rgba(246,248,252,.92)
+        );
+
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:calc(var(--radius) + 10px);
+      box-shadow:var(--shadow);
+    }
+
+    .section-head{
+      margin-bottom:20px;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:12px;
+
+      margin:0;
+
+      font-size:28px;
+      font-weight:900;
+      line-height:1.3;
+      letter-spacing:-.4px;
+    }
+
+    .section-title::after{
+      content:"";
+
+      width:150px;
+      height:4px;
+
+      border-radius:999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(47,92,255,.78),
+          rgba(109,40,217,.58)
+        );
+    }
+
+    .section-desc{
+      max-width:900px;
+      margin:8px 0 0;
+
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.7;
+    }
+
+    /* =========================================================
+       GALLERY GRID
+    ========================================================== */
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:20px;
+    }
+
+    .gallery-card{
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+
+      background:rgba(255,255,255,.94);
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:20px;
+      box-shadow:var(--shadow2);
+
+      transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease;
+    }
+
+    .gallery-card:hover{
+      transform:translateY(-3px);
+      box-shadow:var(--shadow3);
+      border-color:rgba(47,92,255,.22);
+    }
+
+    .gallery-button{
+      position:relative;
+      display:block;
+
+      width:100%;
+      height:360px;
+      padding:0;
+      overflow:hidden;
+
+      background:#eef1f7;
+      border:0;
+      cursor:zoom-in;
+    }
+
+    .gallery-image{
+      display:block;
+
+      width:100%;
+      height:100%;
+
+      object-fit:contain;
+      object-position:center;
+
+      background:#eef1f7;
+
+      transition:
+        transform .3s ease,
+        filter .3s ease;
+    }
+
+    .gallery-card:hover .gallery-image{
+      transform:scale(1.015);
+    }
+
+    .zoom-hint{
+      position:absolute;
+      right:14px;
+      bottom:14px;
+
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      min-width:36px;
+      height:36px;
+      padding:0 11px;
+
+      color:#ffffff;
+      font-size:13px;
+      font-weight:850;
+
+      background:rgba(15,23,42,.72);
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:999px;
+      backdrop-filter:blur(8px);
+
+      opacity:0;
+      transform:translateY(4px);
+
+      transition:
+        opacity .18s ease,
+        transform .18s ease;
+    }
+
+    .gallery-card:hover .zoom-hint,
+    .gallery-button:focus-visible .zoom-hint{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .gallery-body{
+      flex:1;
+      padding:17px 18px 18px;
+
+      border-top:1px solid rgba(17,24,39,.07);
+    }
+
+    .gallery-meta{
+      margin-bottom:6px;
+
+      color:var(--accent);
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.2px;
+      text-transform:uppercase;
+    }
+
+    .gallery-title{
+      margin:0;
+
+      font-size:20px;
+      font-weight:900;
+      line-height:1.35;
+      letter-spacing:-.2px;
+    }
+
+    .gallery-caption{
+      margin:7px 0 0;
+
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.65;
+    }
+
+    /* =========================================================
+       LIGHTBOX
+    ========================================================== */
+
+    .lightbox{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:28px;
+
+      background:rgba(7,12,24,.90);
+      backdrop-filter:blur(10px);
+
+      opacity:0;
+      visibility:hidden;
+
+      transition:
+        opacity .2s ease,
+        visibility .2s ease;
+    }
+
+    .lightbox.open{
+      opacity:1;
+      visibility:visible;
+    }
+
+    .lightbox-dialog{
+      position:relative;
+
+      width:min(1180px, 94vw);
+      max-height:92vh;
+      overflow:hidden;
+
+      background:#0f172a;
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:22px;
+      box-shadow:0 30px 90px rgba(0,0,0,.45);
+    }
+
+    .lightbox-image-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      width:100%;
+      height:min(75vh, 780px);
+      padding:18px;
+
+      background:#0b1220;
+    }
+
+    .lightbox-image{
+      display:block;
+
+      width:auto;
+      height:auto;
+      max-width:100%;
+      max-height:100%;
+
+      object-fit:contain;
+      object-position:center;
+    }
+
+    .lightbox-caption{
+      padding:16px 20px 18px;
+
+      color:rgba(255,255,255,.88);
+      font-size:15px;
+      line-height:1.6;
+
+      background:rgba(15,23,42,.96);
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+
+    .lightbox-close{
+      position:absolute;
+      top:14px;
+      right:14px;
+      z-index:2;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      width:42px;
+      height:42px;
+      padding:0;
+
+      color:#ffffff;
+      font-size:25px;
+      line-height:1;
+
+      background:rgba(15,23,42,.72);
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:999px;
+      cursor:pointer;
+      backdrop-filter:blur(8px);
+
+      transition:
+        transform .18s ease,
+        background .18s ease;
+    }
+
+    .lightbox-close:hover{
+      transform:scale(1.05);
+      background:rgba(30,41,59,.92);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================== */
+
+    footer{
+      margin-top:28px;
+      padding:18px 0 34px;
+
+      color:var(--muted);
+      font-size:14px;
+
+      border-top:1px solid var(--line);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================== */
+
+    @media (max-width:900px){
+      .gallery-button{
+        height:320px;
+      }
+    }
+
+    @media (max-width:700px){
+      :root{
+        --pad:18px;
+      }
+
+      .header{
+        padding-top:30px;
+      }
+
+      .header h1{
+        font-size:42px;
+      }
+
+      .header .sub{
+        font-size:16px;
+      }
+
+      .intro{
+        padding:21px 22px;
+      }
+
+      .gallery-section{
+        padding:20px;
+      }
+
+      .gallery-grid{
+        grid-template-columns:1fr;
+      }
+
+      .section-title{
+        font-size:24px;
+      }
+
+      .section-title::after{
+        width:90px;
+      }
+
+      .gallery-button{
+        height:300px;
+      }
+
+      .zoom-hint{
+        opacity:1;
+        transform:none;
+      }
+
+      .lightbox{
+        padding:12px;
+      }
+
+      .lightbox-image-wrap{
+        height:72vh;
+        padding:10px;
+      }
+    }
+
+    @media (max-width:480px){
+      .header h1{
+        font-size:38px;
+      }
+
+      .section-title::after{
+        display:none;
+      }
+
+      .gallery-button{
+        height:240px;
+      }
+
+      .lightbox-caption{
+        font-size:14px;
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .gallery-card,
+      .gallery-image,
+      .zoom-hint,
+      .lightbox,
+      .lightbox-close{
+        transition:none;
+      }
+
+      .gallery-card:hover{
+        transform:none;
+      }
+
+      .gallery-card:hover .gallery-image{
+        transform:none;
+      }
+    }
+  </style>
+</head>
+
+<body data-page="gallery">
+
+  <!-- Navigation injection placeholder -->
+  <div id="site-nav"></div>
+
+  <main class="container">
+
+    <!-- =======================================================
+         PAGE HEADER
+    ======================================================== -->
+
+    <header class="header">
+      <h1>Gallery</h1>
+
+      <div class="sub">
+        A glimpse into our academic activities, collaborations,
+        achievements, and life beyond the laboratory.
+      </div>
+    </header>
+
+    <!-- =======================================================
+         INTRO
+    ======================================================== -->
+
+    <section class="intro">
+      <strong>Science, collaboration, and community</strong>
+
+      <p>
+        Our gallery records moments of scientific exchange, team activities,
+        and shared experiences as UNIQUE Lab continues to grow.
+      </p>
+    </section>
+
+    <!-- =======================================================
+         ACADEMIC ACTIVITIES
+    ======================================================== -->
+
+    <section class="gallery-section">
+      <div class="section-head">
+        <h2 class="section-title">Academic Activities</h2>
+
+        <p class="section-desc">
+          Scientific exchanges, academic events, and research achievements.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+
+        <!-- Hai visit -->
+        <article class="gallery-card">
+          <button
+            class="gallery-button"
+            type="button"
+            data-full="img/hai.jpg"
+            data-caption="Academic exchange and scientific discussion."
+            aria-label="View academic exchange photo"
+          >
+            <img
+              class="gallery-image"
+              src="img/hai.jpg"
+              alt="Academic exchange and scientific discussion"
+            />
+
+            <span class="zoom-hint">View</span>
+          </button>
+
+          <div class="gallery-body">
+            <div class="gallery-meta">Academic Exchange</div>
+
+            <h3 class="gallery-title">
+              Scientific Discussion
+            </h3>
+
+            <p class="gallery-caption">
+              Academic exchange, collaboration, and discussion of ongoing
+              research.
+            </p>
+          </div>
+        </article>
+
+        <!-- Poster award -->
+        <article class="gallery-card">
+          <button
+            class="gallery-button"
+            type="button"
+            data-full="img/poster%20award.jpg"
+            data-caption="Poster award recognizing research presented by our team."
+            aria-label="View poster award photo"
+          >
+            <img
+              class="gallery-image"
+              src="img/poster%20award.jpg"
+              alt="Poster award"
+            />
+
+            <span class="zoom-hint">View</span>
+          </button>
+
+          <div class="gallery-body">
+            <div class="gallery-meta">Achievement</div>
+
+            <h3 class="gallery-title">
+              Poster Award
+            </h3>
+
+            <p class="gallery-caption">
+              Recognition of research presented by members of our team.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =======================================================
+         LAB LIFE
+    ======================================================== -->
+
+    <section class="gallery-section">
+      <div class="section-head">
+        <h2 class="section-title">Lab Life</h2>
+
+        <p class="section-desc">
+          Team activities and moments shared beyond research.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+
+        <!-- Fishing activity -->
+        <article class="gallery-card">
+          <button
+            class="gallery-button"
+            type="button"
+            data-full="img/diaoxia.jpg"
+            data-caption="A relaxed team outing and fishing activity."
+            aria-label="View team outing photo"
+          >
+            <img
+              class="gallery-image"
+              src="img/diaoxia.jpg"
+              alt="Team fishing activity"
+            />
+
+            <span class="zoom-hint">View</span>
+          </button>
+
+          <div class="gallery-body">
+            <div class="gallery-meta">Team Activity</div>
+
+            <h3 class="gallery-title">
+              Team Outing
+            </h3>
+
+            <p class="gallery-caption">
+              A relaxed afternoon together outside the laboratory.
+            </p>
+          </div>
+        </article>
+
+        <!-- Group dinner -->
+        <article class="gallery-card">
+          <button
+            class="gallery-button"
+            type="button"
+            data-full="img/jucan.jpg"
+            data-caption="Group dinner with members and friends of UNIQUE Lab."
+            aria-label="View group dinner photo"
+          >
+            <img
+              class="gallery-image"
+              src="img/jucan.jpg"
+              alt="UNIQUE Lab group dinner"
+            />
+
+            <span class="zoom-hint">View</span>
+          </button>
+
+          <div class="gallery-body">
+            <div class="gallery-meta">Lab Community</div>
+
+            <h3 class="gallery-title">
+              Group Dinner
+            </h3>
+
+            <p class="gallery-caption">
+              Sharing good food and conversation with members and friends
+              of UNIQUE Lab.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <div style="height:28px"></div>
+  </main>
+
+  <!-- =========================================================
+       LIGHTBOX
+  ========================================================== -->
+
+  <div
+    id="lightbox"
+    class="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-label="Expanded gallery image"
+  >
+    <div class="lightbox-dialog">
+      <button
+        id="lightbox-close"
+        class="lightbox-close"
+        type="button"
+        aria-label="Close image viewer"
+      >
+        ×
+      </button>
+
+      <div class="lightbox-image-wrap">
+        <img
+          id="lightbox-image"
+          class="lightbox-image"
+          src=""
+          alt=""
+        />
+      </div>
+
+      <div
+        id="lightbox-caption"
+        class="lightbox-caption"
+      ></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer>
+    <div class="container">
+      © <span id="y"></span> ·
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <!-- Site-wide navigation -->
+  <script src="nav.js"></script>
+
+  <script>
+    /* Footer year */
+
+    document.getElementById("y").textContent =
+      new Date().getFullYear();
+
+    /* =========================================================
+       LIGHTBOX
+    ========================================================== */
+
+    (function () {
+      const lightbox =
+        document.getElementById("lightbox");
+
+      const lightboxImage =
+        document.getElementById("lightbox-image");
+
+      const lightboxCaption =
+        document.getElementById("lightbox-caption");
+
+      const closeButton =
+        document.getElementById("lightbox-close");
+
+      const galleryButtons =
+        document.querySelectorAll(".gallery-button");
+
+      let lastFocusedElement = null;
+
+      function openLightbox(button) {
+        const imageSource =
+          button.getAttribute("data-full");
+
+        const caption =
+          button.getAttribute("data-caption") || "";
+
+        const thumbnail =
+          button.querySelector("img");
+
+        lastFocusedElement = button;
+
+        lightboxImage.src = imageSource;
+        lightboxImage.alt =
+          thumbnail ? thumbnail.alt : caption;
+
+        lightboxCaption.textContent = caption;
+
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+
+        document.body.classList.add("modal-open");
+
+        closeButton.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+
+        document.body.classList.remove("modal-open");
+
+        lightboxImage.src = "";
+
+        if (lastFocusedElement) {
+          lastFocusedElement.focus();
+        }
+      }
+
+      galleryButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          openLightbox(button);
+        });
+      });
+
+      closeButton.addEventListener(
+        "click",
+        closeLightbox
+      );
+
+      lightbox.addEventListener(
+        "click",
+        function (event) {
+          if (event.target === lightbox) {
+            closeLightbox();
+          }
+        }
+      );
+
+      document.addEventListener(
+        "keydown",
+        function (event) {
+          if (
+            event.key === "Escape" &&
+            lightbox.classList.contains("open")
+          ) {
+            closeLightbox();
+          }
+        }
+      );
+    })();
+  </script>
+
+</body>
+</html>
