@@ -1,272 +1,1024 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Research | THz Electrodynamics Lab @ CAS-Air</title>
-<meta name="description" content="Research — THz Electrodynamics Lab @ CAS-Air" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<link rel="stylesheet" href="nav.css" />
+  <title>Research | THz Electrodynamics Lab @ CAS AIR</title>
 
-<style>
-:root{
-  --bg:#ffffff;
-  --text:#111827;
-  --muted:#55627a;
-  --line:rgba(17,24,39,.10);
+  <meta
+    name="description"
+    content="Research at the THz Electrodynamics Lab — frontier quantum physics, ultrafast spectroscopy, and chip-integrated terahertz platforms."
+  />
 
-  --shadow: 0 16px 40px rgba(15,23,42,.10);
-  --shadow2: 0 10px 22px rgba(15,23,42,.08);
+  <!-- Site-wide navigation -->
+  <link rel="stylesheet" href="nav.css" />
 
-  --radius:20px;
-  --max: clamp(1080px, 92vw, 1360px);
-  --pad:24px;
-}
+  <style>
+    /* =========================================================
+       0) THEME
+    ========================================================== */
 
-*{ box-sizing:border-box; }
+    :root{
+      --bg:#ffffff;
+      --bg2:#f6f8fc;
 
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans",sans-serif;
-  color:var(--text);
-  line-height:1.7;
-  background:
-    radial-gradient(900px 420px at 10% 0%, rgba(109,40,217,.08), transparent 60%),
-    radial-gradient(900px 460px at 90% 10%, rgba(47,92,255,.10), transparent 60%),
-    linear-gradient(#ffffff, #ffffff);
-}
+      --text:#111827;
+      --muted:#55627a;
+      --line:rgba(17,24,39,.10);
 
-.container{
-  max-width:var(--max);
-  margin:0 auto;
-  padding:0 var(--pad);
-}
+      --shadow:0 16px 40px rgba(15,23,42,.10);
+      --shadow2:0 10px 24px rgba(15,23,42,.08);
+      --shadow3:0 22px 60px rgba(15,23,42,.12);
 
-/* HEADER */
-.header{ padding:38px 0 16px; }
-.header h1{
-  margin:0;
-  font-size:52px;
-  letter-spacing:-.8px;
-}
-.header .sub{
-  margin-top:16px;
-  color:var(--muted);
-  font-size:16.5px;
-  max-width:980px;
-}
+      --accent:#2f5cff;
+      --accent2:#6d28d9;
+      --accentSoft:rgba(47,92,255,.10);
 
-/* HERO */
-.hero{
-  background: linear-gradient(135deg, rgba(47,92,255,.08), rgba(109,40,217,.06));
-  border: 1px solid rgba(17,24,39,.08);
-  border-radius: 26px;
-  padding:18px;
-  margin: 10px 0 22px;
-  box-shadow: var(--shadow2);
-}
-.hero .kicker{ font-weight:900; margin-bottom:6px; }
-.hero .desc{ color:var(--muted); }
+      --radius:22px;
 
-/* STACK */
-.stack{
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
+      --max:clamp(1080px, 92vw, 1360px);
+      --pad:24px;
+    }
 
-/* CARD */
-.card{
-  background:#fff;
-  border:1px solid rgba(17,24,39,.08);
-  border-radius:18px;
-  padding:22px;
-  box-shadow: var(--shadow2);
-}
+    *{
+      box-sizing:border-box;
+    }
 
-.cardgrid{
-  display:grid;
-  grid-template-columns: 1.25fr .95fr;
-  gap:18px;
-  align-items:start;
-}
+    html,
+    body{
+      min-height:100%;
+    }
 
-.pill{
-  display:inline-flex;
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid rgba(17,24,39,.10);
-  background: rgba(17,24,39,.03);
-  font-size:13px;
-  font-weight:900;
-  margin-bottom:10px;
-}
+    body{
+      margin:0;
 
-h2{
-  margin:0 0 12px;
-  font-size:24px;
-  font-weight:900;
-}
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        "Noto Sans",
+        "PingFang SC",
+        "Microsoft Yahei",
+        sans-serif;
 
-.lead{
-  color:var(--muted);
-  margin-bottom:12px;
-  font-size:15.8px;
-}
+      color:var(--text);
+      line-height:1.7;
+      overflow-x:hidden;
 
-ul{
-  padding:0;
-  margin:0;
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
+      background:
+        radial-gradient(
+          900px 420px at 10% 0%,
+          rgba(109,40,217,.08),
+          transparent 60%
+        ),
+        radial-gradient(
+          900px 460px at 90% 10%,
+          rgba(47,92,255,.10),
+          transparent 60%
+        ),
+        linear-gradient(var(--bg), var(--bg));
+    }
 
-li{
-  color:var(--muted);
-  display:flex;
-  gap:10px;
-  font-size:15.6px;
-}
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
 
-li::before{
-  content:"";
-  width:8px;height:8px;
-  border-radius:999px;
-  background: rgba(17,24,39,.25);
-  margin-top:10px;
-}
+    a:hover{
+      text-decoration:underline;
+    }
 
-.strong{
-  color:#111827;
-  font-weight:900;
-}
+    .container{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 var(--pad);
+    }
 
-/* ===== UNIFIED IMAGE SIZE ===== */
+    /* =========================================================
+       1) PAGE HEADER
+    ========================================================== */
 
-.figure{
-  height:300px;
-  border-radius:16px;
-  border:1px solid rgba(17,24,39,.10);
-  background:#f4f6fb;
-  box-shadow: 0 10px 24px rgba(15,23,42,.06);
+    .header{
+      padding:38px 0 18px;
+    }
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+    .header h1{
+      margin:0;
 
-.figure img{
-  max-width:100%;
-  max-height:100%;
-  object-fit:contain;
-}
+      font-size:52px;
+      font-weight:900;
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
 
-.figcap{
-  padding:10px 12px;
-  color:var(--muted);
-  font-size:13.5px;
-  border-top:1px solid rgba(17,24,39,.08);
-  background: rgba(255,255,255,.75);
-}
+    .header .sub{
+      max-width:1050px;
+      margin:16px 0 0;
 
-footer{
-  margin-top:26px;
-  padding:18px 0 34px;
-  color: var(--muted);
-  border-top: 1px solid var(--line);
-}
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.75;
+    }
 
-@media (max-width:980px){
-  .cardgrid{ grid-template-columns:1fr; }
-}
-</style>
+    /* =========================================================
+       2) RESEARCH VISION
+    ========================================================== */
+
+    .vision{
+      position:relative;
+      overflow:hidden;
+
+      margin:8px 0 22px;
+      padding:34px 36px;
+
+      background:
+        radial-gradient(
+          700px 280px at 10% 0%,
+          rgba(47,92,255,.13),
+          transparent 65%
+        ),
+        radial-gradient(
+          700px 280px at 90% 100%,
+          rgba(109,40,217,.10),
+          transparent 65%
+        ),
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.96),
+          rgba(246,248,252,.94)
+        );
+
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:calc(var(--radius) + 10px);
+      box-shadow:var(--shadow);
+    }
+
+    .vision-label{
+      display:inline-flex;
+      align-items:center;
+
+      margin-bottom:14px;
+      padding:6px 12px;
+
+      color:var(--accent);
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+
+      background:var(--accentSoft);
+      border:1px solid rgba(47,92,255,.18);
+      border-radius:999px;
+    }
+
+    .vision h2{
+      max-width:1050px;
+      margin:0;
+
+      font-size:34px;
+      font-weight:900;
+      line-height:1.25;
+      letter-spacing:-.5px;
+    }
+
+    .vision p{
+      max-width:1050px;
+      margin:18px 0 0;
+
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.8;
+    }
+
+    .vision strong{
+      color:var(--text);
+      font-weight:850;
+    }
+
+    /* =========================================================
+       3) SECTION TITLES
+    ========================================================== */
+
+    .section{
+      margin-top:22px;
+    }
+
+    .section-head{
+      margin-bottom:18px;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:12px;
+
+      margin:0;
+
+      font-size:28px;
+      font-weight:900;
+      line-height:1.3;
+      letter-spacing:-.4px;
+    }
+
+    .section-title::after{
+      content:"";
+
+      width:150px;
+      height:4px;
+
+      border-radius:999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(47,92,255,.78),
+          rgba(109,40,217,.58)
+        );
+    }
+
+    .section-desc{
+      max-width:980px;
+      margin:8px 0 0;
+
+      color:var(--muted);
+      font-size:16.5px;
+      line-height:1.75;
+    }
+
+    /* =========================================================
+       4) FRONTIER PHYSICS QUESTIONS
+    ========================================================== */
+
+    .question-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:18px;
+    }
+
+    .question-card{
+      position:relative;
+      overflow:hidden;
+
+      padding:24px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.96),
+          rgba(246,248,252,.92)
+        );
+
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:calc(var(--radius) + 4px);
+      box-shadow:var(--shadow2);
+
+      transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease;
+    }
+
+    .question-card:hover{
+      transform:translateY(-3px);
+      box-shadow:var(--shadow3);
+      border-color:rgba(47,92,255,.22);
+    }
+
+    .question-number{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      width:38px;
+      height:38px;
+      margin-bottom:16px;
+
+      color:#ffffff;
+      font-size:15px;
+      font-weight:900;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(47,92,255,.95),
+          rgba(109,40,217,.82)
+        );
+
+      border-radius:12px;
+      box-shadow:0 10px 24px rgba(47,92,255,.18);
+    }
+
+    .question-card h3{
+      margin:0 0 12px;
+
+      font-size:21px;
+      font-weight:900;
+      line-height:1.35;
+      letter-spacing:-.2px;
+    }
+
+    .question-card p{
+      margin:0;
+
+      color:var(--muted);
+      font-size:15.8px;
+      line-height:1.75;
+    }
+
+    .question-card ul{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+
+      margin:16px 0 0;
+      padding:0;
+
+      list-style:none;
+    }
+
+    .question-card li{
+      position:relative;
+
+      padding-left:17px;
+
+      color:var(--muted);
+      font-size:14.8px;
+      line-height:1.65;
+    }
+
+    .question-card li::before{
+      content:"";
+
+      position:absolute;
+      left:0;
+      top:.68em;
+
+      width:7px;
+      height:7px;
+
+      border-radius:999px;
+      background:rgba(47,92,255,.55);
+    }
+
+    /* =========================================================
+       5) SPECTROSCOPY PLATFORMS
+    ========================================================== */
+
+    .platform-stack{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .platform-card{
+      display:grid;
+      grid-template-columns:minmax(0, 1.05fr) minmax(420px, .95fr);
+      gap:24px;
+      align-items:center;
+
+      padding:24px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.96),
+          rgba(246,248,252,.92)
+        );
+
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:calc(var(--radius) + 8px);
+      box-shadow:var(--shadow2);
+
+      transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease;
+    }
+
+    .platform-card:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow3);
+      border-color:rgba(47,92,255,.20);
+    }
+
+    .platform-card.reverse .platform-content{
+      order:2;
+    }
+
+    .platform-card.reverse .platform-visual{
+      order:1;
+    }
+
+    .platform-label{
+      display:inline-flex;
+
+      margin-bottom:12px;
+      padding:6px 11px;
+
+      color:var(--accent);
+      font-size:13px;
+      font-weight:900;
+
+      background:var(--accentSoft);
+      border:1px solid rgba(47,92,255,.18);
+      border-radius:999px;
+    }
+
+    .platform-content h3{
+      margin:0 0 12px;
+
+      font-size:25px;
+      font-weight:900;
+      line-height:1.35;
+      letter-spacing:-.3px;
+    }
+
+    .platform-content p{
+      margin:0;
+
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+    }
+
+    .feature-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+
+      margin-top:17px;
+    }
+
+    .feature{
+      padding:7px 11px;
+
+      color:rgba(17,24,39,.88);
+      font-size:13px;
+      font-weight:850;
+      line-height:1.4;
+
+      background:rgba(47,92,255,.08);
+      border:1px solid rgba(47,92,255,.15);
+      border-radius:999px;
+    }
+
+    .platform-visual{
+      overflow:hidden;
+
+      background:#f4f6fb;
+      border:1px solid rgba(17,24,39,.09);
+      border-radius:20px;
+      box-shadow:0 12px 28px rgba(15,23,42,.09);
+    }
+
+    .platform-image{
+      display:block;
+
+      width:100%;
+      height:320px;
+
+      object-fit:cover;
+      object-position:center;
+    }
+
+    .platform-image.contain{
+      object-fit:contain;
+      padding:8px;
+      background:#f6f8fc;
+    }
+
+    .platform-caption{
+      padding:11px 14px;
+
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.6;
+
+      background:rgba(255,255,255,.90);
+      border-top:1px solid rgba(17,24,39,.07);
+    }
+
+    /* =========================================================
+       6) INTEGRATED APPROACH
+    ========================================================== */
+
+    .approach{
+      margin-top:22px;
+      padding:28px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(47,92,255,.07),
+          rgba(109,40,217,.05)
+        );
+
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:calc(var(--radius) + 8px);
+      box-shadow:var(--shadow2);
+    }
+
+    .approach h2{
+      margin:0 0 12px;
+
+      font-size:26px;
+      font-weight:900;
+      line-height:1.3;
+      letter-spacing:-.3px;
+    }
+
+    .approach p{
+      max-width:1080px;
+      margin:0;
+
+      color:var(--muted);
+      font-size:16.5px;
+      line-height:1.8;
+    }
+
+    .approach-flow{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:12px;
+
+      margin-top:20px;
+    }
+
+    .flow-item{
+      position:relative;
+
+      padding:17px 16px;
+
+      text-align:center;
+
+      background:rgba(255,255,255,.84);
+      border:1px solid rgba(17,24,39,.08);
+      border-radius:16px;
+    }
+
+    .flow-item strong{
+      display:block;
+
+      margin-bottom:4px;
+
+      color:var(--text);
+      font-size:15px;
+      font-weight:900;
+    }
+
+    .flow-item span{
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.5;
+    }
+
+    /* =========================================================
+       7) FOOTER
+    ========================================================== */
+
+    footer{
+      margin-top:28px;
+      padding:18px 0 34px;
+
+      color:var(--muted);
+      font-size:14px;
+
+      border-top:1px solid var(--line);
+    }
+
+    /* =========================================================
+       8) RESPONSIVE
+    ========================================================== */
+
+    @media (max-width:1100px){
+      .question-grid{
+        grid-template-columns:1fr;
+      }
+
+      .platform-card{
+        grid-template-columns:1fr;
+      }
+
+      .platform-card.reverse .platform-content,
+      .platform-card.reverse .platform-visual{
+        order:initial;
+      }
+
+      .platform-content{
+        order:1;
+      }
+
+      .platform-visual{
+        order:2;
+      }
+
+      .approach-flow{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width:700px){
+      :root{
+        --pad:18px;
+      }
+
+      .header{
+        padding-top:30px;
+      }
+
+      .header h1{
+        font-size:42px;
+      }
+
+      .header .sub{
+        font-size:16px;
+      }
+
+      .vision{
+        padding:25px 22px;
+      }
+
+      .vision h2{
+        font-size:27px;
+      }
+
+      .vision p{
+        font-size:16.5px;
+      }
+
+      .section-title{
+        font-size:24px;
+      }
+
+      .section-title::after{
+        width:90px;
+      }
+
+      .question-card,
+      .platform-card,
+      .approach{
+        padding:20px;
+      }
+
+      .platform-content h3{
+        font-size:22px;
+      }
+
+      .platform-image{
+        height:250px;
+      }
+
+      .approach-flow{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:480px){
+      .header h1{
+        font-size:38px;
+      }
+
+      .section-title::after{
+        display:none;
+      }
+
+      .platform-image{
+        height:220px;
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .question-card,
+      .platform-card{
+        transition:none;
+      }
+
+      .question-card:hover,
+      .platform-card:hover{
+        transform:none;
+      }
+    }
+  </style>
 </head>
 
 <body data-page="research">
 
-<div id="site-nav"></div>
+  <!-- Navigation injection placeholder -->
+  <div id="site-nav"></div>
 
-<div class="container">
+  <main class="container">
 
-<div class="header">
-<h1>Research</h1>
-<div class="sub">
-We develop ultrafast terahertz spectroscopy and on-chip THz platforms, combined with quantum transport, 
-  to probe the nonequilibrium dynamics and correlated electronic in quantum materials.
-</div>
-</div>
+    <!-- =======================================================
+         PAGE HEADER
+    ======================================================== -->
 
+    <header class="header">
+      <h1>Research</h1>
 
-<div class="stack">
+      <div class="sub">
+        We investigate frontier problems in condensed-matter and quantum
+        physics by developing advanced ultrafast and terahertz spectroscopy
+        platforms across optical, electrical, and chip-integrated length scales.
+      </div>
+    </header>
 
-<!-- Direction 1 -->
-<div class="card">
-<div class="cardgrid">
+    <!-- =======================================================
+         RESEARCH VISION
+    ======================================================== -->
 
-<div>
-<div class="pill">Research 1</div>
-<h2>Ultrafast optical/THz pump-probe spectroscopy: nonequilibrium carrier dynamics</h2>
-<p class="lead">
-Using pump–probe techniques to resolve transient charge dynamics and energy flow following photoexcitation.
-</p>
-<ul>
-<li><span class="strong">Transient photoconductivity</span></li>
-<li><span class="strong">Many-body interaction</span> (carrier-phonon, electron-hole, etc...)</li>
-</ul>
-</div>
+    <section class="vision">
+      <div class="vision-label">Research Vision</div>
 
-<div>
-<div class="figure">
-<img src="img/pump-thz3.jpg">
-</div>
-<div class="figcap">Ultrafast pump–probe spectroscopy</div>
-</div>
+      <h2>
+        Exploring frontier quantum physics through advanced spectroscopy
+      </h2>
 
-</div>
-</div>
+      <p>
+        Our research seeks to understand how charge carriers, collective
+        excitations, and correlated quantum states evolve across ultrafast
+        time scales and low-energy scales. We focus on
+        <strong>nonequilibrium quantum dynamics</strong>,
+        <strong>many-body interactions</strong>,
+        <strong>low-energy electrodynamics</strong>, and
+        <strong>emergent electronic states</strong> in low-dimensional
+        and quantum materials.
+      </p>
 
-<!-- Direction 2 -->
-<div class="card">
-<div class="cardgrid">
+      <p>
+        To address these questions, we develop, integrate, and continuously
+        optimize advanced spectroscopic platforms, including transient
+        absorption spectroscopy, optical-pump–terahertz-probe spectroscopy,
+        broadband terahertz time-domain spectroscopy, and chip-integrated
+        terahertz spectroscopy.
+      </p>
+    </section>
 
-<div>
-<div class="pill">Research 2</div>
-<h2>Cryogenic transport & on-chip THz spectroscopy: correlated quantum states</h2>
-<p class="lead">
-Combining low-temperature transport and integrated THz spectroscopy to investigate correlated electronic states.
-</p>
-<ul>
-<li><span class="strong">Complex conductivity σ(ω)</span></li>
-<li><span class="strong">Field & temperature dependent THz response</span></li>
-<li><span class="strong">On-chip THz platforms</span></li>
-</ul>
-</div>
+    <!-- =======================================================
+         FRONTIER PHYSICS QUESTIONS
+    ======================================================== -->
 
-<div>
-<div class="figure">
-<img src="img/research-cryogenic-onchip.jpg">
-</div>
-<div class="figcap">On-chip THz spectroscopy</div>
-</div>
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">Frontier Physics Questions</h2>
 
-</div>
-</div>
+        <p class="section-desc">
+          Our platforms are designed around the physical questions rather
+          than a single material system or measurement technique.
+        </p>
+      </div>
 
-</div>
-</div>
+      <div class="question-grid">
 
-<footer>
-<div class="container">
-© <span id="y"></span>
-</div>
-</footer>
+        <!-- Question 1 -->
+        <article class="question-card">
+          <div class="question-number">01</div>
 
-<script src="nav.js"></script>
-<script>
-document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+          <h3>Nonequilibrium Quantum Dynamics</h3>
+
+          <p>
+            How do photoexcited carriers, excitons, and collective modes form,
+            relax, and redistribute energy after ultrafast excitation?
+          </p>
+
+          <ul>
+            <li>Carrier generation, trapping, and recombination</li>
+            <li>Energy transfer across electronic and lattice subsystems</li>
+            <li>Transient photoconductivity and mobility</li>
+          </ul>
+        </article>
+
+        <!-- Question 2 -->
+        <article class="question-card">
+          <div class="question-number">02</div>
+
+          <h3>Many-Body Interactions</h3>
+
+          <p>
+            How do electron–phonon, electron–electron, and electron–hole
+            interactions govern microscopic transport and optical response?
+          </p>
+
+          <ul>
+            <li>Carrier–phonon coupling</li>
+            <li>Excitonic and Coulomb correlations</li>
+            <li>Collective excitations and coherent modes</li>
+          </ul>
+        </article>
+
+        <!-- Question 3 -->
+        <article class="question-card">
+          <div class="question-number">03</div>
+
+          <h3>Correlated and Emergent Quantum States</h3>
+
+          <p>
+            How do superconductivity, electronic correlations, disorder,
+            interfaces, and dimensionality reshape low-energy electrodynamics?
+          </p>
+
+          <ul>
+            <li>Complex conductivity and collective response</li>
+            <li>Temperature- and field-dependent quantum states</li>
+            <li>Mesoscopic and spatially confined electrodynamics</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SPECTROSCOPY PLATFORMS
+    ======================================================== -->
+
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">Spectroscopy Platforms</h2>
+
+        <p class="section-desc">
+          We build and optimize complementary platforms spanning visible,
+          near-infrared, terahertz, electrical, cryogenic, and chip-scale
+          measurements.
+        </p>
+      </div>
+
+      <div class="platform-stack">
+
+        <!-- Platform 1 -->
+        <article class="platform-card">
+          <div class="platform-content">
+            <div class="platform-label">Ultrafast Optical Spectroscopy</div>
+
+            <h3>Transient Absorption Spectroscopy</h3>
+
+            <p>
+              Broadband transient absorption spectroscopy tracks the evolution
+              of excited states, excitons, polarons, and interfacial charge
+              transfer with femtosecond temporal resolution. It provides
+              access to population dynamics and electronic transitions over
+              visible and near-infrared energy scales.
+            </p>
+
+            <div class="feature-row">
+              <span class="feature">Excited-State Dynamics</span>
+              <span class="feature">Charge Transfer</span>
+              <span class="feature">Exciton and Polaron Dynamics</span>
+              <span class="feature">Broadband Optical Probing</span>
+            </div>
+          </div>
+
+          <div class="platform-visual">
+            <img
+              class="platform-image"
+              src="img/瞬态吸收.jpg"
+              alt="Transient absorption spectroscopy platform"
+            />
+
+            <div class="platform-caption">
+              Broadband transient absorption spectroscopy platform
+            </div>
+          </div>
+        </article>
+
+        <!-- Platform 2 -->
+        <article class="platform-card reverse">
+          <div class="platform-content">
+            <div class="platform-label">Ultrafast Terahertz Spectroscopy</div>
+
+            <h3>Optical-Pump–Terahertz-Probe Spectroscopy</h3>
+
+            <p>
+              Optical-pump–terahertz-probe spectroscopy directly measures
+              transient complex photoconductivity after photoexcitation.
+              By connecting ultrafast dynamics with low-energy charge
+              transport, it reveals carrier mobility, scattering, localization,
+              and many-body coupling on femtosecond-to-nanosecond time scales.
+            </p>
+
+            <div class="feature-row">
+              <span class="feature">Transient Photoconductivity</span>
+              <span class="feature">Carrier Mobility</span>
+              <span class="feature">Scattering and Localization</span>
+              <span class="feature">Many-Body Coupling</span>
+            </div>
+          </div>
+
+          <div class="platform-visual">
+            <img
+              class="platform-image"
+              src="img/太赫兹泵浦光谱.png"
+              alt="Optical-pump terahertz-probe spectroscopy platform"
+            />
+
+            <div class="platform-caption">
+              Optical-pump–terahertz-probe spectroscopy platform
+            </div>
+          </div>
+        </article>
+
+        <!-- Platform 3 -->
+        <article class="platform-card">
+          <div class="platform-content">
+            <div class="platform-label">Chip-Integrated Spectroscopy</div>
+
+            <h3>On-Chip Integrated Terahertz Spectroscopy</h3>
+
+            <p>
+              Chip-integrated terahertz spectroscopy confines and guides
+              broadband terahertz pulses through microscopic transmission
+              structures. It enables low-energy spectroscopy of micron-scale
+              samples and devices that are inaccessible to conventional
+              free-space terahertz measurements.
+            </p>
+
+            <div class="feature-row">
+              <span class="feature">Micron-Scale Samples</span>
+              <span class="feature">Low-Temperature Operation</span>
+              <span class="feature">Quantum Devices</span>
+              <span class="feature">Integrated THz Emitters and Detectors</span>
+            </div>
+          </div>
+
+          <div class="platform-visual">
+            <img
+              class="platform-image contain"
+              src="img/chip.jpeg"
+              alt="Chip-integrated terahertz spectroscopy"
+            />
+
+            <div class="platform-caption">
+              Concept of a chip-integrated terahertz spectroscopy platform
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =======================================================
+         INTEGRATED APPROACH
+    ======================================================== -->
+
+    <section class="approach">
+      <h2>From Spectroscopy Development to Frontier Physics</h2>
+
+      <p>
+        Our research combines instrument development, ultrafast spectroscopy,
+        terahertz electrodynamics, cryogenic transport, device fabrication,
+        and quantitative modeling. This integrated strategy allows us to
+        connect microscopic interactions with macroscopic transport and
+        device-level functionality.
+      </p>
+
+      <div class="approach-flow">
+
+        <div class="flow-item">
+          <strong>Platform Development</strong>
+          <span>Build and optimize advanced spectroscopy systems</span>
+        </div>
+
+        <div class="flow-item">
+          <strong>Material and Device Integration</strong>
+          <span>Bridge quantum materials, interfaces, and microdevices</span>
+        </div>
+
+        <div class="flow-item">
+          <strong>Multiscale Measurement</strong>
+          <span>Connect ultrafast, low-energy, and cryogenic responses</span>
+        </div>
+
+        <div class="flow-item">
+          <strong>Physics Understanding</strong>
+          <span>Reveal microscopic mechanisms and emergent states</span>
+        </div>
+
+      </div>
+    </section>
+
+    <div style="height:28px"></div>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer>
+    <div class="container">
+      © <span id="y"></span> ·
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <!-- Site-wide navigation -->
+  <script src="nav.js"></script>
+
+  <script>
+    document.getElementById("y").textContent =
+      new Date().getFullYear();
+  </script>
 
 </body>
 </html>
