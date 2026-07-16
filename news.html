@@ -3,10 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>News | THz Electrodynamics Lab @ CAS AIR</title>
-  <meta name="description" content="News — THz Electrodynamics Lab @ CAS AIR" />
 
-  <!-- Site-wide unified nav -->
+  <title>News | THz Electrodynamics Lab @ CAS AIR</title>
+
+  <meta
+    name="description"
+    content="News — THz Electrodynamics Lab @ CAS AIR"
+  />
+
+  <!-- Site-wide unified navigation -->
   <link rel="stylesheet" href="nav.css" />
 
   <style>
@@ -42,6 +47,7 @@
 
     body{
       margin:0;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -89,6 +95,7 @@
     /* =========================
        HEADER
     ========================== */
+
     .header{
       padding:38px 0 16px;
     }
@@ -110,9 +117,10 @@
     /* =========================
        HERO
     ========================== */
+
     .hero{
       margin:10px 0 22px;
-      padding:18px;
+      padding:18px 20px;
 
       background:
         linear-gradient(
@@ -127,7 +135,7 @@
     }
 
     .hero .kicker{
-      margin-bottom:6px;
+      margin-bottom:5px;
       font-weight:900;
       letter-spacing:-.2px;
     }
@@ -141,6 +149,7 @@
     /* =========================
        PANEL
     ========================== */
+
     .panel{
       padding:22px;
 
@@ -157,18 +166,19 @@
     }
 
     .section-title{
+      display:flex;
+      align-items:center;
+      gap:12px;
+
       margin:0 0 18px;
       font-size:22px;
       font-weight:900;
       letter-spacing:-.2px;
-
-      display:flex;
-      align-items:center;
-      gap:12px;
     }
 
     .section-title::after{
       content:"";
+
       width:140px;
       height:4px;
       border-radius:999px;
@@ -184,21 +194,21 @@
     /* =========================
        NEWS LIST
     ========================== */
+
     .news-list{
       display:flex;
       flex-direction:column;
-      gap:14px;
+      gap:12px;
     }
 
     .news-item{
-      display:grid;
-      grid-template-columns:130px 1fr;
-      gap:20px;
-      align-items:start;
+      display:flex;
+      align-items:baseline;
+      gap:14px;
 
-      padding:20px;
+      padding:17px 20px;
 
-      background:rgba(255,255,255,.88);
+      background:rgba(255,255,255,.90);
       border:1px solid rgba(17,24,39,.08);
       border-radius:18px;
       box-shadow:var(--shadow2);
@@ -216,88 +226,53 @@
     }
 
     .news-date{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+      flex:0 0 auto;
 
-      min-height:36px;
-      padding:6px 12px;
-
-      border:1px solid rgba(47,92,255,.18);
-      border-radius:999px;
-
-      background:var(--accentSoft);
-      color:rgba(17,24,39,.88);
-
-      font-size:14px;
+      color:var(--accent);
+      font-size:15px;
       font-weight:900;
       white-space:nowrap;
     }
 
-    .news-content{
-      position:relative;
-      padding-left:20px;
+    .news-separator{
+      flex:0 0 auto;
+      color:rgba(85,98,122,.55);
+      font-weight:800;
     }
 
-    .news-content::before{
-      content:"";
-      position:absolute;
-      left:0;
-      top:8px;
-
-      width:10px;
-      height:10px;
-      border-radius:999px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(47,92,255,.85),
-          rgba(109,40,217,.65)
-        );
-
-      box-shadow:0 8px 18px rgba(47,92,255,.20);
-    }
-
-    .news-content h2{
+    .news-text{
       margin:0;
-      font-size:18px;
-      font-weight:900;
-      line-height:1.5;
-      letter-spacing:-.1px;
-    }
-
-    .news-content p{
-      margin:5px 0 0;
-      color:var(--muted);
-      font-size:15.5px;
-      line-height:1.75;
+      color:var(--text);
+      font-size:16px;
+      line-height:1.7;
     }
 
     /* =========================
-       CONTACT CARD
+       CONTACT
     ========================== */
-    .coming{
+
+    .contact-card{
       display:flex;
-      gap:14px;
       align-items:flex-start;
+      gap:14px;
 
       margin-top:18px;
       padding:18px;
 
+      background:rgba(255,255,255,.86);
       border:1px solid rgba(17,24,39,.08);
       border-radius:18px;
-      background:rgba(255,255,255,.86);
       box-shadow:var(--shadow2);
     }
 
-    .dot{
+    .contact-dot{
       width:12px;
       height:12px;
       margin-top:7px;
       flex:0 0 auto;
 
       border-radius:999px;
+
       background:
         linear-gradient(
           135deg,
@@ -308,14 +283,14 @@
       box-shadow:0 12px 22px rgba(47,92,255,.14);
     }
 
-    .coming h2{
+    .contact-card h2{
       margin:0 0 6px;
       font-size:18px;
-      font-weight:950;
+      font-weight:900;
       letter-spacing:-.2px;
     }
 
-    .coming p{
+    .contact-card p{
       margin:0;
       color:var(--muted);
       font-size:15.8px;
@@ -325,6 +300,7 @@
     /* =========================
        FOOTER
     ========================== */
+
     footer{
       margin-top:26px;
       padding:18px 0 34px;
@@ -338,14 +314,15 @@
     .foot{
       display:flex;
       flex-wrap:wrap;
-      gap:10px;
       align-items:center;
       justify-content:space-between;
+      gap:10px;
     }
 
     /* =========================
        RESPONSIVE
     ========================== */
+
     @media (max-width:780px){
       :root{
         --pad:18px;
@@ -360,16 +337,20 @@
       }
 
       .news-item{
-        grid-template-columns:1fr;
-        gap:12px;
+        display:block;
         padding:16px;
       }
 
-      .news-date{
-        justify-self:start;
+      .news-date,
+      .news-separator{
+        display:inline;
       }
 
-      .coming{
+      .news-text{
+        display:inline;
+      }
+
+      .contact-card{
         padding:16px;
       }
     }
@@ -378,7 +359,7 @@
 
 <body data-page="news">
 
-  <!-- Unified nav injection placeholder -->
+  <!-- Unified navigation injection placeholder -->
   <div id="site-nav"></div>
 
   <main class="container">
@@ -386,106 +367,106 @@
     <!-- =========================
          HEADER
     ========================== -->
+
     <header class="header">
       <h1>News</h1>
 
       <div class="sub">
-        Updates from the lab — publications, milestones, talks, new members,
-        and opportunities.
+        Updates from the lab — publications, milestones, talks,
+        new members, and opportunities.
       </div>
     </header>
 
     <!-- =========================
          HERO
     ========================== -->
+
     <section class="hero">
       <div class="kicker">Latest updates from UNIQUE Lab</div>
 
       <div class="desc">
-        Follow the growth of our team, research platforms, collaborations,
-        and scientific activities.
+        Follow the growth of our team, research platforms,
+        collaborations, and scientific activities.
       </div>
     </section>
 
     <!-- =========================
          NEWS PANEL
     ========================== -->
+
     <section class="panel">
       <h2 class="section-title">Latest News</h2>
 
       <div class="news-list">
 
-        <!-- Latest -->
+        <!-- Latest news -->
         <article class="news-item">
-          <div class="news-date">July 2026</div>
+          <time class="news-date" datetime="2026-07">
+            July 2026
+          </time>
 
-          <div class="news-content">
-            <h2>Welcome, Tianyi Zhang!</h2>
+          <span class="news-separator">·</span>
 
-            <p>
-              Tianyi joins UNIQUE Lab as a new doctoral student after
-              completing his undergraduate studies at Harbin Institute of
-              Technology.
-            </p>
-          </div>
+          <p class="news-text">
+            Welcome Tianyi Zhang, our new doctoral student from
+            Harbin Institute of Technology!
+          </p>
         </article>
 
-        <!-- 2 -->
         <article class="news-item">
-          <div class="news-date">July 2026</div>
+          <time class="news-date" datetime="2026-07">
+            July 2026
+          </time>
 
-          <div class="news-content">
-            <h2>Welcome, Junhui Huang!</h2>
+          <span class="news-separator">·</span>
 
-            <p>
-              Junhui joins UNIQUE Lab as an undergraduate visiting student
-              from Imperial College London.
-            </p>
-          </div>
+          <p class="news-text">
+            Welcome Junhui Huang, our new undergraduate visiting student
+            from Imperial College London!
+          </p>
         </article>
 
-        <!-- 3 -->
         <article class="news-item">
-          <div class="news-date">June 2026</div>
+          <time class="news-date" datetime="2026-06">
+            June 2026
+          </time>
 
-          <div class="news-content">
-            <h2>Welcome, Guangpeng Zhu!</h2>
+          <span class="news-separator">·</span>
 
-            <p>
-              Guangpeng joins UNIQUE Lab as a postdoctoral researcher after
-              receiving his Ph.D. from Macau University of Science and
-              Technology.
-            </p>
-          </div>
+          <p class="news-text">
+            Welcome Guangpeng Zhu, our new postdoctoral researcher,
+            who received his Ph.D. from Macau University of Science
+            and Technology!
+          </p>
         </article>
 
-        <!-- Oldest -->
         <article class="news-item">
-          <div class="news-date">June 2026</div>
+          <time class="news-date" datetime="2026-06">
+            June 2026
+          </time>
 
-          <div class="news-content">
-            <h2>Welcome to UNIQUE Lab!</h2>
+          <span class="news-separator">·</span>
 
-            <p>
-              UNIQUE Lab is officially launched at the Aerospace Information
-              Research Institute, Chinese Academy of Sciences.
-            </p>
-          </div>
+          <p class="news-text">
+            Welcome to UNIQUE Lab!
+          </p>
         </article>
 
       </div>
 
       <!-- Contact -->
-      <div class="coming">
-        <div class="dot"></div>
+      <div class="contact-card">
+        <div class="contact-dot"></div>
 
         <div>
           <h2>Connect with us</h2>
 
           <p>
-            For research collaborations, visiting opportunities, or joining
-            the lab, please contact
-            <a href="mailto:thz_zheng@163.com">thz_zheng@163.com</a>.
+            For research collaborations, visiting opportunities,
+            or joining the lab, please contact
+            <a href="mailto:thz_zheng@163.com">
+              thz_zheng@163.com
+            </a>.
           </p>
         </div>
       </div>
@@ -497,11 +478,17 @@
   <!-- =========================
        FOOTER
   ========================== -->
+
   <footer>
     <div class="container">
       <div class="foot">
-        <div>© <span id="y"></span></div>
-        <div><a href="contact.html">Contact</a></div>
+        <div>
+          © <span id="y"></span>
+        </div>
+
+        <div>
+          <a href="contact.html">Contact</a>
+        </div>
       </div>
     </div>
   </footer>
